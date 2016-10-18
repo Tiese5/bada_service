@@ -2,8 +2,8 @@
 */.DS_Store
 .project
 .classpath
-*/.project
 */.classpath
 */.settings
 .settings
 */META-INF/MANIFEST.MF
+/build/
