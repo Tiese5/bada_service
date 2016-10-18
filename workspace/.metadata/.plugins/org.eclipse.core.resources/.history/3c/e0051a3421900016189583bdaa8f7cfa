@@ -1,8 +1,0 @@
-package study.jsp.mysite.service;
-
-import study.jsp.mysite.model.BbsFile;
-
-public interface BbsFileService {
-	
-	public void inseltFIle(BbsFile file)throws Exception;
-}

@@ -1,9 +1,0 @@
-package study.jsp.mysite.test;
-
-import study.jsp.mysite.model.BbsDocument;
-
-public class PrevTest {
-	public static void main(String[] args) {
-		BbsDocument bbsDocument = new BbsDocument();
-	}
-}

@@ -1,9 +1,0 @@
-package study.jsp.mysite.test;
-
-import com.sun.xml.internal.txw2.Document;
-
-public class delelte {
-	public static void main(String[] args) {
-		Document document = new document
-	}
-}
