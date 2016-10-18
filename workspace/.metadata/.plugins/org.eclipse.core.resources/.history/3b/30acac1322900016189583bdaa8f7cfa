@@ -1,0 +1,31 @@
+package study.jsp.mysite.test;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import study.jsp.mysite.dao.MyBatisConnectionFactory;
+import study.jsp.mysite.impl.BbsDocumentServiceImpl;
+import study.jsp.mysite.model.BbsDocument;
+import study.jsp.mysite.service.BbsDocumentService;
+
+public class DocumentInsertTest {
+	public static void main(String[] args) {
+	BbsDocument bbsDocument = new BbsDocument();
+	bbsDocument.setContent("내용");
+	bbsDocument.setEmail("asd");
+	
+	SqlSession sqlSession = MyBatisConnectionFactory.getSqlSession();
+	Logger logger = LogManager.getFormatterLogger();
+	BbsDocumentService bbsDocumentService = new BbsDocumentServiceImpl(sqlSession, logger);
+	
+	
+	try {
+		bbsDocumentService.insertDocument(bbsDocument);
+	} catch (Exception e) {
+		System.out.println(e.getLocalizedMessage());
+		e.printStackTrace();
+	}
+	
+}
+}

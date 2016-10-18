@@ -1,0 +1,74 @@
+<%@page import="study.java.model.ImageItem"%>
+<%@page import="study.java.dao.impl.ImageDaoImpl"%>
+<%@page import="java.util.List"%>
+<%@page import="study.java.dao.ImageDao"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String keyword = getInitParameter(keyword);
+
+	if (keyword == null) {
+		keyword = "";
+	}
+	ImageDao Dao = new ImageDaoImpl();
+	List<ImageItem> list = Dao.getImageSearchList(keyword);
+%>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>My JSP Page</title>
+<!-- Twitter Bootstrap3 & jQuery -->
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css" />
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="page-header">
+			<h1>사진 검색</h1>
+		</div>
+		<div>
+			<form method="post" action="2016.09.20.jsp">
+				<div class="row">
+					<div class="col-md-6">
+						<input type="text" class="form-control col-md-9"
+							placeholder="검색어 입력" id="keyword" name="keyword">
+					</div>
+					<div class="col-md-4">
+						<button type="submit" class="btn btn-info">검색</button>
+					</div>
+				</div>	
+			</form>
+		</div>
+	</div>
+	<div class="row">
+
+		<%
+			if (list != null) {
+				for (int i = 0; i < list.size(); i++) {
+					ImageItem item = list.get(i);
+		%>
+
+		<div class="col-md-3">
+			<a href="<%=item.getLink()%>" target="black" class="thmbnail"
+				style="width: 100%; height: 150px;"> 
+				<img alt="title"
+				src="<%=item.getThumbnail()%>">
+			</a>
+		</div>
+
+		<%
+			}
+			}
+		%>
+	</div>
+	</div>
+</body>
+</html>

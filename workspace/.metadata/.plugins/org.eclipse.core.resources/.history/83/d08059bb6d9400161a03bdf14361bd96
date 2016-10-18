@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 이 파일의 경로를 config.xml에 명시해야한다 -->
+
+<!-- Professor테이블에 대한 CRUD 기능을 구현하기 위한 Mapper -->
+<mapper namespace="BbsDocumentMapper">
+	<resultMap id="bbs_document" type="study.jsp.mysite.model.BbsDocument">
+		<result property="id" column="id" />
+		<result property="category" column="category" />
+		<result property="writerName" column="writer_name" />
+		<result property="writerPw" column="writer_pw" />
+		<result property="email" column="email" />
+		<result property="subject" column="subject" />
+		<result property="content" column="content" />
+		<result property="hit" column="hit" />
+		<result property="regDate" column="reg_date" />
+		<result property="editDate" column="edit_date" />
+		<result property="ipAddress" column="ip_address" />
+		<result property="memberId" column="member_id" />
+		<result property="imagePath" column="image_path" />
+		
+	</resultMap>
+	<!-- 게시몰 업데이트 -->
+	<insert id="insertDocument" parameterType="study.jsp.mysite.model.BbsDocument"
+	useGeneratedKeys="true" keyProperty="id">
+	INSERT INTO bbs_document (
+		category,writer_name,email,subject,content,hit,reg_date,edit_date,ip_address,
+		member_id,writer_pw
+		) VALUES(
+		#{category},#{writerName},#{email},#{subject},#{content},0,now(),now(),#{ipAddress},
+		
+		<choose>
+			<when test="memberId==0">
+				null,password(#{writerPw})
+			</when>
+			<otherwise>
+				#{memberId}, #{writerPw}
+			</otherwise>
+		</choose>
+		)
+	</insert>
+	<!-- 게시물 하나에 대한 조회 -->
+	<select id="selectDocument" parameterType="study.jsp.mysite.model.BbsDocument" 
+	resultMap="bbs_document">
+		SELECT id,category,writer_name,writer_pw,email,subject,content,hit,
+		DATE_FORMAT(reg_date, '%Y-%m-%d %H-%i:%s') as reg_date,
+		DATE_FORMAT(edit_date, '%Y-%m-%d %H-%i:%s') as edit_date,
+		ip_address,member_id
+		FROM bbs_document
+		WHERE category=#{category} AND id=#{id}
+	</select>
+	<!-- 이전글 조회 -->
+	<select id="selectPrevDocument"
+	parameterType="study.jsp.mysite.model.BbsDocument" 
+	resultMap="bbs_document">
+		SELECT id,category,writer_name,writer_pw,email,subject,content,hit,
+		DATE_FORMAT(reg_date, '%Y-%m-%d %H-%i:%s') as reg_date,
+		DATE_FORMAT(edit_date, '%Y-%m-%d %H-%i:%s') as edit_date,
+		ip_address,member_id
+		FROM bbs_document
+		WHERE category=#{category} AND id &lt; #{id}
+		ORDER BY id DESC
+		LIMIT 0,1
+	</select>
+	<!-- 다음글 조회 -->
+	<select id="selectNextDocument"
+	parameterType="study.jsp.mysite.model.BbsDocument" 
+	resultMap="bbs_document">
+		SELECT id,category,writer_name,writer_pw,email,subject,content,hit,
+		DATE_FORMAT(reg_date, '%Y-%m-%d %H-%i:%s') as reg_date,
+		DATE_FORMAT(edit_date, '%Y-%m-%d %H-%i:%s') as edit_date,
+		ip_address,member_id
+		FROM bbs_document
+		WHERE category=#{category} AND id &gt; #{id}
+		ORDER BY id ASC
+		LIMIT 0,1
+	</select>
+	<!-- 조회수 -->
+	<insert id="updeteDocumentHit" 
+	 parameterType="study.jsp.mysite.model.BbsDocument">
+	 	UPDATE bbs_document SET hit= hit+1 WHERE category=#{category} AND id=#{id}
+	 </insert>
+	 <!-- 게시물 목록을 조회한다 -->
+	 <select id="selelctDocumentList"
+	 parameterType="study.jsp.mysite.model.BbsDocument"
+	 resultMap="bbs_document">
+	 	SELECT id,category,writer_name,subject,hit,
+			   DATE_FORMAT(reg_date, '%Y-%m-%d') as reg_date
+			   
+		<if test="gallery==true">
+			,(SELECT concat(file_dir,'/',file_name) FROM bbs_file
+				WHERE bbs_document_id=bbs_document.id
+						AND
+						content_type LIKE('image/%')
+						ORDER BY id ASC LIMIT 0,1
+					) as image_path
+			</if>
+	 	FROM bbs_document
+	 	<where> 
+	 		category=#{category}
+	 		<if test="subject != null or content != null">
+	 			AND(
+		 			<if test="subject != null">
+		 				subject LIKE concat('%', #{subject}, '%')
+		 			</if>
+	
+					<if test="content != null">
+		 				OR content LIKE concat('%',#{content}, '%')
+		 			</if>	 			
+	 			)
+	 		</if>
+	 	</where>
+	 	ORDER BY id DESC
+	 	LIMIT #{limitStart}, #{listCount};
+	 </select>
+	 <!-- 전체 게시물 수를 조회한다. -->
+	 <select id="selectDocumentCount"
+	 parameterType="study.jsp.mysite.model.BbsDocument"
+	 resultType="int">
+	 SELECT COUNT(id) FROM bbs_document
+	 <where>
+	 category=#{category}
+	 		<if test="subject != null or content != null">
+	 			AND(
+		 			<if test="subject != null">
+		 				subject LIKE concat('%', #{subject}, '%')
+		 			</if>
+	
+					<if test="content != null">
+		 				OR content LIKE concat('%', #{content}, '%')
+		 			</if>	 			
+	 			)
+	 		</if>
+	 </where>	
+	 </select>
+	 
+	<!-- 자신의 게시물인지 검사한다 -->
+	<select id="selectDocumentCountMemberId"
+		parameterType="study.jsp.mysite.model.BbsDocument"
+		resultType="int">
+		SELECT COUNT(id) FROM bbs_document
+		WHERE category=#{category} AND id=#{id} AND member_id=#{memberId}
+	</select>
+	 
+</mapper>
+

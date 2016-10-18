@@ -1,0 +1,112 @@
+package study.jsp.mysite.controller.bbs;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import study.jsp.helper.BaseController;
+import study.jsp.helper.WebHelper;
+import study.jsp.mysite.dao.MyBatisConnectionFactory;
+import study.jsp.mysite.impl.BbsDocumentServiceImpl;
+import study.jsp.mysite.impl.BbsFileServiseImpl;
+import study.jsp.mysite.model.BbsDocument;
+import study.jsp.mysite.model.BbsFile;
+import study.jsp.mysite.service.BbsDocumentService;
+import study.jsp.mysite.service.BbsFileService;
+@WebServlet("/bbs/document_read.do")
+public class DocumentRead extends BaseController {
+	private static final long serialVersionUID = -5726043267284696327L;
+	WebHelper web;
+	BBSCommon bbs;
+	Logger logger;
+	SqlSession sqlSession;
+	BbsDocumentService bbsDocumentService;
+	BbsFileService bbsFileService;
+	@Override
+	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		web = WebHelper.getInstance(request, response);
+		bbs = BBSCommon.getInstance();
+		logger = LogManager.getFormatterLogger(request.getRemoteUser());
+		sqlSession = MyBatisConnectionFactory.getSqlSession();
+		bbsDocumentService = new BbsDocumentServiceImpl(sqlSession, logger);
+		bbsFileService = new BbsFileServiseImpl(sqlSession, logger);
+		/**게시판 카테고리 값을 받아서 View에 전달*/
+		String category = web.getString("category");
+		request.setAttribute("category", category);
+		/**존재하는 게시판인지 판별하기*/
+		try {
+			String bbsName = bbs.getBbsName(category);
+			request.setAttribute("bbsName", bbsName);
+		} catch (Exception e) {
+			web.redirect(null, e.getLocalizedMessage());
+			return null;
+		}
+		/**5)글번호 파라미터 받기*/
+		int documentId=web.getInt("document_id");
+		logger.debug("document_id:"+documentId);
+		
+		if (documentId ==0) {
+			web.redirect(null,"글 번호가 지정되지 않았습니다");
+			sqlSession.close();
+			return null;
+		}
+		//파라미터를 빈즈로 묶기
+		BbsDocument document = new BbsDocument();
+		document.setCategory(category);
+		document.setId(documentId);
+		
+		BbsFile file = new BbsFile();
+		file.setBbsDocumentId(documentId);
+		
+		/**6)게시물 일련번호를 사용할 데이터 조회*/
+		BbsDocument readDocument = null;
+		BbsDocument prevDocument = null;
+		BbsDocument nextDocument = null;
+		List<BbsFile> fileList = null;
+		
+		try {
+			readDocument = bbsDocumentService.selectDocument(document);
+			prevDocument = bbsDocumentService.selectPrevDocument(document);
+			nextDocument = bbsDocumentService.selectNextDocument(document);
+			fileList = bbsFileService.selectFileList(file);
+		} catch (Exception e) {
+			web.redirect(null, e.getLocalizedMessage());
+			return null;
+		}finally{
+			sqlSession.close();
+		}
+		/**7)게시물 일련번호를 사용한 데이터 조회*/
+		request.setAttribute("readDocument", readDocument);
+		request.setAttribute("prevDocument", prevDocument);
+		request.setAttribute("nextDocument", nextDocument);
+		request.setAttribute("fileList", fileList);
+		
+		/**조회수 중복 갱신 방지 처리*/
+		//카테고리와 게시물 일련번호를 조합한 문자열을 생성
+		String cookiekey = "document_" + category + "_"+documentId;
+		//준비한 문자열에 대응되는 쿠키값 조회
+		String cookieVar = web.getCookie(cookiekey);
+		
+		try {
+			
+			//쿠키값이 없다면 조회수 갱신
+			if (cookieVar == null) {
+				bbsDocumentService.updeteDocumentHit(document);
+			}
+		} catch (Exception e) {
+			web.redirect(null, e.getLocalizedMessage());
+			e.printStackTrace();
+		}
+		
+		return "bbs/document_read";
+	}
+
+}

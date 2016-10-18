@@ -1,0 +1,206 @@
+package study.jsp.mysite.impl;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.logging.log4j.Logger;
+
+import study.jsp.mysite.model.Member;
+import study.jsp.mysite.service.MemberService;
+
+public class MemberServiceImpl implements MemberService{
+	
+	/**처리 결과 처리할 log4j객체 생성*/
+	Logger logger;
+	/**mybatis*/
+	SqlSession sqlSession;
+	
+	public MemberServiceImpl(SqlSession sqlSession, Logger logger){
+		this.logger = logger;
+		this.sqlSession = sqlSession;
+	}
+	
+	@Override
+	public void selectUserIdCount(Member member) throws Exception {
+		
+		
+		try {	
+	
+		int result = sqlSession.selectOne("MemberMapper.selectUserIdCount", member);
+		
+		if (result > 0 ) {
+			 throw new NullPointerException();
+		}
+		} catch (NullPointerException e) {
+			throw new Exception("이미 사용중인 아이디 입니다");
+		} catch (Exception e) {
+			throw new Exception("아이디 중복검사에 실패 했습니다");
+		}	
+	}
+
+	@Override
+	public void selectEmailCount(Member member) throws Exception {
+		try {	
+			
+			int result = sqlSession.selectOne("MemberMapper.selectEmailCount", member);
+			
+			if (result > 0 ) {
+				 throw new NullPointerException();
+			}
+			} catch (NullPointerException e) {
+				throw new Exception("이미 사용중인 이메일 입니다");
+			} catch (Exception e) {
+				System.out.println(e.getLocalizedMessage());
+				throw new Exception("이메일 중복검사에 실패 했습니다");
+			}	
+		}
+		
+
+	@Override
+	public void inseltMember(Member member) throws Exception {
+		//아이디 이메일 중복검사 호출
+		selectEmailCount(member);
+		selectUserIdCount(member);
+		//데이터 저장 처리 == 가입
+		//not null로 설정된 값이 설정되지 않았다면 예외 발생
+		try {
+			//ProfessorMapper.updateProfessorItem 기능을 호출한다.
+			//두번째 파라미터는 저장할 데이터를 담고있는 Beans객체
+			int result = sqlSession.insert("MemberMapper.inseltMember", member);
+			//리턴값이 저장된 행의 수
+			if (result == 0) {
+				// 저장된 행이 없다면 강제로 예외를 발생시킨다
+				//-->이 예외를 처리 가능한 catch 블록으로 제어가 이동한다.
+				throw new NullPointerException();
+				}	
+			} catch (NullPointerException e) {
+				//에러가 발생했으므로 SQl 수행 내역을 되돌림
+				sqlSession.rollback();
+				System.out.println("저장된 회원정보가 없습니다");
+				return;
+			} catch (Exception e) {
+				//에러가 발생했으므로 SQL 수행 내역을 되돌림
+				sqlSession.rollback();	//SQl문 문법에러 제약조건 
+				e.printStackTrace();
+				logger.error(e.getLocalizedMessage());
+				System.out.println("회원가입에 실패했습니다 ");
+				return;
+			}finally {
+				//입력,수정,삭제 처리의 경우 실레 반영을 위해서 commit 필요함
+				sqlSession.commit();
+			}
+	
+		}
+
+	@Override
+	public Member selectLoginInfo(Member member) throws Exception {
+		Member result = null;
+		try {
+			//ProfessorMapper.updateProfessorItem 기능을 호출한다.
+			//두번째 파라미터는 저장할 데이터를 담고있는 Beans객체
+			result = sqlSession.selectOne("MemberMapper.selectLoginInfo",member);
+			//리턴값이 저장된 행의 수
+			if (result == null) {
+				// 저장된 행이 없다면 강제로 예외를 발생시킨다
+				//-->이 예외를 처리 가능한 catch 블록으로 제어가 이동한다.
+				throw new NullPointerException();
+				}	
+			} catch (NullPointerException e) {
+				//에러가 발생했으므로 SQl 수행 내역을 되돌림
+				throw new Exception("아이디나 비밀번호가 잘못되었습니다");
+			} catch (Exception e) {
+				//에러가 발생했으므로 SQL 수행 내역을 되돌림
+				logger.error(e.getLocalizedMessage());
+				throw new Exception("로그인에 실패했습니다");
+			}finally {
+				//입력,수정,삭제 처리의 경우 실레 반영을 위해서 commit 필요함
+				sqlSession.commit();
+				//데이터 베이스 접속 해제
+				
+			}
+			return result;
+		}
+
+	@Override
+	public void updateMemberPasswordByEmail(Member member) throws Exception {
+		//수정 삭제 입력 패턴
+		try {
+				//ProfessorMapper.updateProfessorItem 기능을 호출한다.
+				//두번째 파라미터는 저장할 데이터를 담고있는 Beans객체
+				int result = sqlSession.update("MemberMapper.updateMemberPasswordByEmail",member);
+				//리턴값이 저장된 행의 수
+				if (result == 0) {
+					// 저장된 행이 없다면 강제로 예외를 발생시킨다
+					//-->이 예외를 처리 가능한 catch 블록으로 제어가 이동한다.
+					throw new NullPointerException();
+					}	
+				} catch (NullPointerException e) {
+					//에러가 발생했으므로 SQl 수행 내역을 되돌림
+					sqlSession.rollback();
+					throw new Exception("가입된 이메일이 아닙니다");
+					
+				} catch (Exception e) {
+					//에러가 발생했으므로 SQL 수행 내역을 되돌림
+					sqlSession.rollback();	//SQl문 문법에러 제약조건 
+					e.printStackTrace();
+					throw new Exception("비밀번호 변경에 실패했습니다 ");
+					
+				}finally {
+					//입력,수정,삭제 처리의 경우 실레 반영을 위해서 commit 필요함
+					sqlSession.commit();
+					//데이터 베이스 접속 해제
+				}
+
+	}
+
+	@Override
+	public void selectMemberPasswordCount(Member member) throws Exception {
+		try {
+			//ProfessorMapper.updateProfessorItem 기능을 호출한다.
+			//두번째 파라미터는 저장할 데이터를 담고있는 Beans객체
+			int result = sqlSession.selectOne("MemberMapper.selectMemberPasswordCount",member);
+			//리턴값이 저장된 행의 수
+			if (result == 0) {
+				// 저장된 행이 없다면 강제로 예외를 발생시킨다
+				//-->이 예외를 처리 가능한 catch 블록으로 제어가 이동한다.
+				throw new NullPointerException();
+				}	
+			} catch (NullPointerException e) {
+				//에러가 발생했으므로 SQl 수행 내역을 되돌림
+				throw new Exception("잘못된 비밀번호 입니다");
+			} catch (Exception e) {
+				//에러가 발생했으므로 SQL 수행 내역을 되돌림
+				logger.error(e.getLocalizedMessage());
+				throw new Exception("비밀번호 검사에 실패 했습니다    ");
+			}
+		}
+
+	@Override
+	public void deleteMember(Member member) throws Exception {
+		try {
+			//ProfessorMapper.updateProfessorItem 기능을 호출한다.
+			//두번째 파라미터는 저장할 데이터를 담고있는 Beans객체
+			int result = sqlSession.delete("MemberMapper.deleteMember",member);
+			//리턴값이 저장된 행의 수
+			if (result == 0) {
+				// 저장된 행이 없다면 강제로 예외를 발생시킨다
+				//-->이 예외를 처리 가능한 catch 블록으로 제어가 이동한다.
+				throw new NullPointerException();
+				}	
+			} catch (NullPointerException e) {
+				//에러가 발생했으므로 SQl 수행 내역을 되돌림
+				sqlSession.rollback();
+				System.out.println("이미 탈퇴된 회원 입니다");
+				return;
+			} catch (Exception e) {
+				//에러가 발생했으므로 SQL 수행 내역을 되돌림
+				sqlSession.rollback();	//SQl문 문법에러 제약조건 
+				e.printStackTrace();
+				System.out.println("회원탈퇴에 실패했습니다");
+				return;
+			}finally {
+				//입력,수정,삭제 처리의 경우 실레 반영을 위해서 commit 필요함
+				sqlSession.commit();
+				//데이터 베이스 접속 해제
+			}
+		
+	}
+	}

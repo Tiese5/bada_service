@@ -1,0 +1,25 @@
+package study.jsp.mysite.test;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import study.jsp.mysite.dao.MyBatisConnectionFactory;
+import study.jsp.mysite.impl.BbsDocumentServiceImpl;
+import study.jsp.mysite.impl.BbsFileServiseImpl;
+import study.jsp.mysite.model.BbsFile;
+import study.jsp.mysite.service.BbsDocumentService;
+import study.jsp.mysite.service.BbsFileService;
+
+public class FIleListTest {
+	public static void main(String[] args) {
+		BbsFile file = new BbsFile();
+		file.setBbsDocumentId(4);
+		
+		SqlSession sqlSession = MyBatisConnectionFactory.getSqlSession();
+		Logger logger = LogManager.getFormatterLogger();
+		BbsFileService bbsFileService = new BbsFileServiseImpl(sqlSession, logger);
+		
+		
+	}
+}

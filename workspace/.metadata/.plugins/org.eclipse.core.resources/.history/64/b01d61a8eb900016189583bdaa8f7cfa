@@ -1,0 +1,34 @@
+package study.jsp.mysite.service;
+
+import study.jsp.mysite.model.BbsDocument;
+
+/**
+ * 게시물 관련 기능을 제공하기 위한 Service 계층
+ * @author user
+ *
+ */
+public interface BbsDocumentService {
+	/**
+	 * 게시물을 등록한다
+	 * @param document 등록한 게시물 일련번가호 저장된 빈즈
+	 * @throws Exception
+	 */
+	public void insertDocument(BbsDocument document) throws Exception;
+	
+	/**
+	 * 게시물 한건 조회
+	 * @param document 읽어들인 게시물 일련번호가 저장된 빈즈
+	 * @return
+	 * @throws Exception
+	 */
+	public BbsDocument selectDocument(BbsDocument document) throws Exception;
+	
+	
+	public BbsDocument selectPrevDocument(BbsDocument document) throws Exception;
+	
+	public BbsDocument selectNextDocument(BbsDocument document) throws Exception;
+	
+	
+	
+	
+}

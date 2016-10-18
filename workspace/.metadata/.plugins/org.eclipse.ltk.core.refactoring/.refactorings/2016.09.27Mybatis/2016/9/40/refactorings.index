@@ -1,0 +1,94 @@
+1474957369537	Copy compilation unit
+1474957399555	Copy compilation unit
+1474957412725	Copy compilation unit
+1474957481148	Copy compilation unit
+1474957505278	Copy compilation unit
+1474957509553	Rename type 'insertstudent'
+1474957512690	Rename type 'insertdepartment'
+1474957531020	Copy compilation unit
+1474957536946	Rename type 'Selectstudent2'
+1474957635437	Copy package
+1474957662557	Rename package 'myschool.test.mybatis'
+1474957676070	Delete element
+1474957681852	Delete element
+1474957705965	Delete element
+1474957716853	Delete element
+1474957718859	Delete element
+1474957722245	Delete element
+1474957786439	Move compilation unit
+1474957807514	Copy compilation unit
+1474957859095	Rename type 'Selectdepartment'
+1474957865396	Copy compilation unit
+1474958048053	Copy file
+1474958089840	Move files
+1474958833315	Rename resource 'departmentMapper.xml'
+1474958837448	Rename resource 'studentMapper.xml'
+1474964784735	Copy compilation unit
+1474964798326	Rename type 'UpdeteDepartment'
+1474964810683	Rename type 'DelelteStudent'
+1474991703875	Delete element
+1474991720331	Delete element
+1475033333094	Copy package
+1475033410996	Copy package
+1475033506162	Rename package 'myschool.sevice.impl'
+1475033529360	Rename package 'myschool.student.sevice.test'
+1475033538518	Rename package 'Studetn.sevice.impl'
+1475033542108	Rename package 'tudetn.sevice.impl'
+1475033628710	Copy package
+1475033653707	Copy package
+1475033661411	Copy package
+1475033669261	Rename package 'department.test.service.copy'
+1475033671800	Rename package 'department.sevice.impl.copy'
+1475033983284	Rename package 'department.test.service'
+1475033989134	Move compilation unit
+1475034023915	Rename package 'student.test.service'
+1475034032939	Move compilation unit
+1475034037482	Move compilation unit
+1475034057876	Rename package 'studetn.sevice.impl'
+1475034064773	Copy compilation unit
+1475034077973	Rename type 'StudentSeviceImpl'
+1475034084005	Copy compilation unit
+1475034094212	Rename type 'StudentService'
+1475034139384	Copy compilation unit
+1475034148906	Copy compilation unit
+1475034153562	Copy compilation unit
+1475034163474	Copy compilation unit
+1475034175442	Copy compilation unit
+1475034194161	Rename type 'DepartmentAddTest'
+1475034205114	Copy compilation unit
+1475034209118	Rename type 'DepartmentEditTest2'
+1475034218233	Copy compilation unit
+1475034224288	Copy compilation unit
+1475034240020	Copy compilation unit
+1475049176621	Copy file
+1475049187450	Copy file
+1475115534096	Delete element
+1475115546552	Rename resource 'prof_add_ok.jsp'
+1475115557204	Rename resource 'prof_add.jsp'
+1475115566065	Rename resource 'prof_delete.jsp'
+1475115596760	Delete element
+1475115618607	Rename resource 'prof_add_ok.jsp'
+1475115628062	Rename resource 'prof_add.jsp'
+1475115635397	Rename resource 'prof_delete.jsp'
+1475115640773	Rename resource 'Stud_add_ok.jsp'
+1475115644858	Rename resource 'Stud_add.jsp'
+1475122030925	Copy compilation unit
+1475122107539	Copy file
+1475122283754	Copy compilation unit
+1475126331267	Copy compilation unit
+1475158617518	Rename resource 'prof_edit_ok.jsp'
+1475158626332	Rename resource 'prof_edit.jsp'
+1475158651734	Copy files
+1475195292876	Rename resource 'styd_edit_ok.jsp'
+1475195593881	Move compilation units
+1475195739575	Rename resource 'ProfessorJoinMapper.xml'
+1475195819816	Delete element
+1475197373891	Copy compilation unit
+1475197514518	Copy compilation unit
+1475215619308	Rename type 'ProfessorDepartment'
+1475218812338	Rename type 'ProfessorJonService'
+1475218832044	Rename type 'ProfessorJoinServiceImpl'
+1475221993767	Copy folder
+1475222302152	Copy files
+1475222321648	Copy files
+1475222373968	Copy packages

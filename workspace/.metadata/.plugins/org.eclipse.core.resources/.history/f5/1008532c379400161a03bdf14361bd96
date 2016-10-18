@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!doctype html>
+<html>
+<head>
+	<%@include file="/WEB-INF/views/inc/head.jsp" %>
+</head>
+<body>
+	<%@include file="/WEB-INF/views/inc/topbar.jsp" %>
+	<div class="container">
+		<h1>${bbsName}-<small>글 삭제하기</small></h1>
+	
+		<form action="${pageContext.request.contextPath }/bbs/document_delete_ok.do"
+		method="post" name="myform">
+		<!-- 카테고리와 게시글 번호 상태유지 -->
+		<input type="hidden" name="category" value="${category }" />
+		<input type="hidden" name="document_id" value="${documentId }"  />
+		</form>			
+	</div>
+	<%@include file="/WEB-INF/views/inc/footer.jsp" %>
+</body>
+</html>

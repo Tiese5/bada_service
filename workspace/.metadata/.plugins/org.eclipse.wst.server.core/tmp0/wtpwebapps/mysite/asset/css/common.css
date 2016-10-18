@@ -1,0 +1,16 @@
+/**페이지 높이 */
+html, body{
+	height: 100%;
+}
+/**body영역의 메뉴에 가려진 부분 확보하기*/
+body{
+	padding-top:50px;
+}
+/** 반응형 메누 여역의 높이 제한 해제*/
+.navnbar-fixed-top. navbar-collapse{
+	max-height: 100%;
+}
+/**하단영역*/
+#footer{
+	margin-bottom: 50px;	
+}
