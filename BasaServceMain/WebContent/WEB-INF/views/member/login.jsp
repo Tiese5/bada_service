@@ -54,6 +54,7 @@
        }
 
         </style>
+ 	<%@ include file="/WEB-INF/inc/head.jsp"%>
     </head>
     <body>
         <div class="container">
