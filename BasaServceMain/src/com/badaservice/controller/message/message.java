@@ -22,5 +22,5 @@ public class message extends BaseController {
 		return "/message/message";
 	}
 
-
+	
 }
