@@ -23,6 +23,11 @@
 				<div class="page-header" style="">
 					<h1>제목</h1>
 				</div>
+				<div>
+				<p>
+				dkdkdk
+				</p>
+				</div>
 			</div>
 			<!-- 메인 컨텐츠 영역 끝 -->
 
