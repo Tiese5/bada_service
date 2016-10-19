@@ -1,4 +1,4 @@
-package badaservice.model;
+package com.badaservice.dao;
 
 public class BadeServiceDao {
 
