@@ -17,5 +17,4 @@ public class DocumentFaqView extends BaseController {
 		
 		return "/document/faq_view";
 	}
-
 }

@@ -8,17 +8,6 @@
 	<script src="${pageContext.request.contextPath }/plugins/sweetalert/sweetalert.min.js"></script>
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/plugins/sweetalert/sweetalert.css" >
 	<script type="text/javascript">
-		$(document.body).on(
-				'click',
-				'.dropdown-menu li',
-				function(event) {
-					var $target = $(event.currentTarget);
-					$target.closest('.input-group-btn').find(
-							'[data-bind="label"]').text($target.text()).end()
-							.children('.dropdown-toggle').dropdown('toggle');
-					return false;
-				});
-
 		$(function() {
 			$("#com1").click(function() {
 				swal({
