@@ -14,31 +14,15 @@ td:last-child, th:last-child {
 	border: 0;
 }
 </style>
-
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
-
 <body>
-
 	<%@include file="/WEB-INF/inc/topbar.jsp"%>
-
 	<div class="container">
-
 		<!-- Grid Row 시작 -->
 		<div class="row">
-
 			<!-- 좌측 사이드 네비게이션 바 -->
 			<%@include file="/WEB-INF/inc/sidebar.jsp"%>
 			<!-- 좌측 사이드 네비게이션 바 끝 -->
-
 			<!-- 메인 컨텐츠 영역 시작 -->
 			<div class="col-sm-9 col-md-10 main-content">
 				<div class="page-header">
@@ -110,7 +94,6 @@ td:last-child, th:last-child {
 			<!-- 메인 컨텐츠 영역 끝 -->
 		</div>
 		<!-- Grid Row 끝 -->
-
 		<!-- Footer 영역 시작 -->
 		<%@include file="/WEB-INF/inc/footer.jsp"%>
 		<!-- Footer 영역 끝 -->
