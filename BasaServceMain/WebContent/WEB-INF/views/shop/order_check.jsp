@@ -39,35 +39,35 @@
                 </div>
                 
                 <table class="table table-hover">
-                    <thead  style="background-color : #eee;">
+                    <thead style="background-color : #eee;">
                         <tr>
                             <th class="text-center" width="16%">표지</th>
                             <th class="text-center" width="16%">책 제목</th>
                             <th class="text-center" width="16%">판매자</th>
                             <th class="text-center" width="16%">가격</th>
                             <th class="text-center" width="16%">구입일시</th>
-                            <th class="text-center" width="20%" style="background-color: #fff; border: none;"></th>
+                            <th class="text-center" width="20%">배송현황</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><a href=""><img src="img/effective_java.jpg" alt="" height="100px"></a></td>
+                            <td><a href=""><img src="${pageContext.request.contextPath}/assets/img/effective_java.jpg" alt="" height="100px"></a></td>
                             <td><a href="">자바의 정석</a></td>
                             <td>홍길동</td>
                             <td><span class="text-danger">20,000</span> 원</td>
                             <td>2016.09.10 12:00:00</td>
-                            <td style="border: none;">
-                                <button class="btn btn-primary">배송조회</button>
+                            <td>
+                                <p>배송 중</p>
                             </td>
                         </tr>
                         <tr>
-                            <td><a href=""><img src="img/editology.jpg" alt="" height="100px"></a></td>
+                            <td><a href=""><img src="${pageContext.request.contextPath}/assets/img/effective_java.jpg" alt="" height="100px"></a></td>
                             <td><a href="">에디톨로지</a></td>
                             <td>홍길동</td>
                             <td><span class="text-danger">18,000</span> 원</td>
                             <td>2016.09.07 14:32:00</td>
-                            <td style="border: none;">
-                                 <button class="btn btn-primary">배송조회</button>
+                            <td>
+                                <p>배송 중</p>
                             </td>
                         </tr>
                     </tbody>

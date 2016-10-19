@@ -7,14 +7,11 @@
 
 <head>
 <%@ include file="/WEB-INF/inc/head.jsp" %>
-    <style media="screen" type="text/css">
-        .image {
-            height: 300px;
-            background: url(img/original.jpg) no-repeat;
-            margin-left: 30px;
-            margin-top: 20px;
 
-        }
+    <script src="${pageContext.request.contextPath}/plugins/sweetalert/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/sweetalert/sweetalert.css">
+    <style media="screen" type="text/css">
+  
 
         .size {
             margin-left: 30%;
@@ -62,7 +59,8 @@
                 <div class="page-header">
                     <h1>제품 상세</h1>
                 </div>
-                <div class="image col-md-9">
+                <div class="image col-md-9 clearfix">
+                	<img src="${pageContext.request.contextPath}/assets/img/original.jpg" style="float: left" />
                     <ul class="size">
                         <li><h2><strong>Effective Java 개정 2판</strong></h2></li>
                         <li><h3>등록일: 2016.9.19 00:00:00</h3></li>
@@ -72,6 +70,7 @@
                         <a href="#" class="btns btn btn-primary" id="buy">구매하기</a>
                         <a href="#" class="btns btn btn-warning" id="cart">장바구니</a>
                     </ul>
+             
                 </div>
                 <div class="marg col-md-12">
                   <h1>책 정보</h1>
@@ -86,8 +85,6 @@
 <%@ include file="/WEB-INF/inc/footer.jsp" %>
     </div>
 
-    <script src="plugins/sweetalert/sweetalert.min.js"></script>
-    <link rel="stylesheet" href="plugins/sweetalert/sweetalert.css">
 
     <script type="text/javascript">
         $(document.body).on('click', '.dropdown-menu li', function(event) {

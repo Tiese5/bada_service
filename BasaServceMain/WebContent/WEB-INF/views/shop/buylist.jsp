@@ -51,14 +51,14 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><a href="kjm_detail_infomation.html"><img src="img/effective_java.jpg" alt="" height="100px"></a></td>
+                            <td><a href="kjm_detail_infomation.html"><img src="${pageContext.request.contextPath}/assets/img/effective_java.jpg" alt="" height="100px"></a></td>
                             <td><a href="kjm_detail_infomation.html">자바의 정석</a></td>
                             <td>홍길동</td>
                             <td><span class="text-danger">20,000</span> 원</td>
                             <td>2016.09.10 12:00:00</td>
                         </tr>
                         <tr>
-                            <td><a href="kjm_detail_infomation.html"><img src="img/editology.jpg" alt="" height="100px"></a></td>
+                            <td><a href="kjm_detail_infomation.html"><img src="${pageContext.request.contextPath}/assets/img/effective_java.jpg" alt="" height="100px"></a></td>
                             <td><a href="kjm_detail_infomation.html">에디톨로지</a></td>
                             <td>홍길동</td>
                             <td><span class="text-danger">18,000</span> 원</td>
