@@ -2,11 +2,15 @@
 
 body {
 	padding-top: 50px;
+	
+}
+
+.side-menu-container {
+	position: relaitve;
 }
 
 .side-menu {
-	position: fixed;
-	margin-top: 30px;
+	position: relative;
 }
 
 .list-title {

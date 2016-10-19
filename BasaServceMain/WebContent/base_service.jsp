@@ -20,7 +20,7 @@
 			<%@ include file="/WEB-INF/inc/sidebar.jsp"%>
 			<!-- 메인 컨텐츠 영역 시작 -->
 			<div class="col-sm-9 col-md-10 main-content">
-				<div class="page-header">
+				<div class="page-header" style="">
 					<h1>제목</h1>
 				</div>
 			</div>
