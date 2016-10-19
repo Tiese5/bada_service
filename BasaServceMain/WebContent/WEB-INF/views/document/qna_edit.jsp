@@ -1,76 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <head>
-
 <title>BaDa</title>
-<!--sweetalert플러그인-->
-	<script src="${pageContext.request.contextPath }/plugins/sweetalert/sweetalert.min.js"></script>
-	<link rel="stylesheet" href="${pageContext.request.contextPath }/plugins/sweetalert/sweetalert.css" >
-	<script type="text/javascript">
-		$(function() {
-			$("#com1").click(function() {
-				swal({
-					title : "수정하시겠습니까?",
-					text : "",
-					showCancelButton : true,
-					confirmButtonText : "예",
-					confirmButtonClass : "btn-info",
-					cancelButtonClass : "btn-danger",
-					cancelButtonText : "아니요",
-					closeOnConfirm : false,
-					closeOnCancel : false
-				}, function(isConfirm) {
-					if (isConfirm) {
-						swal({
-							title : "수정완료",
-							confirmButtonClass : "btn-info",
-							type : "info"
-						})
-					} else {
-						swal({
-							title : "수정취소",
-							text : "",
-							type : "error",
-							confirmButtonText : "확인",
-							confirmButtonClass : "btn-info"
-						});
-					}
-				});
-
-			});
-			$("#com2").click(function() {
-				swal({
-					title : "취소하시겠습니까?",
-					text : "",
-					showCancelButton : true,
-					confirmButtonText : "예",
-					confirmButtonClass : "btn-info",
-					cancelButtonClass : "btn-danger",
-					cancelButtonText : "아니요",
-					closeOnConfirm : false,
-					closeOnCancel : false
-				}, function(isConfirm) {
-					if (isConfirm) {
-						swal({
-							title : "수정취소",
-							confirmButtonClass : "btn-info",
-							type : "info"
-						})
-					} else {
-						swal({
-							title : "수정취소",
-							text : "",
-							type : "error",
-							confirmButtonText : "확인",
-							confirmButtonClass : "btn-info"
-						});
-					}
-					;
-				});
-			});
-		});
-	</script>
 <style media="screen" type="text/css">
 .test {
 	color: #EEB10A;
@@ -125,6 +56,8 @@ table {
 
 /*상단바 끝*/
 </style>
+
+
 <%@include file="/WEB-INF/inc/head.jsp"%>
 </head>
 <body>
@@ -175,9 +108,9 @@ table {
 						<div class="col-md-8">
 							<textarea class="form-control" rows="3" placeholder="내용을 입력해 주세요"></textarea>
 							<div class="btnpadding">
-								<button type="submit" id="com1" class="btn btn-info">수정완료
+								<button type="button" id="com1" class="btn btn-info">수정완료
 								</button>
-								<button type="submit" id="com2" class="btn btn-primary">글목록
+								<button type="button" id="com2" class="btn btn-primary">글목록
 								</button>
 							</div>
 						</div>
@@ -193,4 +126,70 @@ table {
 		<%@include file="/WEB-INF/inc/footer.jsp"%>
 	</div>
 </body>
+<!--sweetalert플러그인-->
+	<script src="${pageContext.request.contextPath }/plugins/sweetalert/sweetalert.min.js"></script>
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/plugins/sweetalert/sweetalert.css" >
+	<script type="text/javascript">
+		$(function() {
+			$("#com1").click(function() {
+				swal({
+					title : "수정하시겠습니까?",
+					text : "",
+					showCancelButton : true,
+					confirmButtonText : "예",
+					confirmButtonClass : "btn-info",
+					cancelButtonClass : "btn-danger",
+					cancelButtonText : "아니요",
+					closeOnConfirm : false,
+					closeOnCancel : false
+				}, function(isConfirm) {
+					if (isConfirm) {
+						swal({
+							title : "수정완료",
+							confirmButtonClass : "btn-info",
+							type : "info"
+						})
+					} else {
+						swal({
+							title : "수정취소",
+							text : "",
+							type : "error",
+							confirmButtonText : "확인",
+							confirmButtonClass : "btn-info"
+						});
+					}
+				});
+
+			});
+			$("#com2").click(function() {
+				swal({
+					title : "",
+					text : "수정을 취소하고 목록으로 돌아 가시겠습니까?",
+					showCancelButton : true,
+					confirmButtonText : "예",
+					confirmButtonClass : "btn-info",
+					cancelButtonClass : "btn-danger",
+					cancelButtonText : "아니요",
+					closeOnConfirm : false,
+					closeOnCancel : false
+				}, function(isConfirm) {
+					if (isConfirm) {
+						swal({
+							title : "수정취소",
+							confirmButtonClass : "btn-info",
+							type : "info"
+						})
+					} else {
+						swal({
+							title : "머무르기",
+							text : "",
+							type : "error",
+							confirmButtonText : "확인",
+							confirmButtonClass : "btn-info"
+						});
+					}
+				});
+			});
+		});
+	</script>
 </html>
