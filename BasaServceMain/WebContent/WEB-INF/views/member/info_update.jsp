@@ -9,9 +9,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>BaDa | 회원가입</title>
+    <title>BaDa | 정보수정</title>
 
     <style media="screen" type="text/css">
+        .side-menu {
+            position: fixed;
+            margin-top: 30px;
+        }
+
         .list-title {
             margin-top: 40px;
         }
@@ -26,8 +31,21 @@
             top: calc(50% - 2px);
         }
 
+        .side-menu .nav-side-menu>li>a:focus,
+        .side-menu .nav-side-menu>li>a:hover {
+            color: #fff;
+            background: #2372b5;
+        }
+
         .navbar-menu {
             border-top: 1px solid #fff;
+        }
+
+        .side-menu .nav-side-menu>.active>a,
+        .side-menu .nav-side-menu>.active>a:focus,
+        .side-menu .nav-side-menu>.active>a:hover {
+            color: #fff;
+            background: #2372b5;
         }
 
         .search-bar {
@@ -35,6 +53,9 @@
         }
 
         @media (max-width:767px) {
+            .side-menu {
+                display: none;
+            }
             #navbar .form-control {
                 width: auto;
             }
@@ -160,137 +181,88 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <%@ include file="/WEB-INF/inc/head.jsp"%>
 </head>
 
 <body>
 
-    <!-- 로고, 상단 네비게이션 바 -->
-    <nav class="navbar navbar-topbar navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-              <span class="sr-only">메뉴 열기</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-                <a class="navbar-brand" href="kjm_index.html">BaDa</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-
-                <form class="navbar-form navbar-left">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-btn">
-                                <button type="button" class="btn btn-default dropdown-toggle dropdown-btn" data-toggle="dropdown"><span data-bind="label">전체</span>&nbsp;<span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">전체</a></li>
-                                    <li><a href="#">학문</a></li>
-                                    <li><a href="#">소설</a></li>
-                                    <li><a href="#">자기계발</a></li>
-                                    <li><a href="#">정기 간행물</a></li>
-                                    <li><a href="#">어린이 도서</a></li>
-                                </ul>
-                            </div>
-                            <!-- /btn-group -->
-                            <input type="text" class="form-control" placeholder="검색 할 도서명을 입력해주세요.">
-                        </div>
-                        <!-- /input-group -->
-                    </div>
-                </form>
-                <div class="btn-group navbar-right">
-                    <a href="lmg_login.html" class="btn btn-warning navbar-btn"><span class="glyphicon glyphicon-log-in"></span> 로그인</a>
-                    <a href="mhj_join.html" class="btn btn-info navbar-btn"><span class="glyphicon glyphicon-user"></span> 회원가입</a>
-                </div>
-
-                <!-- 모바일에서 보여질 메뉴 시작 -->
-                <ul class="nav navbar-nav navbar-right navbar-menu">
-                    <li class="active"><a href="#">학문</a></li>
-                    <li><a href="#">소설</a></li>
-                    <li><a href="#">자기계발</a></li>
-                    <li><a href="#">정기 간행물</a></li>
-                    <li><a href="#">어린이 도서</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right navbar-menu">
-                    <li><a href="#">공지사항</a></li>
-                    <li><a href="#">자주묻는 질문</a></li>
-                    <li><a href="#">1:1 문의</a></li>
-                </ul>
-                <!-- 모바일에서 보여질 메뉴 끝 -->
-            </div>
-        </div>
-    </nav>
-    <!-- 로고, 상단 네비게이션 바 끝 -->
+   <%@ include file="/WEB-INF/inc/topbar.jsp"%>
 
     <div class="container">
 
-        <div class="page-header col-md-offset-2 clearfix">
-            <h1>회원가입</h1>
-        </div>
-        <p class="col-md-offset-4 text-warning">*은 필수 입력입니다.</p>
-        <form class="form-horizontal" id="myform" action="kjm_index.html">
-            <div class="form-group">
-                <label for="user_id" class="col-md-offset-2 col-md-2">아이디*</label>
-                <div class="col-md-8"><input type="text" name="user_id" id="user_id" class="form-control"></div>
-            </div>
-            <div class="form-group">
-                <label for="user_pw" class="col-md-offset-2 col-md-2">비밀번호*</label>
-                <div class="col-md-8"><input type="password" name="user_pw" id="user_pw" class="form-control"></div>
-            </div>
-            <div class="form-group">
-                <label for="user_pw_re" class="col-md-offset-2 col-md-2">비밀번호 확인*</label>
-                <div class="col-md-8"><input type="password" name="user_pw_re" id="user_pw_re" class="form-control"></div>
-            </div>
-            <div class="form-group">
-                <label for="postcode" class="col-md-offset-2 col-md-2">우편번호*</label>
-                <div class="col-md-8 clearfix">
-                    <input type="text" name="postcode" id="postcode" class="form-control pull-left" style="width: 120px; margin-right: 5px;" disabled>
-                    <input type="button" value="우편번호 찾기" class="btn btn-warning" onclick='execDaumPostcode("postcode", "addr1", "addr2");'>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="addr1" class="col-md-offset-2 col-md-2">주소*</label>
-                <div class="col-md-8"><input type="text" name="addr1" id="addr1" class="form-control" disabled></div>
-            </div>
-            <div class="form-group">
-                <label for="addr2" class="col-md-offset-2 col-md-2">상세주소*</label>
-                <div class="col-md-8"><input type="text" name="addr2" id="addr2" class="form-control"></div>
-            </div>
-            <div class="form-group">
-                <label for="name" class="col-md-offset-2 col-md-2">이름*</label>
-                <div class="col-md-8"><input type="text" name="name" id="name" class="form-control"></div>
-            </div>
-            <div class="form-group">
-                <label for="email" class="col-md-offset-2 col-md-2">이메일*</label>
-                <div class="col-md-8"><input type="email" name="email" id="email" class="form-control"></div>
-            </div>
-            <div class="form-group">
-                <label for="tel" class="col-md-offset-2 col-md-2">연락처*</label>
-                <div class="col-md-8"><input type="tel" name="tel" id="tel" class="form-control"></div>
-            </div>
-            <div class="form-group">
-                <label for="profile_img" class="col-md-offset-2 col-md-2">프로필 사진</label>
-                <div class="col-md-8">
-                    <img class="thumbnail" src="img/profile.png" alt="프로필 이미지" width="50px" />
-                    <input type="file" name="profile_img" id="profile_img" class="form-control">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-4 col-md-8">
-                    <button type="submit" class="btn btn-primary">가입하기</button>
-                    <button type="reset" class="btn btn-danger">다시작성</button>
-                </div>
-            </div>
-        </form>
+        <!-- Grid Row 시작 -->
+        <div class="row">
 
-        <!-- Footer 영역 시작 -->
-        <hr>
-        <footer>
-            <address>
-                Copyright&copy; 2016 <strong class="text-primary">BaDa</strong> All rights reserved.
-            </address>
-        </footer>
-        <!-- Footer 영역 끝 -->
+            <%@ include file="/WEB-INF/inc/my_sidebar.jsp"%>
+
+            <!-- 메인 컨텐츠 영역 시작 -->
+            <div class="col-sm-9 col-md-10 main-content">
+                <div class="page-header clearfix">
+                    <h2>정보수정</h2>
+                </div>
+                <p class="col-md-offset-2 text-warning">*은 필수 입력입니다.(아이디는 변경할 수 없습니다.)</p>
+                <form class="form-horizontal" id="myform">
+                    <div class="form-group">
+                        <label for="user_id" class="col-md-2 col-md-2">아이디</label>
+                        <div class="col-md-8"><input type="text" name="user_id" id="user_id" class="form-control" disabled value="bada"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="user_pw" class="col-md-2 col-md-2">비밀번호*</label>
+                        <div class="col-md-8"><input type="password" name="user_pw" id="user_pw" class="form-control" value="********"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="user_pw_re" class="col-md-2 col-md-2">비밀번호 확인*</label>
+                        <div class="col-md-8"><input type="password" name="user_pw_re" id="user_pw_re" class="form-control" value="********"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="postcode" class="col-md-2 col-md-2">우편번호*</label>
+                        <div class="col-md-8 clearfix">
+                            <input type="text" name="postcode" id="postcode" class="form-control pull-left" style="width: 120px; margin-right: 5px;" disabled value="12345">
+                            <input type="button" value="우편번호 찾기" class="btn btn-warning" onclick='execDaumPostcode("postcode", "addr1", "addr2");'>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="addr1" class="col-md-2 col-md-2">주소*</label>
+                        <div class="col-md-8"><input type="text" name="addr1" id="addr1" class="form-control" disabled value="서울시 강남구 역삼동"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="addr2" class="col-md-2 col-md-2">상세주소*</label>
+                        <div class="col-md-8"><input type="text" name="addr2" id="addr2" class="form-control" value="123-12"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-md-2 col-md-2">이름*</label>
+                        <div class="col-md-8"><input type="text" name="name" id="name" class="form-control" value="바다"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-md-2 col-md-2">이메일*</label>
+                        <div class="col-md-8"><input type="email" name="email" id="email" class="form-control" value="bada@bada.com"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tel" class="col-md-2 col-md-2">연락처*</label>
+                        <div class="col-md-8"><input type="tel" name="tel" id="tel" class="form-control" value="01067891234"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile_img" class="col-md-2 col-md-2">프로필 사진</label>
+                        <div class="col-md-8">
+                            <img class="thumbnail" src="img/profile.png" alt="프로필 이미지" width="50px" />
+                            <input type="file" name="profile_img" id="profile_img" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-8">
+                            <button type="submit" class="btn btn-primary">작성완료</button>
+                            <button type="reset" class="btn btn-danger">다시작성</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- 메인 컨텐츠 영역 끝 -->
+
+        </div>
+        <!-- Grid Row 끝 -->
+
+       <%@ include file="/WEB-INF/inc/footer.jsp"%>
     </div>
 
 
@@ -325,11 +297,11 @@
             });
 
             $.validator.addMethod( "kor", function( value, element ) {
-            	return this.optional( element ) || /^[ㄱ-ㅎ가-힣]*$/i.test( value );
+                return this.optional( element ) || /^[ㄱ-ㅎ가-힣]*$/i.test( value );
             });
 
             $.validator.addMethod( "phone", function( value, element ) {
-            	return this.optional( element ) || /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/i.test( value ) || /^\d{2,3}\d{3,4}\d{4}$/i.test( value );
+                return this.optional( element ) || /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/i.test( value ) || /^\d{2,3}\d{3,4}\d{4}$/i.test( value );
             });
 
             $("#myform").validate({
