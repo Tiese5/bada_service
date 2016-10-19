@@ -301,8 +301,8 @@
                         <div class="pull-right">
                             <a href="hyj_many_question(service).html" class="btn btn-primary">목록</a>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                 </div>
             </div>
             <!-- 메인 컨텐츠 영역 끝 -->
             <!-- 메인 컨텐츠 영역 끝 -->
@@ -318,7 +318,7 @@
             </address>
         </footer>
         <!-- Footer 영역 끝 -->
-    </div>
+   
 
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
