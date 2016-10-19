@@ -7,35 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.badaservice.helper.BaseController;
+
 /**
  * Servlet implementation class message_get
  */
-@WebServlet("/message_get")
-public class message_get extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public message_get() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+@WebServlet("/message_get.do")
+public class message_get extends BaseController {
+	private static final long serialVersionUID = -3370403798071109586L;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	@Override
+	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		return "/message/message_get";
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
 
 }
