@@ -56,24 +56,23 @@
                             <td>홍길동</td>
                             <td><span class="text-danger">20,000</span> 원</td>
                             <td>2016.09.10 12:00:00</td>
-                            <td>
-                                <p>배송 중</p>
-                            </td>
+                           	<td>배송 중</td>
                         </tr>
+                        
                         <tr>
                             <td><a href=""><img src="${pageContext.request.contextPath}/assets/img/effective_java.jpg" alt="" height="100px"></a></td>
-                            <td><a href="">에디톨로지</a></td>
+                            <td><a href="">자바의 정석</a></td>
                             <td>홍길동</td>
-                            <td><span class="text-danger">18,000</span> 원</td>
-                            <td>2016.09.07 14:32:00</td>
-                            <td>
-                                <p>배송 중</p>
-                            </td>
+                            <td><span class="text-danger">20,000</span> 원</td>
+                            <td>2016.09.10 12:00:00</td>
+                           	<td>입금완료</td>
                         </tr>
+                        
                     </tbody>
                     <tfoot>
                             <tr>
-                                <td colspan="5" class="text-center">
+                       
+                                <td colspan="6" class="text-center">
                                     <nav aria-label="Page navigation">
                                       <ul class="pagination">
                                         <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> 이전</a></li>
@@ -86,6 +85,7 @@
                                       </ul>
                                     </nav>
                                 </td>
+                         
                             </tr>
                         </tfoot>
                 </table>

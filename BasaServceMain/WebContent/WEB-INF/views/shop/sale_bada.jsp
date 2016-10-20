@@ -52,11 +52,16 @@
                         </div>
                     </div>
                     <div class="form-group">
+                    	<div class="col-md-5 col-md-offset-2">
+                    		<label for="basic_ship" class="pull-left"><input type="checkbox" id="basic_ship" checked> 기본 주소 가져오기</label>
+                    	</div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-md-2">배송지 주소*</label>
                         <div class="col-md-10 form-group">
-                            <div class="col-md-8 clearfix" style="margin-bottom:15px;">
-                                <label for="basic_ship" class="pull-right"><input type="checkbox" id="basic_ship" checked> 기본 주소 가져오기</label>
-                                <input type="text" name="postcode" id="postcode" class="form-control pull-left" style="width: 120px; margin-right: 5px;" disabled value="12345">
+                            <div class="col-md-12 clearfix" style="margin-bottom:15px;">
+                            
+                                <input type="text" name="postcode" id="postcode" class="form-control pull-left" style="width: 10px; margin-right: 5px;" disabled value="12345">
                                 <input type="button" value="우편번호 찾기" class="btn btn-warning" onclick='execDaumPostcode("postcode", "addr1", "addr2");'>
                             </div>
                             <div class="col-md-8" style="margin-bottom:15px;"><input type="text" name="addr1" id="addr1" class="form-control" disabled value="서울시 강남구 역삼동"></div>

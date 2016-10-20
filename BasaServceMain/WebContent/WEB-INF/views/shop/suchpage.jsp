@@ -104,7 +104,7 @@
                 <!--항목1-->
                     <div class="mainps col-md-4 col-xs-4" align="center">
                         <a class="" href="kjm_detail_infomation.html">
-                            <img class="media-object img" src="logo.png" alt="사진">
+                            <img class="media-object img" src="${pageContext.request.contextPath}/assets/img/logo.png" alt="사진">
                         </a>
                         <div class="main-body">
                             <h4><a href="kjm_detail_infomation.html">고래의 정석</a></h4>
@@ -115,7 +115,7 @@
                     <!--항목1-->
                     <div class="mainps col-md-4 col-xs-4" align="center">
                         <a class="" href="kjm_detail_infomation.html">
-                            <img class="media-object img" src="logo.png" alt="사진">
+                            <img class="media-object img" src="${pageContext.request.contextPath}/assets/img/logo.png" alt="사진">
                         </a>
                         <div class="main-body">
                             <h4><a href="kjm_detail_infomation.html">고래의 정석</a></h4>
@@ -126,7 +126,7 @@
                     <!--항목1-->
                      <div class="mainps col-md-4 col-xs-4" align="center">
                         <a class="" href="kjm_detail_infomation.html">
-                            <img class="media-object img" src="logo.png" alt="사진">
+                            <img class="media-object img" src="${pageContext.request.contextPath}/assets/img/logo.png" alt="사진">
                         </a>
                         <div class="main-body">
                             <h4><a href="kjm_detail_infomation.html">고래의 정석</a></h4>
@@ -137,7 +137,7 @@
                     <!--항목1-->
                      <div class="mainps col-sm-4 col-md-4 col-xs-4" align="center">
                         <a class="" href="kjm_detail_infomation.html">
-                            <img class="media-object img" src="logo.png" alt="사진">
+                            <img class="media-object img" src="${pageContext.request.contextPath}/assets/img/logo.png" alt="사진">
                         </a>
                         <div class="main-body">
                             <h4><a href="kjm_detail_infomation.html">고래의 정석</a></h4>
@@ -148,7 +148,7 @@
                     <!--항목1-->
                      <div class="mainps col-md-4 col-xs-4" align="center">
                         <a class="" href="kjm_detail_infomation.html">
-                            <img class="media-object img" src="logo.png" alt="사진">
+                            <img class="media-object img" src="${pageContext.request.contextPath}/assets/img/logo.png" alt="사진">
                         </a>
                         <div class="main-body">
                             <h4><a href="kjm_detail_infomation.html">고래의 정석</a></h4>
@@ -159,7 +159,7 @@
                     <!--항목1-->
                       <div class="mainps col-md-4 col-xs-4" align="center">
                         <a class="" href="kjm_detail_infomation.html">
-                            <img class="media-object img" src="logo.png" alt="사진">
+                            <img class="media-object img" src="${pageContext.request.contextPath}/assets/img/logo.png" alt="사진">
                         </a>
                         <div class="main-body">
                             <h4><a href="kjm_detail_infomation.html">고래의 정석</a></h4>
