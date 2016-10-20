@@ -21,7 +21,7 @@ import com.badaservice.helper.WebHelper;
 import com.badaservice.model.Qna;
 import com.badaservice.service.impl.QnaServiceImpl;
 
-@WebServlet("/document/qna_ok.do")
+@WebServlet("/qna/qna_ok.do")
 public class QnaOk extends BaseController {
 	private static final long serialVersionUID = -7255918033093832468L;
 	WebHelper web;
@@ -81,6 +81,7 @@ public class QnaOk extends BaseController {
 		Qna qna = new Qna();
 		qna.setqContent(qContent);
 		qna.setTitle(title);
+		qna.setCategory(category);
 		logger.debug("QNA="+qna.toString());
 		
 		try {
@@ -88,12 +89,12 @@ public class QnaOk extends BaseController {
 		} catch (Exception e) {
 			web.redirect(null, e.getLocalizedMessage());
 			e.printStackTrace();
-			sqlSession.close();
 			return null;
 		}
+		String url = web.getRootPath()+"/qna/qna.do";
+		web.redirect(url, "작성완료");
+		
 		return null;
-		
-		
 	}
 
 }

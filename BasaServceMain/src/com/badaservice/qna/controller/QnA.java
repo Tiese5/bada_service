@@ -19,7 +19,7 @@ import com.badaservice.helper.UploadHelper;
 import com.badaservice.helper.WebHelper;
 import com.badaservice.service.impl.QnaServiceImpl;
 
-@WebServlet("/document/qna.do")
+@WebServlet("/qna/qna.do")
 public class QnA extends BaseController {
 	private static final long serialVersionUID = -7255918033093832468L;
 	WebHelper web;
