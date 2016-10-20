@@ -1,4 +1,4 @@
-package com.badaservice.document.controller;
+package com.badaservice.qna.controller;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.badaservice.helper.BaseController;
 @WebServlet("/document/qna_view.do")
-public class DocumentQnaView extends BaseController {
+public class QnaView extends BaseController {
 	private static final long serialVersionUID = -7255918033093832468L;
 	@Override
 	public String doRun(HttpServletRequest request, HttpServletResponse response)
