@@ -1,34 +1,28 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
 <title>BaDa</title>
 <%@include file="/WEB-INF/inc/head.jsp"%>
 <!--sweetalert플러그인-->
-	<script src="${pageContext.request.contextPath }/plugins/sweetalert/sweetalert.min.js"></script>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/sweetalert/sweetalert.css">
-	<script type="text/javascript">
-		$(document.body).on(
-				'click',
-				'.dropdown-menu li',
-				function(event) {
-					var $target = $(event.currentTarget);
-					$target.closest('.input-group-btn').find(
-							'[data-bind="label"]').text($target.text()).end()
-							.children('.dropdown-toggle').dropdown('toggle');
-					return false;
-				});
-
-		$(function() {
-			$("#com1").click(function() {
-				swal({
-					title : "문의완료",
-					text : "",
-					confirmButtonText : "확인",
-					confirmButtonClass : "btn-info"
-				})
+<script
+	src="${pageContext.request.contextPath }/plugins/sweetalert/sweetalert.min.js"></script>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/plugins/sweetalert/sweetalert.css">
+<script type="text/javascript">
+	$(document.body).on(
+			'click',
+			'.dropdown-menu li',
+			function(event) {
+				var $target = $(event.currentTarget);
+				$target.closest('.input-group-btn').find('[data-bind="label"]')
+						.text($target.text()).end()
+						.children('.dropdown-toggle').dropdown('toggle');
+				return false;
 			});
-		});
-	</script>
+
+</script>
 <style media="screen" type="text/css">
 .test {
 	color: #EEB10A;
@@ -115,11 +109,11 @@ table {
 							<label for="select" class="col-md-offset-2 col-md-2">문의종류*</label>
 							<div class="col-md-8">
 								<select class="form-control">
-									<option>선택해주세요</option>
-									<option>판매관련</option>
-									<option>배송</option>
-									<option>환불</option>
-									<option>기타</option>
+									<option value="">선택해주세요</option>
+									<option value="1">판매관련</option>
+									<option value="2">배송</option>
+									<option value="3">환불</option>
+									<option value="4">기타</option>
 								</select>
 							</div>
 						</div>
@@ -190,6 +184,25 @@ table {
 								<td>2016.09.13</td>
 							</tr>
 						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="5" class="text-center">
+									<nav aria-label="Page navigation">
+										<ul class="pagination">
+											<li class="previous disabled"><a href="#"><span
+													aria-hidden="true">&larr;</span> 이전</a></li>
+											<li class="active"><a href="#">1</a></li>
+											<li><a href="#">2</a></li>
+											<li><a href="#">3</a></li>
+											<li><a href="#">4</a></li>
+											<li><a href="#">5</a></li>
+											<li class="next"><a href="#">다음 <span
+													aria-hidden="true">&rarr;</span></a></li>
+										</ul>
+									</nav>
+								</td>
+							</tr>
+						</tfoot>
 
 					</table>
 					<!--문의내역 테이블 끝-->
