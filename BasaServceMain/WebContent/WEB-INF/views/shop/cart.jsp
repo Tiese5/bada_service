@@ -57,14 +57,14 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><a href=""><img src="img/complete.jpg" alt="" height="100px"></a></td>
+                            <td><a href=""><img src="${pageContext.request.contextPath}/assets/img/editology.jpg" alt="" height="100px"></a></td>
                             <td><a href="">자바의 정석</a></td>
                             <td>바다</td>
                             <td><span class="text-danger">20,000</span> 원</td>
                             <td>2016.09.10 12:00:00</td>
                         </tr>
                         <tr>
-                            <td><a href=""><img src="img/editology.jpg" alt="" height="100px"></a></td>
+                            <td><a href=""><img src="${pageContext.request.contextPath}/assets/img/editology.jpg" alt="" height="100px"></a></td>
                             <td><a href="">자바의 정석</a></td>
                             <td>바다</td>
                             <td><span class="text-danger">20,000</span> 원</td>

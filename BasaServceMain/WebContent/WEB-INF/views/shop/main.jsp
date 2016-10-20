@@ -55,77 +55,93 @@
                     <hr/>
                 <form class="form-horizontal" id="myform">
 
-                    <div class="col-md-3">
-                        <a href="kjm_detail_infomation.html" class="thumbnail" >
-                             <img src="img/effective_java.jpg" alt="이펙트 자바">
-                             <p> 
-                                <h5>Effective java<br />
-                                <strong class="color">20,000원</strong></h5>
-                             </p>
-                         </a>
+                      <div class="col-md-3">
+                          <p> 
+                          	<a href="kjm_detail_infomation.html" class="thumbnail" >
+                             <img src="${pageContext.request.contextPath}/assets/img/effective_java.jpg" alt="이펙트 자바">
+                           
+                               			Effective java<br />
+                                <strong class="color">20,000원</strong>
+                           
+                         	</a>
+                           </p>
+                    </div>
+                       <div class="col-md-3">
+                          <p> 
+                          	<a href="kjm_detail_infomation.html" class="thumbnail" >
+                             <img src="${pageContext.request.contextPath}/assets/img/effective_java.jpg" alt="이펙트 자바">
+                           
+                               			Effective java<br />
+                                <strong class="color">20,000원</strong>
+                           
+                         	</a>
+                           </p>
+                    </div>
+                        <div class="col-md-3">
+                          <p> 
+                          	<a href="kjm_detail_infomation.html" class="thumbnail" >
+                             <img src="${pageContext.request.contextPath}/assets/img/effective_java.jpg" alt="이펙트 자바">
+                           
+                               			Effective java<br />
+                                <strong class="color">20,000원</strong>
+                           
+                         	</a>
+                           </p>
+                    </div>
+                       <div class="col-md-3">
+                          <p> 
+                          	<a href="kjm_detail_infomation.html" class="thumbnail" >
+                             <img src="${pageContext.request.contextPath}/assets/img/effective_java.jpg" alt="이펙트 자바">
+                           
+                               			Effective java<br />
+                                <strong class="color">20,000원</strong>
+                           
+                         	</a>
+                           </p>
+                    </div>
+                        <div class="col-md-3">
+                          <p> 
+                          	<a href="kjm_detail_infomation.html" class="thumbnail" >
+                             <img src="${pageContext.request.contextPath}/assets/img/effective_java.jpg" alt="이펙트 자바">
+                           
+                               			Effective java<br />
+                                <strong class="color">20,000원</strong>
+                           
+                         	</a>
+                           </p>
+                    </div>
+                        <div class="col-md-3">
+                          <p> 
+                          	<a href="kjm_detail_infomation.html" class="thumbnail" >
+                             <img src="${pageContext.request.contextPath}/assets/img/effective_java.jpg" alt="이펙트 자바">
+                           
+                               			Effective java<br />
+                                <strong class="color">20,000원</strong>
+                           
+                         	</a>
+                           </p>
                     </div>
                       <div class="col-md-3">
-                        <a href="kjm_detail_infomation.html" class="thumbnail" >
-                             <img src="img/effective_java.jpg" alt="이펙트 자바">
-                             <p> 
-                                <h5>Effective java<br />
-                                <strong class="color">20,000원</strong></h5>
-                             </p>
-                         </a>
+                          <p> 
+                          	<a href="kjm_detail_infomation.html" class="thumbnail" >
+                             <img src="${pageContext.request.contextPath}/assets/img/effective_java.jpg" alt="이펙트 자바">
+                           
+                               			Effective java<br />
+                                <strong class="color">20,000원</strong>
+                           
+                         	</a>
+                           </p>
                     </div>
-                      <div class="col-md-3">
-                        <a href="kjm_detail_infomation.html" class="thumbnail" >
-                             <img src="img/complete.jpg" alt="이펙트 자바">
-                             <p> 
-                                <h5>Effective java<br />
-                                <strong class="color">20,000원</strong></h5>
-                             </p>
-                         </a>
-                    </div>
-                      <div class="col-md-3">
-                        <a href="kjm_detail_infomation.html" class="thumbnail" >
-                             <img src="img/effective_java.jpg" alt="이펙트 자바">
-                             <p> 
-                                <h5>Effective java<br />
-                                <strong class="color">20,000원</strong></h5>
-                             </p>
-                         </a>
-                    </div>
-                      <div class="col-md-3">
-                        <a href="kjm_detail_infomation.html" class="thumbnail" >
-                             <img src="img/effective_java.jpg" alt="이펙트 자바">
-                             <p> 
-                                <h5>Effective java<br />
-                                <strong class="color">20,000원</strong></h5>
-                             </p>
-                         </a>
-                    </div>
-                      <div class="col-md-3">
-                        <a href="kjm_detail_infomation.html" class="thumbnail" >
-                             <img src="img/effective_java.jpg" alt="이펙트 자바">
-                             <p> 
-                                <h5>Effective java<br />
-                                <strong class="color">20,000원</strong></h5>
-                             </p>
-                         </a>
-                    </div>
-                      <div class="col-md-3">
-                        <a href="kjm_detail_infomation.html" class="thumbnail" >
-                             <img src="img/effective_java.jpg" alt="이펙트 자바">
-                             <p> 
-                                <h5>Effective java<br />
-                                <strong class="color">20,000원</strong></h5>
-                             </p>
-                         </a>
-                    </div>
-                      <div class="col-md-3">
-                        <a href="kjm_detail_infomation.html" class="thumbnail" >
-                             <img src="img/effective_java.jpg" alt="이펙트 자바">
-                             <p> 
-                                <h5>Effective java<br />
-                                <strong class="color">20,000원</strong></h5>
-                             </p>
-                         </a>
+                       <div class="col-md-3">
+                          <p> 
+                          	<a href="kjm_detail_infomation.html" class="thumbnail" >
+                             <img src="${pageContext.request.contextPath}/assets/img/effective_java.jpg" alt="이펙트 자바">
+                           
+                               			Effective java<br />
+                                <strong class="color">20,000원</strong>
+                           
+                         	</a>
+                           </p>
                     </div>
 
                     <div class="col-md-12">
@@ -151,7 +167,7 @@
 
 <%@ include file="/WEB-INF/inc/footer.jsp" %>
          </div>
-    </div>
+    
 </body>
 
 </html>

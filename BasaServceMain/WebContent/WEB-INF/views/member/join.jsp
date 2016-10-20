@@ -174,7 +174,8 @@
             <h1>회원가입</h1>
         </div>
         <p class="col-md-offset-4 text-warning">*은 필수 입력입니다.</p>
-        <form class="form-horizontal" id="myform" action="kjm_index.html">
+      <form class="form-horizontal" name="myform" method="post"  enctype="multipart/form-data"
+       action="${pageContext.request.contextPath}/member/join_ok.do">
             <div class="form-group">
                 <label for="user_id" class="col-md-offset-2 col-md-2">아이디*</label>
                 <div class="col-md-8"><input type="text" name="user_id" id="user_id" class="form-control"></div>
@@ -209,6 +210,10 @@
             <div class="form-group">
                 <label for="email" class="col-md-offset-2 col-md-2">이메일*</label>
                 <div class="col-md-8"><input type="email" name="email" id="email" class="form-control"></div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="col-md-offset-2 col-md-2">생년월일*</label>
+                <div class="col-md-8"><input type="birthdate" name="birthdate" id="birthdate" class="form-control"></div>
             </div>
             <div class="form-group">
                 <label for="tel" class="col-md-offset-2 col-md-2">연락처*</label>

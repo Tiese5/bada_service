@@ -11,7 +11,6 @@ import com.badaservice.helper.BaseController;
 @WebServlet("/member/join.do")
 public class Join extends BaseController {
 
-
 	private static final long serialVersionUID = -1181678455337492034L;
 
 	@Override

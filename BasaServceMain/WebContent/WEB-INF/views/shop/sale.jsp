@@ -7,7 +7,7 @@
 
 <head>
 <%@ include file="/WEB-INF/inc/head.jsp" %>
-    <link rel="stylesheet" href="plugins/sweetalert/sweetalert.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/sweetalert/sweetalert.css">
 </head>
 
 <body>
@@ -36,14 +36,14 @@
                         <div class="col-md-4">
                             <input type="text" name="s_price" id="s_price" class="form-control">
                         </div>
-                        <div class="col-md-4">
-                            <span class="text-danger">-판매 수수료는 10%입니다.</span>
+                        <div class="col-md-4 clearfix">
+                            <span class="text-danger pull-right">-판매 수수료는 10%입니다.</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="profile_img" class="col-md-2">도서 이미지</label>
                         <div class="col-md-8">
-                            <img class="thumbnail" src="img/profile.png" alt="프로필 이미지" width="50px" />
+                            <img class="thumbnail" src="${pageContext.request.contextPath}/assets/img/profile.png" alt="프로필 이미지" width="50px" />
                             <input type="file" name="profile_img" id="profile_img" class="form-control">
                         </div>
                     </div>
@@ -59,7 +59,7 @@
         <!-- Grid Row 끝 -->
 <%@ include file="/WEB-INF/inc/footer.jsp" %>
     </div>
-    <script src="plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="${pageContext.request.contextPath}/plugins/sweetalert/sweetalert.min.js"></script>
     <script type="text/javascript">
         $(function() {
             $("#sale_reg").click(function() {
