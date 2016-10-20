@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <head>
 <title>BaDa</title>
 <%@include file="/WEB-INF/inc/head.jsp"%>
@@ -21,7 +21,6 @@
 						.children('.dropdown-toggle').dropdown('toggle');
 				return false;
 			});
-
 </script>
 <style media="screen" type="text/css">
 .test {
@@ -93,22 +92,21 @@ table {
 					<p class="test col-sm-offset-10">*은 필수 입력 입니다</p>
 				</div>
 				<!--제목라인-->
-				<form class="form-horizontal">
+				<form class="form-horizontal" method="post" action="${pageContext.request.contextPath }/qna/qna_ok.do">
 					<div class="form-group nametext">
-						<label for="bookname" class="col-md-offset-2 col-md-2">제목*
-						</label>
+						<label for="title" class="col-md-offset-2 col-md-2">제목* </label>
 						<div class="col-md-8">
-							<input type="text" name="bookname" id="bookname"
-								class="form-control" placeholder="제목을 입력해주세요">
+							<input type="text" name="title" id="title" class="form-control"
+								placeholder="제목을 입력해주세요">
 						</div>
 					</div>
 					<!--제목끝-->
 					<!--문의종류-->
 					<div class="none">
 						<div class="form-group padding">
-							<label for="select" class="col-md-offset-2 col-md-2">문의종류*</label>
+							<label for="category" class="col-md-offset-2 col-md-2">문의종류*</label>
 							<div class="col-md-8">
-								<select class="form-control">
+								<select class="form-control" name="category" id="category">
 									<option value="">선택해주세요</option>
 									<option value="1">판매관련</option>
 									<option value="2">배송</option>
@@ -121,10 +119,10 @@ table {
 					<!--문의중류 긑-->
 					<!--문의내용-->
 					<div class="form-group none">
-						<label for="text" class="col-md-offset-2 col-md-2">문의내용*</label>
+						<label for="qContent" class="col-md-offset-2 col-md-2">문의내용*</label>
 						<div class="col-md-8">
-							<textarea class="form-control " rows="3"
-								placeholder="내용을 입력해 주세요"></textarea>
+							<textarea class="form-control " rows="3" name="qContent"
+								id="qContent" placeholder="내용을 입력해 주세요"></textarea>
 							<div class="btnpadding">
 								<button type="submit" id="com1" class="btn btn-info">작성완료</button>
 							</div>
