@@ -24,4 +24,12 @@
                 </ul>
             </div>
             <!-- 좌측 사이드 네비게이션 바 끝 -->
+		<script type="text/javascript">
+			$(function() {
+				$(window).scroll(function() {
+					$(".side-menu").animate({"top": $(this).scrollTop()}, {queue: false, ducation: 50, easing: "swing"});
+					
+				});
+			});
+		</script>
 
