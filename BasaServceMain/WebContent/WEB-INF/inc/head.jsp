@@ -16,6 +16,10 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/assets/css/common.css">
 
+<!-- 다음 주소 api -->
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/daumPostCode.js"></script>
+
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script
