@@ -31,10 +31,22 @@
 	</insert>
 
 	<!-- 게시물 목록을 조회한다 -->
-	<select id="selelctDocumentList" parameterType="com.badaservice.model.Qna"
+	<select id="selelctQnaList" parameterType="com.badaservice.model.Qna"
 		resultMap="qna">
 		SELECT id,title,reg_date,category,writer_id
 		DATE_FORMAT(reg_date, '%Y-%m-%d') as reg_date
 		FROM qna
+	</select>
+	
+	<!-- 게시물 하나에 대한 조회 -->
+	<select id="selectQna" parameterType="com.badaservice.model.Qna" 
+	resultMap="qna">
+		SELECT 
+		id,category,writerId,title,qContent,
+		DATE_FORMAT(reg_date, '%Y-%m-%d %H-%i:%s') as reg_date,
+		DATE_FORMAT(edit_date, '%Y-%m-%d %H-%i:%s') as edit_date,
+		answererId,member_id
+		FROM bbs_document
+		WHERE category=#{category} AND id=#{id}
 	</select>
 </mapper>

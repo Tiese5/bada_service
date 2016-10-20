@@ -2,14 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <head>
 <title>BaDa</title>
 <%@include file="/WEB-INF/inc/head.jsp"%>
-<!--sweetalert플러그인-->
-<script
-	src="${pageContext.request.contextPath }/plugins/sweetalert/sweetalert.min.js"></script>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/plugins/sweetalert/sweetalert.css">
+
 <script type="text/javascript">
 	$(document.body).on(
 			'click',
@@ -92,7 +89,8 @@ table {
 					<p class="test col-sm-offset-10">*은 필수 입력 입니다</p>
 				</div>
 				<!--제목라인-->
-				<form class="form-horizontal" method="post" action="${pageContext.request.contextPath }/qna/qna_ok.do">
+				<form class="form-horizontal" method="post"
+					action="${pageContext.request.contextPath }/qna/qna_ok.do">
 					<div class="form-group nametext">
 						<label for="title" class="col-md-offset-2 col-md-2">제목* </label>
 						<div class="col-md-8">
@@ -137,72 +135,58 @@ table {
 				</div>
 				<!--문의내역 테이블-->
 				<div>
-					<table class="table table-hover">
-						<thead style="background-color: #eee;">
-							<tr height="30px">
-								<th class="text-center" width="15%">문의종류</th>
-								<th class="text-center" width="55%">제목</th>
-								<th class="text-center" width="25%">문의일시</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr align="center">
-								<td>종류</td>
-								<td><a href="">10,000</a></td>
-								<td>2016.09.13</td>
-							</tr>
-							<tr>
-								<td>종류</td>
-								<td><a href="">10,000</a></td>
-								<td>2016.09.13</td>
-							</tr>
-							<tr>
-								<td>종류</td>
-								<td><a href="">10,000</a></td>
-								<td>2016.09.13</td>
-							</tr>
-							<tr>
-								<td>종류</td>
-								<td><a href="">10,000</a></td>
-								<td>2016.09.13</td>
-							</tr>
-							<tr>
-								<td>종류</td>
-								<td><a href="">10,000</a></td>
-								<td>2016.09.13</td>
-							</tr>
-							<tr>
-								<td>종류</td>
-								<td><a href="">10,000</a></td>
-								<td>2016.09.13</td>
-							</tr>
-							<tr>
-								<td>종류</td>
-								<td><a href="">10,000</a></td>
-								<td>2016.09.13</td>
-							</tr>
-						</tbody>
-						<tfoot>
-							<tr>
-								<td colspan="5" class="text-center">
-									<nav aria-label="Page navigation">
-										<ul class="pagination">
-											<li class="previous disabled"><a href="#"><span
-													aria-hidden="true">&larr;</span> 이전</a></li>
-											<li class="active"><a href="#">1</a></li>
-											<li><a href="#">2</a></li>
-											<li><a href="#">3</a></li>
-											<li><a href="#">4</a></li>
-											<li><a href="#">5</a></li>
-											<li class="next"><a href="#">다음 <span
-													aria-hidden="true">&rarr;</span></a></li>
-										</ul>
-									</nav>
-								</td>
-							</tr>
-						</tfoot>
-
-					</table>
+					<div class="table-responsive">
+						<table class="table table-hover">
+							<thead style="background-color: #eee;">
+								<tr height="30px">
+									<th class="text-center" width="15%">문의종류</th>
+									<th class="text-center" width="55%">제목</th>
+									<th class="text-center" width="25%">문의일시</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:choose>
+									<c:when test="${fn:length(qnaList) > 0}">
+										<c:forEach var="qna" items="${qnaList}">
+											<tr>
+												<td class="text-center">${qna.id }</td>
+												<td><c:url var="readUrl" value="/qna/qna_read.do">
+														<c:param name="qna_id" value="${qna.id }"></c:param>
+													</c:url> <a href="${readUrl}">${qna.qContent}</a></td>
+												<td class="text-center">${qna.category }</td>
+												<td class="text-center">${qna.regDate }</td>
+											</tr>
+										</c:forEach>
+									</c:when>
+									<c:otherwise>
+										<tr>
+											<td colspan="5" class="text-center"
+												style="line-height: 100px;">조회된 글이 없습니다</td>
+										</tr>
+									</c:otherwise>
+								</c:choose>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td colspan="5" class="text-center">
+										<nav aria-label="Page navigation">
+											<ul class="pagination">
+												<li class="previous disabled"><a href="#"><span
+														aria-hidden="true">&larr;</span> 이전</a></li>
+												<li class="active"><a href="#">1</a></li>
+												<li><a href="#">2</a></li>
+												<li><a href="#">3</a></li>
+												<li><a href="#">4</a></li>
+												<li><a href="#">5</a></li>
+												<li class="next"><a href="#">다음 <span
+														aria-hidden="true">&rarr;</span></a></li>
+											</ul>
+										</nav>
+									</td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
 					<!--문의내역 테이블 끝-->
 				</div>
 			</div>
