@@ -12,13 +12,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.badaservice.dao.MyBatisConnectionFactory;
-import com.badaservice.document.service.QnaService;
 import com.badaservice.helper.BaseController;
 import com.badaservice.helper.PageHelper;
 import com.badaservice.helper.RegexHelper;
 import com.badaservice.helper.UploadHelper;
 import com.badaservice.helper.WebHelper;
 import com.badaservice.model.Qna;
+import com.badaservice.service.QnaService;
 import com.badaservice.service.impl.QnaServiceImpl;
 
 @WebServlet("/document/qna_ok.do")

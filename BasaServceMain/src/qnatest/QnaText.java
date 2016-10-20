@@ -5,8 +5,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.badaservice.dao.MyBatisConnectionFactory;
-import com.badaservice.document.service.QnaService;
 import com.badaservice.model.Qna;
+import com.badaservice.service.QnaService;
 import com.badaservice.service.impl.QnaServiceImpl;
 
 public class QnaText {

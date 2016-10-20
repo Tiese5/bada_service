@@ -1,4 +1,4 @@
-package com.badaservice.document.service;
+package com.badaservice.service;
 
 import com.badaservice.model.Document;
 
