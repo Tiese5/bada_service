@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mtbatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 이 파일의 경로를 config.xml에 명시 해야한다 -->
+<!-- professor 테이블에 대한 CRUD 기능을 구현하기 위함 Mapper -->
+<mapper namespace="QnaMapper">
+	<!-- Beans 클래스의 객체 이름(id)과 클래스 이름 (type)을 명시한다 -->
+	<resultMap id="qna" type="com.badaservice.model.Qna">
+		<result property="id" column="id" />
+		<result property="title" column="title" />
+		<result property="qContent" column="q_content" />
+		<result property="regDate" column="reg_date" />
+		<result property="editDate" column="edit_date" />
+		<result property="category" column="category" />
+		<result property="writerId" column="writer_id" />
+		<result property="answererId" column="answerer_id" />
+		<result property="aContent" column="a_content" />
+
+	</resultMap>
+
+	<insert id="insertQna" parameterType="com.badaservice.model.Qna"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO qna(
+		title,q_content,reg_date,edit_date,category,writer_id,answerer_id,a_content
+		)VALUES(
+		#{title},#{qContent},now(),now(),#{category},#{writerId},#{answererId},#{aContent}
+		)
+	</insert>
+
+</mapper>
