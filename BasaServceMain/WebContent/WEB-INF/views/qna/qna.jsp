@@ -63,10 +63,8 @@ table:last-child {
 /*테이블 크기 조정*/
 table {
 	width: 100%;
-	height: 300px;
 	margin-left: 20px;
 }
-
 .none {
 	margin-top: -30px;
 }
@@ -135,26 +133,34 @@ table {
 				</div>
 				<!--문의내역 테이블-->
 				<div>
-					<div class="table-responsive">
+					<div class="">
 						<table class="table table-hover">
-							<thead style="background-color: #eee;">
-								<tr height="30px">
-									<th class="text-center" width="15%">문의종류</th>
-									<th class="text-center" width="55%">제목</th>
-									<th class="text-center" width="25%">문의일시</th>
+							<thead style="background-color: #efe;">
+								<tr>
+									<th class="text-center" width="10%">문의종류</th>
+									<th class="text-center" width="40%">제목</th>
+									<th class="text-center" width="20%">문의일시</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody style="height:50px;">
 								<c:choose>
 									<c:when test="${fn:length(qnaList) > 0}">
 										<c:forEach var="qna" items="${qnaList}">
 											<tr>
-												<td class="text-center">${qna.id }</td>
-												<td><c:url var="readUrl" value="/qna/qna_read.do">
+												<td class="text-center"><c:choose>
+														<c:when test="${qna.category== '1' }">판매관련</c:when>
+														<c:when test="${qna.category== '2' }">배송</c:when>
+														<c:when test="${qna.category== '3' }">환불</c:when>
+														<c:when test="${qna.category== '4' }">기타</c:when>
+													</c:choose></td>
+												<td>
+													<c:url var="readUrl" value="/qna/qna_read.do">
 														<c:param name="qna_id" value="${qna.id }"></c:param>
-													</c:url> <a href="${readUrl}">${qna.qContent}</a></td>
-												<td class="text-center">${qna.category }</td>
-												<td class="text-center">${qna.regDate }</td>
+													</c:url> <a href="${readUrl}">${qna.title}</a>
+												</td>
+												<td class="text-center">
+													${qna.regDate }
+												</td>
 											</tr>
 										</c:forEach>
 									</c:when>

@@ -64,6 +64,7 @@ public class QnaRead extends BaseController {
 			sqlSession.close();
 		}
 		request.setAttribute("readQna", readQna);
+		request.setAttribute("qnaId",qnaId);
 		
 		return "qna/qna_read";
 	}

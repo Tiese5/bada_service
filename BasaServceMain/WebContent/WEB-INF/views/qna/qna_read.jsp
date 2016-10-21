@@ -30,19 +30,19 @@
 				<br />
 				<form class="form-horizontal" id="myform">
 					<div class="form-group">
-						<label for="send_people" class="col-md-6">작성자:${readQna.writerId }</label>
+						<label for="send_people" class="col-md-6">작성자:${readQna.pname}</label>
 					</div>
 					<div class="form-group">
-						<label for="subject" class="col-md-6">제목:${readQna.title }</label>
+						<label for="subject" class="col-md-6">제목:${readQNA.title }</label>
 					</div>
-					<hr/>
 					<div class="form-group">
 						<div class="pad col-md-6">
 							<p>
-								${readQna.qContent}
+								${readQNA.qContent}
 							</p>
 						</div>
 					</div>
+					<hr/>
 					<div class="pull-right">
 						<a href="hyj_many_question(service).html" class="btn btn-info">목록</a>
 						<a href="hyj_many_question(service).html" class="btn btn-primary">수정</a>
