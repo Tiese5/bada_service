@@ -18,6 +18,8 @@ public class Member {
 	private String jo;
 	private int limitStart;
 	private int listCount;
+	
+	//tt
 	public String getJo() {
 		return jo;
 	}

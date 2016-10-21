@@ -18,7 +18,7 @@ public class buy extends BaseController {
 
 	@Override
 	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// tt
 		return "/shop/buy";
 	}
 
