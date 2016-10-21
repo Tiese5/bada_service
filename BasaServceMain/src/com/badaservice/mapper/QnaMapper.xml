@@ -16,12 +16,15 @@
 		<result property="writerId" column="writer_id" />
 		<result property="answererId" column="answerer_id" />
 		<result property="aContent" column="a_content" />
+		<result property="aName" column="aname" />
+		<result property="qName" column="qname" />
+		
 
 	</resultMap>
 	<!-- 게시물 등록 -->
 	<insert id="insertQna" parameterType="com.badaservice.model.Qna"
 		useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO qna(
+		INSERT INTO QNA(
 		title, q_content, reg_date, edit_date, 
 		category,writer_id
 		)VALUES(
@@ -33,20 +36,27 @@
 	<!-- 게시물 목록을 조회한다 -->
 	<select id="selelctQnaList" parameterType="com.badaservice.model.Qna"
 		resultMap="qna">
-		SELECT id,title,reg_date,category,writer_id
-		DATE_FORMAT(reg_date, '%Y-%m-%d') as reg_date
-		FROM qna
+		SELECT id,title,category,DATE_FORMAT(reg_date, '%Y-%m-%d') as reg_date
+		FROM QNA
 	</select>
 	
 	<!-- 게시물 하나에 대한 조회 -->
 	<select id="selectQna" parameterType="com.badaservice.model.Qna" 
 	resultMap="qna">
 		SELECT 
-		id,category,writerId,title,qContent,
-		DATE_FORMAT(reg_date, '%Y-%m-%d %H-%i:%s') as reg_date,
+		member.name as qname, category,title,a_content,q_content,
 		DATE_FORMAT(edit_date, '%Y-%m-%d %H-%i:%s') as edit_date,
-		answererId,member_id
-		FROM bbs_document
-		WHERE category=#{category} AND id=#{id}
+		answerer_id,writer_id
+		FROM QNA
+		INNER JOIN member ON QNA.writer_id=member.id 
+		WHERE
+		QNA.id=#{id}
 	</select>
+	
+	 <!-- 전체 게시물 수를 조회한다. -->
+	 <select id="selectQnaCount"
+	 parameterType="com.badaservice.model.Qna"
+	 resultType="int">
+	 SELECT COUNT(id) FROM QNA	
+	 </select>
 </mapper>

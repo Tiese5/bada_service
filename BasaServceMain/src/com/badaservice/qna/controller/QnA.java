@@ -39,9 +39,11 @@ public class QnA extends BaseController {
 		pageHelper = PageHelper.getInstance();
 		qnaComm = QNACommon.getInstance();
 		/* 카테고리값 받기 */
+		
 		String category = web.getString("category");
 		request.setAttribute("category", category);
-
+		
+		
 		/* 조회할 정보에 대한 빈즈 생성 */
 		Qna qna = new Qna();
 
@@ -64,15 +66,13 @@ public class QnA extends BaseController {
 		} catch (Exception e) {
 			web.redirect(null, e.getLocalizedMessage());
 			e.printStackTrace();
-			return null;
-		} finally {
 			sqlSession.close();
-		}
+			return null;
+		} 
 		/**조회 결과를 뷰에 전달*/
 		request.setAttribute("qnaList", qnaList);
 		//페이지 번호 계산 결과를 뷰에 전달
 		request.setAttribute("pageHelper", pageHelper);
-
 		return "/qna/qna";
 
 	}
