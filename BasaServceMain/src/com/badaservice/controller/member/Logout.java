@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.badaservice.helper.BaseController;
 import com.badaservice.helper.WebHelper;
 import com.badaservice.model.Member;
-@WebServlet("/member/out.do")
+@WebServlet("/member/logout.do")
 public class Logout extends BaseController {
 
 	/**

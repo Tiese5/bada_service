@@ -22,13 +22,14 @@ import com.badaservice.service.impl.MemberServiceImpl;
 
 
 
-@WebServlet("/member/login_ok")
+@WebServlet("/member/login_ok.do")
 public class LoginOk extends BaseController {
 
-	private static final long serialVersionUID = -985502662447204461L;
 
 
-	
+
+
+	private static final long serialVersionUID = 8323751373939763475L;
 		// TODO Auto-generated method stub
 		/** (1) 사용하고자 하는 Helper + Service 객체 선언 */
 		// --> import org.apache.logging.log4j.Logger;
@@ -111,7 +112,7 @@ public class LoginOk extends BaseController {
 			/** (9) 페이지 이동 */
 			// 이전 페이지 구하기 (javascript로 이동된 경우 조회 안됨)
 			String movePage = request.getHeader("referer");
-			if (movePage == null) {
+			if (movePage != null) {
 				movePage = web.getRootPath() + "/index.do";
 			}
 			

@@ -16,9 +16,16 @@ public class Member {
 	private String join_edit;
 	private String position;
 	private String jo;
+	private String newUserPw;
 	private int limitStart;
 	private int listCount;
 
+	public String getNewUserPw() {
+		return newUserPw;
+	}
+	public void setNewUserPw(String newUserPw) {
+		this.newUserPw = newUserPw;
+	}
 	public int getId() {
 		return id;
 	}
@@ -126,8 +133,8 @@ public class Member {
 		return "Member [id=" + id + ", user_id=" + user_id + ", user_pw=" + user_pw + ", name=" + name + ", email="
 				+ email + ", birthdate=" + birthdate + ", tel=" + tel + ", postcode=" + postcode + ", addr1=" + addr1
 				+ ", addr2=" + addr2 + ", profile_img=" + profile_img + ", join_date=" + join_date + ", join_edit="
-				+ join_edit + ", position=" + position + ", jo=" + jo + ", limitStart=" + limitStart + ", listCount="
-				+ listCount + "]";
+				+ join_edit + ", position=" + position + ", jo=" + jo + ", newUserPw=" + newUserPw + ", limitStart="
+				+ limitStart + ", listCount=" + listCount + "]";
 	}
 
 	

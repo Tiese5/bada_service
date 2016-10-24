@@ -16,7 +16,7 @@
   </environments>
   <mappers>
    		<mapper resource="com/badaservice/mapper/QnaMapper.xml" />
-   		<mapper resource="com/badaservice/dao/mapper/MemberMapper.xml" />
+   		<mapper resource="com/badaservice/mapper/MemberMapper.xml" />
 	   	<!--<mapper resource="study/jsp/mysite/dao/mapper/BbsCommentMapper.xml" />
 	   	<mapper resource="study/jsp/mysite/dao/mapper/BbsFileMapper.xml" />
 	   	<mapper resource="study/jsp/mysite/dao/mapper/BbsDocumentMapper.xml" />

@@ -1,25 +1,25 @@
-package com.badaservice.controller.shop;
+package com.badaservice.controller.member;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.badaservice.helper.BaseController;
+@WebServlet("/member/login.do")
+public class Login extends BaseController {
 
-/**
- * Servlet implementation class main
- */
-@WebServlet("/shop/main.do")
-public class main extends BaseController {
-	private static final long serialVersionUID = 8402102792742769620L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1433246452343863970L;
 
 	@Override
 	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		return "/shop/main";
+		// TODO Auto-generated method stub
+		return "member/login";
 	}
 
 }
