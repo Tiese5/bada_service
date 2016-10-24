@@ -11,6 +11,46 @@ public class Qna {
 	private int writerId;
 	private int answererId;
 	private String aContent;
+	
+	private int qnaId;
+	private int limitStart;
+	private int listCount;
+	
+	private String qName;
+	private String aName;
+	
+	
+	
+	public String getqName() {
+		return qName;
+	}
+	public void setqName(String qName) {
+		this.qName = qName;
+	}
+	public String getaName() {
+		return aName;
+	}
+	public void setaName(String aName) {
+		this.aName = aName;
+	}
+	public int getQnaId() {
+		return qnaId;
+	}
+	public void setQnaId(int qnaId) {
+		this.qnaId = qnaId;
+	}
+	public int getLimitStart() {
+		return limitStart;
+	}
+	public void setLimitStart(int limitStart) {
+		this.limitStart = limitStart;
+	}
+	public int getListCount() {
+		return listCount;
+	}
+	public void setListCount(int listCount) {
+		this.listCount = listCount;
+	}
 	public int getId() {
 		return id;
 	}
@@ -69,7 +109,8 @@ public class Qna {
 	public String toString() {
 		return "Qna [id=" + id + ", title=" + title + ", qContent=" + qContent + ", regDate=" + regDate + ", editDate="
 				+ editDate + ", category=" + category + ", writerId=" + writerId + ", answererId=" + answererId
-				+ ", aContent=" + aContent + "]";
+				+ ", aContent=" + aContent + ", qnaId=" + qnaId + ", limitStart=" + limitStart + ", listCount="
+				+ listCount + ", qName=" + qName + ", aName=" + aName + "]";
 	}
 	
 	

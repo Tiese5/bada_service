@@ -8,9 +8,9 @@
       <transactionManager type="JDBC"/>
       <dataSource type="POOLED">
         <property name="driver" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/badaservice?characterEncoding=UTF8"/>
-        <property name="username" value="root"/>
-        <property name="password" value="kkcc30311"/>
+        <property name="url" value="jdbc:mysql://tiese5.cafe24.com/tiese5?characterEncoding=UTF8"/>
+        <property name="username" value="tiese5"/>
+        <property name="password" value="qkektjqltm!@"/>
       </dataSource>
     </environment>
   </environments>

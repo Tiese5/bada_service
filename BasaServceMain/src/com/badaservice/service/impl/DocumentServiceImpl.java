@@ -3,8 +3,8 @@ package com.badaservice.service.impl;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.Logger;
 
-import com.badaservice.document.service.DocumentService;
 import com.badaservice.model.Document;
+import com.badaservice.service.DocumentService;
 
 public class DocumentServiceImpl implements DocumentService {
 	Logger logger;

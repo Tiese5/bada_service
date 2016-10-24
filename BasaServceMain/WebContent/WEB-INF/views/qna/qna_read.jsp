@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page trimDirectiveWhitespaces="true"%>
 
 
@@ -28,25 +30,19 @@
 				<br />
 				<form class="form-horizontal" id="myform">
 					<div class="form-group">
-						<label for="send_people" class="col-md-1">작성자:</label>
-						<div class="col-md-11">
-							<span> 아아 </span>
-						</div>
+						<label for="send_people" class="col-md-6">작성자:${readQna.pname}</label>
 					</div>
 					<div class="form-group">
-						<label for="subject" class="col-md-1">제목:</label>
-						<div class="col-md-11">
-							<span> 아아 </span>
-						</div>
+						<label for="subject" class="col-md-6">제목:${readQNA.title }</label>
 					</div>
-					<div class="page-header"></div>
 					<div class="form-group">
 						<div class="pad col-md-6">
-							<p>1:1 문의 1:1 문의 1:1 문의 1:1 문의 1:1 문의 1:1 문의 1:1 문의 1:1 문의
-								1:1 문의 1:1 문의 1:1 문의 1:1 문의 1:1 문의 1:1 문의 1:1 문의 1:1 문의 1:1 문의
-								1:1 문의 1:1 문의 1:1 문의 1:1 문의 1:1 문의 1:1 문의 1:1 문의</p>
+							<p>
+								${readQNA.qContent}
+							</p>
 						</div>
 					</div>
+					<hr/>
 					<div class="pull-right">
 						<a href="hyj_many_question(service).html" class="btn btn-info">목록</a>
 						<a href="hyj_many_question(service).html" class="btn btn-primary">수정</a>
@@ -56,8 +52,6 @@
 			</div>
 		</div>
 		<!-- 메인 컨텐츠 영역 끝 -->
-		<!-- 메인 컨텐츠 영역 끝 -->
-
 
 		<!-- Grid Row 끝 -->
 

@@ -5,7 +5,12 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+
 <%@ include file="/WEB-INF/inc/head.jsp" %>
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+    <script src="${pageContext.request.contextPath}/plugins/postcode/postcode.js"></script>
+    <script src="${pageContext.request.contextPath}/plugins/sweetalert/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/sweetalert/sweetalert.css">
 </head>
 
 <body>
@@ -30,25 +35,25 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><a href="kjm_detail_infomation.html"><img src="img/effective_java.jpg" alt="" height="100px"></a></td>
-                            <td><a href="kjm_detail_infomation.html">자바의 정석</a></td>
-                            <td>바다</td>
-                            <td><span class="text-danger">20,000</span> 원</td>
-                            <td>2016.09.10 12:00:00</td>
+                            <td class="text-center" style="line-height: 100px;"><a href="kjm_detail_infomation.html"><img src="${pageContext.request.contextPath}/assets/img/effective_java.jpg" alt="" height="100px"></a></td>
+                            <td class="text-center" style="line-height: 100px;"><a href="kjm_detail_infomation.html">자바의 정석</a></td>
+                            <td class="text-center" style="line-height: 100px;">바다</td>
+                            <td class="text-center" style="line-height: 100px;"><span class="text-danger">20,000</span> 원</td>
+                            <td class="text-center" style="line-height: 100px;">2016.09.10 12:00:00</td>
                         </tr>
                         <tr>
-                            <td><a href="kjm_detail_infomation.html"><img src="img/effective_java.jpg" alt="" height="100px"></a></td>
-                            <td><a href="kjm_detail_infomation.html">자바의 정석</a></td>
-                            <td>바다</td>
-                            <td><span class="text-danger">20,000</span> 원</td>
-                            <td>2016.09.10 12:00:00</td>
+                            <td class="text-center" style="line-height: 100px;"><a href="kjm_detail_infomation.html"><img src="${pageContext.request.contextPath}/assets/img/effective_java.jpg" alt="" height="100px"></a></td>
+                            <td class="text-center" style="line-height: 100px;"><a href="kjm_detail_infomation.html">자바의 정석</a></td>
+                            <td class="text-center" style="line-height: 100px;">바다</td>
+                            <td class="text-center" style="line-height: 100px;"><span class="text-danger">20,000</span> 원</td>
+                            <td class="text-center" style="line-height: 100px;">2016.09.10 12:00:00</td>
                         </tr>
                         <tr>
-                            <td><a href="kjm_detail_infomation.html"><img src="img/effective_java.jpg" alt="" height="100px"></a></td>
-                            <td><a href="kjm_detail_infomation.html">자바의 정석</a></td>
-                            <td>바다</td>
-                            <td><span class="text-danger">20,000</span> 원</td>
-                            <td>2016.09.10 12:00:00</td>
+                            <td class="text-center" style="line-height: 100px;"><a href="kjm_detail_infomation.html"><img src="${pageContext.request.contextPath}/assets/img/effective_java.jpg" alt="" height="100px"></a></td>
+                            <td class="text-center" style="line-height: 100px;"><a href="kjm_detail_infomation.html">자바의 정석</a></td>
+                            <td class="text-center" style="line-height: 100px;">바다</td>
+                            <td class="text-center" style="line-height: 100px;"><span class="text-danger">20,000</span> 원</td>
+                            <td class="text-center" style="line-height: 100px;">2016.09.10 12:00:00</td>
                         </tr>
                     </tbody>
                 </table>
@@ -64,9 +69,9 @@
             <div class="row col-md-offset-1">
                 <h4 class="col-md-2">배송지 주소</h4>
                 <div class="col-md-10 form-group" style="margin-top:10px;">
-                    <div class="col-md-8 clearfix" style="margin-bottom:15px;">
+                    <div class="col-md-12 clearfix" style="margin-bottom:15px;">
                         <label for="basic_ship" class="pull-right"><input type="checkbox" id="basic_ship" checked> 기본 주소 가져오기</label>
-                        <input type="text" name="postcode" id="postcode" class="form-control pull-left" style="width: 120px; margin-right: 5px;" disabled value="12345">
+                        <input type="text" name="postcode" id="postcode" class="test form-control pull-left" style="width: 120px; margin-right: 5px;" disabled value="12345">
                         <input type="button" value="우편번호 찾기" class="btn btn-warning" onclick='execDaumPostcode("postcode", "addr1", "addr2");'>
                     </div>
                     <div class="col-md-8" style="margin-bottom:15px;"><input type="text" name="addr1" id="addr1" class="form-control" disabled value="서울시 강남구 역삼동"></div>
@@ -83,11 +88,6 @@
 <%@ include file="/WEB-INF/inc/footer.jsp" %>
     </div>
 
-
-
-    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-    <script src="plugins/postcode/postcode.js"></script>
-    <script src="plugins/sweetalert/sweetalert.min.js"></script>
     <script type="text/javascript">
         $(function(){
             $(".buy").click(function(){
