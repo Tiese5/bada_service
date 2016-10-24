@@ -20,7 +20,7 @@
                 </ul>
                 <ul class="nav nav-side-menu list-title">
                     <li><a href="#">1:1 문의</a></li>
-                    <li><a href="#">탈퇴하기</a></li>
+                    <li><a href="${pageContext.request.contextPath}/member/out.do">탈퇴하기</a></li>
                 </ul>
             </div>
             <!-- 좌측 사이드 네비게이션 바 끝 -->

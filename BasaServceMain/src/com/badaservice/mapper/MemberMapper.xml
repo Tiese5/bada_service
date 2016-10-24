@@ -12,9 +12,9 @@
 		<result property="postcode" column="postcode" />
 		<result property="addr1" column="addr1" />
 		<result property="addr2" column="addr2" />
-		<result property="profile_img" column="profile_img" />
-		<result property="join_date" column="reg_date" />
-		<result property="join_edit" column="edit_date" />
+		<result property="profile_img" column="profil_image" />
+		<result property="join_date" column="join_date" />
+		<result property="join_edit" column="join_edit" />
 		<result property="position" column="position" />
 	</resultMap>
 	
@@ -22,7 +22,7 @@
 	<!-- 로그인 정보 -->
 	<select id="selectLoginInfo" parameterType="com.badaservice.model.Member" resultMap="member">
 		SELECT
-			id, user_id, user_pw, name, email, birthdate, tel, postcode, addr1, addr2, profile_img, DATE_FORMAT(join_date, '%Y-%m-%d') AS join_date, DATE_FORMAT(join_edit, '%Y-%m-%d') AS join_edit, position
+			id, user_id, user_pw, name, email, birthdate, tel, postcode, addr1, addr2, profil_image, DATE_FORMAT(join_date, '%Y-%m-%d') AS join_date, DATE_FORMAT(join_edit, '%Y-%m-%d') AS join_edit, position
 		FROM
 			member
 		WHERE
@@ -86,7 +86,7 @@
 	<!-- 회원 상세 조회 -->
 	<select id="selectMember" parameterType="com.badaservice.model.Member" resultMap="member">
 		SELECT
-			id, user_id, user_pw, name, email, birthdate, tel, postcode, addr1, addr2, profile_img, join_date, join_edit, position, jo
+			id, user_id, user_pw, name, email, birthdate, tel, postcode, addr1, addr2, profil_image, join_date, join_edit, position, jo
 		FROM
 			member
 		WHERE
@@ -105,10 +105,10 @@
 	<insert id="insertMember" parameterType="com.badaservice.model.Member" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO
 			member(
-				user_id, user_pw, name, email, birthdate, tel, postcode, addr1, addr2, profile_img, join_date, join_edit, position, jo
+				user_id, user_pw, name, email, birthdate, tel, postcode, addr1, addr2, profil_image, join_date, join_edit, position, jo
 			)
 		VALUES(
-			#{user_id}, password(#{user_pw}), #{name}, #{email}, #{tel}, #{birthdate}, #{postcode}, #{addr1}, #{addr2}, #{profile_img}, now(), now(), '1', '0'
+			#{user_id}, password(#{user_pw}), #{name}, #{email},  #{birthdate},#{tel}, #{postcode}, #{addr1}, #{addr2}, #{profile_img}, now(), now(), '1', '0'
 		)
 	</insert>
 	
@@ -132,5 +132,6 @@
 		WHERE
 			id=#{id}
 	</update>
+	 
 	
 </mapper>

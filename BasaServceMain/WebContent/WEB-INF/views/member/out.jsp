@@ -189,7 +189,7 @@
                         <p class="text">탈퇴후 1개월간 회원정보를 보관합니다.
                         <br/>
                         따라서 1개월간 같은 아이디로 재가입 하실수 없습니다</p>
-                       <form class="form-horizontal" method="" action=""> 
+                       <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/member/out_ok.do"> 
                         <div class="form-group">
                         <div class="outinput" align="center">
                         <input type="password" name="user_pw" id="user_pw" class="form-control"
@@ -197,8 +197,8 @@
                         </div>
                         
                         <div class="out">
-                            <button id="out1" class="btn btn-danger btn-lg" type="button">탈퇴하기
-                            </button>
+                            <button class="btn btn-danger" type="submit">탈퇴하기</button>
+                            
                             </div>
                         </div>
                         </form>

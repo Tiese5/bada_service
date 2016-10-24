@@ -191,13 +191,13 @@
             <div class="form-group">
                 <label for="postcode" class="col-md-offset-2 col-md-2">우편번호*</label>
                 <div class="col-md-8 clearfix">
-                    <input type="text" name="postcode" id="postcode" class="form-control pull-left" style="width: 120px; margin-right: 5px;" disabled>
+                    <input type="text" name="postcode" id="postcode" class="form-control pull-left" style="width: 120px; margin-right: 5px;">
                     <input type="button" value="우편번호 찾기" class="btn btn-warning" onclick='execDaumPostcode("postcode", "addr1", "addr2");'>
                 </div>
             </div>
             <div class="form-group">
                 <label for="addr1" class="col-md-offset-2 col-md-2">주소*</label>
-                <div class="col-md-8"><input type="text" name="addr1" id="addr1" class="form-control" disabled></div>
+                <div class="col-md-8"><input type="text" name="addr1" id="addr1" class="form-control"></div>
             </div>
             <div class="form-group">
                 <label for="addr2" class="col-md-offset-2 col-md-2">상세주소*</label>

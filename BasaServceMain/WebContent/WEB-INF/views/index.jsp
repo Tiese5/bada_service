@@ -71,11 +71,24 @@
     </head>
     <body>
         <div class="container clearfix">
+        
+        <c:choose>
+         <c:when test="${loginInfo==null }">
             <div class="text2 pull-right">
-                <a href="kjm_main.html">메인페이지</a> | <a href="lmg_login.html">로그인</a>
+                <a href="${pageContext.request.contextPath}/shop/main.do">메인페이지</a> <a href="${pageContext.request.contextPath}/member/login.do">로그인</a>
             </div>
+          </c:when>
+         <c:otherwise>
+         	<div class="text2 pull-right">
+         		
+                <a href="${pageContext.request.contextPath}/member/info.do">마이페이지</a> 
+                <a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
+                
+            </div>
+         </c:otherwise>
+         </c:choose>
             <div class="move">
-            <a href="kjm_main.html" class="image">
+            <a href="${pageContext.request.contextPath}/shop/main.do" class="image">
             <img src="${pageContext.request.contextPath }/assets/img/logo.png" class="imgimg">
             	<h1>로고</h1></a>
             </div>

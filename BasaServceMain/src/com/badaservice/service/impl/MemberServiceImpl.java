@@ -94,6 +94,7 @@ public class MemberServiceImpl implements MemberService {
 			// TODO: handle exception
 			throw new Exception("조회된 데이터가 없습니다.");
 		}catch (Exception e) {
+			e.printStackTrace();
 			// TODO: handle exception
 			throw new Exception("회원조회에 실패했습니다.");
 		}
@@ -131,6 +132,7 @@ public class MemberServiceImpl implements MemberService {
 			// TODO: handle exception
 			throw new Exception("수정할 회원 정보가 없습니다.");
 		}catch (Exception e) {
+			e.printStackTrace();
 			// TODO: handle exception
 			throw new Exception("회원 수정에 실패했습니다.");
 		}
@@ -153,6 +155,7 @@ public class MemberServiceImpl implements MemberService {
 			throw new Exception("저장된 회원 정보가 없습니다.");
 		}catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 			throw new Exception("회원 저장에 실패했습니다.");
 		}
 		
@@ -163,7 +166,7 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		try{
 			int result=sqlsession.selectOne("MemberMapper.selectUserIdCount",member);
-			if(result==0){
+			if(result>0){
 				throw new NullPointerException();
 			}
 		}catch (NullPointerException e) {
@@ -171,6 +174,7 @@ public class MemberServiceImpl implements MemberService {
 			throw new Exception("이미 사용중인 아이디 입니다.");
 		}catch (Exception e) {
 			// TODO: handle exception
+			logger.error(e.getLocalizedMessage());
 			throw new Exception("아이디 중복검사에 실패했습니다.");
 		}
 	}
@@ -180,7 +184,7 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method st
 		try{
 			int result=sqlsession.selectOne("MemberMapper.selectEmailCount",member);
-			if(result==0){
+			if(result>0){
 				throw new NullPointerException();
 			}
 		}catch (NullPointerException e) {
@@ -215,7 +219,7 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		
 		try{
-			int result = sqlsession.delete("Membermapper.updateMemberOut",member);
+			int result = sqlsession.update("MemberMapper.updateMemberOut",member);
 			if(result == 0){
 				throw new NullPointerException();
 			}
@@ -226,6 +230,7 @@ public class MemberServiceImpl implements MemberService {
 		}catch (Exception e){
 			sqlsession.rollback();
 			logger.error(e.getLocalizedMessage());
+			e.printStackTrace();
 			throw new Exception("회원탈퇴에 실패했습니다.");
 		}finally{
 			sqlsession.commit();
