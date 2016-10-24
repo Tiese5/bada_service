@@ -34,5 +34,19 @@ public interface QnaService {
 	 * @throws Exception
 	 */
 	public Qna selectQna(Qna qna) throws Exception;
+	/**
+	 * 게시물 삭제
+	 * @param qna
+	 * @throws Exception
+	 */
+	public void deleteQna(Qna qna)throws Exception;
+	
+	/**
+	 * 게시물을 수정한다
+	 * @param qna - 게시물 데이터
+	 * @throws Exception
+	 */
+	public void updateQna(Qna qna)throws Exception;
+	
 	
 }

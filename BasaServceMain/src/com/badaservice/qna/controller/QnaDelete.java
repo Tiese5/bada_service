@@ -17,65 +17,51 @@ import com.badaservice.helper.WebHelper;
 import com.badaservice.model.Qna;
 import com.badaservice.service.QnaService;
 import com.badaservice.service.impl.QnaServiceImpl;
-@WebServlet("/qna/qna_edit.do")
-public class QnaEdit extends BaseController {
-	private static final long serialVersionUID = -7255918033093832468L;
+@WebServlet("/qna/qna_delete_ok.do")
+public class QnaDelete extends BaseController{
+	private static final long serialVersionUID = -3579405670866209284L;
 	WebHelper web;
-	Logger logger;
 	SqlSession sqlSession;
+	Logger logger;
 	QnaService qnaService;
-	QNACommon qnacommon;
 	@Override
-	public String doRun(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		web = WebHelper.getInstance(request, response);
-		logger = LogManager.getFormatterLogger(request.getRemoteUser());
-		sqlSession = MyBatisConnectionFactory.getSqlSession();
-		qnacommon = QNACommon.getInstance();
+		sqlSession= MyBatisConnectionFactory.getSqlSession();
+		logger= LogManager.getFormatterLogger(request.getRequestURI());
 		qnaService = new QnaServiceImpl(sqlSession, logger);
 		/**게시판 카테고리 값을 받아서 View에 전달*/
 		String category = web.getString("category");
 		request.setAttribute("category", category);
-		/**글번호 파라미터 받기*/
-		int qnaId=web.getInt("qna_id");
-		logger.debug("qnaId:" +qnaId);
-		
-		if (qnaId ==0) {
-			web.redirect(null, "글 번호가 지정되지 않았습니다");
+		/**게시판 번호 받기*/
+		int qnaId = web.getInt("qna_id");
+		if (qnaId == 0) {
 			sqlSession.close();
+			web.redirect(null, "글 번호가 없습니다");
 			return null;
 		}
-		/**파라미터 빈즈로 묶기*/
-		Qna qna= new Qna();
-		qna.setCategory(category);
+		//파라미터를 Beans로 묶기
+		Qna qna = new Qna();
 		qna.setId(qnaId);
 		
-		/**게시물 일련번호를 사용할 데이터 조회*/
-		Qna readQna = null;
+		/**게시물 일련번호를 사용한 데이터 조회*/
+		int qnaCount=0;
 		
 		try {
-			readQna = qnaService.selectQna(qna);
+			qnaCount=qnaService.selectQnaCount(qna);
 		} catch (Exception e) {
 			web.redirect(null, e.getLocalizedMessage());
 			e.printStackTrace();
-			sqlSession.close();
 			return null;
+		}finally{
+			sqlSession.close();
 		}
-		request.setAttribute("readQna",readQna);
 		
-		return "qna/qna_edit";
+		/**7자신의 글에 대한 요청인지에 대한 여부를 view에 전달*/
+		request.setAttribute("qnaId", qnaId);
+		
+		
+		return "qna/qna_delete";
 	}
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
