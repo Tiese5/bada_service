@@ -153,6 +153,7 @@ public class MemberServiceImpl implements MemberService {
 			throw new Exception("저장된 회원 정보가 없습니다.");
 		}catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 			throw new Exception("회원 저장에 실패했습니다.");
 		}
 		
