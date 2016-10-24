@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.badaservice.helper.BaseController;
 
-@WebServlet("/member/out.do")
+@WebServlet("")
 public class Out extends BaseController {
 
 	private static final long serialVersionUID = 1739101230817433899L;

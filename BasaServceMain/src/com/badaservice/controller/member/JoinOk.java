@@ -25,8 +25,12 @@ import com.badaservice.service.impl.MemberServiceImpl;
 @WebServlet("/member/join_ok.do")
 public class JoinOk extends BaseController {
 
-	private static final long serialVersionUID = -1181678455337492034L;
 	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7358162710540203294L;
 	/**(1) 사용하고자	하는 Helper + Service 객체 선언*/
 	Logger logger;
 	SqlSession sqlSession;

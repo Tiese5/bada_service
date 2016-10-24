@@ -163,7 +163,7 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		try{
 			int result=sqlsession.selectOne("MemberMapper.selectUserIdCount",member);
-			if(result==0){
+			if(result>0){
 				throw new NullPointerException();
 			}
 		}catch (NullPointerException e) {
@@ -171,6 +171,7 @@ public class MemberServiceImpl implements MemberService {
 			throw new Exception("이미 사용중인 아이디 입니다.");
 		}catch (Exception e) {
 			// TODO: handle exception
+			logger.error(e.getLocalizedMessage());
 			throw new Exception("아이디 중복검사에 실패했습니다.");
 		}
 	}
@@ -180,7 +181,7 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method st
 		try{
 			int result=sqlsession.selectOne("MemberMapper.selectEmailCount",member);
-			if(result==0){
+			if(result>0){
 				throw new NullPointerException();
 			}
 		}catch (NullPointerException e) {

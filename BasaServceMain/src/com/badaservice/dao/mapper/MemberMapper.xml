@@ -13,8 +13,8 @@
 		<result property="addr1" column="addr1" />
 		<result property="addr2" column="addr2" />
 		<result property="profile_img" column="profile_img" />
-		<result property="join_date" column="reg_date" />
-		<result property="join_edit" column="edit_date" />
+		<result property="join_date" column="join_date" />
+		<result property="join_edit" column="join_edit" />
 		<result property="position" column="position" />
 	</resultMap>
 	
@@ -132,5 +132,6 @@
 		WHERE
 			id=#{id}
 	</update>
+	 
 	
 </mapper>
