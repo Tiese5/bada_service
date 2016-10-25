@@ -10,8 +10,8 @@
                     <li><a href="#">주문/배송 조회</a></li>
                     <li><a href="#">구매내역</a></li>
                     <li><a href="#">쪽지 쓰기</a></li>
-                    <li><a href="#">보낸 쪽지함</a></li>
-                    <li><a href="#">받은 쪽지함</a></li>
+                    <li><a href="${pageContext.request.contextPath}/message.do">보낸 쪽지함</a></li>
+                    <li><a href="${pageContext.request.contextPath}/message_get.do">받은 쪽지함</a></li>
                 </ul>
                 <ul class="nav nav-side-menu list-title">
                     <li><a href="#">회원에게 판매</a></li>

@@ -3,10 +3,25 @@ package com.badaservice.model;
 public class messenger {
 	private int id;
 	private String content;
-	private String reg_date;
-	private int sender_id;
-	private int reciver_id;
+	private String regDate;
+	private int senderId;
+	private int receiverId;
+	private String senderName;
+	private String receiverName;
 	
+	
+	public String getReceiverName() {
+		return receiverName;
+	}
+	public void setReceiverName(String receiverName) {
+		this.receiverName = receiverName;
+	}
+	public String getSenderName() {
+		return senderName;
+	}
+	public void setSenderName(String senderName) {
+		this.senderName = senderName;
+	}
 	public int getId() {
 		return id;
 	}
@@ -19,29 +34,33 @@ public class messenger {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getReg_date() {
-		return reg_date;
+	public String getRegDate() {
+		return regDate;
 	}
-	public void setReg_date(String reg_date) {
-		this.reg_date = reg_date;
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
 	}
-	public int getSender_id() {
-		return sender_id;
+	public int getSenderId() {
+		return senderId;
 	}
-	public void setSender_id(int sender_id) {
-		this.sender_id = sender_id;
+	public void setSenderId(int senderId) {
+		this.senderId = senderId;
 	}
-	public int getReciver_id() {
-		return reciver_id;
+
+	public int getReceiverId() {
+		return receiverId;
 	}
-	public void setReciver_id(int reciver_id) {
-		this.reciver_id = reciver_id;
+	public void setReceiverId(int receiverId) {
+		this.receiverId = receiverId;
 	}
 	@Override
 	public String toString() {
-		return "messenger [id=" + id + ", content=" + content + ", reg_date=" + reg_date + ", sender_id=" + sender_id
-				+ ", reciver_id=" + reciver_id + "]";
+		return "messenger [id=" + id + ", content=" + content + ", regDate=" + regDate + ", senderId=" + senderId
+				+ ", receiverId=" + receiverId + ", senderName=" + senderName + ", receiverName=" + receiverName + "]";
 	}
 	
 	
 }
+	
+	
+
