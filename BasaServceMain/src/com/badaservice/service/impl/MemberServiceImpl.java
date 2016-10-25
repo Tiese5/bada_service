@@ -237,4 +237,46 @@ public class MemberServiceImpl implements MemberService {
 		}
 	}
 
+	@Override
+	public void updateMemberPasswordByEmail(Member member) throws Exception {
+		// TODO Auto-generated method stub
+		try{
+			int result = sqlsession.update("MemberMapper.updateMemberPasswordByEmail",member);
+			if(result == 0){
+				throw new NullPointerException();
+			}
+		}catch (NullPointerException e) {
+			// TODO: handle exception
+			sqlsession.rollback();
+			throw new Exception("가입된 이메일이 아닙니다.");
+		}catch (Exception e) {
+			// TODO: handle exception
+			sqlsession.rollback();
+			logger.error(e.getLocalizedMessage());
+			throw new Exception("비밀번호 변경에 실패했습니다.");
+		}finally{
+			sqlsession.commit();
+		}
+		
+	}
+
+	@Override
+	public String selectMemberId(Member member) throws Exception {
+		// TODO Auto-generated method stub
+		String result = null;
+		try{
+			result=sqlsession.selectOne("MemberMapper.selectMemberId",member);
+			if(result==null){
+				throw new NullPointerException();
+			}
+		}catch (NullPointerException e) {
+			// TODO: handle exception
+			throw new Exception("해당 이메일 정보가 없습니다.");
+		}catch (Exception e) {
+			// TODO: handle exception
+			throw new Exception("아이디 찾기에 실패하였습니다.");
+		}
+		return result;
+	}
+
 }

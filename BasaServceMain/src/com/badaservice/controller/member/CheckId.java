@@ -8,16 +8,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.badaservice.helper.BaseController;
+import com.badaservice.helper.WebHelper;
 
-@WebServlet("/member/id.do")
-public class IdSearch extends BaseController {
+@WebServlet("/member/check_id.do")
+public class CheckId extends BaseController {
 
 	private static final long serialVersionUID = -7647768726677412627L;
-
+	WebHelper web;
 	@Override
 	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		return "member/id_search";
+		web = WebHelper.getInstance(request, response);
+		String user_id = web.getString("user_id");
+		
+		request.setAttribute("user_id", user_id);
+		
+		return "member/check_id";
 	}
 
 }

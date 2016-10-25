@@ -75,7 +75,7 @@
 	<!-- 회원 목록 조회 -->
 	<select id="selectMemberList" parameterType="com.badaservice.model.Member" resultMap="member">
 		SELECT
-			id, name, email,  join_date, join_edit, jo
+			id, name, email, join_date, join_edit, jo
 		FROM
 			member
 		ORDER BY
@@ -132,6 +132,25 @@
 		WHERE
 			id=#{id}
 	</update>
-	 
+	
+	<!-- 비밀번호 재발급: 이메일 주소가 일치하는 비밀번호를 변경한다. -->
+	<update id="updateMemberPasswordByEmail" parameterType="com.badaservice.model.Member">
+	UPDATE
+		member
+	SET
+		 user_pw=password(#{user_pw}), join_edit = now()
+	WHERE
+		email=#{email} and user_id=#{user_id}
+	</update>
+	
+	<!-- 아이디 찾기 -->
+	<select id="selectMemberId" parameterType="com.badaservice.model.Member" resultType="string">
+	SELECT
+		 replace(right("user_id",3), "***")
+	FROM
+		 member
+	WHERE
+		email=#{email} 
+	</select>
 	
 </mapper>

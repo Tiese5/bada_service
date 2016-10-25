@@ -51,9 +51,16 @@
 					</div>
 					<hr />
 					<div class="form-group">
-						<div class="pad col-md-6">답변 내용:${readQNA.aContent}</div>
+					<div class="pad col-md-6">
+					<c:choose>
+						<c:when test="${readQna.aContent == null}">미답변</c:when>
+						<c:otherwise>
+							${readQna.aContent}
+						</c:otherwise>		
+					</c:choose>
 					</div>
-
+					</div>
+			
 					<div class="pull-right">
 						<a
 							href="${pageContext.request.contextPath}/qna/qna.do?qna_id=${readQna.id}"

@@ -63,9 +63,18 @@ public class PwOk extends BaseController {
 		
 		/** (4) 파라미터 받기 */
 		// 입력된 메일 주소를 받는다.
+		String user_id = web.getString("user_id");
 		String email = web.getString("email");
-
+		
+		
+		logger.debug("userId=" + user_id);
 		logger.debug("email=" + email);
+		
+		if (user_id == null) {
+			sqlSession.close();
+			web.redirect(null, "아이디를 입력하세요.");
+			return null;
+		}
 		
 		if (email == null) {
 			sqlSession.close();
@@ -76,14 +85,16 @@ public class PwOk extends BaseController {
 		/** (5) 임시 비밀번호 생성하기 */
 		String newPassword = util.getRandomPassword();
 		
+		
 		/** (6) 입력값을 JavaBeans에 저장하기 */
 		Member member = new Member();
+		member.setUser_id(user_id);
 		member.setEmail(email);
 		member.setUser_pw(newPassword);
 		
 		/** (7) Service를 통한 비밀번호 갱신 */		
 		try {
-			memberService.selectUserPasswordCount(member);
+			memberService.updateMemberPasswordByEmail(member);
 		} catch (Exception e) {
 			web.redirect(null, e.getLocalizedMessage());
 			return null;
@@ -93,7 +104,7 @@ public class PwOk extends BaseController {
 		
 		/** (8) 발급된 비밀번호를 메일로 발송하기 */
 		String sender = "webmaster@mysite.com";
-		String subject = "MySite 비밀번호 변경 안내 입니다.";
+		String subject = "Bada 비밀번호 변경 안내 입니다.";
 		String content = "회원님의 새로운 비밀번호는 <strong>" + newPassword + "</strong>입니다.";
 		
 		try {
@@ -106,7 +117,7 @@ public class PwOk extends BaseController {
 		
 		/** (9) 결과 페이지로 이동 */
 		// 여기서는 이전 페이지로 이동함
-		web.redirect(null, "새로운 비밀번호가 메일로 발송되었습니다.");
+		web.redirect(web.getRootPath()+"/member/Relogin.do", "새로운 비밀번호가 메일로 발송되었습니다.");
 		return null;
 	}
 

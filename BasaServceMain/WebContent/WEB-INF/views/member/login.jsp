@@ -94,7 +94,7 @@
                 <!--로그인 버튼END-->
             </form>
             <div style="margin-left: 400px;">
-            <a href="#">ID</a><span>/</span><a href="#">PW찾기</a>
+            <a href="${pageContext.request.contextPath}/member/id.do">ID</a><span></span><a href="${pageContext.request.contextPath}/member/pw.do">PW찾기</a>
             </div>
 
             <!--로그인폼 끝-->

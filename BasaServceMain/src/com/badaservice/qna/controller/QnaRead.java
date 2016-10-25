@@ -37,7 +37,6 @@ public class QnaRead extends BaseController {
 		/* 카테고리 값을 받아서 View에 전달 */
 		String category = web.getString("category");
 		request.setAttribute("category", category);
-
 		/** 5)글번호 파라미터 받기 */
 		int qnaId = web.getInt("qna_id");
 		logger.debug("qna_id:" + qnaId);

@@ -8,16 +8,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.badaservice.helper.BaseController;
+@WebServlet("/member/Relogin.do")
+public class ReLogin extends BaseController {
 
-@WebServlet("/member/id.do")
-public class IdSearch extends BaseController {
-
-	private static final long serialVersionUID = -7647768726677412627L;
+	private static final long serialVersionUID = 6828183951323718009L;
 
 	@Override
 	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		return "member/id_search";
+		return "member/login";
 	}
 
 }

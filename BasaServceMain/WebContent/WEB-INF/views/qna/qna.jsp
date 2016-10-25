@@ -179,9 +179,7 @@ table {
 													<c:when test="${pageHelper.prevPage > 0 }">
 														<!-- 이전 그룹에 대한 페이지 번호가 존재한다면? -->
 														<!-- 이전 그룹으로 이동하기 위해 URL을 생성해서 prevUrl에 저장 -->
-														<c:url var="prevUrl" value="/bbs/document_list.do">
-															<c:param name="category" value="${category}"></c:param>
-															<c:param name="keyword" value="${keyword}"></c:param>
+														<c:url var="prevUrl" value="/qna/qna.do">
 															<c:param name="page" value="${pageHelper.prevPage}"></c:param>
 														</c:url>
 														<li><a href="${prevUrl }">&laquo;</a></li>
@@ -196,9 +194,7 @@ table {
 												<c:forEach var="i" begin="${pageHelper.startPage}"
 													end="${pageHelper.endPage}" step="1">
 													<!-- 페이지 번호로 이동할수 있는 URL을 생성하겨 url에 저장 -->
-													<c:url var="pageUrl" value="/bbs/document_list.do">
-														<c:param name="categort" value="${category}"></c:param>
-														<c:param name="keyword" value="${keyword}"></c:param>
+													<c:url var="pageUrl" value="/qna/qna.do">
 														<c:param name="page" value="${i}"></c:param>
 													</c:url>
 													<!-- 반족중의 페이지 번호와 현재 페이지 번호가 갗은 경우에 대한 분기 -->
@@ -220,9 +216,7 @@ table {
 													<c:when test="${pageHelper.nextPage > 0}">
 														<!-- 이전 그룹에 대한 페이지 번호가 존재한다면? -->
 														<!-- 이전 그룹으로 이동하기 위해 URL을 생성해서 prevUrl에 저장 -->
-														<c:url var="nextUrl" value="/bbs/document_list.do">
-															<c:param name="category" value="${category}"></c:param>
-															<c:param name="keyword" value="${keyword}"></c:param>
+														<c:url var="nextUrl" value="/qna/qna.do">
 															<c:param name="page" value="${pageHelper.nextPage}"></c:param>
 														</c:url>
 														<li><a href="${nextUrl}">&raquo;</a></li>
