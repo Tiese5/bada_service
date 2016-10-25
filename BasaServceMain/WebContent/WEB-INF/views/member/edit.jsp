@@ -10,13 +10,9 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BaDa | 내 정보</title>
+<title>BaDa | 정보수정</title>
 
 <style media="screen" type="text/css">
-body {
-	padding-top: 20px;
-}
-
 .side-menu {
 	position: fixed;
 	margin-top: 30px;
@@ -200,37 +196,79 @@ body {
 
 			<!-- 메인 컨텐츠 영역 시작 -->
 			<div class="col-sm-9 col-md-10 main-content">
-				<div class="page-header">
-					<h2>내 정보</h2>
+				<div class="page-header clearfix">
+					<h2>정보수정</h2>
 				</div>
-				<form class="form-horizontal" id="myform">
-					<input type="hidden" name="id" value="${loginInfo.id }"></input>
+				<p class="col-md-offset-2 text-warning">*은 필수 입력입니다.(아이디는 변경할 수
+					없습니다.)</p>
+				<form class="form-horizontal" id="myform" method="post"
+					action="${pageContext.request.contextPath}/member/edit_ok.do"
+					enctype="multipart/form-data">
 					<div class="form-group">
-						<label for="user_id" class="col-md-2">아이디</label>
+						<label for="user_id" class="col-md-2 col-md-2">아이디</label>
 						<div class="col-md-8">
 							<input type="text" name="user_id" id="user_id"
-								class="form-control" disabled value="${loginInfo.user_id }">
+								class="form-control" disabled value="${loginInfo.user_id}">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="name" class="col-md-2">이름</label>
+						<label for="user_pw" class="col-md-2 col-md-2">비밀번호*</label>
+						<div class="col-md-8">
+							<input type="password" name="user_pw" id="user_pw"
+								class="form-control" value="${loginInfo.user_pw}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="user_pw_re" class="col-md-2 col-md-2">비밀번호 확인*</label>
+						<div class="col-md-8">
+							<input type="password" name="user_pw_re" id="user_pw_re"
+								class="form-control" value="${loginInfo.user_pw}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="postcode" class="col-md-2 col-md-2">우편번호*</label>
+						<div class="col-md-8 clearfix">
+							<input type="text" name="postcode" id="postcode"
+								class="form-control pull-left"
+								style="width: 120px; margin-right: 5px;"
+								value="${loginInfo.postcode}"> <input type="button"
+								value="우편번호 찾기" class="btn btn-warning"
+								onclick='execDaumPostcode("postcode", "addr1", "addr2");'>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="addr1" class="col-md-2 col-md-2">주소*</label>
+						<div class="col-md-8">
+							<input type="text" name="addr1" id="addr1" class="form-control"
+								value="${loginInfo.addr1}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="addr2" class="col-md-2 col-md-2">상세주소*</label>
+						<div class="col-md-8">
+							<input type="text" name="addr2" id="addr2" class="form-control"
+								value="${loginInfo.addr2}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="name" class="col-md-2 col-md-2">이름*</label>
 						<div class="col-md-8">
 							<input type="text" name="name" id="name" class="form-control"
-								disabled value="${loginInfo.name }">
+								value="${loginInfo.name}">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="email" class="col-md-2">이메일</label>
+						<label for="email" class="col-md-2 col-md-2">이메일*</label>
 						<div class="col-md-8">
 							<input type="email" name="email" id="email" class="form-control"
-								disabled value="${loginInfo.email }">
+								value="${loginInfo.email}">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="tel" class="col-md-2">연락처</label>
+						<label for="tel" class="col-md-2 col-md-2">연락처*</label>
 						<div class="col-md-8">
 							<input type="tel" name="tel" id="tel" class="form-control"
-								disabled value="${loginInfo.tel }">
+								value="${loginInfo.tel}">
 						</div>
 					</div>
 					<div class="form-group">
@@ -241,44 +279,23 @@ body {
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="postcode" class="col-md-2">우편번호</label>
-						<div class="col-md-8 clearfix">
-							<input type="text" name="postcode" id="postcode"
-								class="form-control pull-left"
-								style="width: 120px; margin-right: 5px;" disabled
-								value="${loginInfo.postcode}">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="addr1" class="col-md-2">주소</label>
-						<div class="col-md-8">
-							<input type="text" name="addr1" id="addr1" class="form-control"
-								disabled value="${loginInfo.addr1 }">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="addr1" class="col-md-2">상세주소</label>
-						<div class="col-md-8">
-							<input type="text" name="addr2" id="addr2" class="form-control"
-								disabled value="${loginInfo.addr2 }">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="profile_img" class="col-md-2">프로필 사진</label>
+						<label for="profile_img" class="col-md-2 col-md-2">프로필 사진</label>
 						<div class="col-md-8">
 							<img class="thumbnail" src="img/profile.png" alt="프로필 이미지"
-								width="50px" />
+								width="50px" /> <input type="file" name="profile_img"
+								id="profile_img" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-8">
-							<a href="${pageContext.request.contextPath}/member/edit.do"
-								class="btn btn-warning">수정하기</a>
+							<button type="submit" class="btn btn-primary">작성완료</button>
+							<button type="reset" class="btn btn-danger">다시작성</button>
 						</div>
 					</div>
 				</form>
 			</div>
 			<!-- 메인 컨텐츠 영역 끝 -->
+
 		</div>
 		<!-- Grid Row 끝 -->
 
@@ -290,29 +307,117 @@ body {
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script
 		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+	<script src="plugins/postcode/postcode.js"></script>
+	<script src="plugins/validate/jquery.validate.min.js"></script>
+	<script src="plugins/validate/additional-methods.min.js"></script>
+	<script src="plugins/validate/localization/messages_ko.min.js"></script>
 	<script src="plugins/sweetalert/sweetalert.min.js"></script>
 	<script type="text/javascript">
 		$(function() {
-			$("#myinfo_update").click(function() {
-				swal({
-					title : "정보 수정하기",
-					text : "내 정보를 수정하려면 비밀번호를 입력해야합니다.",
-					type : "input",
-					inputType : "password",
-					inputPlaceholder : "비밀번호를 입력해주세요.",
-					showCancelButton : true,
-					closeOnConfirm : false,
-					showLoaderOnConfirm : true
-				}, function(inputValue) {
-					if (inputValue === false) {
-						return false;
+			// 플러그인의 기본 설정 옵션 추가
+			jQuery.validator.setDefaults({
+				onkeyup : false,
+				onclick : false,
+				onfocusout : false,
+				showErrors : function(errorMap, errorList) {
+					if (this.numberOfInvalids()) {
+						swal({
+							title : "에러",
+							text : errorList[0].message,
+							type : "error"
+						}, function() {
+							setTimeout(function() {
+								$(errorList[0].element).focus();
+							}, 100);
+						});
 					}
-					if (inputValue === '') {
-						swal.showInputError("비밀번호가 입력되지 않았습니다.");
-						return false;
+				}
+			});
+
+			$.validator.addMethod("kor", function(value, element) {
+				return this.optional(element) || /^[ㄱ-ㅎ가-힣]*$/i.test(value);
+			});
+
+			$.validator.addMethod("phone", function(value, element) {
+				return this.optional(element)
+						|| /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/i.test(value)
+						|| /^\d{2,3}\d{3,4}\d{4}$/i.test(value);
+			});
+
+			$("#myform").validate({
+				//입력검사 규칙
+				rules : {
+					user_id : {
+						required : true,
+						alphanumeric : true
+					},
+					user_pw : {
+						required : true,
+						minlength : 4,
+						maxlength : 20
+					},
+					user_pw_re : {
+						required : true,
+						equalTo : "#user_pw"
+					},
+					name : {
+						required : true,
+						kor : true
+					},
+					email : {
+						required : true,
+						email : true
+					},
+					tel : {
+						required : true,
+						phone : true
+					},
+					birthdate : {
+						required : true,
+						date : true
+					},
+					gender : "required",
+					profile_img : {
+						extension : "jpg|gif|png"
 					}
-					setTimeout("location.href='mhj_info_update.html'", 3000);
-				});
+				},
+				//규칙이 맞지 않을 경우 표시 할 메시지
+				messages : {
+					user_id : {
+						required : "아이디를 입력하세요.",
+						alphanumeric : "아이디는 영문과 숫자만 입력가능합니다."
+					},
+					user_pw : {
+						required : "비밀번호를 입력하세요.",
+						minlength : "비밀번호는 4글자 이상 입력하셔야 합니다.",
+						maxlength : "비밀번호는 20자를 넘을 수 없습니다."
+					},
+					user_pw_re : {
+						required : "비밀번호 확인값을 입력하세요.",
+						equalTo : "비밀번호 확인이 잘못되었습니다."
+					},
+					name : {
+						required : "이름을 입력하세요.",
+						kor : "한글만 입력하세요."
+					},
+					email : {
+						required : "이메일을 입력하세요.",
+						email : "이메일 형식이 잘못되었습니다."
+					},
+					tel : {
+						required : "전화번호를 입력하세요.",
+						phone : "전화번호 형식이 잘못되었습니다."
+					},
+					birthdate : {
+						required : "생년월일을 입력하세요.",
+						date : "생년월일 형식이 잘못되었습니다."
+					},
+					gender : "성별을 선택하세요.",
+					profile_img : {
+						extension : "프로필 사진은 jpg, png, gif 형식만 업로드 가능합니다."
+					}
+				}
 			});
 		});
 		$(document.body).on(

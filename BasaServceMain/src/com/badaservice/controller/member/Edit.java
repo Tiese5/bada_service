@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.badaservice.helper.BaseController;
 import com.badaservice.helper.WebHelper;
 
-@WebServlet("/member/out.do")
-public class Out extends BaseController {
-	private static final long serialVersionUID = 4319210670585306137L;
+@WebServlet("/member/edit.do")
+public class Edit extends BaseController {
+	private static final long serialVersionUID = 1101165570506831478L;
 	
 	/** (1) 사용하고자 하는 Helper 객체 선언 */
 	// --> import study.jsp.helper.WebHelper;
@@ -22,17 +22,17 @@ public class Out extends BaseController {
 	public String doRun(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
-		/** (2) 사용하고자 하는 Helper 객체 생성 */
+		/** (2) 사용하고자 하는 Helper+Service 객체 생성 */
 		web = WebHelper.getInstance(request, response);
 
 		/** (3) 로그인 여부 검사 */
-		// 로그인 중이 아니라면 탈퇴할 수 없다.
+		// 로그인 중이 아니라면 이 페이지를 동작시켜서는 안된다.
 		if (web.getSession("loginInfo") == null) {
 			web.redirect(web.getRootPath() + "/index.do", "로그인 후에 이용 가능합니다.");
 			return null;
 		}
 		
-		/** (4) 사용할 View의 이름 리턴 */
-		return "member/out";
+		/** (3) 사용할 View의 이름 리턴 */
+		return "member/edit";
 	}
 }

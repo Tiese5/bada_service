@@ -28,4 +28,6 @@ public interface MemberService {
 	
 	public void updateMemberOut(Member member) throws Exception;
 	
+
+	
 }

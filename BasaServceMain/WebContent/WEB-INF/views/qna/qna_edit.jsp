@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <head>
 <title>BaDa</title>
@@ -73,123 +74,66 @@ table {
 			<!-- 메인 컨텐츠 영역 시작 -->
 			<div class="col-sm-9 col-md-10 main-content">
 				<div class="page-header">
-					<h1 class="nametext1 ">1:1 문의(수정)</h1>
+					<h1 class="nametext1 ">1:1 문의</h1>
 					<p class="test col-sm-offset-10">*은 필수 입력 입니다</p>
 				</div>
-				<form class="form-horizontal">
-					<!--제목라인-->
+				<!--제목라인-->
+				<form class="form-horizontal" method="post"
+					action="${pageContext.request.contextPath }/qna/qna_edit_ok.do">
+					<!-- 게시판 수정에 대한 상태유지 -->
+					<input type="hidden" name="qna_id" value="${readQna.id}" />
+
 					<div class="form-group nametext">
-						<label for="bookname" class="col-md-2">제목* </label>
+						<label for="title" class="col-md-offset-2 col-md-2">제목* </label>
 						<div class="col-md-8">
-							<input type="text" name="bookname" id="bookname"
-								class="form-control" placeholder="제목을 입력해주세요">
+							<input type="text" name="title" id="title" class="form-control"
+								value="${readQna.title}">
 						</div>
 					</div>
 					<!--제목끝-->
 					<!--문의종류-->
 					<div class="none">
 						<div class="form-group padding">
-							<label for="select" class="col-md-2">문의종류*</label>
+							<label for="category" class="col-md-offset-2 col-md-2">문의종류*</label>
 							<div class="col-md-8">
-								<select class="form-control">
-									<option>선택해주세요</option>
-									<option>판매관련</option>
-									<option>배송</option>
-									<option>환불</option>
-									<option>기타</option>
+								<select class="form-control" name="category" id="category">
+									<option value="">선택해주세요</option>
+									<option value="1">판매관련</option>
+									<option value="2">배송</option>
+									<option value="3">환불</option>
+									<option value="4">기타</option>
 								</select>
 							</div>
 						</div>
 					</div>
-					<!--문의수정 긑-->
-					<!--수정내용-->
+					<!--문의중류 긑-->
+					<!--문의내용-->
 					<div class="form-group none">
-						<label for="text" class=" col-md-2">문의내용*</label>
+						<label for="qContent" class="col-md-offset-2 col-md-2">문의내용*</label>
 						<div class="col-md-8">
-							<textarea class="form-control" rows="3" placeholder="내용을 입력해 주세요"></textarea>
+							<textarea class="form-control" rows="3" name="qContent"
+								id="qContent">${readQna.qContent}</textarea>
+
 							<div class="btnpadding">
-								<button type="button" id="com1" class="btn btn-info">수정완료
-								</button>
-								<button type="button" id="com2" class="btn btn-primary">글목록
-								</button>
+								<button type="submit" class="btn btn-primary">수정하기</button>
+								<button type="button" class="btn btn-danger"
+									onclick="history.back();">수정취소</button>
 							</div>
 						</div>
 					</div>
 				</form>
+				<!--문의내용 끝-->
 
-				<!--수정내용 끝-->
-				<!-- 메인 컨텐츠 영역 끝 -->
-				<!-- Grid Row 끝 -->
-				<!-- Footer 영역 시작 -->
+
 			</div>
 		</div>
+
+
+		<!--수정내용 끝-->
+		<!-- 메인 컨텐츠 영역 끝 -->
+		<!-- Grid Row 끝 -->
+		<!-- Footer 영역 시작 -->
 		<%@include file="/WEB-INF/inc/footer.jsp"%>
 	</div>
 </body>
-<!--sweetalert플러그인-->
-	<script src="${pageContext.request.contextPath }/plugins/sweetalert/sweetalert.min.js"></script>
-	<link rel="stylesheet" href="${pageContext.request.contextPath }/plugins/sweetalert/sweetalert.css" >
-	<script type="text/javascript">
-		$(function() {
-			$("#com1").click(function() {
-				swal({
-					title : "수정하시겠습니까?",
-					text : "",
-					showCancelButton : true,
-					confirmButtonText : "예",
-					confirmButtonClass : "btn-info",
-					cancelButtonClass : "btn-danger",
-					cancelButtonText : "아니요",
-					closeOnConfirm : false,
-					closeOnCancel : false
-				}, function(isConfirm) {
-					if (isConfirm) {
-						swal({
-							title : "수정완료",
-							confirmButtonClass : "btn-info",
-							type : "info"
-						})
-					} else {
-						swal({
-							title : "수정취소",
-							text : "",
-							type : "error",
-							confirmButtonText : "확인",
-							confirmButtonClass : "btn-info"
-						});
-					}
-				});
-
-			});
-			$("#com2").click(function() {
-				swal({
-					title : "",
-					text : "수정을 취소하고 목록으로 돌아 가시겠습니까?",
-					showCancelButton : true,
-					confirmButtonText : "예",
-					confirmButtonClass : "btn-info",
-					cancelButtonClass : "btn-danger",
-					cancelButtonText : "아니요",
-					closeOnConfirm : false,
-					closeOnCancel : false
-				}, function(isConfirm) {
-					if (isConfirm) {
-						swal({
-							title : "수정취소",
-							confirmButtonClass : "btn-info",
-							type : "info"
-						})
-					} else {
-						swal({
-							title : "머무르기",
-							text : "",
-							type : "error",
-							confirmButtonText : "확인",
-							confirmButtonClass : "btn-info"
-						});
-					}
-				});
-			});
-		});
-	</script>
 </html>

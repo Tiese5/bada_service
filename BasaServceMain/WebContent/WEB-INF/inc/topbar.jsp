@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 로고, 상단 네비게이션 바 -->
 <nav class="navbar navbar-topbar navbar-fixed-top">
 	<div class="container">
@@ -10,7 +11,7 @@
 				<span class="sr-only">메뉴 열기</span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">BaDa</a>
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/index.do">BaDa</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 
@@ -39,15 +40,27 @@
 					<!-- /input-group -->
 				</div>
 			</form>
-			<div class="btn-group navbar-right">
-				<button class="btn btn-warning navbar-btn">
-					<span class="glyphicon glyphicon-log-in"></span> 로그인
-				</button>
-				<button class="btn btn-info navbar-btn">
-					<span class="glyphicon glyphicon-user"></span> 회원가입
-				</button>
+			
+			<c:choose>
+				<c:when test="${loginInfo == null}">
+					<div class="btn-group navbar-right">
+						
+						<a class="btn btn-warning navbar-btn" href="${pageContext.request.contextPath}/member/login.do"><span class="glyphicon glyphicon-log-in"></span> 로그인</a> 
+						
+						
+						<a class="btn btn-info navbar-btn" href="${pageContext.request.contextPath}/member/join.do"><span class="glyphicon glyphicon-user"></span> 회원가입</a>
+						
+					</div>
+			
+			</c:when>
+			<c:otherwise>
+				<div class="btn-group navbar-right">
+				<a class="btn btn-warning navbar-btn" href="${pageContext.request.contextPath}/member/logout.do"><span class="glyphicon glyphicon-log-in"></span> 로그아웃</a>
+				<a class="btn btn-info navbar-btn" href="${pageContext.request.contextPath}/member/info.do"><span class="glyphicon glyphicon-log-in"></span> 마이페이지</a>
 			</div>
-
+			
+			</c:otherwise>
+			</c:choose>
 			<!-- 모바일에서 보여질 메뉴 시작 -->
 			<ul class="nav navbar-nav navbar-right navbar-menu">
 				<li class="active"><a href="#">학문</a></li>
