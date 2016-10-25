@@ -144,13 +144,13 @@
 	</update>
 	
 	<!-- 아이디 찾기 -->
-	<update id="selectMemberId" parameterType="com.badaservice.model.Member">
+	<select id="selectMemberId" parameterType="com.badaservice.model.Member" resultType="string">
 	SELECT
-		 user_id
+		 replace(right("user_id",3), "***")
 	FROM
 		 member
 	WHERE
 		email=#{email} 
-	</update>
+	</select>
 	
 </mapper>
