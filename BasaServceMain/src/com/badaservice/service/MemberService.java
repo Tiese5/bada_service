@@ -30,7 +30,7 @@ public interface MemberService {
 	
 	public void updateMemberPasswordByEmail(Member member) throws Exception;
 	
-	public void selectMemberId(Member member) throws Exception;
+	public String selectMemberId(Member member) throws Exception;
 	
 
 	

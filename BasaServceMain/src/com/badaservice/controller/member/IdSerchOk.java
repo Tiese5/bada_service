@@ -2,7 +2,6 @@ package com.badaservice.controller.member;
 
 import java.io.IOException;
 
-import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -78,9 +77,9 @@ public class IdSerchOk extends BaseController {
 		/** (6) 입력값을 JavaBeans에 저장하기 */
 		Member member = new Member();
 		member.setEmail(email);
-	
 		
-		/** (7) Service를 통한 비밀번호 갱신 */		
+		String user_id = null;
+		/** (7) 아이디 찾기 */		
 		try {
 			memberService.selectMemberId(member);
 		} catch (Exception e) {
@@ -93,7 +92,7 @@ public class IdSerchOk extends BaseController {
 		
 		/** (9) 결과 페이지로 이동 */
 		// 여기서는 이전 페이지로 이동함
-		web.redirect(web.getRootPath()+"/member/Relogin.do", "새로운 비밀번호가 메일로 발송되었습니다.");
+		web.redirect(web.getRootPath()+"/member/check_id.do?user_id=" + user_id, "아이디 확인하세요.");
 		return null;
 	}
 

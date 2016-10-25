@@ -92,6 +92,7 @@
                     <p>임시 비밀번호로 로그인<br/> 하신후 회원정보에서<br/> 정보를 수정해주세요.</p>
                 </div>
              <hr/>
+             
                     <button type="button" class="btn btn-info btn-lg btn-block">아이디 찾기</button>
             </div>
             

@@ -261,9 +261,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void selectMemberId(Member member) throws Exception {
+	public String selectMemberId(Member member) throws Exception {
 		// TODO Auto-generated method stub
-		Member result = null;
+		String result = null;
 		try{
 			result=sqlsession.selectOne("MemberMapper.selectMemberId",member);
 			if(result==null){
@@ -276,7 +276,7 @@ public class MemberServiceImpl implements MemberService {
 			// TODO: handle exception
 			throw new Exception("아이디 찾기에 실패하였습니다.");
 		}
-		
+		return result;
 	}
 
 }
