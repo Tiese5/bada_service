@@ -39,7 +39,10 @@
 		resultMap="qna">
 		SELECT id,title,category,DATE_FORMAT(reg_date, '%Y-%m-%d')
 		as reg_date
-		FROM QNA
+		FROM QNA 
+		WHERE writer_id=#{writerId}
+		ORDER BY id DESC
+		LIMIT #{limitStart}, #{listCount};
 	</select>
 
 	<!-- 게시물 하나에 대한 조회 -->
