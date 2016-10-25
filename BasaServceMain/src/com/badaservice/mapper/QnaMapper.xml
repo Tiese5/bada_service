@@ -16,16 +16,17 @@
 		<result property="writerId" column="writer_id" />
 		<result property="answererId" column="answerer_id" />
 		<result property="aContent" column="a_content" />
-		<result property="aName" column="aname" />
+		<result property="aName" column="qname" />
 		<result property="qName" column="qname" />
-		
+
 
 	</resultMap>
-	<!-- 게시물 등록 -->
+	<!-- 게시물 업데이트 -->
 	<insert id="insertQna" parameterType="com.badaservice.model.Qna"
 		useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO QNA(
-		title, q_content, reg_date, edit_date, 
+		title, q_content,
+		reg_date, edit_date,
 		category,writer_id
 		)VALUES(
 		#{title},#{qContent},now(),now(),#{category},
@@ -36,27 +37,47 @@
 	<!-- 게시물 목록을 조회한다 -->
 	<select id="selelctQnaList" parameterType="com.badaservice.model.Qna"
 		resultMap="qna">
-		SELECT id,title,category,DATE_FORMAT(reg_date, '%Y-%m-%d') as reg_date
-		FROM QNA
+		SELECT id,title,category,DATE_FORMAT(reg_date, '%Y-%m-%d')
+		as reg_date
+		FROM QNA 
+		WHERE writer_id=#{writerId}
+		ORDER BY id DESC
+		LIMIT #{limitStart}, #{listCount};
 	</select>
-	
+
 	<!-- 게시물 하나에 대한 조회 -->
-	<select id="selectQna" parameterType="com.badaservice.model.Qna" 
-	resultMap="qna">
-		SELECT 
-		member.name as qname, category,title,a_content,q_content,
-		DATE_FORMAT(edit_date, '%Y-%m-%d %H-%i:%s') as edit_date,
+	<select id="selectQna" parameterType="com.badaservice.model.Qna"
+		resultMap="qna">
+		SELECT
+		QNA.id,member.name as qname, category,title,a_content,q_content,
+		DATE_FORMAT(edit_date,
+		'%Y-%m-%d %H-%i:%s') as edit_date,
 		answerer_id,writer_id
 		FROM QNA
-		INNER JOIN member ON QNA.writer_id=member.id 
+		INNER
+		JOIN member ON QNA.writer_id=member.id
 		WHERE
 		QNA.id=#{id}
 	</select>
-	
-	 <!-- 전체 게시물 수를 조회한다. -->
-	 <select id="selectQnaCount"
-	 parameterType="com.badaservice.model.Qna"
-	 resultType="int">
-	 SELECT COUNT(id) FROM QNA	
-	 </select>
+
+	<!-- 전체 게시물 수를 조회한다. -->
+	<select id="selectQnaCount" parameterType="com.badaservice.model.Qna"
+		resultType="int">
+		SELECT COUNT(id) FROM QNA
+	</select>
+	<!-- 게시글 삭제하기 -->
+	<delete id="deleteQna" parameterType="com.badaservice.model.Qna">
+		DELETE FROM QNA WHERE id=#{id}
+	</delete>
+
+	<!-- 게시글 정보 수정하기 -->
+	<update id="updateQna" parameterType="com.badaservice.model.Qna">
+		UPDATE QNA SET
+		id=#{id},
+		category=#{category},
+		title=#{title},
+		q_content=#{qContent},
+		edit_date=now()
+		WHERE id=#{id} 
+	</update>
 </mapper>

@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 
 
@@ -30,23 +31,44 @@
 				<br />
 				<form class="form-horizontal" id="myform">
 					<div class="form-group">
-						<label for="send_people" class="col-md-6">작성자:${readQna.pname}</label>
+						<label for="send_people" class="col-md-6">제목:${readQna.title}</label>
 					</div>
+
 					<div class="form-group">
-						<label for="subject" class="col-md-6">제목:${readQNA.title }</label>
+					<label for="send_people" class="col-md-6">
+						<c:choose>
+							<c:when test="${readQna.category== '1' }">카테고리:판매관련</c:when>
+							<c:when test="${readQna.category== '2' }">카테고리:배송</c:when>
+							<c:when test="${readQna.category== '3' }">카테고리:환불</c:when>
+							<c:when test="${readQna.category== '4' }">카테고리:기타</c:when>
+						</c:choose>
+					</label>	
 					</div>
+
 					<div class="form-group">
-						<div class="pad col-md-6">
-							<p>
-								${readQNA.qContent}
-							</p>
-						</div>
+						<label for="qContent" class="col-md-6">문의
+							내용:${readQna.qContent }</label>
 					</div>
-					<hr/>
+					<hr />
+					<div class="form-group">
+					<div class="pad col-md-6">
+					<c:choose>
+						<c:when test="${readQna.aContent == null}">미답변</c:when>
+						<c:otherwise>
+							${readQna.aContent}
+						</c:otherwise>		
+					</c:choose>
+					</div>
+					</div>
+			
 					<div class="pull-right">
-						<a href="hyj_many_question(service).html" class="btn btn-info">목록</a>
-						<a href="hyj_many_question(service).html" class="btn btn-primary">수정</a>
-						<a href="hyj_many_question(service).html" class="btn btn-danger">삭제</a>
+						<a
+							href="${pageContext.request.contextPath}/qna/qna.do?qna_id=${readQna.id}"
+							class="btn btn-info">목록</a> <a
+							href="${pageContext.request.contextPath}/qna/qna_edit.do?qna_id=${readQna.id}"
+							class="btn btn-primary">수정</a> <a
+							href="${pageContext.request.contextPath}/qna/qna_delete.do?qna_id=${readQna.id}"
+							class="btn btn-danger">삭제</a>
 					</div>
 				</form>
 			</div>

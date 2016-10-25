@@ -38,10 +38,18 @@ public class QnA extends BaseController {
 		qnaService = new QnaServiceImpl(sqlSession, logger);
 		pageHelper = PageHelper.getInstance();
 		qnaComm = QNACommon.getInstance();
-		/* 카테고리값 받기 */
 		
+		if (web.getSession("loginInfo") == null) {
+			sqlSession.close();
+			web.redirect(web.getRootPath() +"/index.do","로그인 후에 이용 가능합니다");
+			return null;
+		}
+		
+		/* 카테고리값 받기 */
 		String category = web.getString("category");
 		request.setAttribute("category", category);
+		
+		
 		
 		
 		/* 조회할 정보에 대한 빈즈 생성 */
@@ -57,7 +65,7 @@ public class QnA extends BaseController {
 			totalCount = qnaService.selectQnaCount(qna);
 			// 현제페이지 번호 계산하기
 			// --->현제 페이지,전체 페이지 수, 한 페이지 목록 수, 그룹 갯수
-			pageHelper.pageProcess(page, totalCount, 10, 5);
+			pageHelper.pageProcess(page, totalCount, 5, 5);
 			// 페이지 현제 번호 계산 결과에서 Limit절에 필요한 값을 빈즈에 추가
 			qna.setLimitStart(pageHelper.getLimitStart());
 			qna.setListCount(pageHelper.getListCount());
@@ -71,6 +79,7 @@ public class QnA extends BaseController {
 		} 
 		/**조회 결과를 뷰에 전달*/
 		request.setAttribute("qnaList", qnaList);
+		request.setAttribute("totalCount", totalCount);
 		//페이지 번호 계산 결과를 뷰에 전달
 		request.setAttribute("pageHelper", pageHelper);
 		return "/qna/qna";
