@@ -28,6 +28,10 @@ public interface MemberService {
 	
 	public void updateMemberOut(Member member) throws Exception;
 	
+	public void updateMemberPasswordByEmail(Member member) throws Exception;
+	
+	public void selectMemberId(Member member) throws Exception;
+	
 
 	
 }
