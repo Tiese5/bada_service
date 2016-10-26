@@ -103,6 +103,40 @@ public class MessageServiceImpl implements MessageService {
 			sqlsession.commit();
 		}
 	}
+
+
+	@Override
+	public int selectMessageCount(messenger messenger) throws Exception {
+		int result = 0;
+		
+		try {
+			// 게시물 수가 0건인 경우도 있으므로
+			// 결과값이 0인 경우에 대한 에외를 발생시키지 않는다.
+			result = sqlsession.selectOne("MessageMapper.selectMessageCount", messenger);
+		} catch (Exception e) {
+			logger.error(e.getLocalizedMessage());
+			throw new Exception("게시물 수 조회에 실패했습니다");
+		}
+		
+		return result;
+	}
+
+
+	@Override
+	public int selectMessageSendCount(messenger messenger) throws Exception {
+		int result = 0;
+		
+		try {
+			// 게시물 수가 0건인 경우도 있으므로
+			// 결과값이 0인 경우에 대한 에외를 발생시키지 않는다.
+			result = sqlsession.selectOne("MessageMapper.selectMessageSendCount", messenger);
+		} catch (Exception e) {
+			logger.error(e.getLocalizedMessage());
+			throw new Exception("게시물 수 조회에 실패했습니다");
+		}
+		
+		return result;
+	}
 }
 
 

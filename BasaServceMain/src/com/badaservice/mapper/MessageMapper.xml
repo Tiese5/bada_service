@@ -17,6 +17,7 @@
 		select id, content, reg_date, sender_id, receiver_id, sender_name, receiver_name
 		from messenger
 		where receiver_id=#{receiverId}
+		LIMIT #{limitStart}, #{listCount};
 	</select>
 	
 	<!-- 보낸 쪽지함을 조회한다. -->
@@ -25,6 +26,7 @@
 		select id, content, reg_date, sender_id, receiver_id, receiver_name, sender_name
 		from messenger
 		where sender_id=#{senderId}
+		LIMIT #{limitStart}, #{listCount};
 	</select>
 	
 	<!-- 게시물 하나에 대한 정보를 조회한다. -->
@@ -42,6 +44,20 @@
 		INSERT INTO messenger (content, reg_date, sender_id, receiver_id, sender_name, receiver_name) values (
 		#{content}, now(), #{senderId}, #{receiverId}, #{senderName}, #{receiverName})
 	</insert>
+	
+	<!-- 받은 쪽지함 전체 게시물 수를 조회한다. -->
+	<select id="selectMessageCount" parameterType="com.badaservice.model.messenger"
+		resultType="int">
+		SELECT COUNT(id) FROM messenger
+		WHERE receiver_id=#{receiverId}
+	</select>
+	
+	<!-- 보낸 쪽지함 전체 게시물 수를 조회한다. -->
+	<select id="selectMessageSendCount" parameterType="com.badaservice.model.messenger"
+		resultType="int">
+		SELECT COUNT(id) FROM messenger
+		WHERE sender_id=#{senderId}
+	</select>
 	
 	
 </mapper>
