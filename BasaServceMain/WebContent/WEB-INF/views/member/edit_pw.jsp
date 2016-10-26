@@ -215,7 +215,7 @@
 					<div class="form-group">
 						<label for="user_pw" class="col-md-2 col-md-2">새로운 비밀번호*</label>
 						<div class="col-md-8">
-							<input type="password" name="new_user_pw" id="user_pw"
+							<input type="password" name="new_user_pw" id="new_user_pw"
 								class="form-control" value="">
 						</div>
 					</div>
@@ -223,7 +223,7 @@
 					<div class="form-group">
 						<label for="user_pw_re" class="col-md-2 col-md-2">비밀번호 확인*</label>
 						<div class="col-md-8">
-							<input type="password" name="new_user_pw_re" id="user_pw_re"
+							<input type="password" name="new_user_pw_re" id="new_user_pw_re"
 								class="form-control" value="">
 						</div>
 					</div>

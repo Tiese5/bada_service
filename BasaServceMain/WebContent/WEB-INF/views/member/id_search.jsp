@@ -76,25 +76,29 @@
         <div class="container">
             <!--로고 태그 시작-->
             <span class="logo">
-                <a href="#"><img src="logo.png"><h6>로고</h6></a>
+                <a href="${PageContext.request.ContextPath}/index.do"><img src="${PageContext.request.ContextPath}/assets/img/logo.png"><h6>로고</h6></a>
                 <hr/>
             </span>
             <!--로고 태그 끝-->
             <!--이메일 주소 입력 타이틀-->
-            <h3>이메일 주소</h3>
+            
             <!--이메일 입력란-->
-            <div>
-                <input type="email" class="textin form-control" placeholder="이메일 주소를 입력해주세요">
-            </div>
+            <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/member/id_ok.do">
+          	 	<h3 style="text-center">아이디 찾기</h3>
+          	 	<div class="form-group">
+					<label for="user_id" class="col-md-3 col-md-3">이메일</label>
+					<div class="col-md-8">
+					<input type="email" class="textin form-control" placeholder="이메일 주소를 입력해주세요" name="email">
+						</div>
+					</div>
+					
                 <div class="textcon">
-                    <p>입력하신 이메일주소로 임시 <br/>비밀번호를 발송해 드립니다.</p>
-                    </br>
-                    <p>임시 비밀번호로 로그인<br/> 하신후 회원정보에서<br/> 정보를 수정해주세요.</p>
-                </div>
+                    <p>입력하신 이메일주소로 <br/>아이디를 발송해 드립니다.</p>
+                   </div>
              <hr/>
              
-                    <button type="button" class="btn btn-info btn-lg btn-block">아이디 찾기</button>
-            </div>
+                    <button type="submit" class="btn btn-info btn-lg btn-block" >아이디 찾기</button>
+            </form>
             
         </div>
     </body>

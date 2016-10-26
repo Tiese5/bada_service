@@ -207,7 +207,7 @@ public class EditOk extends BaseController {
 		member.setAddr1(addr1);
 		member.setAddr2(addr2);
 		// 변경할 신규 비밀번호
-		member.setNewUserPw(newUserPw);
+		member.setNew_user_pw(newUserPw);
 		
 	
 		/** (9) Service를 통한 데이터베이스 저장 처리 */

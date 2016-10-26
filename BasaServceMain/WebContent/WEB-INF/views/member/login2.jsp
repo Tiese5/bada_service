@@ -62,16 +62,16 @@
             <div class="logo">
             <a href="#"><img src="${pageContext.request.contextPath}/assets/img/logo.png"><h1>로고</h1></a>
             </div>
-            <!--로고 태그 끝--> 
+            <!--로고 태그 끝-->
             <!--로그인폼 시작-->
-            <form class="control form-horizontal" action="${pageContext.request.contextPath}/member/login_ok.do">
+            <form class="control form-horizontal" action="${pageContext.request.contextPath}/member/Relogin_ok.do">
             <!--아이디 입력-->
                 <div class="form-group">
                     <label for="inputEmail3" class=" col-sm-2 control-label ">
                    </label>
                     <div class="col-sm-10">
                     <p class="hading">Id</p>
-                        <input type="text" name="user_id" class="form-control" id="id" placeholder="id">
+                        <input type="text" name="user_id" class="form-control" id="email" placeholder="Email">
                     </div>
                     
                 </div>
