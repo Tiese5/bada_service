@@ -46,6 +46,7 @@
                 <div class="page-header">
                     <h1>받은 쪽지함</h1>
                 </div>
+              
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead style="background-color : #eee;">
@@ -60,14 +61,12 @@
 		    		<c:when test="${fn:length(messengerList) > 0}">
 		    			<c:forEach var="messenger" items="${messengerList}">
 		    				<tr>
-					            <td class="text-center">${messenger.senderName}</td>
-					            <%-- <td>
-					            	<c:url var="readUrl" value="/bbs/document_read.do">
-					            		<c:param name="category" value="${document.category}" />
-					            		<c:param name="document_id" value="${document.id}" />
+					            <td class="text-center">
+					            	<c:url var="readUrl" value="/message_view.do">
+					            		<c:param name="message_id" value="${messenger.id}" />				     
 					            	</c:url>
-					            	<a href="${readUrl}">${document.subject}</a>
-					            </td> --%>
+					            	<a href="${readUrl}">${messenger.senderName}</a>
+					            </td>
 					            <td class="small text-center">${messenger.content}</td>
 					            <td class="text-center">${messenger.regDate}</td>
 				        	</tr>

@@ -43,19 +43,19 @@
 					<h1>쪽지 보내기</h1>
 				</div>
 				<br />
-				<form class="form-horizontal" id="myform">
+				<form class="form-horizontal" id="myform" method="post" enctype="multipart/form-data" action="${pageContext.request.contextPath}/message/message_send_ok.do">
 					<div class="form-group">
-						<label for="n_title" class="from_people col-md-2">받는이:</label>
+						<label for="receiverName" class="from_people col-md-2">받는이:</label>
 						<div class="col-md-8">
-							<input type="text" name="n_title" id="n_title"
+							<input type="text" name="receiverName" id="receivername"
 								class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="n_content" class="message_content col-md-2">쪽지
+						<label for="content" class="message_content col-md-2">쪽지
 							내용:</label>
 						<div class="col-md-8">
-							<textarea name="n_content" id="n_content" rows="10"
+							<textarea name="content" id="content" rows="10"
 								class="form-control ckeditor"></textarea>
 						</div>
 					</div>
