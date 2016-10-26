@@ -70,7 +70,7 @@
                     <label for="inputEmail3" class=" col-sm-2 control-label ">
                    </label>
                     <div class="col-sm-10">
-                    <p class="hading">Email</p>
+                    <p class="hading">Id</p>
                         <input type="text" name="user_id" class="form-control" id="email" placeholder="Email">
                     </div>
                     
