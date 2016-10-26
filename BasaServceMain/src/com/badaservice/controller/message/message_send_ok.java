@@ -19,16 +19,19 @@ import com.badaservice.model.messenger;
 import com.badaservice.service.MessageService;
 import com.badaservice.service.impl.MessageServiceImpl;
 
+
+
 /**
- * Servlet implementation class message
+ * Servlet implementation class message_send_ok
  */
-@WebServlet("/message_view.do")
-public class MessageView extends BaseController {
-	private static final long serialVersionUID = -3165659462670755911L;
+@WebServlet("/message_send_ok.do")
+public class message_send_ok extends BaseController {
+	private static final long serialVersionUID = 391656074030539863L;
 	Logger logger;
 	SqlSession sqlSession;
 	MessageService messageService;
 	WebHelper web;
+	
 	@Override
 	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		logger = LogManager.getFormatterLogger(request.getRequestURI());
@@ -36,26 +39,38 @@ public class MessageView extends BaseController {
 		web=WebHelper.getInstance(request, response);
 		messageService = new MessageServiceImpl(logger, sqlSession);
 		
-		/** (5) 글 번호 파라미터 받기 */
-		int MessageId = web.getInt("message_id");
-		if (MessageId == 0) {
-			sqlSession.close();
-			web.redirect(null, "글 번호가 지정되지 않았습니다.");
-			return null;
-		}
 		
-		int receiverId = 0;
+		/** (5) 글 번호 파라미터 받기 */
+		int ReceiverId = web.getInt("sender_id");
+		String ReceiverName = web.getString("sender_name");
+		
+		int receiverId = ReceiverId;
+		String receiverName = ReceiverName;
+		String content = web.getString("content");
+		String senderName = null;
+		int senderId = 0;
+		
+		messenger messenger = new messenger();
+		
+		
 		Member loginInfo = (Member) web.getSession("loginInfo");
 		if (loginInfo != null) {
-			receiverId = loginInfo.getId();
+			senderName = loginInfo.getName();
+			senderId = loginInfo.getId();
 		}
-		messenger messenger = new messenger();
-		messenger.setId(MessageId);
-		messenger.setReceiverId(receiverId);
 		
-		messenger readMessage = new messenger();
+		// 로그로 기록
+		
+		// 빈즈로 묶기
+		messenger.setReceiverId(receiverId);
+		messenger.setReceiverName(receiverName);
+		messenger.setSenderName(senderName);
+		messenger.setSenderId(senderId);
+		messenger.setContent(content);
+		
+		
 		try {
-			readMessage = messageService.selectMessage(messenger);
+			messageService.insertMessage(messenger);
 		} catch (Exception e) {
 			web.redirect(null, e.getLocalizedMessage());
 			return null;
@@ -63,10 +78,13 @@ public class MessageView extends BaseController {
 			sqlSession.close();
 		}
 		
-		request.setAttribute("readMessage", readMessage);
+		String url = "%s/message.do";
+		url = String.format(url, web.getRootPath());
+		web.redirect(url, null);
 		
-		return "/message/message_view";
+		return null;
 	}
-
 	
+	
+
 }

@@ -54,31 +54,31 @@
 					<h1>쪽지 확인</h1>
 				</div>
 				<br />
-				<form class="form-horizontal" id="myform">
+				<form class="form-horizontal" id="myform" method="post" action="${pageContext.request.contextPath }/message_send_ok.do">
+					<input type="hidden" name="sender_name" value="${readMessage.senderName}" />
+					<input type="hidden" name="sender_id" value="${readMessage.senderId}" />
 					<div class="form-group">
 						<label for="send_people" class="col-md-1">보낸이:</label>
 						<div class="col-md-11">
-							<span> 아아 </span>
+							<span> ${readMessage.senderName} </span>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="subject" class="col-md-1">제목:</label>
+						<label for="subject" class="col-md-1">내용:</label>
 						<div class="col-md-11">
-							<span> 아아 </span>
+							<span> ${readMessage.content} </span>
 						</div>
 					</div>
 					<div class="page-header"></div>
 					<div class="form-group">
-						<div class="col-md-12">
-							<p>중고책을 사고 싶어요 이메일은 tiese@naver.com입니다. 연락주세요.</p>
-						</div>
-
 						<div class="pad col-md-12">
 							<br />
-							<textarea name="response" id="response" cols="80" rows="5"></textarea>
+							<h4><strong>답변내용</strong></h4>
+							<textarea name="content" id="content" rows="10"
+								class="form-control ckeditor"></textarea>
 						</div>
 						<div class="mar col-md-8">
-							<button class="btn btn-primary">답장</button>
+							<button type="submit" class="btn btn-primary pull-right">답변완료</button>
 							<button class="btn btn-danger">취소</button>
 						</div>
 
@@ -104,7 +104,7 @@
 	<script
 		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="plugins/sweetalert/sweetalert.min.js"></script>
-
+	<script src="http://cdn.ckeditor.com/4.5.11/standard/ckeditor.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			$("#message_send").click(function() {

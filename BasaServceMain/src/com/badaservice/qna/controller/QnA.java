@@ -16,6 +16,7 @@ import com.badaservice.dao.MyBatisConnectionFactory;
 import com.badaservice.helper.BaseController;
 import com.badaservice.helper.PageHelper;
 import com.badaservice.helper.WebHelper;
+import com.badaservice.model.Member;
 import com.badaservice.model.Qna;
 import com.badaservice.service.QnaService;
 import com.badaservice.service.impl.QnaServiceImpl;
@@ -39,7 +40,8 @@ public class QnA extends BaseController {
 		pageHelper = PageHelper.getInstance();
 		qnaComm = QNACommon.getInstance();
 		
-		if (web.getSession("loginInfo") == null) {
+		Member loginInfo = (Member) web.getSession("loginInfo");
+		if (loginInfo == null) {
 			sqlSession.close();
 			web.redirect(web.getRootPath() +"/index.do","로그인 후에 이용 가능합니다");
 			return null;
@@ -49,12 +51,11 @@ public class QnA extends BaseController {
 		String category = web.getString("category");
 		request.setAttribute("category", category);
 		
-		
-		
-		
 		/* 조회할 정보에 대한 빈즈 생성 */
+		int writerId = loginInfo.getId();
+		
 		Qna qna = new Qna();
-
+		qna.setWriterId(writerId);
 		int page = web.getInt("page", 1);
 
 		/** 게시물 목록 조회 */

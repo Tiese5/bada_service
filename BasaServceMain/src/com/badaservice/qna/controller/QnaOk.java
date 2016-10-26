@@ -17,6 +17,7 @@ import com.badaservice.helper.PageHelper;
 import com.badaservice.helper.RegexHelper;
 import com.badaservice.helper.UploadHelper;
 import com.badaservice.helper.WebHelper;
+import com.badaservice.model.Member;
 import com.badaservice.model.Qna;
 import com.badaservice.service.QnaService;
 import com.badaservice.service.impl.QnaServiceImpl;
@@ -43,6 +44,8 @@ public class QnaOk extends BaseController {
 		pageHelper = PageHelper.getInstance();
 		qna = QNACommon.getInstance();
 		regex = RegexHelper.getInstance();
+		
+		Member loginInfo = (Member) web.getSession("loginInfo");
 		/*로그인후 이용해주세요*/
 		/*if (web.getSession("loginInfo") == null) {
 			sqlSession.close();
@@ -54,6 +57,8 @@ public class QnaOk extends BaseController {
 		String title = web.getString("title");
 		String category = web.getString("category");
 		String qContent = web.getString("qContent");
+		int writerId = loginInfo.getId();
+		
 		
 		/*로그로 검사*/
 		logger.debug("title="+title);
@@ -82,6 +87,7 @@ public class QnaOk extends BaseController {
 		qna.setqContent(qContent);
 		qna.setTitle(title);
 		qna.setCategory(category);
+		qna.setWriterId(writerId);
 		logger.debug("QNA="+qna.toString());
 		
 		try {

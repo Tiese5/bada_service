@@ -16,13 +16,20 @@
         }
 
         .bor {
-
-            border: none;
+            margin-left: 230px;
+            
         }
 
         .mar {
-            margin: 20px 0px 100px 0px;
+            margin-top: 20px;
+            margin-left: 230px;
 
+        }
+        
+        .small {
+        	white-space: nowrap;
+        	overflow: hidden;
+        	text-overflow: ellipsis;
         }
     </style>
 
@@ -33,89 +40,51 @@
     <div class="container">
         <!-- Grid Row 시작 -->
         <div class="row">
-<%@ include file="/WEB-INF/inc/sidebar.jsp" %>
+<%@ include file="/WEB-INF/inc/my_sidebar.jsp" %>
             <!-- 메인 컨텐츠 영역 시작 -->
             <div class="col-sm-9 col-md-10 main-content">
                 <div class="page-header">
                     <h1>받은 쪽지함</h1>
                 </div>
+              
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead style="background-color : #eee;">
                             <tr>
-                                
                                 <th class="text-center" width="20%">보낸이</th>
-                                <th class="text-center" width="50%">제목</th>
+                                <th class="text-center" width="50%">내용</th>
                                 <th class="text-center" width="30%">받은날짜</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-
-                                
-                                <td class="text-center">유아인</td>
-                                <td class="text-center"><a href="#">책을 사고싶습니다만?</a></td>
-                                <td class="text-center"> 2016.8.20 00:00:00</td>
-                            </tr>
-                            <tr>
-                                 
-                                <td class="text-center">유아인</td>
-                                <td class="text-center"><a href="#">책을 사고싶습니다만?</a></td>
-                                <td class="text-center">2016.8.20 00:00:00</td>
-                            </tr>
-                            <tr>
-                                 
-                                <td class="text-center">유아인</td>
-                                <td class="text-center"><a href="#">책을 사고싶습니다만?</a></td>
-                                <td class="text-center">2016.8.20 00:00:00</td>
-                            </tr>
-                            <tr>
-                                 
-                                <td class="text-center">유아인</td>
-                                <td class="text-center"><a href="#">책을 사고싶습니다만?</a></td>
-                                <td class="text-center">2016.8.20 00:00:00</td>
-                            </tr>
-                            <tr>
-                                 
-                                <td class="text-center">유아인</td>
-                                <td class="text-center"><a href="#">책을 사고싶습니다만?</a></td>
-                                <td class="text-center">2016.8.20 00:00:00</td>
-                            </tr>
-                             <tr>
-                                 
-                                <td class="text-center">유아인</td>
-                                <td class="text-center"><a href="#">책을 사고싶습니다만?</a></td>
-                                <td class="text-center"> 2016.8.20 00:00:00</td>
-                            </tr>
-                            <tr>
-                                 
-                                <td class="text-center">유아인</td>
-                                <td class="text-center"><a href="#">책을 사고싶습니다만?</a></td>
-                                <td class="text-center">2016.8.20 00:00:00</td>
-                            </tr>
-                            <tr>
-                                 
-                                <td class="text-center">유아인</td>
-                                <td class="text-center"><a href="#">책을 사고싶습니다만?</a></td>
-                                <td class="text-center">2016.8.20 00:00:00</td>
-                            </tr>
-                            <tr>
-                                 
-                                <td class="text-center">유아인</td>
-                                <td class="text-center"><a href="#">책을 사고싶습니다만?</a></td>
-                                <td class="text-center">2016.8.20 00:00:00</td>
-                            </tr>
-                            <tr>
-                                 
-                                <td class="text-center">유아인</td>
-                                <td class="text-center"><a href="#">책을 사고싶습니다만?</a></td>
-                                <td class="text-center">2016.8.20 00:00:00</td>
-                            </tr>
+                           <c:choose>
+		    		<c:when test="${fn:length(messengerList) > 0}">
+		    			<c:forEach var="messenger" items="${messengerList}">
+		    				<tr>
+					            <td class="text-center">
+					            	<c:url var="readUrl" value="/message_view.do">
+					            		<c:param name="message_id" value="${messenger.id}" />				     
+					            	</c:url>
+					            	<a href="${readUrl}">${messenger.senderName}</a>
+					            </td>
+					            <td class="small text-center">${messenger.content}</td>
+					            <td class="text-center">${messenger.regDate}</td>
+				        	</tr>
+		    			</c:forEach>
+		    		</c:when>
+		    		<c:otherwise>
+		    			<tr>
+				            <td colspan="3" class="text-center" style="line-height: 100px;">
+				                조회된 글이 없습니다.</td>
+				        </tr>
+		    		</c:otherwise>
+		    	</c:choose>
                         </tbody>
                            <tfoot>
+                           	
                             <tr>
-                                <td colspan="3" class="bor text-center">
-                                    <nav aria-label="Page navigation">
+                                <td colspan="2" class="text-center" style="border-right: none;">
+                                    <nav aria-label="Page navigation" class="bor">
                                       <ul class="pagination">
                                         <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> 이전</a></li>
                                         <li class="active"><a href="#">1</a></li>

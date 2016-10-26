@@ -4,6 +4,7 @@
             <div class="col-sm-3 col-md-2 side-menu">
                 <h5 class="list-title text-info"> - 카테고리</h5>
                 <ul class="nav nav-side-menu list-title">
+
                     <li><a href="${pageContext.request.contextPath }/member/info.do">내정보</a></li>
                     <li><a href="${pageContext.request.contextPath }/member/edit_ok.do">정보수정</a></li>
                     <li><a href="${pageContext.request.contextPath }/cart.do">장바구니</a></li>
@@ -12,6 +13,7 @@
                     <li><a href="${pageContext.request.contextPath }">쪽지 쓰기</a></li>
                     <li><a href="${pageContext.request.contextPath }/message.do">보낸 쪽지함</a></li>
                     <li><a href="${pageContext.request.contextPath }/message_get.do">받은 쪽지함</a></li>
+
                 </ul>
                 <ul class="nav nav-side-menu list-title">
                     <li><a href="${pageContext.request.contextPath }/sale.do">회원에게 판매</a></li>
