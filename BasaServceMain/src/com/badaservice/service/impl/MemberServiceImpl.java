@@ -279,4 +279,23 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	@Override
+	public void updateMemberPassword(Member member) throws Exception {
+		// TODO Auto-generated method stub
+		try{
+			int result=sqlsession.update("MemberMapper.updateMemberPassword",member);
+			if(result==0){
+				throw new NullPointerException();
+			}
+		}catch (NullPointerException e) {
+			// TODO: handle exception
+			throw new Exception("수정할 비밀번호 정보가 없습니다.");
+		}catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+			throw new Exception("비밀번호 수정에 실패했습니다.");
+		}
+		
+	}
+
 }

@@ -2,6 +2,7 @@ package com.badaservice.controller.member;
 
 import java.io.IOException;
 
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -61,7 +62,6 @@ public class IdSerchOk extends BaseController {
 		
 		/** (4) 파라미터 받기 */
 		// 입력된 메일 주소를 받는다.
-		
 		String email = web.getString("email");
 		
 		logger.debug("email=" + email);
@@ -71,17 +71,16 @@ public class IdSerchOk extends BaseController {
 			web.redirect(null, "이메일 주소를 입력하세요.");
 			return null;
 		}
-	
 		
 		
 		/** (6) 입력값을 JavaBeans에 저장하기 */
 		Member member = new Member();
 		member.setEmail(email);
 		
-		String user_id = null;
-		/** (7) 아이디 찾기 */		
+		String member_id = null;
+		/** (7) Service를 통한 비밀번호 갱신 */		
 		try {
-			memberService.selectMemberId(member);
+			member_id=memberService.selectMemberId(member);
 		} catch (Exception e) {
 			web.redirect(null, e.getLocalizedMessage());
 			return null;
@@ -89,11 +88,24 @@ public class IdSerchOk extends BaseController {
 			sqlSession.close();
 		}
 		
+		/** (8) 발급된 비밀번호를 메일로 발송하기 */
+		String sender = "webmaster@mysite.com";
+		String subject = "Bada 아이디 안내 입니다.";
+		String content = "회원님의 아이디는 <strong>" + member_id + "</strong>입니다.";
+		
+		try {
+			// 사용자가 입력한 메일주소를 수신자로 설정하여 메일 발송하기
+			mail.sendMail(sender, email, subject, content);
+		} catch (MessagingException e) {
+			web.redirect(null, "메일 발송에 실패했습니다. 관리자에게 문의 바랍니다.");
+			return null;
+		}
 		
 		/** (9) 결과 페이지로 이동 */
 		// 여기서는 이전 페이지로 이동함
-		web.redirect(web.getRootPath()+"/member/check_id.do?user_id=" + user_id, "아이디 확인하세요.");
+		web.redirect(web.getRootPath()+"/member/login.do", "새로운 비밀번호가 메일로 발송되었습니다.");
 		return null;
 	}
+	}
 
-}
+

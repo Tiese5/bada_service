@@ -290,6 +290,7 @@
 						<div class="col-md-offset-2 col-md-8">
 							<button type="submit" class="btn btn-primary">작성완료</button>
 							<button type="reset" class="btn btn-danger">다시작성</button>
+							<a href="${pageContext.request.contextPath}/member/edit_pw.do"><button type="button" class="btn btn-info" >비밀번호 수정</button></a>
 						</div>
 					</div>
 				</form>
