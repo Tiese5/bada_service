@@ -27,10 +27,21 @@
                         <label for="b_title" class="col-md-2">도서명*</label>
                         <div class="col-md-8"><input type="text" name="b_title" id="b_title" class="form-control"></div>
                     </div>
-                    <div class="form-group">
-                        <label for="p_price" class="col-md-2">정가*</label>
-                        <div class="col-md-8"><input type="text" name="p_price" id="p_price" class="form-control"></div>
-                    </div>
+                    <div class="form-group padding">
+							<label for="category" class="col-md-2">카테고리*</label>
+							<div class="col-md-8">
+								<select class="form-control" name="category" id="category">
+									<option value="">---카테고리---</option>
+									<option value="1">학문</option>
+									<option value="2">소설</option>
+									<option value="3">자기계발</option>
+									<option value="4">정기 간행물</option>
+									<option value="5">어린이 도서</option>
+								</select>
+							</div>
+						</div>
+                    
+                    
                     <div class="form-group">
                         <label for="s_price" class="col-md-2">판매가*</label>
                         <div class="col-md-4">

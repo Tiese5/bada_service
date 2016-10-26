@@ -5,15 +5,6 @@
                 <h5 class="list-title text-info"> - 카테고리</h5>
                 <ul class="nav nav-side-menu list-title">
 
-                    <li><a href="#">내정보</a></li>
-                    <li><a href="#">정보수정</a></li>
-                    <li><a href="#">장바구니</a></li>
-                    <li><a href="#">주문/배송 조회</a></li>
-                    <li><a href="#">구매내역</a></li>
-                    <li><a href="#">쪽지 쓰기</a></li>
-                    <li><a href="${pageContext.request.contextPath}/message.do">보낸 쪽지함</a></li>
-                    <li><a href="${pageContext.request.contextPath}/message_get.do">받은 쪽지함</a></li>
-
                     <li><a href="${pageContext.request.contextPath }/member/info.do">내정보</a></li>
                     <li><a href="${pageContext.request.contextPath }/member/edit_ok.do">정보수정</a></li>
                     <li><a href="${pageContext.request.contextPath }/cart.do">장바구니</a></li>
@@ -26,7 +17,6 @@
                 </ul>
                 <ul class="nav nav-side-menu list-title">
                     <li><a href="${pageContext.request.contextPath }/sale.do">회원에게 판매</a></li>
-                    <li><a href="${pageContext.request.contextPath }/suchpage.do">바다에 판매</a></li>
                     <li><a href="${pageContext.request.contextPath }/trade.do">판매내역</a></li>
                 </ul>
                 <ul class="nav nav-side-menu list-title">

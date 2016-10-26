@@ -1,23 +1,35 @@
 package com.badaservice.controller.shop;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.logging.log4j.Logger;
+
 import com.badaservice.helper.BaseController;
+import com.badaservice.helper.RegexHelper;
+import com.badaservice.helper.UploadHelper;
 import com.badaservice.helper.WebHelper;
+import com.badaservice.service.ShopService;
 
 /**
  * Servlet implementation class sale
  */
-@WebServlet("/sale.do")
-public class sale extends BaseController {
-	private static final long serialVersionUID = -407841913444091929L;
+@WebServlet("/sale_ok.do")
+public class saleOk extends BaseController {
+	private static final long serialVersionUID = 1387125215824808421L;
 	WebHelper web;
+	Logger logger;
+	SqlSession sqlSession;
+	UploadHelper upload;
+	RegexHelper regex;
 	ItemCategory itemcategory;
+	ShopService shopService;
+	Shop
 	@Override
 	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		web = WebHelper.getInstance(request, response);
@@ -34,8 +46,6 @@ public class sale extends BaseController {
 			web.redirect(null, e.getLocalizedMessage());
 			return null;
 		}
-		
-		
 		return "/shop/sale";
 	}
 
