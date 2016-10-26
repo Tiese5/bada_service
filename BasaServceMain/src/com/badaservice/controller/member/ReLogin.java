@@ -16,7 +16,7 @@ public class ReLogin extends BaseController {
 	@Override
 	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		return "member/login";
+		return "member/login2";
 	}
 
 }

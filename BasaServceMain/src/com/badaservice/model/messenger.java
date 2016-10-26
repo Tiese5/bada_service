@@ -9,7 +9,23 @@ public class messenger {
 	private String senderName;
 	private String receiverName;
 	
+	// 페이지 구현을 위한 멤버변수
+	private int limitStart;
+	private int listCount;
 	
+	
+	public int getLimitStart() {
+		return limitStart;
+	}
+	public void setLimitStart(int limitStart) {
+		this.limitStart = limitStart;
+	}
+	public int getListCount() {
+		return listCount;
+	}
+	public void setListCount(int listCount) {
+		this.listCount = listCount;
+	}
 	public String getReceiverName() {
 		return receiverName;
 	}
@@ -56,7 +72,8 @@ public class messenger {
 	@Override
 	public String toString() {
 		return "messenger [id=" + id + ", content=" + content + ", regDate=" + regDate + ", senderId=" + senderId
-				+ ", receiverId=" + receiverId + ", senderName=" + senderName + ", receiverName=" + receiverName + "]";
+				+ ", receiverId=" + receiverId + ", senderName=" + senderName + ", receiverName=" + receiverName
+				+ ", limitStart=" + limitStart + ", listCount=" + listCount + "]";
 	}
 	
 	

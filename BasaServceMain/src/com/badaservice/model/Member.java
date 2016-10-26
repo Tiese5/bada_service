@@ -16,16 +16,8 @@ public class Member {
 	private String join_edit;
 	private String position;
 	private String jo;
-	private String newUserPw;
-	private int limitStart;
-	private int listCount;
+	private String new_user_pw;
 
-	public String getNewUserPw() {
-		return newUserPw;
-	}
-	public void setNewUserPw(String newUserPw) {
-		this.newUserPw = newUserPw;
-	}
 	public int getId() {
 		return id;
 	}
@@ -116,28 +108,21 @@ public class Member {
 	public void setJo(String jo) {
 		this.jo = jo;
 	}
-	public int getLimitStart() {
-		return limitStart;
+	public String getNew_user_pw() {
+		return new_user_pw;
 	}
-	public void setLimitStart(int limitStart) {
-		this.limitStart = limitStart;
+	public void setNew_user_pw(String new_user_pw) {
+		this.new_user_pw = new_user_pw;
 	}
-	public int getListCount() {
-		return listCount;
-	}
-	public void setListCount(int listCount) {
-		this.listCount = listCount;
-	}
+	
 	@Override
 	public String toString() {
 		return "Member [id=" + id + ", user_id=" + user_id + ", user_pw=" + user_pw + ", name=" + name + ", email="
 				+ email + ", birthdate=" + birthdate + ", tel=" + tel + ", postcode=" + postcode + ", addr1=" + addr1
 				+ ", addr2=" + addr2 + ", profile_img=" + profile_img + ", join_date=" + join_date + ", join_edit="
-				+ join_edit + ", position=" + position + ", jo=" + jo + ", newUserPw=" + newUserPw + ", limitStart="
-				+ limitStart + ", listCount=" + listCount + "]";
+				+ join_edit + ", position=" + position + ", jo=" + jo + ", new_user_pw=" + new_user_pw
+				+ "]";
 	}
-
 	
-
 	
 }

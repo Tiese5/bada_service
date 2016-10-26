@@ -200,42 +200,45 @@
 					<h2>비밀번호 수정</h2>
 				</div>
 				
-				<div class="form-control">
+			
 				<form class="form-horizontal" id="myform" method="post"
 					action="${pageContext.request.contextPath}/member/edit_pw_ok.do">
+					
 					<div class="form-group">
-						<label for="user_pw" class="col-md-2 col-md-2">기존 비밀번호*</label>
+						<label for="user_pw" class="col-md-2 col-md-2">현재 비밀번호*</label>
 						<div class="col-md-8">
 							<input type="password" name="user_pw" id="user_pw"
-								class="form-control" value="${loginInfo.user_pw}">
+								class="form-control" value="">
 						</div>
 					</div>	
+					
 					<div class="form-group">
-						<label for="user_pw" class="col-md-2 col-md-2">비밀번호*</label>
+						<label for="user_pw" class="col-md-2 col-md-2">새로운 비밀번호*</label>
 						<div class="col-md-8">
-							<input type="password" name="user_pw" id="user_pw"
-								class="form-control" value="${loginInfo.user_pw}">
+							<input type="password" name="new_user_pw" id="new_user_pw"
+								class="form-control" value="">
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<label for="user_pw_re" class="col-md-2 col-md-2">비밀번호 확인*</label>
 						<div class="col-md-8">
-							<input type="password" name="user_pw_re" id="user_pw_re"
-								class="form-control" value="${loginInfo.user_pw}">
+							<input type="password" name="new_user_pw_re" id="new_user_pw_re"
+								class="form-control" value="">
 						</div>
 					</div>
 			
 							<button type="submit" class="btn btn-primary">변경하기</button>
-					</form>
-				</div>
-				</div>
+				</form>
+			</div>
+		</div>
 			<!-- 메인 컨텐츠 영역 끝 -->
 
 		</div>
 		<!-- Grid Row 끝 -->
 
 		<%@ include file="/WEB-INF/inc/footer.jsp"%>
-	</div>
+	
 
 
 	<script

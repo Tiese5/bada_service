@@ -122,6 +122,15 @@
 		WHERE
 			id=#{id}
 	</update>
+	<!-- 비밀번호 수정 -->
+	<update id="updateMemberPassword" parameterType="com.badaservice.model.Member">
+		UPDATE
+			member
+		SET
+			user_pw= password(#{new_user_pw})
+		WHERE 
+			id=#{id}
+	</update>
 	
 	<!-- 회원탈퇴 -->
 	<update id="updateMemberOut" parameterType="com.badaservice.model.Member">
@@ -146,7 +155,7 @@
 	<!-- 아이디 찾기 -->
 	<select id="selectMemberId" parameterType="com.badaservice.model.Member" resultType="string">
 	SELECT
-		 replace(right("user_id",3), "***")
+		 replace(right("#{user_id}",3), "***")
 	FROM
 		 member
 	WHERE

@@ -207,7 +207,7 @@ public class EditOk extends BaseController {
 		member.setAddr1(addr1);
 		member.setAddr2(addr2);
 		// 변경할 신규 비밀번호
-		member.setNewUserPw(newUserPw);
+		member.setNew_user_pw(newUserPw);
 		
 	
 		/** (9) Service를 통한 데이터베이스 저장 처리 */
@@ -240,12 +240,12 @@ public class EditOk extends BaseController {
 				web.redirect(null, e.getLocalizedMessage());
 				return null;
 			}
-		}
+		}**/
 		
-		// 세션을 갱신한다.
+		
 		web.removeSession("loginInfo");
 		web.setSession("loginInfo", editInfo);
-*/
+
 		/** (11) 수정이 완료되었으므로 다시 수정페이지로 이동 */
 		web.redirect(web.getRootPath() + "/member/edit.do", 
 				"회원정보가 수정되었습니다.");

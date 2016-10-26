@@ -26,10 +26,10 @@ public class EditPw extends BaseController {
 		web = WebHelper.getInstance(request, response);
 
 		/** (3) 로그인 여부 검사 */
-		// 로그인 중이 아니라면 이 페이지를 동작시켜서는 안된다.
+		//로그인 중이 아니라면 이 페이지를 동작시켜서는 안된다.
 		if (web.getSession("loginInfo") == null) {
-			web.redirect(web.getRootPath() + "/index.do", "로그인 후에 이용 가능합니다.");
-			return null;
+		web.redirect(web.getRootPath() + "/index.do", "로그인 후에 이용 가능합니다.");
+		return null;
 		}
 		
 		/** (3) 사용할 View의 이름 리턴 */
