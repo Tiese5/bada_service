@@ -34,7 +34,7 @@ public class main extends BaseController {
 	PageHelper pageHelper;
 	UploadHelper upload;
 	ShopService shopService;
-	
+	DropDown dropDown;
 	@Override
 	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		web = WebHelper.getInstance(request, response);
@@ -44,20 +44,22 @@ public class main extends BaseController {
 		pageHelper = PageHelper.getInstance();
 		itemCategory = ItemCategory.getInstance();
 		shopService = new ShopServiceImpl(sqlSession,logger);
+		dropDown = DropDown.getInstance();
 		
 		String category = web.getString("category");
 		String dropName =web.getString("drop_down");
+		
 		int id= web.getInt("id");
 		request.setAttribute("category", category);
 		request.setAttribute("id", id);
-		try {
-			String bbsName = itemCategory.getItemCategory(category);
-			request.setAttribute("bbsName", bbsName);
+		/*try {
+			String drop = dropDown.getDropDown(dropDown);
+			request.setAttribute("drop", drop);
 		} catch (Exception e) {
 			sqlSession.close();
 			web.redirect(null, e.getLocalizedMessage());
 			return null;
-		}
+		}*/
 		/*조회할 정보에 대한 빈즈 생성**/
 		
 		Shop shop = new Shop();

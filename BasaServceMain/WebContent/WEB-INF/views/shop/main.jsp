@@ -14,6 +14,7 @@ $(function(){
 $("select[name='drop_down']").change(function(){
 	var dropdown = $("#drop_down").val();
 	window.location="http://localhost:8080/BadaServceMain/shop/main.do?dorpdown="+ dropdown;
+	
 });
 });
 

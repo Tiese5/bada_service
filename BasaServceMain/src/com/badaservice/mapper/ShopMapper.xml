@@ -35,7 +35,7 @@
 		resultMap="shop">
 		SELECT item_title,price,item_image
 		FROM item_add
-		
+		WHERE id=#{id}
 		<choose>
 			<when test="dropDown==1">
 				ORDER BY reg_date DESC

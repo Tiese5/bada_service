@@ -23,7 +23,7 @@ public class DropDown {
 		// 싱글톤 끝
 	}
 
-	public String getDropDown(String dropDown) throws Exception {
+	public String getDropDown(DropDown dropDown) throws Exception {
 		String dropDownName = null;
 		// 카테고이값이 존재할 경우 게시판 이름 판별
 		if (dropDown != null) {
@@ -43,4 +43,5 @@ public class DropDown {
 		}
 		return dropDownName;
 	}
+
 }
