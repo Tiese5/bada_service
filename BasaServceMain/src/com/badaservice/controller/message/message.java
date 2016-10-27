@@ -43,6 +43,8 @@ public class message extends BaseController {
 		pageHelper = PageHelper.getInstance();
 		
 		int senderId = 0;
+		String messageDeleteSend = web.getString("message_delete_send");
+		messageDeleteSend = "N";
 		
 		Member loginInfo = (Member) web.getSession("loginInfo");
 		if (loginInfo != null) {
@@ -51,6 +53,7 @@ public class message extends BaseController {
 		
 		messenger messenger = new messenger();
 		messenger.setSenderId(senderId);
+		messenger.setMessageDeleteSend(messageDeleteSend);
 		
 		int page = web.getInt("page", 1);
 		

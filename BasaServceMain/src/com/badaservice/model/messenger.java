@@ -8,12 +8,26 @@ public class messenger {
 	private int receiverId;
 	private String senderName;
 	private String receiverName;
+	private String messageDelete;
+	private String messageDeleteSend;
 	
 	// 페이지 구현을 위한 멤버변수
 	private int limitStart;
 	private int listCount;
 	
 	
+	public String getMessageDeleteSend() {
+		return messageDeleteSend;
+	}
+	public void setMessageDeleteSend(String messageDeleteSend) {
+		this.messageDeleteSend = messageDeleteSend;
+	}
+	public String getMessageDelete() {
+		return messageDelete;
+	}
+	public void setMessageDelete(String messageDelete) {
+		this.messageDelete = messageDelete;
+	}
 	public int getLimitStart() {
 		return limitStart;
 	}
@@ -73,7 +87,8 @@ public class messenger {
 	public String toString() {
 		return "messenger [id=" + id + ", content=" + content + ", regDate=" + regDate + ", senderId=" + senderId
 				+ ", receiverId=" + receiverId + ", senderName=" + senderName + ", receiverName=" + receiverName
-				+ ", limitStart=" + limitStart + ", listCount=" + listCount + "]";
+				+ ", messageDelete=" + messageDelete + ", messageDeleteSend=" + messageDeleteSend + ", limitStart="
+				+ limitStart + ", listCount=" + listCount + "]";
 	}
 	
 	

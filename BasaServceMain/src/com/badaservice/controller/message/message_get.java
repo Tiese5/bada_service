@@ -51,14 +51,20 @@ public class message_get extends BaseController {
 		pageHelper = PageHelper.getInstance();
 		
 		int receiverId = 0;
+		String messageDelete = web.getString("message_delete");
+		messageDelete = "N";
+		
 		
 		Member loginInfo = (Member) web.getSession("loginInfo");
 		if (loginInfo != null) {
 			receiverId = loginInfo.getId();
 		}
 		
+		
 		messenger messenger = new messenger();
 		messenger.setReceiverId(receiverId);
+		messenger.setMessageDelete(messageDelete);
+		
 		
 		int page = web.getInt("page", 1);
 		

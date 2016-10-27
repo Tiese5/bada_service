@@ -162,4 +162,13 @@
 		email=#{email} 
 	</select>
 	
+	<select id="selectMemberMessageList" parameterType="com.badaservice.model.Member" resultMap="member">
+	select 
+		id, name
+	from
+	    member
+	where 
+		user_id=#{userId}
+	</select>
+	
 </mapper>

@@ -57,11 +57,16 @@
 				<form class="form-horizontal" id="myform" method="post" action="${pageContext.request.contextPath }/message_send_ok.do">
 					<input type="hidden" name="sender_name" value="${readMessage.senderName}" />
 					<input type="hidden" name="sender_id" value="${readMessage.senderId}" />
-					<input type="hidden" name="message_delete" value="${readMessage.messageDelete}" />
 					<div class="form-group">
 						<label for="send_people" class="col-md-1">보낸이:</label>
 						<div class="col-md-11">
 							<span> ${readMessage.senderName} </span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="send_people" class="col-md-1">받는이:</label>
+						<div class="col-md-11">
+							<span> ${readMessage.receiverName} </span>
 						</div>
 					</div>
 					<div class="form-group">
@@ -72,12 +77,6 @@
 					</div>
 					<div class="page-header"></div>
 					<div class="form-group">
-						<div class="pad col-md-12">
-							<br />
-							<h4><strong>답변내용</strong></h4>
-							<textarea name="content" id="content" rows="10"
-								class="form-control ckeditor"></textarea>
-						</div>
 						<div class="mar col-md-8">
 							<button type="submit" class="btn btn-primary pull-right">답변완료</button>
 							<button class="btn btn-danger">취소</button>

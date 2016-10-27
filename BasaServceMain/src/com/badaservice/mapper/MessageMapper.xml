@@ -9,23 +9,25 @@
 		<result property="receiverId" column="reciver_id" />
 		<result property="senderName" column="sender_name" />
 		<result property="receiverName" column="receiver_name" />
+		<result property="messageDelete" column="message_delete" />
+		<result property="messageDeleteSend" column="message_delete_send" />
 	</resultMap>
 	
 	<!-- 받은 쪽지함을 조회한다. -->
 	<select id="selectMessageList" parameterType="com.badaservice.model.messenger" 
 		resultMap="messenger">
-		select id, content, reg_date, sender_id, receiver_id, sender_name, receiver_name
+		select id, content, reg_date, sender_id, receiver_id, sender_name, receiver_name, message_delete, message_delete_send
 		from messenger
-		where receiver_id=#{receiverId}
+		where receiver_id=#{receiverId} AND message_delete=#{messageDelete}
 		LIMIT #{limitStart}, #{listCount};
 	</select>
 	
 	<!-- 보낸 쪽지함을 조회한다. -->
 	<select id="selectMessageSendList" parameterType="com.badaservice.model.messenger" 
 		resultMap="messenger">
-		select id, content, reg_date, sender_id, receiver_id, receiver_name, sender_name
+		select id, content, reg_date, sender_id, receiver_id, receiver_name, sender_name, message_delete, message_delete_send
 		from messenger
-		where sender_id=#{senderId}
+		where sender_id=#{senderId} AND message_delete_send=#{messageDeleteSend}
 		LIMIT #{limitStart}, #{listCount};
 	</select>
 	
@@ -33,16 +35,32 @@
 	<select id="selectMessage" 
 		parameterType="com.badaservice.model.messenger" 
 		resultMap="messenger">
-		SELECT id, content, reg_date, sender_id, receiver_id, sender_name, receiver_name
+		SELECT id, content, reg_date, sender_id, receiver_id, sender_name, receiver_name, message_delete
 		FROM   messenger
 		WHERE  id=#{id} AND receiver_id=#{receiverId}
 	</select>
 	
-		<!-- 게시글 정보 저장하기 -->
+	<!-- 게시물 하나에 대한 정보를 조회한다. -->
+	<select id="selectSendMessage" 
+		parameterType="com.badaservice.model.messenger" 
+		resultMap="messenger">
+		SELECT id, content, reg_date, sender_id, receiver_id, sender_name, receiver_name
+		FROM   messenger
+		WHERE  id=#{id} AND sender_id=#{senderId}
+	</select>
+	
+	<!-- 게시글 정보 저장하기 -->
 	<insert id="insertMessage" parameterType="com.badaservice.model.messenger" 
 		useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO messenger (content, reg_date, sender_id, receiver_id, sender_name, receiver_name) values (
-		#{content}, now(), #{senderId}, #{receiverId}, #{senderName}, #{receiverName})
+		INSERT INTO messenger (content, reg_date, sender_id, receiver_id, sender_name, receiver_name, message_delete, message_delete_send) values (
+		#{content}, now(), #{senderId}, #{receiverId}, #{senderName}, #{receiverName}, null, #{messageDeleteSend})
+	</insert>
+	
+	<!-- 게시글 정보 저장하기 -->
+	<insert id="insertSendMessage" parameterType="com.badaservice.model.messenger" 
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO messenger (content, reg_date, sender_id, receiver_id, sender_name, receiver_name, message_delete, message_delete_send) values (
+		#{content}, now(), #{senderId}, #{receiverId}, #{senderName}, #{receiverName}, #{messageDelete}, null)
 	</insert>
 	
 	<!-- 받은 쪽지함 전체 게시물 수를 조회한다. -->

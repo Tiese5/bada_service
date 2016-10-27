@@ -45,9 +45,9 @@
 				<br />
 				<form class="form-horizontal" id="myform" method="post" enctype="multipart/form-data" action="${pageContext.request.contextPath}/message/message_send_ok.do">
 					<div class="form-group">
-						<label for="receiverName" class="from_people col-md-2">받는이:</label>
+						<label for="user_id" class="from_people col-md-2">아이디:</label>
 						<div class="col-md-8">
-							<input type="text" name="receiverName" id="receivername"
+							<input type="text" name="user_id" id="user_id"
 								class="form-control">
 						</div>
 					</div>

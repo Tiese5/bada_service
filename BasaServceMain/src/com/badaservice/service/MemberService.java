@@ -34,5 +34,6 @@ public interface MemberService {
 	
 	public void updateMemberPassword(Member member) throws Exception;
 
+	public Member selectMemberMessageList(Member member) throws Exception;
 	
 }
