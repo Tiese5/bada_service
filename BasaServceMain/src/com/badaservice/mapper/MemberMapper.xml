@@ -118,7 +118,7 @@
 		UPDATE
 			member
 		SET
-			name=#{name}, email=#{email}, tel=#{tel}, birthdate=#{birthdate}, postcode=#{postcode}, addr1=#{addr1}, addr2=#{addr2}, join_edit=now()
+			name=#{name}, email=#{email}, tel=#{tel}, birthdate=#{birthdate}, postcode=#{postcode}, addr1=#{addr1}, addr2=#{addr2}, profil_image=#{profile_img}, join_edit=now()
 		WHERE
 			id=#{id}
 	</update>
@@ -155,11 +155,20 @@
 	<!-- 아이디 찾기 -->
 	<select id="selectMemberId" parameterType="com.badaservice.model.Member" resultType="string">
 	SELECT
-		 replace(right("#{user_id}",3), "***")
+		 user_id
 	FROM
 		 member
 	WHERE
 		email=#{email} 
+	</select>
+	<!-- 아이디 변환 -->
+	<select id="selectMemberIdChange" parameterType="com.badaservice.model.Member" resultType="string">
+	SELECT
+		 concat(substring(user_id,1,length(user_id)-3),'***')
+	FROM
+		 member
+	WHERE
+		user_id=#{user_id}
 	</select>
 	
 </mapper>

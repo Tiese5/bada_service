@@ -298,4 +298,23 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 
+	@Override
+	public String selectMemberIdChange(Member member) throws Exception {
+		// TODO Auto-generated method stub
+		String result = null;
+		try{
+			result=sqlsession.selectOne("MemberMapper.selectMemberIdChange",member);
+			if(result==null){
+				throw new NullPointerException();
+			}
+		}catch (NullPointerException e) {
+			// TODO: handle exception
+			throw new Exception("해당 변환 정보가 없습니다.");
+		}catch (Exception e) {
+			// TODO: handle exception
+			throw new Exception("아이디 변환에 실패하였습니다.");
+		}
+		return result;
+	}
+
 }

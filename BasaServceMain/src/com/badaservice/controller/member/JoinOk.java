@@ -198,7 +198,7 @@ public class JoinOk extends BaseController {
 			}
 			
 			//파일경로를 로그로 기록
-			logger.debug("profileImg:"+profileImg);;
+			logger.debug("profileImg:"+profileImg);
 			
 			/** (7) 전달받은 파라미터를 Beans 객체에 담는다.*/
 			Member member = new Member();

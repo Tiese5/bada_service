@@ -25,12 +25,12 @@
 								<span data-bind="label">전체</span>&nbsp;<span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
-								<li><a href="#">전체</a></li>
-								<li><a href="#">학문</a></li>
-								<li><a href="#">소설</a></li>
-								<li><a href="#">자기계발</a></li>
-								<li><a href="#">정기 간행물</a></li>
-								<li><a href="#">어린이 도서</a></li>
+								<li><a href="${pageContext.request.contextPath }/member/info.do">전체</a></li>
+								<li><a href="${pageContext.request.contextPath }/member/info.do">학문</a></li>
+								<li><a href="${pageContext.request.contextPath }/member/info.do">소설</a></li>
+								<li><a href="${pageContext.request.contextPath }/member/info.do">자기계발</a></li>
+								<li><a href="${pageContext.request.contextPath }/member/info.do">정기 간행물</a></li>
+								<li><a href="${pageContext.request.contextPath }/member/info.do">어린이 도서</a></li>
 							</ul>
 						</div>
 						<!-- /btn-group -->
