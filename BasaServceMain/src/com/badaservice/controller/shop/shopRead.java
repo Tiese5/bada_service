@@ -12,7 +12,7 @@ import com.badaservice.helper.BaseController;
 /**
  * Servlet implementation class detail_infomation
  */
-@WebServlet("/shop_read.do")
+@WebServlet("/shop/shop_read.do")
 public class shopRead extends BaseController {
 	private static final long serialVersionUID = 8762033538842386708L;
 

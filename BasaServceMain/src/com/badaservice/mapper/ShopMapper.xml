@@ -14,27 +14,44 @@
 		<result property="reg_date" column="reg_date" />
 		<result property="item_image" column="item_image" />
 		<result property="member_id" column="member_id" />
+		<result property="category" column="category" />
+		<result property="hit" column="hit" />
+		<result property="dropDown" column="drop_down" />
 	</resultMap>
 	<!-- 게시물 업데이트 -->
-	<!-- <insert id="insertQna" parameterType="com.badaservice.model.Shop"
+	<insert id="insertItem" parameterType="com.badaservice.model.Shop"
 		useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO QNA(
-		title, q_content,
-		reg_date, edit_date,
-		category,writer_id
+		INSERT INTO item_add(
+		item_title, category,price,item_image,content,
+		reg_date,member_id,hit
 		)VALUES(
-		#{title},#{qContent},now(),now(),#{category},#{writerId}
+		#{item_title},#{category},price,item_image,content,
+		now(),#{member_id},#{hit}
 		)
-	</insert> -->
+	</insert>
 
 	<!-- 게시물 목록을 조회한다 -->
 	<select id="selectItemList" parameterType="com.badaservice.model.Shop"
 		resultMap="shop">
-		SELECT id,item_title,content,price,item_image,
-		DATE_FORMAT(reg_date, '%Y-%m-%d')as reg_date
+		SELECT item_title,price,item_image
 		FROM item_add
 		WHERE id=#{id}
-		ORDER BY id DESC
+		<choose>
+			<when test="dropDown==1">
+				ORDER BY reg_date DESC
+			</when>
+			<when test="dropDown==2">
+				ORDER BY hit DESC
+			</when>
+			<when test="dropDown==3">
+				ORDER BY price ASC
+			</when>
+			<otherwise>
+				ORDER BY item_title ASC
+			</otherwise>
+		</choose>
+		
+		
 		<!-- LIMIT #{limitStart},#{listCount}; -->
 	</select>
 
