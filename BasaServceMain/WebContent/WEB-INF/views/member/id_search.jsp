@@ -25,7 +25,7 @@
         width: 400px;
         height: 500px;
         margin-top:110px;
-        background:#efe;
+        background: #efe;
         }
         /*로고 크기 조정*/]
         div.logo{
@@ -57,17 +57,14 @@
         .textin{
         width: 300px;
         margin-left:25px;
-        margin-bottom: -20px;
+        margin-bottom: 10px;
         }
         .textcon{
         font-weight: bold;
         text-align: center;
-        padding-top:50px;
+        padding-top:20px;
         }
         </style>
-
-
-
     </head>
     <body>
         <div class="title">
@@ -76,30 +73,24 @@
         <div class="container">
             <!--로고 태그 시작-->
             <span class="logo">
-                <a href="${PageContext.request.ContextPath}/index.do"><img src="${PageContext.request.ContextPath}/assets/img/logo.png"><h6>로고</h6></a>
-                <hr/>
+                <a href="${pageContext.request.contextPath}/index.do"><img src="${pageContext.request.contextPath}/assets/img/logo.png"></a>
+                
             </span>
             <!--로고 태그 끝-->
             <!--이메일 주소 입력 타이틀-->
-            
+            <h3>아이디 찾기</h3>
             <!--이메일 입력란-->
-            <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/member/id_ok.do">
-          	 	<h3 style="text-center">아이디 찾기</h3>
-          	 	<div class="form-group">
-					<label for="user_id" class="col-md-3 col-md-3">이메일</label>
-					<div class="col-md-8">
-					<input type="email" class="textin form-control" placeholder="이메일 주소를 입력해주세요" name="email">
-						</div>
-					</div>
-					
+            <div>
+         	<form method="post" action="${pageContext.request.contextPath}/member/id_ok.do">
+                <input type="email" class="textin form-control" placeholder="이메일 주소를 입력해주세요" name="email">
                 <div class="textcon">
-                    <p>입력하신 이메일주소로 <br/>아이디를 발송해 드립니다.</p>
-                   </div>
-             <hr/>
-             
-                    <button type="submit" class="btn btn-info btn-lg btn-block" >아이디 찾기</button>
-            </form>
-            
+                    <p>입력하신 이메일주소로  <br/>아이디를 발송해 드립니다.</p>
+                </div>
+                    <hr/>
+                    <button type="submit" class="btn btn-info btn-lg btn-block">아이디 찾기</button>
+         	</form>
+            </div>
+
         </div>
     </body>
 </html>

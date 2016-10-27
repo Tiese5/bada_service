@@ -6,7 +6,7 @@
                 <ul class="nav nav-side-menu list-title">
 
                     <li><a href="${pageContext.request.contextPath }/member/info.do">내정보</a></li>
-                    <li><a href="${pageContext.request.contextPath }/member/edit_ok.do">정보수정</a></li>
+                    <li><a href="${pageContext.request.contextPath }/member/edit.do">정보수정</a></li>
                     <li><a href="${pageContext.request.contextPath }/cart.do">장바구니</a></li>
                     <li><a href="${pageContext.request.contextPath }/order_check.do">주문/배송 조회</a></li>
                     <li><a href="${pageContext.request.contextPath }/buylist.do">구매내역</a></li>

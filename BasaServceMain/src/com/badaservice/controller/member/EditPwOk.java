@@ -109,7 +109,7 @@ public class EditPwOk extends BaseController {
 		}
 		
 		/** (7) 수정이 완료되었으므로 다시 로그인 페이지로 이동 */
-		web.redirect(web.getRootPath() + "/index.do", 
+		web.redirect(web.getRootPath() + "/member/info.do", 
 				"비밀번호가 수정되었습니다.");
 		
 		/** (5) 패스워드 변경 */

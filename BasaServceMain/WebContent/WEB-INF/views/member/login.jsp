@@ -60,7 +60,7 @@
         <div class="container">
         <!--로고 태그 시작-->
             <div class="logo">
-            <a href="#"><img src="${pageContext.request.contextPath}/assets/img/logo.png"><h1>로고</h1></a>
+            <a href="${pageContext.request.contextPath}/index.do"><img src="${pageContext.request.contextPath}/assets/img/logo.png"><h1>로고</h1></a>
             </div>
             <!--로고 태그 끝--> 
             <!--로그인폼 시작-->
