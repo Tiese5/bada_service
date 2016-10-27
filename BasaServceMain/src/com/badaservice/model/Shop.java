@@ -7,10 +7,56 @@ public class Shop {
 	private String price;
 	private String reg_date;
 	private String item_image;
+	private int hit;
+	private String category;
+	private int limitStart;
+	private int listCount;
+
+	public int getLimitStart() {
+		return limitStart;
+	}
+
+	public void setLimitStart(int limitStart) {
+		this.limitStart = limitStart;
+	}
+
+	public int getListCount() {
+		return listCount;
+	}
+
+	public void setListCount(int listCount) {
+		this.listCount = listCount;
+	}
+
+	public String getDropDown() {
+		return dropDown;
+	}
+
+	public void setDropDown(String dropDown) {
+		this.dropDown = dropDown;
+	}
+
+	private String dropDown;
 	private int member_id;
 
 	public String getItem_title() {
 		return item_title;
+	}
+
+	public int getHit() {
+		return hit;
+	}
+
+	public void setHit(int hit) {
+		this.hit = hit;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public int getId() {
@@ -67,8 +113,10 @@ public class Shop {
 
 	@Override
 	public String toString() {
-		return "Item [id=" + id + ", item_title=" + item_title + ", content=" + content + ", price=" + price
-				+ ", reg_date=" + reg_date + ", item_image=" + item_image + ", member_id=" + member_id + "]";
+		return "Shop [id=" + id + ", item_title=" + item_title + ", content=" + content + ", price=" + price
+				+ ", reg_date=" + reg_date + ", item_image=" + item_image + ", hit=" + hit + ", category=" + category
+				+ ", limitStart=" + limitStart + ", listCount=" + listCount + ", dropDown=" + dropDown + ", member_id="
+				+ member_id + "]";
 	}
 
 }

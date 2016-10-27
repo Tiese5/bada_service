@@ -215,14 +215,14 @@
 						<label for="user_pw" class="col-md-2 col-md-2">비밀번호*</label>
 						<div class="col-md-8">
 							<input type="password" name="user_pw" id="user_pw"
-								class="form-control" value="${loginInfo.user_pw}">
+								class="form-control" placeholder="비밀번호를 입력하세요" >
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="user_pw_re" class="col-md-2 col-md-2">비밀번호 확인*</label>
 						<div class="col-md-8">
 							<input type="password" name="user_pw_re" id="user_pw_re"
-								class="form-control" value="${loginInfo.user_pw}">
+								class="form-control" placeholder="비밀번호확인">
 						</div>
 					</div>
 					<div class="form-group">
@@ -281,9 +281,22 @@
 					<div class="form-group">
 						<label for="profile_img" class="col-md-2 col-md-2">프로필 사진</label>
 						<div class="col-md-8">
-							<img class="thumbnail" src="img/profile.png" alt="프로필 이미지"
-								width="50px" /> <input type="file" name="profile_img"
-								id="profile_img" class="form-control">
+							<c:choose>
+								<c:when test="${loginInfo.profile_img == null }">
+									<p>프로필 이미지가 없습니다.</p>
+									<input type="file" name="profile_img"
+									id="profile_img" class="form-control">
+								</c:when>
+								<c:otherwise>
+									<c:url var="imgUrl" value="/download.do">
+										<c:param name="file" value="${loginInfo.profile_img}" />
+									</c:url>
+									<img class="thumbnail" src="${imgUrl}" alt="프로필 이미지"
+									width="100px" /> <input type="file" name="profile_img"
+									id="profile_img" class="form-control">	
+								</c:otherwise>
+							</c:choose>
+							
 						</div>
 					</div>
 					<div class="form-group">

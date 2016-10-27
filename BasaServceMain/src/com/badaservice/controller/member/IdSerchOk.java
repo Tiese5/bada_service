@@ -72,15 +72,24 @@ public class IdSerchOk extends BaseController {
 			return null;
 		}
 		
-		
-		/** (6) 입력값을 JavaBeans에 저장하기 */
 		Member member = new Member();
 		member.setEmail(email);
+		/** (5) 아이디값 받기*/
+		String userId= null;
+		try {
+			userId = memberService.selectMemberId(member);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			web.redirect(null, e.getLocalizedMessage());
+			return null;
+		}
+		/** (5)아이디 변환하기 */
+		member.setUser_id(userId);
 		
-		String member_id = null;
+		String userIdChange = null;
 		/** (7) Service를 통한 비밀번호 갱신 */		
 		try {
-			member_id=memberService.selectMemberId(member);
+			userIdChange = memberService.selectMemberIdChange(member);
 		} catch (Exception e) {
 			web.redirect(null, e.getLocalizedMessage());
 			return null;
@@ -91,7 +100,8 @@ public class IdSerchOk extends BaseController {
 		/** (8) 발급된 비밀번호를 메일로 발송하기 */
 		String sender = "webmaster@mysite.com";
 		String subject = "Bada 아이디 안내 입니다.";
-		String content = "회원님의 아이디는 <strong>" + member_id + "</strong>입니다.";
+		String content = "회원님의 아이디는 <strong>" + userIdChange + "</strong>입니다.";
+		
 		
 		try {
 			// 사용자가 입력한 메일주소를 수신자로 설정하여 메일 발송하기
@@ -103,7 +113,7 @@ public class IdSerchOk extends BaseController {
 		
 		/** (9) 결과 페이지로 이동 */
 		// 여기서는 이전 페이지로 이동함
-		web.redirect(web.getRootPath()+"/member/login.do", "새로운 비밀번호가 메일로 발송되었습니다.");
+		web.redirect(web.getRootPath()+"/member/login.do", "회원님의 아이디가 메일로 발송되었습니다.");
 		return null;
 	}
 	}

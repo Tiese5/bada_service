@@ -266,8 +266,18 @@ body {
 					<div class="form-group">
 						<label for="profile_img" class="col-md-2">프로필 사진</label>
 						<div class="col-md-8">
-							<img class="thumbnail" src="img/profile.png" alt="프로필 이미지"
-								width="50px" />
+							<c:choose>
+								<c:when test="${loginInfo.profile_img == null }">
+									<p>프로필 이미지가 없습니다.</p>
+								</c:when>
+								<c:otherwise>
+									<c:url var="imgUrl" value="/download.do">
+										<c:param name="file" value="${loginInfo.profile_img}" />
+									</c:url>
+									<img class="thumbnail" src="${imgUrl}" alt="프로필 이미지"
+										width="900px" />
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
 					<div class="form-group">

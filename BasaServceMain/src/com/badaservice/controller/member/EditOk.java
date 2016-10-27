@@ -206,6 +206,7 @@ public class EditOk extends BaseController {
 		member.setPostcode(postcode);
 		member.setAddr1(addr1);
 		member.setAddr2(addr2);
+		member.setProfile_img(profileImg);
 		// 변경할 신규 비밀번호
 		member.setNew_user_pw(newUserPw);
 		

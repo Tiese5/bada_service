@@ -67,9 +67,9 @@
                         <li><h3>판매자: 홍길동</h3></li>
                         <li><h3>정가: <span class="line">32,000원</span></h3></li>
                         <li><h3><strong class="color">20,000</strong>원</h3></li>
-                        <a href="#" class="btns btn btn-primary" id="buy">구매하기</a>
+                   </ul>
+                   		<a href="#" class="btns btn btn-primary" id="buy">구매하기</a>
                         <a href="#" class="btns btn btn-warning" id="cart">장바구니</a>
-                    </ul>
              
                 </div>
                 <div class="marg col-md-12">
