@@ -9,7 +9,25 @@ public class Shop {
 	private String item_image;
 	private int hit;
 	private String category;
-	
+	private int limitStart;
+	private int listCount;
+
+	public int getLimitStart() {
+		return limitStart;
+	}
+
+	public void setLimitStart(int limitStart) {
+		this.limitStart = limitStart;
+	}
+
+	public int getListCount() {
+		return listCount;
+	}
+
+	public void setListCount(int listCount) {
+		this.listCount = listCount;
+	}
+
 	public String getDropDown() {
 		return dropDown;
 	}
@@ -40,7 +58,6 @@ public class Shop {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-
 
 	public int getId() {
 		return id;
@@ -98,7 +115,8 @@ public class Shop {
 	public String toString() {
 		return "Shop [id=" + id + ", item_title=" + item_title + ", content=" + content + ", price=" + price
 				+ ", reg_date=" + reg_date + ", item_image=" + item_image + ", hit=" + hit + ", category=" + category
-				+ ", dropDown=" + dropDown + ", member_id=" + member_id + "]";
+				+ ", limitStart=" + limitStart + ", listCount=" + listCount + ", dropDown=" + dropDown + ", member_id="
+				+ member_id + "]";
 	}
 
 }

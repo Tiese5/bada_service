@@ -22,7 +22,8 @@
 	<insert id="insertItem" parameterType="com.badaservice.model.Shop"
 		useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO item_add(
-		item_title, category,price,item_image,content,
+		item_title,
+		category,price,item_image,content,
 		reg_date,member_id,hit
 		)VALUES(
 		#{item_title},#{category},price,item_image,content,
@@ -33,9 +34,19 @@
 	<!-- 게시물 목록을 조회한다 -->
 	<select id="selectItemList" parameterType="com.badaservice.model.Shop"
 		resultMap="shop">
-		SELECT item_title,price,item_image
+		SELECT item_title,price,item_image,hit
 		FROM item_add
-		WHERE id=#{id}
+		<if test="item_title != null or content != null">
+			AND(
+			<if test="item_title != null">
+				item_title LIKE concat('%', #{item_title}, '%')
+			</if>
+
+			<if test="content != null">
+				OR content LIKE concat('%', #{content}, '%')
+			</if>
+			)
+		</if>
 		<choose>
 			<when test="dropDown==1">
 				ORDER BY reg_date DESC
@@ -51,48 +62,33 @@
 			</otherwise>
 		</choose>
 		
-		
-		<!-- LIMIT #{limitStart},#{listCount}; -->
+		LIMIT #{limitStart},#{listCount};
 	</select>
 
+	<!-- 전체 게시물 수를 조회한다. -->
+	<select id="selectItemCount" parameterType="com.badaservice.model.Shop"
+		resultType="int">
+		SELECT COUNT(id) FROM item_add
+
+	</select>
 	<!-- 게시물 하나에 대한 조회 -->
-	<!-- <select id="selectQna" parameterType="com.badaservice.model.Shop"
-		resultMap="item">
+	<select id="selectItem" parameterType="com.badaservice.model.Shop"
+		resultMap="shop">
 		SELECT
-		QNA.id,member.name as qname,
-		category,title,a_content,q_content,
-		DATE_FORMAT(edit_date,
-		'%Y-%m-%d
-		%H-%i:%s') as edit_date,
-		answerer_id,writer_id
-		FROM QNA
+		id,item_title,shop.member_id,price,
+		DATE_FORMAT(reg_date, '%Y-%m-%d'),
+		FROM item_add
 		INNER
 		JOIN member
-		ON QNA.writer_id=member.id
+		ON
+		item_add.member_id=member.name
 		WHERE
-		QNA.id=#{id}
-	</select> -->
+		item_add.id=#{id}
+	</select>
+<!-- 조회수 -->
+	<insert id="updeteItemHit" 
+	 parameterType="com.badaservice.model.Shop">
+	 	UPDATE item_add SET hit= hit+1 WHERE id=#{id}
+	 </insert>
 
-	<!-- 전체 게시물 수를 조회한다. -->
-	<!--  <select id="selectQnaCount" parameterType="com.badaservice.model.Shop"
-		resultType="item">
-		SELECT COUNT(id) FROM QNA
-		WHERE writer_id=#{writerId}
-	</select>-->
-	<!-- 게시글 삭제하기 -->
-	<!-- <delete id="deleteQna" parameterType="com.badaservice.model.Shop">
-		DELETE FROM QNA WHERE
-		id=#{id}
-	</delete>
- -->
-	<!-- 게시글 정보 수정하기 -->
-	<!-- <update id="updateQna" parameterType="com.badaservice.model.Shop">
-		UPDATE QNA SET
-		id=#{id},
-		category=#{category},
-		title=#{title},
-		q_content=#{qContent},
-		edit_date=now()
-		WHERE id=#{id}
-	</update> -->
 </mapper>
