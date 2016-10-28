@@ -16,4 +16,26 @@
 		<result property="itemOrderId" column="item_order_id" />
 	</resultMap>
 	
+	<!-- 장바구니 제품 목록 조회 -->
+	<select id="selectItemList" parameterType="com.badaservice.model.cart" resultMap="cart">
+		SELECT   id, price, item_title, item_image, member_id, item_order_id, edit_date
+		FROM cart
+		WHERE id=#{id}
+	</select>	
+	<!-- 장바구니에 제품 저장 -->
+	<insert id="insertCart" parameterType="com.badaservice.model.cart" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO
+			cart(
+			  price, item_title, item_image, member_id, item_order_id, edit_date
+			)
+		VALUES(
+			 #{price}, #{item_title},  #{item_image}, #{member_id}, #{item_order_id}, now()
+		)
+	</insert>
+	
+	
+	
+	
+	
+	
 </mapper>
