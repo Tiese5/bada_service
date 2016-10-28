@@ -77,5 +77,15 @@
 		WHERE sender_id=#{senderId}
 	</select>
 	
+	<!-- 보낸쪽지함 게시물 삭제 -->
+	<update id="updateMessage" parameterType="com.badaservice.model.messenger">
+		update messenger set message_delete_send=#{messageDeleteSend} where id=#{id}
+	</update>
+	
+	<!-- 받은쪽지함 게시물 삭제 -->
+	<update id="updateReceiverMessage" parameterType="com.badaservice.model.messenger">
+		update messenger set message_delete=#{messageDelete} where id=#{id}
+	</update>
+	
 	
 </mapper>

@@ -12,6 +12,7 @@ import com.badaservice.model.messenger;
 
 
 
+
 public interface MessageService {
 	/**
 	 * 받은 쪽지함 목록을 조회한다
@@ -61,7 +62,7 @@ public interface MessageService {
 	
 	/**
 	 * 받은 쪽지함 전체 게시물 수 조회
-	 * @param document
+	 * @param messenger
 	 * @return int
 	 * @throws Exception
 	 */
@@ -69,9 +70,23 @@ public interface MessageService {
 	
 	/**
 	 * 보낸 쪽지함 전체 게시물 수 조회
-	 * @param document
+	 * @param messenger
 	 * @return int
 	 * @throws Exception
 	 */
 	public int selectMessageSendCount(messenger messenger) throws Exception;
+	
+	/**
+	 * 보낸쪽지함 삭제
+	 * @param messenger
+	 * @throws Exception
+	 */
+	public void updateMessage(messenger messenger) throws Exception;
+	
+	/**
+	 * 받은쪽지함 삭제
+	 * @param messenger
+	 * @throws Exception
+	 */
+	public void updateReceiverMessage(messenger messenger) throws Exception;
 }
