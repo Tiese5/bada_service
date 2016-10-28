@@ -10,7 +10,7 @@
                     <li><a href="${pageContext.request.contextPath }/cart.do">장바구니</a></li>
                     <li><a href="${pageContext.request.contextPath }/order_check.do">주문/배송 조회</a></li>
                     <li><a href="${pageContext.request.contextPath }/buylist.do">구매내역</a></li>
-                    <li><a href="${pageContext.request.contextPath }">쪽지 쓰기</a></li>
+                    <li><a href="${pageContext.request.contextPath }/message_send.do">쪽지 쓰기</a></li>
                     <li><a href="${pageContext.request.contextPath }/message.do">보낸 쪽지함</a></li>
                     <li><a href="${pageContext.request.contextPath }/message_get.do">받은 쪽지함</a></li>
 

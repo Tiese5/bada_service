@@ -44,14 +44,19 @@ public class MessageView extends BaseController {
 			return null;
 		}
 		
+		
 		int receiverId = 0;
+		
+		
 		Member loginInfo = (Member) web.getSession("loginInfo");
 		if (loginInfo != null) {
 			receiverId = loginInfo.getId();
 		}
+		
 		messenger messenger = new messenger();
 		messenger.setId(MessageId);
 		messenger.setReceiverId(receiverId);
+	
 		
 		messenger readMessage = new messenger();
 		try {

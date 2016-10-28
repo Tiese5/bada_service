@@ -297,8 +297,26 @@ public class MemberServiceImpl implements MemberService {
 		}
 		
 	}
+	
+	public Member selectMemberMessageList(Member member) throws Exception {
+		// TODO Auto-generated method stub
+				Member result = null;
+				try{
+					result=sqlsession.selectOne("MemberMapper.selectMemberMessageList",member);
+					if(result==null){
+						throw new NullPointerException();
+					}
+				}catch (NullPointerException e) {
+					// TODO: handle exception
+					throw new Exception("조회된 데이터가 없습니다.");
+				}catch (Exception e) {
+					e.printStackTrace();
+					// TODO: handle exception
+					throw new Exception("회원조회에 실패했습니다.");
+				}
+				return result;
+	}
 
-	@Override
 	public String selectMemberIdChange(Member member) throws Exception {
 		// TODO Auto-generated method stub
 		String result = null;
@@ -315,6 +333,7 @@ public class MemberServiceImpl implements MemberService {
 			throw new Exception("아이디 변환에 실패하였습니다.");
 		}
 		return result;
+
 	}
 
 }

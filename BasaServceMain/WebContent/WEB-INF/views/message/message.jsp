@@ -67,7 +67,12 @@
 					            	</c:url>
 					            	<a href="${readUrl}">${document.subject}</a>
 					            </td> --%>
-					            <td class="small text-center">${messenger.content}</td>
+					             <td class="text-center">
+					            	<c:url var="readUrl" value="/message_send_view.do">
+					            		<c:param name="message_id" value="${messenger.id}" />				     
+					            	</c:url>
+					            	<a href="${readUrl}">${messenger.content}</a>
+					            </td>
 					            <td class="text-center">${messenger.regDate}</td>
 				        	</tr>
 		    			</c:forEach>

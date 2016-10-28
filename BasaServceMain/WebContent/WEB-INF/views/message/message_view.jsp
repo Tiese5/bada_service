@@ -57,6 +57,7 @@
 				<form class="form-horizontal" id="myform" method="post" action="${pageContext.request.contextPath }/message_send_ok.do">
 					<input type="hidden" name="sender_name" value="${readMessage.senderName}" />
 					<input type="hidden" name="sender_id" value="${readMessage.senderId}" />
+					<input type="hidden" name="message_delete" value="${readMessage.messageDelete}" />
 					<div class="form-group">
 						<label for="send_people" class="col-md-1">보낸이:</label>
 						<div class="col-md-11">

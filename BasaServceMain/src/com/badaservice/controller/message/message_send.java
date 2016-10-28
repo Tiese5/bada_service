@@ -7,8 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.logging.log4j.LogManager;
+
+import com.badaservice.dao.MyBatisConnectionFactory;
 import com.badaservice.helper.BaseController;
+import com.badaservice.helper.RegexHelper;
 import com.badaservice.helper.WebHelper;
+import com.badaservice.model.Member;
+import com.badaservice.model.messenger;
+import com.badaservice.service.MemberService;
+import com.badaservice.service.MessageService;
+import com.badaservice.service.impl.MemberServiceImpl;
+import com.badaservice.service.impl.MessageServiceImpl;
 
 /**
  * Servlet implementation class message_send
@@ -16,12 +27,10 @@ import com.badaservice.helper.WebHelper;
 @WebServlet("/message_send.do")
 public class message_send extends BaseController {
 	private static final long serialVersionUID = -3022851980472374394L;
-	WebHelper web;
+
 	@Override
 	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		web = WebHelper.getInstance(request, response);
-		
-		String receiverName = web.getString("receiverName");
+	
 		return "/message/message_send";
 	}
 

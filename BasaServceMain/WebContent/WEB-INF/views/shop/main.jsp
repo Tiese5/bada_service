@@ -10,15 +10,16 @@
 <head>
 <%@ include file="/WEB-INF/inc/head.jsp"%>
 <script type="text/javascript">
-$(function(){
-$("select[name='drop_down']").change(function(){
-	var dropdown = $("#drop_down").val();
-	window.location="http://localhost:8080/BadaServceMain/shop/main.do?dorpdown="+ dropdown;
-	
-});
-});
+	$(function() {
+		$("select[name='drop_down']")
+				.change(
+						function() {
+							var dropdown = $("#drop_down").val();
+							window.location = "http://localhost:8080/BadaServceMain/shop/main.do?drop_down="
+									+ dropdown;
 
-
+						});
+	});
 </script>
 <style media="screen" type="text/css">
 .drop {
@@ -60,10 +61,11 @@ a>h5 {
 					</div>
 					<div class="drop pull-right">
 						<select name="drop_down" id="drop_down">
-							<option value="1">최신순</option>
-							<option value="2">인기순</option>
-							<option value="3">낮은 가격순</option>
-							<option value="4">가나다순</option>
+							<option value="1" <c:if test="${dropDown eq '1'}">selected</c:if>>최신순</option>
+							<option value="2" <c:if test="${dropDown eq '2'}">selected</c:if>>인기순</option>
+							<option value="3" <c:if test="${dropDown eq '3'}">selected</c:if>>낮은
+								가격순</option>
+							<option value="4" <c:if test="${dropDown eq '4'}">selected</c:if>>가나다순</option>
 						</select>
 					</div>
 					<hr />
@@ -72,30 +74,31 @@ a>h5 {
 							<c:choose>
 								<c:when test="${fn:length(shopList)>0}">
 									<c:forEach var="shop" items="${shopList }">
-										<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+										<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 											<div class="thumbnail">
-												<c:url var="readUrl" value="/shop/itme_read.do">
+												<c:url var="readUrl" value="/shop/shop_read.do">
 													<c:param name="category" value="${shop.category}"></c:param>
-													<c:param name="shop" value="${shop.id}"></c:param>
+													<c:param name="shop_id" value="${shop.id}"></c:param>											
 												</c:url>
-												<a href="${readUrl}"> <c:choose>
+												
+												<a href="${readUrl}">${shop.item_image}<c:choose>
 														<c:when test="${shop.item_image != null }">
 															<c:url var="downloadUrl" value="/download.do">
 																<c:param name="file" value="${shop.item_image}"></c:param>
 															</c:url>
 															<img src="${downloadUrl}" class="img-responsive" />
 														</c:when>
-														<%-- <c:otherwise>
-														<img
-															src="${pageContext.request.contextPath}/asset/img/no_image.jpg"
-															class="img-responsive" />
-													</c:otherwise> --%>
+														<c:otherwise>
+															<img
+																src="${pageContext.request.contextPath}/asset/img/no_image.jpg"
+																class="img-responsive" />
+														</c:otherwise>
 													</c:choose>
 												</a>
 												<div>
 													<p>
 														<a
-															href="${pageContext.request.contextPath}/shop/shop_read.do"
+															href="${readUrl}"
 															class="thumbnail"> <img src="${shop.item_image}"
 															alt=""> ${shop.item_title}<br /> <strong
 															class="color">${shop.price}</strong>
@@ -115,18 +118,67 @@ a>h5 {
 							</c:choose>
 						</div>
 						<div class="col-md-12">
-							<nav aria-label="Page navigation" class="page">
+							<nav class="text-center">
 								<ul class="pagination">
-									<li class="previous disabled"><a href="#"><span
-											aria-hidden="true">&larr;</span> 이전</a></li>
-									<li class="active"><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li class="next"><a href="#">다음 <span
-											aria-hidden="true">&rarr;</span></a></li>
+									<!-- 이전 그룹으로이동 -->
+									<c:choose>
+										<c:when test="${pageHelper.prevPage > 0 }">
+											<!-- 이전 그룹에 대한 페이지 번호가 존재한다면? -->
+											<!-- 이전 그룹으로 이동하기 위해 URL을 생성해서 prevUrl에 저장 -->
+											<c:url var="prevUrl" value="/shop/main.do">
+												<c:param name="category" value="${category}"></c:param>
+												<c:param name="keyword" value="${keyword}"></c:param>
+												<c:param name="page" value="${pageHelper.prevPage}"></c:param>
+											</c:url>
+											<li><a href="${prevUrl }">&laquo;</a></li>
+										</c:when>
+										<c:otherwise>
+											<li class="disabled"><a href="#">&laquo;</a></li>
+										</c:otherwise>
+									</c:choose>
+
+									<!-- 페이지 번호 -->
+									<!-- 현재 그룹의 시작페이지~ 끝페이지 사이의 1씩 증가하면서 반복 -->
+									<c:forEach var="i" begin="${pageHelper.startPage}"
+										end="${pageHelper.endPage}" step="1">
+										<!-- 페이지 번호로 이동할수 있는 URL을 생성하겨 url에 저장 -->
+										<c:url var="pageUrl" value="/shop/main.do">
+											<c:param name="categort" value="${category}"></c:param>
+											<c:param name="keyword" value="${keyword}"></c:param>
+											<c:param name="page" value="${i}"></c:param>
+										</c:url>
+										<!-- 반족중의 페이지 번호와 현재 페이지 번호가 갗은 경우에 대한 분기 -->
+										<c:choose>
+											<c:when test="${pageHelper.page==i})">
+												<li class="active"><a href="#">${i}</a></li>
+											</c:when>
+											<c:otherwise>
+												<li><a href="${pageUrl}">${i}</a></li>
+											</c:otherwise>
+										</c:choose>
+
+
+									</c:forEach>
+
+
+									<!-- 다음 그룹으로 이동-->
+									<c:choose>
+										<c:when test="${pageHelper.nextPage > 0}">
+											<!-- 이전 그룹에 대한 페이지 번호가 존재한다면? -->
+											<!-- 이전 그룹으로 이동하기 위해 URL을 생성해서 prevUrl에 저장 -->
+											<c:url var="nextUrl" value="/shop/main.do">
+												<c:param name="category" value="${category}"></c:param>
+												<c:param name="keyword" value="${keyword}"></c:param>
+												<c:param name="page" value="${pageHelper.nextPage}"></c:param>
+											</c:url>
+											<li><a href="${nextUrl}">&raquo;</a></li>
+										</c:when>
+										<c:otherwise>
+											<li class="disabled"><a href="#">&raquo;</a></li>
+										</c:otherwise>
+									</c:choose>
 								</ul>
+
 							</nav>
 						</div>
 					</form>
