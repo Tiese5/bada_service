@@ -66,7 +66,6 @@
                         <li><h2><strong>Effective Java 개정 2판</strong></h2></li>
                         <li><h3>등록일: 2016.9.19 00:00:00</h3></li>
                         <li><h3>판매자: 홍길동</h3></li>
-                        <li><h3>정가: <span class="line">32,000원</span></h3></li>
                         <li><h3><strong class="color">20,000</strong>원</h3></li>
                    </ul>
                    		<a href="#" class="btns btn btn-primary" id="buy">구매하기</a>

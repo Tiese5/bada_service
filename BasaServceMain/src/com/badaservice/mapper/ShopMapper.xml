@@ -83,7 +83,7 @@
 		ON
 		item_add.member_id=member.name
 		WHERE
-		member_id=#{id}
+		item_add.id=#{id}
 	</select>
 <!-- 조회수 -->
 	<insert id="updeteItemHit" 
