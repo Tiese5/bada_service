@@ -72,36 +72,7 @@
 		SELECT COUNT(id) FROM item_add
 
 	</select>
-	<!-- 게시물 하나에 대한 조회 -->
-	<!-- <select id="selectItem" parameterType="com.badaservice.model.Shop"
-		resultMap="shop">
-		SELECT
-		item_add.id,item_title,member.id as member_id,price,
-		DATE_FORMAT(reg_date, '%Y-%m-%d')
-		FROM item_add
-		INNER
-		JOIN member
-		ON
-		item_add.member_id=member.id
-		WHERE
-<<<<<<< HEAD
-		member_id=#{id}
-	</select>
 	
-	<select id="selectCartItem" parameterType="com.badaservice.model.Shop"
-		resultMap="shop">
-		SELECT
-		item_title, price, item_image, member_id
-		FROM
-		item_add
-		WHERE
-		id = #{id}
-	</select>
-	
-=======
-		item_add.id=#{id}
-	</select> -->
->>>>>>> branch 'master' of https://github.com/Tiese5/bada_service.git
 <!-- 조회수 -->
 	<insert id="updeteItemHit" 
 	 parameterType="com.badaservice.model.Shop">
