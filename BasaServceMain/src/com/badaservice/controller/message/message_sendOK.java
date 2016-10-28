@@ -84,7 +84,7 @@ public class message_sendOK extends BaseController {
 		messenger.setContent(content);
 		messenger.setMessageDelete(messageDelete);
 		messenger.setMessageDeleteSend(messageDeleteSend);
-		
+		// 테스트
 		try {
 			messageService.insertMessage(messenger);
 			messageService.insertSendMessage(messenger);
