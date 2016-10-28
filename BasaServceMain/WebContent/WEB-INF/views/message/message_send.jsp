@@ -34,7 +34,7 @@
 		<div class="row">
 
 			<!-- 좌측 사이드 네비게이션 바 -->
-			<%@include file="/WEB-INF/inc/sidebar.jsp" %>
+			<%@include file="/WEB-INF/inc/my_sidebar.jsp"%>
 			<!-- 좌측 사이드 네비게이션 바 끝 -->
 
 			<!-- 메인 컨텐츠 영역 시작 -->
