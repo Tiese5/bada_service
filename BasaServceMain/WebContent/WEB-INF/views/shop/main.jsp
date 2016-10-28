@@ -76,10 +76,11 @@ a>h5 {
 									<c:forEach var="shop" items="${shopList }">
 										<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 											<div class="thumbnail">
-												<c:url var="readUrl" value="/shop/itme_read.do">
+												<c:url var="readUrl" value="/shop/shop_read.do">
 													<c:param name="category" value="${shop.category}"></c:param>
-													<c:param name="shop_id" value="${shop.id}"></c:param>
+													<c:param name="shop_id" value="${shop.id}"></c:param>											
 												</c:url>
+												
 												<a href="${readUrl}">${shop.item_image}<c:choose>
 														<c:when test="${shop.item_image != null }">
 															<c:url var="downloadUrl" value="/download.do">
@@ -97,7 +98,7 @@ a>h5 {
 												<div>
 													<p>
 														<a
-															href="${pageContext.request.contextPath}/shop/shop_read.do"
+															href="${readUrl}"
 															class="thumbnail"> <img src="${shop.item_image}"
 															alt=""> ${shop.item_title}<br /> <strong
 															class="color">${shop.price}</strong>

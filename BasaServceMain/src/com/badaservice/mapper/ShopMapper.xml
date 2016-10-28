@@ -34,7 +34,7 @@
 	<!-- 게시물 목록을 조회한다 -->
 	<select id="selectItemList" parameterType="com.badaservice.model.Shop"
 		resultMap="shop">
-		SELECT item_title,price,item_image,hit
+		SELECT id, item_title,price,item_image,hit
 		FROM item_add
 		<if test="item_title != null or content != null">
 			AND(
@@ -75,15 +75,15 @@
 	<select id="selectItem" parameterType="com.badaservice.model.Shop"
 		resultMap="shop">
 		SELECT
-		id,item_title,shop.member_id,price,
-		DATE_FORMAT(reg_date, '%Y-%m-%d'),
+		item_add.id,item_title,member.id as member_id,price,
+		DATE_FORMAT(reg_date, '%Y-%m-%d')
 		FROM item_add
 		INNER
 		JOIN member
 		ON
 		item_add.member_id=member.name
 		WHERE
-		item_add.id=#{id}
+		member_id=#{id}
 	</select>
 <!-- 조회수 -->
 	<insert id="updeteItemHit" 

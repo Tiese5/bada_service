@@ -52,11 +52,11 @@ public class shopRead extends BaseController {
 		String cookiekey = "document_" + "_" + shopId;
 		//준비한 문자열에 대응되는 쿠키값 조회
 		String cookieVar = web.getCookie(cookiekey);
-		
+		Shop readItem = null;
 		try {
 			//쿠키값이 없다면 조회수 갱신
 			if (cookieVar == null) {
-				shopservice.selectItem(shop);
+				readItem=shopservice.selectItem(shop);
 				//준비한 문자열에 대한 쿠키24시간 동안 저장
 				web.setCookie(cookiekey, "Y", 60*60*24);
 			}
@@ -66,7 +66,10 @@ public class shopRead extends BaseController {
 			}finally{
 				sqlSession.close();
 			}
+		System.out.println(readItem);
 		request.setAttribute("shopId", shopId);
+		request.setAttribute("readItem", readItem);
+		
 		return "/shop/detail_infomation";
 		
 
