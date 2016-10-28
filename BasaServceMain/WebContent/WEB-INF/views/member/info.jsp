@@ -275,7 +275,7 @@ body {
 										<c:param name="file" value="${loginInfo.profile_img}" />
 									</c:url>
 									<img class="thumbnail" src="${imgUrl}" alt="프로필 이미지"
-										width="900px" />
+										width="100px" />
 								</c:otherwise>
 							</c:choose>
 						</div>

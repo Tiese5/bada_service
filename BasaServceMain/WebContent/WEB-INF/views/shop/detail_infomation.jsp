@@ -71,6 +71,7 @@
                    </ul>
                    		<a href="#" class="btns btn btn-primary" id="buy">구매하기</a>
                         <a href="#" class="btns btn btn-warning" id="cart">장바구니</a>
+                        
              ${shop.item_titlt }
                 </div>
                  ${readItem.item_title }
@@ -108,7 +109,7 @@
            showCancelButton: true,
         /*확인버튼에 대한 설정*/
           confirmButtonClass: "btn-info",
-           confirmButtonText: "구매",
+          confirmButtonText: "구매",
         /*취소 버튼에 대한 설정*/
           cancelButtonClass:"btn-warning",
           cancelButtonText:"아니요",
@@ -117,7 +118,7 @@
         /*확인버튼 누를경우 동작하는 기능*/
         },function(isConfirm){
           if(isConfirm){
-               window.location="mhj_buy.html";
+               window.location="";
           }else{
                swal({
                     title:"취소하였습니다.",
@@ -148,7 +149,7 @@
         /*확인버튼 누를경우 동작하는 기능*/
         },function(isConfirm){
           if(isConfirm){
-               window.location="kjm_cart.html";
+               window.location="${pageContext.request.contextPath}/assets/img/original.jpg";
           }else{
                swal({
                     title:"취소하였습니다.",
