@@ -73,7 +73,7 @@
 
 	</select>
 	<!-- 게시물 하나에 대한 조회 -->
-	<select id="selectItem" parameterType="com.badaservice.model.Shop"
+	<!-- <select id="selectItem" parameterType="com.badaservice.model.Shop"
 		resultMap="shop">
 		SELECT
 		item_add.id,item_title,member.id as member_id,price,
@@ -84,6 +84,7 @@
 		ON
 		item_add.member_id=member.id
 		WHERE
+<<<<<<< HEAD
 		member_id=#{id}
 	</select>
 	
@@ -97,6 +98,10 @@
 		id = #{id}
 	</select>
 	
+=======
+		item_add.id=#{id}
+	</select> -->
+>>>>>>> branch 'master' of https://github.com/Tiese5/bada_service.git
 <!-- 조회수 -->
 	<insert id="updeteItemHit" 
 	 parameterType="com.badaservice.model.Shop">
