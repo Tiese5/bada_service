@@ -149,7 +149,7 @@
         /*확인버튼 누를경우 동작하는 기능*/
         },function(isConfirm){
           if(isConfirm){
-               window.location="${pageContext.request.contextPath}/assets/img/original.jpg";
+               window.location="${pageContext.request.contextPath}/shop/cart_ok.do";
           }else{
                swal({
                     title:"취소하였습니다.",
