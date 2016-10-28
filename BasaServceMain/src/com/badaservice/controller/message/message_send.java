@@ -27,61 +27,10 @@ import com.badaservice.service.impl.MessageServiceImpl;
 @WebServlet("/message_send.do")
 public class message_send extends BaseController {
 	private static final long serialVersionUID = -3022851980472374394L;
-	WebHelper web;
-	SqlSession sqlSession;
-	MessageService messageService;
-	RegexHelper regex;
-	MemberService memberService;
-	
+
 	@Override
 	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		logger = LogManager.getFormatterLogger(request.getRequestURI());
-		sqlSession = MyBatisConnectionFactory.getSqlSession();
-		web=WebHelper.getInstance(request, response);
-		messageService = new MessageServiceImpl(logger, sqlSession);
-		regex = RegexHelper.getInstance();
-		memberService = new MemberServiceImpl(logger, sqlSession);
-		
-		String userId = web.getString("user_id");
-		Member member = new Member();
-		String senderName = null;
-		String content = null;
-		int senderId= 0;
-		member.setUser_id(userId);
-		Member receiver = null;
-		
-		try {
-			receiver = memberService.selectMemberMessageList(member);
-		} catch (Exception e) {
-			sqlSession.close();
-			web.redirect(null, e.getLocalizedMessage());
-			return null;
-		}
-		
-		messenger messenger = new messenger();
-		messenger.setReceiverId(receiver.getId());
-		messenger.setReceiverName(receiver.getName());
-		
-		Member loginInfo = (Member) web.getSession("loginInfo");
-		if (loginInfo != null) {
-			senderName = loginInfo.getName();
-			senderId = loginInfo.getId();
-		}
-		
-		messenger.setSenderName(senderName);
-		messenger.setSenderId(senderId);
-		messenger.setContent(content);
-		
-		try {
-			messageService.insertMessage(messenger);
-			messageService.insertSendMessage(messenger);
-		} catch (Exception e) {
-			web.redirect(null, e.getLocalizedMessage());
-			return null;
-		} finally {
-			sqlSession.close();
-		}
-		
+	
 		return "/message/message_send";
 	}
 

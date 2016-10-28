@@ -43,7 +43,7 @@
 					<h1>쪽지 보내기</h1>
 				</div>
 				<br />
-				<form class="form-horizontal" id="myform" method="post" enctype="multipart/form-data" action="${pageContext.request.contextPath}/message/message_send_ok.do">
+				<form class="form-horizontal" id="myform" method="post" action="${pageContext.request.contextPath}/message_sendOK.do">
 					<div class="form-group">
 						<label for="user_id" class="from_people col-md-2">아이디:</label>
 						<div class="col-md-8">
@@ -61,7 +61,7 @@
 					</div>
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-8">
-							<button type="button" class="btn btn-info btn-lg"
+							<button type="submit" class="btn btn-info btn-lg"
 								id="message_send">작성완료</button>
 						</div>
 					</div>
