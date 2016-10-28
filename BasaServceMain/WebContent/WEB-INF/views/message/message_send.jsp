@@ -81,40 +81,9 @@
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script
 		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="plugins/sweetalert/sweetalert.min.js"></script>
 	<script src="http://cdn.ckeditor.com/4.5.11/standard/ckeditor.js"></script>
 
-	<script type="text/javascript">
-		$(function() {
-			$("#message_send").click(function() {
-				swal({
-					title : "작성완료",
-					text : "이대로 작성하시겠습니까?",
-					showCancelButton : true,
-					closeOnConfirm : false,
-					showLoaderOnConfirm : true
-				}, function() {
-					setTimeout(function() {
-						swal("작성되었습니다.");
-					}, 1000);
-				});
-			});
-		});
-		$(document.body).on(
-				'click',
-				'.dropdown-menu li',
-				function(event) {
 
-					var $target = $(event.currentTarget);
-
-					$target.closest('.input-group-btn').find(
-							'[data-bind="label"]').text($target.text()).end()
-							.children('.dropdown-toggle').dropdown('toggle');
-
-					return false;
-
-				});
-	</script>
 
 </body>
 

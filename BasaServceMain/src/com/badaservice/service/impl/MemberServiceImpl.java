@@ -308,7 +308,7 @@ public class MemberServiceImpl implements MemberService {
 					}
 				}catch (NullPointerException e) {
 					// TODO: handle exception
-					throw new Exception("조회된 데이터가 없습니다.");
+					throw new Exception("존재하지 않는 아이디입니다.");
 				}catch (Exception e) {
 					e.printStackTrace();
 					// TODO: handle exception

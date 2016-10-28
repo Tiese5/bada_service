@@ -57,15 +57,15 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><a href=""><img src="${pageContext.request.contextPath}/assets/img/editology.jpg" alt="" height="100px"></a></td>
-                            <td><a href="">자바의 정석</a></td>
+                            <td><a href="${pageContext.request.contextPath}/shop/shop_read.do"><img src="${pageContext.request.contextPath}/assets/img/editology.jpg" alt="" height="100px"></a></td>
+                            <td><a href="${pageContext.request.contextPath}/shop/shop_read.do">자바의 정석</a></td>
                             <td>바다</td>
                             <td><span class="text-danger">20,000</span> 원</td>
                             <td>2016.09.10 12:00:00</td>
                         </tr>
                         <tr>
-                            <td><a href=""><img src="${pageContext.request.contextPath}/assets/img/editology.jpg" alt="" height="100px"></a></td>
-                            <td><a href="">자바의 정석</a></td>
+                            <td><a href="${pageContext.request.contextPath}/shop/shop_read.do"><img src="${pageContext.request.contextPath}/assets/img/editology.jpg" alt="" height="100px"></a></td>
+                            <td><a href="${pageContext.request.contextPath}/shop/shop_read.do">자바의 정석</a></td>
                             <td>바다</td>
                             <td><span class="text-danger">20,000</span> 원</td>
                             <td>2016.09.10 12:00:00</td>
@@ -76,7 +76,7 @@
                 <h1 class="total">총 금액</h1>
                 <hr />
                 <div class="col-md-3">
-                 <label for="price" class="size pull-right"><strong class="color">40000</strong>원</label>
+                 <label for="price" class="size pull-right"><strong class="color">{$sum}</strong>원</label>
                 </div>
                 <div class="button col-md-8">
                     <a href="#" class="btn btn-primary pull-right">구매하기</a>

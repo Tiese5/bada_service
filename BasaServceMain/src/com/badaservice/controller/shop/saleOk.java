@@ -29,7 +29,7 @@ public class saleOk extends BaseController {
 	RegexHelper regex;
 	ItemCategory itemcategory;
 	ShopService shopService;
-	Shop
+
 	@Override
 	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		web = WebHelper.getInstance(request, response);

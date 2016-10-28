@@ -248,7 +248,7 @@ public class EditOk extends BaseController {
 		web.setSession("loginInfo", editInfo);
 
 		/** (11) 수정이 완료되었으므로 다시 수정페이지로 이동 */
-		web.redirect(web.getRootPath() + "/member/edit.do", 
+		web.redirect(web.getRootPath() + "/member/info.do", 
 				"회원정보가 수정되었습니다.");
 
 		
