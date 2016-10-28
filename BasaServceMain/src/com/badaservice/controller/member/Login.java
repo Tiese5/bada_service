@@ -10,10 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.badaservice.helper.BaseController;
 @WebServlet("/member/login.do")
 public class Login extends BaseController {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -1433246452343863970L;
 
 	@Override

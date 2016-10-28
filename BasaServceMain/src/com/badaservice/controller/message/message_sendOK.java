@@ -46,9 +46,13 @@ public class message_sendOK extends BaseController {
 		Member member = new Member();
 		String senderName = null;
 		String content = web.getString("content");
+		String messageDelete = "N";
+		String messageDeleteSend = "N";
 		int senderId= 0;
 		member.setUser_id(userId);
 		Member receiver = null;
+		
+		
 		
 		try {
 			receiver = memberService.selectMemberMessageList(member);
@@ -58,6 +62,13 @@ public class message_sendOK extends BaseController {
 			return null;
 		}
 		
+		// 유효성 검사
+		if (!regex.isValue(content)) {
+			sqlSession.close();
+			web.redirect(null, "내용을 입력하세요.");
+			return null;
+		}
+				
 		messenger messenger = new messenger();
 		messenger.setReceiverId(receiver.getId());
 		messenger.setReceiverName(receiver.getName());
