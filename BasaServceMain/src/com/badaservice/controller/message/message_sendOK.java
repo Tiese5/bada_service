@@ -82,6 +82,8 @@ public class message_sendOK extends BaseController {
 		messenger.setSenderName(senderName);
 		messenger.setSenderId(senderId);
 		messenger.setContent(content);
+		messenger.setMessageDelete(messageDelete);
+		messenger.setMessageDeleteSend(messageDeleteSend);
 		
 		try {
 			messageService.insertMessage(messenger);
@@ -93,7 +95,11 @@ public class message_sendOK extends BaseController {
 			sqlSession.close();
 		}
 		
-		return "/message/message_send";
+		String url = "%s/message.do";
+		url = String.format(url, web.getRootPath());
+		web.redirect(url, null);
+		
+		return null;
 	}
 
 }
