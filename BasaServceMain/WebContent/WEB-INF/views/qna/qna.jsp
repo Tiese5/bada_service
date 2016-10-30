@@ -182,7 +182,7 @@ table {
 														<c:url var="prevUrl" value="/qna/qna.do">
 															<c:param name="page" value="${pageHelper.prevPage}"></c:param>
 														</c:url>
-														<li><a href="${prevUrl }">&laquo;</a></li>
+														<li><a href="${prevUrl}">&laquo;</a></li>
 													</c:when>
 													<c:otherwise>
 														<li class="disabled"><a href="#">&laquo;</a></li>

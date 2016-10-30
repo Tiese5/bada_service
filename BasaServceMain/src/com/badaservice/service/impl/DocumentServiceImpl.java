@@ -1,10 +1,16 @@
 package com.badaservice.service.impl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.Logger;
 
 import com.badaservice.model.Document;
+import com.badaservice.model.messenger;
 import com.badaservice.service.DocumentService;
+
+
+
 
 public class DocumentServiceImpl implements DocumentService {
 	Logger logger;
@@ -44,6 +50,60 @@ public class DocumentServiceImpl implements DocumentService {
 			// 데이터 베이스 접속 해제
 		}
 
+	}
+
+	@Override
+	public List<Document> selectDocumentList(Document document) throws Exception {
+
+		List<Document> result = null;
+
+		try {
+			result = sqlSession.selectList("DocumentMapper.selectDocumentList", document);
+			if (result == null) {
+				throw new NullPointerException();
+			}
+		} catch (NullPointerException e) {
+			throw new Exception("조회된 글 목록이 없습니다.");
+		} catch (Exception e) {
+			logger.error(e.getLocalizedMessage());
+			throw new Exception("글 목록 조회에 실패했습니다.");
+		}
+
+		return result;
+	}
+
+	@Override
+	public Document selectDocument(Document document) throws Exception {
+		Document result = null;
+		
+		try {
+			result = sqlSession.selectOne("DocumentMapper.selectDocument", document);
+			if(result == null) {
+				throw new NullPointerException();
+			}
+		} catch (NullPointerException e) {
+			throw new Exception("조회된 게시물이 없습니다");
+		} catch (Exception e) {
+			logger.error(e.getLocalizedMessage());
+			throw new Exception("게시물 조회에 실패했습니다");
+		}
+		return result;
+	}
+
+	@Override
+	public int selectDocumentCount(Document document) throws Exception {
+		int result = 0;
+		
+		try {
+			// 게시물 수가 0건인 경우도 있으므로
+			// 결과값이 0인 경우에 대한 에외를 발생시키지 않는다.
+			result = sqlSession.selectOne("DocumentMapper.selectDocumentCount", document);
+		} catch (Exception e) {
+			logger.error(e.getLocalizedMessage());
+			throw new Exception("게시물 수 조회에 실패했습니다");
+		}
+		
+		return result;
 	}
 
 }

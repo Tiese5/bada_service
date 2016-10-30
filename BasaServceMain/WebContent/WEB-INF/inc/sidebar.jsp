@@ -14,8 +14,8 @@
 		</ul>
 		<h5 class="list-title text-info">- 사이트 관련</h5>
 		<ul class="nav nav-side-menu">
-			<li><a href="#">공지사항</a></li>
-			<li><a href="#">자주묻는 질문</a></li>
+			<li><a href="${pageContext.request.contextPath}/document_list.do?category=n">공지사항</a></li>
+			<li><a href="${pageContext.request.contextPath}/document_list.do?category=f">자주묻는질문</a></li>
 			<li><a href="#">1:1 문의</a></li>
 		</ul>
 	</div>

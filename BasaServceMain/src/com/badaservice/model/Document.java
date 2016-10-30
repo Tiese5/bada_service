@@ -7,15 +7,30 @@ public class Document {
 	String category;
 	String regDate;
 	String editDate;
-	int writerId;
+	String writerName;
+	
+	// 페이지 구현을 위한 멤버변수
+	private int limitStart;
+	private int listCount;
 	
 	
-	
-	public int getWriterId() {
-		return writerId;
+	public int getLimitStart() {
+		return limitStart;
 	}
-	public void setWriterId(int writerId) {
-		this.writerId = writerId;
+	public void setLimitStart(int limitStart) {
+		this.limitStart = limitStart;
+	}
+	public int getListCount() {
+		return listCount;
+	}
+	public void setListCount(int listCount) {
+		this.listCount = listCount;
+	}
+	public String getWriterName() {
+		return writerName;
+	}
+	public void setWriterName(String writerName) {
+		this.writerName = writerName;
 	}
 	public int getId() {
 		return id;
@@ -53,11 +68,12 @@ public class Document {
 	public void setEditDate(String editDate) {
 		this.editDate = editDate;
 	}
+	
 	@Override
 	public String toString() {
-		return "DocumentModel [id=" + id + ", title=" + title + ", content=" + content + ", category=" + category
-				+ ", regDate=" + regDate + ", editDate=" + editDate + ", writerId=" + writerId + "]";
+		return "Document [id=" + id + ", title=" + title + ", content=" + content + ", category=" + category
+				+ ", regDate=" + regDate + ", editDate=" + editDate + ", writerName=" + writerName + ", limitStart="
+				+ limitStart + ", listCount=" + listCount + "]";
 	}
-	
 	
 }
