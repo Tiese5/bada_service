@@ -58,7 +58,7 @@
                     <tbody>
                         <tr>
                             <td><a href="${pageContext.request.contextPath}/shop/shop_read.do"><img src="${pageContext.request.contextPath}/assets/img/editology.jpg" alt="" height="100px"></a></td>
-                            <td><a href="${pageContext.request.contextPath}/shop/shop_read.do">자바의 정석</a></td>
+                            <td><a href="${pageContext.request.contextPath}/shop/shop_read.do"></a></td>
                             <td>바다</td>
                             <td><span class="text-danger">20,000</span> 원</td>
                             <td>2016.09.10 12:00:00</td>

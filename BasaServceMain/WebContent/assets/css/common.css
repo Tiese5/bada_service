@@ -1,5 +1,8 @@
 @CHARSET "UTF-8";
-
+a#nameid:HOVER{
+	text-decoration: none;
+	color: black;
+}
 body {
 	padding-top: 50px;
 	
