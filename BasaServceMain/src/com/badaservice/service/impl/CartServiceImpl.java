@@ -2,11 +2,10 @@ package com.badaservice.service.impl;
 
 import java.util.List;
 
-import org.apache.ibatis.cache.NullCacheKey;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.Logger;
 
-import com.badaservice.model.cart;
+import com.badaservice.model.Cart;
 import com.badaservice.service.CartService;
 
 public class CartServiceImpl implements CartService {
@@ -20,7 +19,7 @@ public class CartServiceImpl implements CartService {
 		this.sqlsession = sqlsession;
 	}
 	@Override
-	public void insertCart(cart cart) throws Exception {
+	public void insertCart(Cart cart) throws Exception {
 		// TODO Auto-generated method stub
 		int result = sqlsession.insert("CartMapper.inserCart");
 		
@@ -40,9 +39,9 @@ public class CartServiceImpl implements CartService {
 		
 
 	@Override
-	public List<cart> selectItemList(cart cart) throws Exception {
+	public List<Cart> selectItemList(Cart cart) throws Exception {
 		// TODO Auto-generated method stub
-		List<cart> result = null;
+		List<Cart> result = null;
 		
 		try{
 			result = sqlsession.selectList("CartMapper.selectItemList");
