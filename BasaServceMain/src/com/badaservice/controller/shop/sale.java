@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.session.SqlSession;
+
 import com.badaservice.helper.BaseController;
 import com.badaservice.helper.WebHelper;
 
@@ -18,6 +20,7 @@ public class sale extends BaseController {
 	private static final long serialVersionUID = -407841913444091929L;
 	WebHelper web;
 	ItemCategory itemcategory;
+	SqlSession sqlSession;
 	@Override
 	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		web = WebHelper.getInstance(request, response);
@@ -32,6 +35,7 @@ public class sale extends BaseController {
 			request.setAttribute("categoryName", categoryName);
 		} catch (Exception e) {
 			web.redirect(null, e.getLocalizedMessage());
+		sqlSession.close();
 			return null;
 		}
 		

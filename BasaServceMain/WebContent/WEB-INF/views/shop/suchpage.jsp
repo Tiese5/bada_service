@@ -14,7 +14,7 @@
 						function() {
 							var dropdown = $("#drop_down").val();
 							window.location = "http://localhost:8080/BadaServceMain/shop/suchpage.do?drop_down="
-									+ dropdown;
+									+ dropdown&${shop.category};
 						});
 	});
 </script>

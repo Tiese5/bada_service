@@ -80,11 +80,12 @@ public class suchpage extends BaseController {
 
 			shopList = shopService.selectItemCategoryList(shop);
 		} catch (Exception e) {
+			sqlSession.close();
 			web.redirect(null, e.getLocalizedMessage());
 			e.printStackTrace();
+
 			return null;
 		} finally {
-
 			sqlSession.close();
 		}
 		
