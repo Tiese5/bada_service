@@ -26,7 +26,7 @@
 		category,price,item_image,content,
 		reg_date,member_id,hit
 		)VALUES(
-		#{item_title},#{category},price,item_image,content,
+		#{item_title},#{category}, #{price}, #{item_image}, '이렇게',
 		now(),#{member_id},#{hit}
 		)
 	</insert>

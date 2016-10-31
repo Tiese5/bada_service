@@ -9,8 +9,19 @@ public class Shop {
 	private String item_image;
 	private int hit;
 	private String category;
+	private int memeberId;
 	private int limitStart;
 	private int listCount;
+
+	
+	
+	public int getMemeberId() {
+		return memeberId;
+	}
+
+	public void setMemeberId(int memeberId) {
+		this.memeberId = memeberId;
+	}
 
 	public int getLimitStart() {
 		return limitStart;
@@ -115,8 +126,8 @@ public class Shop {
 	public String toString() {
 		return "Shop [id=" + id + ", item_title=" + item_title + ", content=" + content + ", price=" + price
 				+ ", reg_date=" + reg_date + ", item_image=" + item_image + ", hit=" + hit + ", category=" + category
-				+ ", limitStart=" + limitStart + ", listCount=" + listCount + ", dropDown=" + dropDown + ", member_id="
-				+ member_id + "]";
+				+ ", memeberId=" + memeberId + ", limitStart=" + limitStart + ", listCount=" + listCount + ", dropDown="
+				+ dropDown + ", member_id=" + member_id + "]";
 	}
 
 }

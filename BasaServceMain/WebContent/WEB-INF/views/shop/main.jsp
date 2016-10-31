@@ -83,11 +83,14 @@ a>h5 {
 												
 												<a href="${readUrl}">${shop.item_image}<c:choose>
 														<c:when test="${shop.item_image != null }">
+														
 															<c:url var="downloadUrl" value="/download.do">
 																<c:param name="file" value="${shop.item_image}"></c:param>
 															</c:url>
 															<img src="${downloadUrl}" class="img-responsive" />
 														</c:when>
+														
+														
 														<c:otherwise>
 															<img
 																src="${pageContext.request.contextPath}/asset/img/no_image.jpg"

@@ -16,7 +16,7 @@
 
                 </ul>
                 <ul class="nav nav-side-menu list-title">
-                    <li><a href="${pageContext.request.contextPath }/sale.do">회원에게 판매</a></li>
+                    <li><a href="${pageContext.request.contextPath }/shop/item_add.do">회원에게 판매</a></li>
                     <li><a href="${pageContext.request.contextPath }/trade.do">판매내역</a></li>
                 </ul>
                 <ul class="nav nav-side-menu list-title">

@@ -62,10 +62,10 @@ h3 {
 				<div class="image col-md-9 clearfix">					
 				<c:if test="${fn:substringBefore(file.contentType, '/') == 'image'}">
 					<c:url var="downloadUrl" value="/download.do">
-						<c:param name="file" value="${file.fileDir}/${file.fileName}" />
+						<c:param name="file" value="${readItem.item_image}" />
 					</c:url>
 					<img
-						src="${readItem.item_image}"
+						src="${downloadUrl}"
 						style="float: left" />
 				</c:if>		
 					<ul class="size">

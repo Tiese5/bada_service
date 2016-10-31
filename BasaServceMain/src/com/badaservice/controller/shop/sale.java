@@ -13,7 +13,7 @@ import com.badaservice.helper.WebHelper;
 /**
  * Servlet implementation class sale
  */
-@WebServlet("/sale.do")
+@WebServlet("/shop/item_add.do")
 public class sale extends BaseController {
 	private static final long serialVersionUID = -407841913444091929L;
 	WebHelper web;
