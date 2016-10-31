@@ -21,9 +21,10 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public void insertCart(Cart cart) throws Exception {
 		// TODO Auto-generated method stub
-		int result = sqlsession.insert("CartMapper.inserCart");
+		int result = 0;
 		
 		try{
+			result = sqlsession.insert("CartMapper.inserCart");
 			if(result == 0){
 				throw new NullPointerException();}
 		}catch (NullPointerException e) {

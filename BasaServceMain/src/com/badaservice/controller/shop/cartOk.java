@@ -44,10 +44,8 @@ public class cartOk extends BaseController {
 		cartService = new CartServiceImpl(logger, sqlSession);
 		int Id = web.getInt("id");
 		
-		sqlSession.close();
 		Shop shop = new Shop();
 		shop.setId(Id);
-		
 		logger.debug("id = " + Id);
 		
 		Shop sh = null;
@@ -77,7 +75,9 @@ public class cartOk extends BaseController {
 		logger.debug("Item_image="+cart.getItemImage());
 		
 		try {
+			
 			cartService.insertCart(cart);
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			web.redirect(null, e.getLocalizedMessage());
@@ -85,7 +85,7 @@ public class cartOk extends BaseController {
 		}finally{
 			sqlSession.close();
 		}
-		
+		logger.debug("end");
 		
 		web.redirect(null,"해당 상품이 장바구니에 저장되었습니다.");
 		

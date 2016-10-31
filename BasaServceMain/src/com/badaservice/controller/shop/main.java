@@ -46,7 +46,7 @@ public class main extends BaseController {
 		itemCategory = ItemCategory.getInstance();
 		shopService = new ShopServiceImpl(sqlSession, logger);
 		dropDown = DropDown.getInstance();
-
+		
 		String category = web.getString("category");
 		String dropDown = web.getString("drop_down");
 		request.setAttribute("category", category);
@@ -86,8 +86,9 @@ public class main extends BaseController {
 		} catch (Exception e) {
 			web.redirect(null, e.getLocalizedMessage());
 			e.printStackTrace();
-			sqlSession.close();
 			return null;
+		} finally {
+			sqlSession.close();
 		}
 		request.setAttribute("shopList", shopList);
 		request.setAttribute("dropDown", dropDown);

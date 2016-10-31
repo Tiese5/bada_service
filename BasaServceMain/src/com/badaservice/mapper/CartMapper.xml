@@ -29,7 +29,7 @@
 			  price, item_title, item_image, member_id, item_order_id, edit_date
 			)
 		VALUES(
-			 #{price}, #{item_title},  #{item_image}, #{member_id}, #{item_order_id}, now()
+			 #{price}, #{itemTitle},  #{itemImage}, #{memberId}, #{itemOrderId}, now()
 		)
 	</insert>
 	
