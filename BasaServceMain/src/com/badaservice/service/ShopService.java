@@ -35,5 +35,13 @@ public interface ShopService {
 	 */
 	public void updeteItemHit(Shop shop) throws Exception;
 	
+	/**
+	 * 카테고리 + 상품 검색 목록 조회
+	 * @param Shop -카테고리 정보가 저장된 빈즈
+	 * @return  List - 게시물 목록
+	 * @throws Exception
+	 */
+	public List<Shop> selectItemCategoryList(Shop shop) throws Exception;
+	
 	
 }

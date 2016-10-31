@@ -77,7 +77,7 @@ public class main extends BaseController {
 
 			// 현제페이지 번호 계산하기
 			// --->현제 페이지,전체 페이지 수, 한 페이지 목록 수, 그룹 갯수
-			pageHelper.pageProcess(page, totalCount, 6, 5);
+			pageHelper.pageProcess(page, totalCount, 8, 5);
 			// 페이지 현제 번호 계산 결과에서 Limit절에 필요한 값을 빈즈에 추가
 			shop.setLimitStart(pageHelper.getLimitStart());
 			shop.setListCount(pageHelper.getListCount());

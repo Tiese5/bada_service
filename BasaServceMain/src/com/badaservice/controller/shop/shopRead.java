@@ -72,6 +72,7 @@ public class shopRead extends BaseController {
 
 		request.setAttribute("shopId", shopId);
 		request.setAttribute("readItem", readItem);
+	
 
 		return "/shop/detail_infomation";
 

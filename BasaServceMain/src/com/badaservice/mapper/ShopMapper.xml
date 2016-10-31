@@ -78,7 +78,40 @@
 	 parameterType="com.badaservice.model.Shop">
 	 	UPDATE item_add SET hit= hit+1 WHERE id=#{id}
 	 </insert>
-	 
+<!-- 카테고리별 게시물 목록 -->	 
 
+<select id="selectItemCategoryList" parameterType="com.badaservice.model.Shop"
+		resultMap="shop">
+		SELECT id, item_title,price,item_image,hit
+		FROM item_add
+		<if test="item_title != null or content != null">
+			AND(
+			<if test="item_title != null">
+				item_title LIKE concat('%', #{item_title}, '%')
+			</if>
+
+			<if test="content != null">
+				OR content LIKE concat('%', #{content}, '%')
+			</if>
+			)
+		</if>
+		where category=#{category}
+		<choose>
+			<when test="dropDown==1">
+				ORDER BY reg_date DESC
+			</when>
+			<when test="dropDown==2">
+				ORDER BY hit DESC
+			</when>
+			<when test="dropDown==3">
+				ORDER BY price ASC
+			</when>
+			<otherwise>
+				ORDER BY item_title ASC
+			</otherwise>
+		</choose>
+
+		LIMIT #{limitStart},#{listCount};
+	</select>
 
 </mapper>
