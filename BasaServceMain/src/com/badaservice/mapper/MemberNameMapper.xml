@@ -24,7 +24,7 @@
 	<select id="selectItem" parameterType="com.badaservice.model.MemberName"
 		resultMap="MemberName">
 		SELECT
-		item_add.id as id,item_title,member.id as member_id,price, member.name as member_name,
+		item_add.id as id,item_image,item_title,member.id as member_id,price, member.name as member_name,
 		DATE_FORMAT(reg_date, '%Y-%m-%d')as reg_date
 		FROM item_add
 		INNER

@@ -58,16 +58,17 @@ h3 {
 			<div class="test col-sm-9 col-md-10 main-content">
 				<div class="page-header">
 					<h1>제품 상세</h1>
-				</div>	
-				<div class="image col-md-9 clearfix">					
-				<c:if test="${fn:substringBefore(file.contentType, '/') == 'image'}">
-					<c:url var="downloadUrl" value="/download.do">
-						<c:param name="file" value="${readItem.item_image}" />
-					</c:url>
-					<img
-						src="${downloadUrl}"
-						style="float: left" />
-				</c:if>		
+				</div>
+				<div class="image col-md-9 clearfix">
+				
+					<c:if test="${readItem.item_image != null }">
+						<c:url var="downloadUrl" value="/download.do">
+							<c:param name="file" value="${readItem.item_image}">
+							</c:param>
+						</c:url>
+						<img src="${downloadUrl}" style="float: left" width="190px" height="200px" />
+					</c:if>
+					
 					<ul class="size">
 						<li><h2>
 								<strong>${readItem.item_title}</strong>
@@ -105,17 +106,21 @@ h3 {
 
 
 	<script type="text/javascript">
-        $(document.body).on('click', '.dropdown-menu li', function(event) {
+		$(document.body).on(
+				'click',
+				'.dropdown-menu li',
+				function(event) {
 
-            var $target = $(event.currentTarget);
+					var $target = $(event.currentTarget);
 
-            $target.closest('.input-group-btn').find('[data-bind="label"]').text($target.text()).end().children('.dropdown-toggle').dropdown('toggle');
+					$target.closest('.input-group-btn').find(
+							'[data-bind="label"]').text($target.text()).end()
+							.children('.dropdown-toggle').dropdown('toggle');
 
-            return false;
+					return false;
 
-        });
-
-    </script>
+				});
+	</script>
 </body>
 
 </html>

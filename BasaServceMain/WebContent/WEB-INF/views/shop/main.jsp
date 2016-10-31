@@ -28,7 +28,7 @@
 
 .thumbnail {
 	width: 80%;
-	height: 260px;
+	height: 200px;
 }
 
 .color {
@@ -70,56 +70,60 @@ a>h5 {
 					</div>
 					<hr />
 					<form class="form-horizontal" id="myform">
-						<div class="col-md-3">
-							<c:choose>
-								<c:when test="${fn:length(shopList)>0}">
-									<c:forEach var="shop" items="${shopList }">
-										<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+
+						<c:choose>
+							<c:when test="${fn:length(shopList)>0}">
+								<c:forEach var="shop" items="${shopList}">
+									<div class="col-md-3">
+										<div class="col-md-4"
+											style="width: 100%">
 											<div class="thumbnail">
 												<c:url var="readUrl" value="/shop/shop_read.do">
 													<c:param name="category" value="${shop.category}"></c:param>
-													<c:param name="shop_id" value="${shop.id}"></c:param>											
+													<c:param name="shop_id" value="${shop.id}"></c:param>
 												</c:url>
-												
-												<a href="${readUrl}">${shop.item_image}<c:choose>
-														<c:when test="${shop.item_image != null }">
-														
-															<c:url var="downloadUrl" value="/download.do">
-																<c:param name="file" value="${shop.item_image}"></c:param>
-															</c:url>
-															<img src="${downloadUrl}" class="img-responsive" />
-														</c:when>
-														
-														
-														<c:otherwise>
-															<img
-																src="${pageContext.request.contextPath}/asset/img/no_image.jpg"
-																class="img-responsive" />
-														</c:otherwise>
-													</c:choose>
-												</a>
+												<c:choose>
+
+
+													<c:when test="${shop.item_image != null }">
+														<c:url var="downloadUrl" value="/download.do">
+															<c:param name="file" value="${shop.item_image}">
+															</c:param>
+														</c:url>
+														<a href="${readUrl}"><img src="${downloadUrl}"
+															class="img-responsive" style="height: 60%" width="100%"/></a>
+
+													</c:when>
+
+
+													<c:otherwise>
+														<img
+															src="${pageContext.request.contextPath}/assets/img/no_image.jpg"
+															class="img-responsive" width="100px" />
+													</c:otherwise>
+
+												</c:choose>
+
 												<div>
 													<p>
-														<a
-															href="${readUrl}"
-															class="thumbnail"> <img src="${shop.item_image}"
-															alt=""> ${shop.item_title}<br /> <strong
+														<img src="${shop.item_image}" style="height: 80%"> <a
+															href="${readUrl}"> ${shop.item_title}<br /></a> <strong
 															class="color">${shop.price}</strong>
-
-														</a>
 													</p>
 												</div>
 											</div>
 										</div>
-									</c:forEach>
-								</c:when>
-								<c:otherwise>
-									<div class="col-md-12">
-										<p class="text-center">조회된 글이 없습니다</p>
 									</div>
-								</c:otherwise>
-							</c:choose>
-						</div>
+								</c:forEach>
+
+							</c:when>
+							<c:otherwise>
+								<div class="col-md-12">
+									<p class="text-center">조회된 글이 없습니다</p>
+								</div>
+							</c:otherwise>
+						</c:choose>
+
 						<div class="col-md-12">
 							<nav class="text-center">
 								<ul class="pagination">

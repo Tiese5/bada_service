@@ -44,7 +44,7 @@ public class cartOk extends BaseController {
 		cartService = new CartServiceImpl(logger, sqlSession);
 		int Id = web.getInt("id");
 		
-		
+		sqlSession.close();
 		Shop shop = new Shop();
 		shop.setId(Id);
 		
