@@ -176,6 +176,50 @@ public class MessageServiceImpl implements MessageService {
 			sqlsession.commit();
 		}
 	}
+
+
+	@Override
+	public void updateMessage(messenger messenger) throws Exception {
+		try {
+			int result = sqlsession.update("MessageMapper.updateMessage", messenger);
+			if( result == 0) {
+				throw new NullPointerException();
+			}
+		} catch (NullPointerException e) {
+			sqlsession.rollback();
+			throw new Exception("존재하지 않는 쪽지에 대한 요청입니다.");
+		} catch (Exception e) {
+			sqlsession.rollback();
+			logger.error(e.getLocalizedMessage());
+			throw new Exception("쪽지삭제에 실패했습니다.");
+		} finally {
+			sqlsession.commit();
+		}
+		
+	}
+
+
+	@Override
+	public void updateReceiverMessage(messenger messenger) throws Exception {
+		try {
+			int result = sqlsession.update("MessageMapper.updateReceiverMessage", messenger);
+			if( result == 0) {
+				throw new NullPointerException();
+			}
+		} catch (NullPointerException e) {
+			sqlsession.rollback();
+			throw new Exception("존재하지 않는 쪽지에 대한 요청입니다.");
+		} catch (Exception e) {
+			sqlsession.rollback();
+			logger.error(e.getLocalizedMessage());
+			throw new Exception("쪽지삭제에 실패했습니다.");
+		} finally {
+			sqlsession.commit();
+		}
+		
+	}
+	
+	
 }
 
 

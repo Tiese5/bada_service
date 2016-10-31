@@ -22,31 +22,35 @@
 			<!-- 메인 컨텐츠 영역 시작 -->
 			<div class="col-sm-9 col-md-10 main-content">
 				<div class="page-header">
-					<h1>공지사항(상세보기)</h1>
+					<h1>${bbsName}(상세보기)</h1>
 				</div>
 				<br />
 				<form class="form-horizontal" id="myform">
 					<div class="form-group">
-						<label for="send_people" class="col-md-1">작성자:</label>
+						<label for="writer_name" class="col-md-1">작성자:</label>
 						<div class="col-md-11">
-							<span> 아아 </span>
+							<span>${readDocument.writerName} </span>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="subject" class="col-md-1">제목:</label>
+						<label for="title" class="col-md-1">제목:</label>
 						<div class="col-md-11">
-							<span> 아아 </span>
+							<span> ${readDocument.title} </span>
+						</div>
+					</div>
+					
+					
+					<div class="form-group">
+						<label for="content" class="col-md-1">내용:</label>
+						<div class="col-md-11">
+							<span> ${readDocument.content} </span>
 						</div>
 					</div>
 					<div class="page-header"></div>
-					<div class="form-group">
-						<div class="pad col-md-12">
-							<p>서비스 점검 안내(2016년 8월 29일)</p>
-						</div>
-				  	</div>
-					<div class="form-group" style="margin-left:750px">
+						<div class="form-group">
 						<div class="mar col-md-7">
-							<button class="btn btn-primary">글 목록</button>
+							<a href="${pageContext.request.contextPath}/document_list.do?category=${category}" 
+							class="btn btn-primary">목록</a>
 						</div>
 					</div>
 				</form>

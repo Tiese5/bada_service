@@ -22,7 +22,7 @@
 }
 
 .mar {
-	margin-left: 470px;
+	margin-left: 10px;
 }
 
 .pad {
@@ -78,9 +78,10 @@
 							<textarea name="content" id="content" rows="10"
 								class="form-control ckeditor"></textarea>
 						</div>
-						<div class="mar col-md-8">
-							<button type="submit" class="btn btn-primary pull-right">답변완료</button>
-							<button class="btn btn-danger">취소</button>
+						<div class="col-md-8 clearfix">
+							<button type="submit" class="btn btn-primary pull-left">답변완료</button>
+							<a href="${pageContext.request.contextPath}/message_delete_ok.do?message_id=${readMessage.id}" class="mar btn btn-danger pull-left">삭제하기</a>
+							<a href="${pageContext.request.contextPath}/message_get.do" class="btn btn-info" style="margin-left: 10px">목록</a>
 						</div>
 
 					</div>

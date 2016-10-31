@@ -18,6 +18,7 @@
 		<result property="hit" column="hit" />
 		<result property="dropDown" column="drop_down" />
 	</resultMap>
+
 	<!-- 게시물 업데이트 -->
 	<insert id="insertItem" parameterType="com.badaservice.model.Shop"
 		useGeneratedKeys="true" keyProperty="id">
@@ -71,24 +72,13 @@
 		SELECT COUNT(id) FROM item_add
 
 	</select>
-	<!-- 게시물 하나에 대한 조회 -->
-	<!-- <select id="selectItem" parameterType="com.badaservice.model.Shop"
-		resultMap="shop">
-		SELECT
-		item_add.id,item_title,member.id as member_id,price,
-		DATE_FORMAT(reg_date, '%Y-%m-%d')
-		FROM item_add
-		INNER
-		JOIN member
-		ON
-		item_add.member_id=member.id
-		WHERE
-		item_add.id=#{id}
-	</select> -->
+	
 <!-- 조회수 -->
 	<insert id="updeteItemHit" 
 	 parameterType="com.badaservice.model.Shop">
 	 	UPDATE item_add SET hit= hit+1 WHERE id=#{id}
 	 </insert>
+	 
+
 
 </mapper>

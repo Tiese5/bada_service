@@ -35,4 +35,5 @@ public interface ShopService {
 	 */
 	public void updeteItemHit(Shop shop) throws Exception;
 	
+	
 }

@@ -21,9 +21,7 @@
 	text-align: right;
 }
 
-.mar {
-	margin-left: 470px;
-}
+
 
 .pad {
 	padding-bottom: 15px;
@@ -77,9 +75,9 @@
 					</div>
 					<div class="page-header"></div>
 					<div class="form-group">
-						<div class="mar col-md-8">
-							<button type="submit" class="btn btn-primary pull-right">답변완료</button>
-							<button class="btn btn-danger">취소</button>
+						<div class="col-md-8 clearfix">
+							<a href="${pageContext.request.contextPath}/message_delete.do?message_id=${readMessage.id}" class="btn btn-danger">삭제하기</a>
+							<a href="${pageContext.request.contextPath}/message.do" class="btn btn-info" style="margin-left: 10px">목록</a>
 						</div>
 
 					</div>
