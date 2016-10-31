@@ -79,7 +79,7 @@ public class IdSerchOk extends BaseController {
 		try {
 			userId = memberService.selectMemberId(member);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			sqlSession.close();
 			web.redirect(null, e.getLocalizedMessage());
 			return null;
 		}

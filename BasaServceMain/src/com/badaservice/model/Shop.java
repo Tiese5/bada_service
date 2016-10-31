@@ -4,7 +4,7 @@ public class Shop {
 	private int id;
 	private String item_title;
 	private String content;
-	private int price;
+	private String price;
 	private String reg_date;
 	private String item_image;
 	private int hit;
@@ -14,11 +14,11 @@ public class Shop {
 	private int listCount;
 
 	
-	public int getPrice() {
+	public String getPrice() {
 		return price;
 	}
 	
-	public void setPrice(int price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 

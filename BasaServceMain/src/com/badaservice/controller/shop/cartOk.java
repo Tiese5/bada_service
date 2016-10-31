@@ -52,11 +52,9 @@ public class cartOk extends BaseController {
 		try {
 			sh=shopService.selectCartItemList(shop);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			sqlSession.close();
 			web.redirect(null, e.getLocalizedMessage());
 			return null;
-		}finally{
-			sqlSession.close();
 		}
 		
 		Cart cart = new Cart();
@@ -65,7 +63,7 @@ public class cartOk extends BaseController {
 		cart.setId(sh.getId());
 		cart.setItemTitle(sh.getItem_title());
 		cart.setMemberId(sh.getMember_id());
-		cart.setPrice(sh.getPrice());
+		cart.setPrice(Integer.parseInt(sh.getPrice()));
 		cart.setItemImage(sh.getItem_image());
 		
 		logger.debug("id="+cart.getId());
