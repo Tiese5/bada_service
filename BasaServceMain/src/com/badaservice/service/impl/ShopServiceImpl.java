@@ -124,7 +124,7 @@ public class ShopServiceImpl implements ShopService {
 
 	}
 
-	@Override
+
 	public List<Shop> selectItemCategoryList(Shop shop) throws Exception {
 		List<Shop> result = null;
 		
@@ -154,4 +154,27 @@ public class ShopServiceImpl implements ShopService {
 		return result;
 	}
 
+	@Override
+	public Shop selectCartItemList(Shop shop) throws Exception {
+		Shop result = null;
+		try{
+		result = sqlSession.selectOne("ShopMapper.selectCartItemList", shop);
+		if (result == null){
+			throw new NullPointerException();
+			}
+		}catch (NullPointerException e) {
+			// TODO: handle exception
+			sqlSession.rollback();
+			throw new Exception("존재하지 않는 게시물에 대한 요청입니다.");
+		}catch(Exception e){
+			sqlSession.rollback();
+			e.printStackTrace();
+			throw new Exception("게시물 조회에 실패하였습니다.");
+		}finally {
+			sqlSession.commit();
+		}
+		
+		return result;
+		}
+	
 }

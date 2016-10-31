@@ -83,9 +83,11 @@ public class suchpage extends BaseController {
 			sqlSession.close();
 			web.redirect(null, e.getLocalizedMessage());
 			e.printStackTrace();
-			
+
 			return null;
-		} 
+		} finally {
+			sqlSession.close();
+		}
 		
 		request.setAttribute("shopList", shopList);
 		request.setAttribute("dropDown", dropDown);

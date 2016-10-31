@@ -6,7 +6,7 @@
 <!-- professor 테이블에 대한 CRUD 기능을 구현하기 위함 Mapper -->
 <mapper namespace="CartMapper">
 	<!-- Beans 클래스의 객체 이름(id)과 클래스 이름 (type)을 명시한다 -->
-	<resultMap id="cart" type="com.badaservice.model.cart">
+	<resultMap id="cart" type="com.badaservice.model.Cart">
 		<result property="id" column="id" />
 		<result property="editDate" column="edit_date" />
 		<result property="price" column="price" />
@@ -17,19 +17,19 @@
 	</resultMap>
 	
 	<!-- 장바구니 제품 목록 조회 -->
-	<select id="selectItemList" parameterType="com.badaservice.model.cart" resultMap="cart">
+	<select id="selectItemList" parameterType="com.badaservice.model.Cart" resultMap="cart">
 		SELECT   id, price, item_title, item_image, member_id, item_order_id, edit_date
 		FROM cart
-		WHERE id=#{id}
+		WHERE member_id=#{member_id}
 	</select>	
 	<!-- 장바구니에 제품 저장 -->
-	<insert id="insertCart" parameterType="com.badaservice.model.cart" useGeneratedKeys="true" keyProperty="id">
+	<insert id="insertCart" parameterType="com.badaservice.model.Cart" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO
 			cart(
 			  price, item_title, item_image, member_id, item_order_id, edit_date
 			)
 		VALUES(
-			 #{price}, #{item_title},  #{item_image}, #{member_id}, #{item_order_id}, now()
+			 #{price}, #{itemTitle},  #{itemImage}, #{memberId}, #{itemOrderId}, now()
 		)
 	</insert>
 	
