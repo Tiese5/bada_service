@@ -81,6 +81,7 @@ a>h5 {
 												<c:url var="readUrl" value="/shop/shop_read.do">
 													<c:param name="category" value="${shop.category}"></c:param>
 													<c:param name="shop_id" value="${shop.id}"></c:param>
+													<c:param name="member_id" value="${shop.member_id}"></c:param>
 												</c:url>
 												<c:choose>
 

@@ -180,4 +180,13 @@
 		user_id=#{user_id}
 	</select>
 	
+		<select id="selectMemberMessageSendList" parameterType="com.badaservice.model.Member" resultMap="member">
+	select 
+		id, user_id
+	from
+	    member
+	where 
+		id=#{id}
+	</select>
+	
 </mapper>

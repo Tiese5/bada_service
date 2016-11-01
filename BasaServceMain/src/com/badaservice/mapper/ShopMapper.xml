@@ -35,7 +35,7 @@
 	<!-- 게시물 목록을 조회한다 -->
 	<select id="selectItemList" parameterType="com.badaservice.model.Shop"
 		resultMap="shop">
-		SELECT id, item_title,price,item_image,hit
+		SELECT id, item_title,price,item_image,hit, member_id
 		FROM item_add
 		<if test="item_title != null or content != null">
 			AND(

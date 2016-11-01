@@ -73,6 +73,7 @@ public class message_sendOK extends BaseController {
 		messenger.setReceiverId(receiver.getId());
 		messenger.setReceiverName(receiver.getName());
 		
+		
 		Member loginInfo = (Member) web.getSession("loginInfo");
 		if (loginInfo != null) {
 			senderName = loginInfo.getName();

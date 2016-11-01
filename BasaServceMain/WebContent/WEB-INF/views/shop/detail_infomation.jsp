@@ -76,7 +76,7 @@ h3 {
 						<li><h3>등록일: ${readItem.reg_date}</h3></li>
 						<li><h3>
 								판매자: <a
-									href="${pageContext.request.contextPath}/message_send.do?id=${readItem.member_id}"
+									href="${pageContext.request.contextPath}/message_send.do?user_id=${readMember.user_id}"
 									id="nameid"> ${readItem.memberName}</a>
 							</h3></li>
 						<li><h3>
