@@ -37,6 +37,8 @@ public class ItemCategory {
 				categoryName = "정기 간행물";
 			} else if (category.equals("5")) {
 				categoryName = "어린이 도서";
+			}else if (category.equals("0")) {
+				categoryName = "전체";
 			}
 			if (categoryName == null) {
 				throw new Exception("존재하지 않는 카테고리 입니다.");

@@ -46,17 +46,18 @@
 		resultMap="shop">
 		SELECT id, item_title,price,item_image,hit
 		FROM item_add
-		<if test="item_title != null or content != null">
-			AND(
-			<if test="item_title != null">
-				item_title LIKE concat('%', #{item_title}, '%')
-			</if>
-
-			<if test="content != null">
-				OR content LIKE concat('%', #{content}, '%')
-			</if>
-			)
-		</if>
+		<where> 
+	 		<if test="item_title != null or content != null">
+	 			
+		 			<if test="item_title != null">
+		 				item_title LIKE concat('%', #{item_title}, '%')
+		 			</if>
+	
+					<if test="content != null">
+		 				OR content LIKE concat('%',#{content}, '%')
+		 			</if>	 			
+	 		</if>
+	 	</where>
 		<choose>
 			<when test="dropDown==1">
 				ORDER BY reg_date DESC
@@ -81,6 +82,12 @@
 		SELECT COUNT(id) FROM item_add
 
 	</select>
+	<!-- 카테고리별 게시물 수를 조회한다. -->
+	<select id="selectCaItemCount" parameterType="com.badaservice.model.Shop"
+		resultType="int">
+		SELECT COUNT(id) FROM item_add
+
+	</select>
 	
 <!-- 조회수 -->
 	<insert id="updeteItemHit" 
@@ -93,6 +100,7 @@
 		resultMap="shop">
 		SELECT id, item_title,price,item_image,hit
 		FROM item_add
+		WHERE category=#{category}
 		<if test="item_title != null or content != null">
 			AND(
 			<if test="item_title != null">
@@ -104,7 +112,7 @@
 			</if>
 			)
 		</if>
-		where category=#{category}
+		
 		<choose>
 			<when test="dropDown==1">
 				ORDER BY reg_date DESC
@@ -122,5 +130,7 @@
 
 		LIMIT #{limitStart},#{listCount};
 	</select>
+	
+	
 
 </mapper>

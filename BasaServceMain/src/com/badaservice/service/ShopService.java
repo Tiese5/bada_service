@@ -52,5 +52,13 @@ public interface ShopService {
 	 */
 	public List<Shop> selectItemCategoryList(Shop shop) throws Exception;
 	
+	/**
+	 * 카테고리별 전체 게시물 조회
+	 * @param shop
+	 * @return
+	 * @throws Exception
+	 */
+	public int selectCaItemCount(Shop shop) throws Exception;
+	
 	
 }

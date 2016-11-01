@@ -14,7 +14,7 @@
 						function() {
 							var dropdown = $("#drop_down").val();
 							window.location = "http://localhost:8080/BadaServceMain/shop/suchpage.do?drop_down="
-									+ dropdown&${shop.category};
+									+ dropdown + "&category=${category}";
 						});
 	});
 </script>
@@ -150,6 +150,7 @@
 							</div>
 						</c:otherwise>
 					</c:choose>
+					
 					<div class="col-md-12">
 						<nav class="text-center">
 							<ul class="pagination">
@@ -169,6 +170,7 @@
 										<li class="disabled"><a href="#">&laquo;</a></li>
 									</c:otherwise>
 								</c:choose>
+
 								<!-- 페이지 번호 -->
 								<!-- 현재 그룹의 시작페이지~ 끝페이지 사이의 1씩 증가하면서 반복 -->
 								<c:forEach var="i" begin="${pageHelper.startPage}"
@@ -188,7 +190,11 @@
 											<li><a href="${pageUrl}">${i}</a></li>
 										</c:otherwise>
 									</c:choose>
+
+
 								</c:forEach>
+
+
 								<!-- 다음 그룹으로 이동-->
 								<c:choose>
 									<c:when test="${pageHelper.nextPage > 0}">
@@ -211,11 +217,8 @@
 				</form>
 			</div>
 		</div>
-	</div>
-
-
-	<!-- Grid Row 끝 -->
-	<%@ include file="/WEB-INF/inc/footer.jsp"%>
+		<!-- Grid Row 끝 -->
+		<%@ include file="/WEB-INF/inc/footer.jsp"%>
 	</div>
 
 
