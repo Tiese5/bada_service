@@ -38,4 +38,6 @@ public interface MemberService {
 
 	public Member selectMemberMessageList(Member member) throws Exception;
 	
+	public Member selectMemberSendMessageList(Member member) throws Exception;
+	
 }

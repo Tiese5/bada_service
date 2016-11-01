@@ -14,10 +14,13 @@ import org.apache.logging.log4j.Logger;
 import com.badaservice.dao.MyBatisConnectionFactory;
 import com.badaservice.helper.BaseController;
 import com.badaservice.helper.WebHelper;
+import com.badaservice.model.Member;
 import com.badaservice.model.MemberName;
 import com.badaservice.model.Shop;
 import com.badaservice.service.MemberNameService;
+import com.badaservice.service.MemberService;
 import com.badaservice.service.impl.MemberNameServiceImpl;
+import com.badaservice.service.impl.MemberServiceImpl;
 
 /**
  * Servlet implementation class detail_infomation
@@ -29,6 +32,7 @@ public class shopRead extends BaseController {
 	Logger logger;
 	SqlSession sqlSession;
 	MemberNameService memberNameService;;
+	MemberService memberService;
 
 	@Override
 	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,17 +40,21 @@ public class shopRead extends BaseController {
 		logger = LogManager.getFormatterLogger(request.getRemoteUser());
 		sqlSession = MyBatisConnectionFactory.getSqlSession();
 		memberNameService = new MemberNameServiceImpl(sqlSession, logger);
-
+		memberService = new MemberServiceImpl(logger, sqlSession);
+		
 		/** 5)글번호 파라미터 받기 */
 		int shopId = web.getInt("shop_id");
 		logger.debug("shopId:" + shopId);
+		int memberId = web.getInt("member_id");
+		logger.debug("memberId:" + memberId);
 
 		if (shopId == 0) {
 			web.redirect(null, "글 번호가 지정되지 않았습니다");
 			sqlSession.close();
 			return null;
 		}
-		
+		Member member = new Member();
+		member.setId(memberId);
 		MemberName memberName = new MemberName();
 		memberName.setId(shopId);
 		
@@ -55,6 +63,7 @@ public class shopRead extends BaseController {
 		// 준비한 문자열에 대응되는 쿠키값 조회
 		String cookieVar = web.getCookie(cookiekey);
 		Shop readItem = null;
+		Member readMember = null;
 		try {
 			// 쿠키값이 없다면 조회수 갱신
 			if (cookieVar == null) {
@@ -63,6 +72,7 @@ public class shopRead extends BaseController {
 			}
 			
 			readItem = memberNameService.selectItem(memberName);
+			readMember = memberService.selectMemberSendMessageList(member);
 		} catch (Exception e) {
 			web.redirect(null, e.getLocalizedMessage());
 			return null;
@@ -72,6 +82,7 @@ public class shopRead extends BaseController {
 
 		request.setAttribute("shopId", shopId);
 		request.setAttribute("readItem", readItem);
+		request.setAttribute("readMember", readMember);
 	
 
 		return "/shop/detail_infomation";

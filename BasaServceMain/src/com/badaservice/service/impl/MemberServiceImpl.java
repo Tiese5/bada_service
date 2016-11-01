@@ -335,5 +335,24 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 
 	}
+	
+	public Member selectMemberSendMessageList(Member member) throws Exception {
+		// TODO Auto-generated method stub
+				Member result = null;
+				try{
+					result=sqlsession.selectOne("MemberMapper.selectMemberMessageSendList",member);
+					if(result==null){
+						throw new NullPointerException();
+					}
+				}catch (NullPointerException e) {
+					// TODO: handle exception
+					throw new Exception("존재하지 않는 아이디입니다.");
+				}catch (Exception e) {
+					e.printStackTrace();
+					// TODO: handle exception
+					throw new Exception("회원조회에 실패했습니다.");
+				}
+				return result;
+	}
 
 }
