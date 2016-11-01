@@ -47,6 +47,7 @@ public class main extends BaseController {
 		shopService = new ShopServiceImpl(sqlSession, logger);
 		dropDown = DropDown.getInstance();
 		
+		
 		String category = web.getString("category");
 		String dropDown = web.getString("drop_down");
 		request.setAttribute("category", category);
@@ -95,7 +96,7 @@ public class main extends BaseController {
 		request.setAttribute("pageHelper", pageHelper);
 		request.setAttribute("totalCount", totalCount);
 		
-		return "/shop/main";
+		return "shop/main";
 	}
 
 }

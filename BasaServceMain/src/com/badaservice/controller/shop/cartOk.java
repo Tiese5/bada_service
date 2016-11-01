@@ -15,6 +15,7 @@ import com.badaservice.dao.MyBatisConnectionFactory;
 import com.badaservice.helper.BaseController;
 import com.badaservice.helper.WebHelper;
 import com.badaservice.model.Cart;
+import com.badaservice.model.Member;
 import com.badaservice.model.Shop;
 import com.badaservice.service.CartService;
 import com.badaservice.service.ShopService;
@@ -55,6 +56,10 @@ public class cartOk extends BaseController {
 			return null;
 		}
 		
+		Member loginInfo = (Member) web.getSession("loginInfo");
+		int myid = loginInfo.getId();
+		logger.debug("MemberId="+myid);
+		
 		Cart cart = new Cart();
 		
 		
@@ -63,12 +68,17 @@ public class cartOk extends BaseController {
 		cart.setMemberId(sh.getMember_id());
 		cart.setPrice(Integer.parseInt(sh.getPrice()));
 		cart.setItemImage(sh.getItem_image());
+		cart.setMyId(myid);
+		cart.setItemId(sh.getId());
+		
 		
 		logger.debug("id="+cart.getId());
 		logger.debug("Item_title="+cart.getItemTitle());
 		logger.debug("MemberId="+cart.getMemberId());
 		logger.debug("Price="+cart.getPrice());
 		logger.debug("Item_image="+cart.getItemImage());
+		logger.debug("Myid="+cart.getId());
+		logger.debug("Itemid="+cart.getItemId());
 		
 		try {
 			

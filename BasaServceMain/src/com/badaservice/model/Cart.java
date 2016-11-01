@@ -9,6 +9,23 @@ public class Cart {
 	private String itemImage;
 	private int memberId;
 	private String itemOrderId;
+	private int myId;
+	private int itemId;
+	
+	
+	
+	public int getMyId() {
+		return myId;
+	}
+	public void setMyId(int myId) {
+		this.myId = myId;
+	}
+	public int getItemId() {
+		return itemId;
+	}
+	public void setItemId(int itemId) {
+		this.itemId = itemId;
+	}
 	public int getId() {
 		return id;
 	}
@@ -59,9 +76,9 @@ public class Cart {
 	}
 	@Override
 	public String toString() {
-		return "cart [id=" + id + ", editDate=" + editDate + ", content=" + content + ", price=" + price
+		return "Cart [id=" + id + ", editDate=" + editDate + ", content=" + content + ", price=" + price
 				+ ", itemTitle=" + itemTitle + ", itemImage=" + itemImage + ", memberId=" + memberId + ", itemOrderId="
-				+ itemOrderId + "]";
+				+ itemOrderId + ", myId=" + myId + ", itemId=" + itemId + "]";
 	}
 	
 	
