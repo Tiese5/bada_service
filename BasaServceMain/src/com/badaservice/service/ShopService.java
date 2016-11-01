@@ -15,6 +15,15 @@ public interface ShopService {
 	public List<Shop> selectItemList(Shop shop) throws Exception;
 	
 	/**
+	 * 장바구니에 넣을 아이템 조회
+	 * @param shop
+	 * @return
+	 * @throws Exception
+	 */
+	
+	public Shop selectCartItemList(Shop shop) throws Exception;
+	
+	/**
 	 * 게시물을 등록한다
 	 * @param document 등록한 게시물 일련번가호 저장된 빈즈
 	 * @throws Exception

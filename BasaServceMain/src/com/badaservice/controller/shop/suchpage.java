@@ -80,11 +80,14 @@ public class suchpage extends BaseController {
 
 			shopList = shopService.selectItemCategoryList(shop);
 		} catch (Exception e) {
+			sqlSession.close();
 			web.redirect(null, e.getLocalizedMessage());
 			e.printStackTrace();
-			sqlSession.close();
+
 			return null;
-		} 
+		} finally {
+			sqlSession.close();
+		}
 		
 		request.setAttribute("shopList", shopList);
 		request.setAttribute("dropDown", dropDown);

@@ -31,6 +31,15 @@
 		now(),#{member_id},#{hit}
 		)
 	</insert>
+	
+	<!-- 카트에 넣을 아이템 조회 -->
+	<select id="selectCartItemList" parameterType="com.badaservice.model.Shop"
+			resultMap="shop">
+			SELECT id, item_title, price, item_image, member_id
+			FROM item_add
+			WHERE id=#{id}		
+			
+	</select>
 
 	<!-- 게시물 목록을 조회한다 -->
 	<select id="selectItemList" parameterType="com.badaservice.model.Shop"

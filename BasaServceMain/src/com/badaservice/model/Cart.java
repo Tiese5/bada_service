@@ -1,6 +1,6 @@
 package com.badaservice.model;
 
-public class cart {
+public class Cart {
 	private int id;
 	private String editDate;
 	private String content;

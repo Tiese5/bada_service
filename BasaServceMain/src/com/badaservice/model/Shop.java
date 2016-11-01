@@ -14,7 +14,14 @@ public class Shop {
 	private int listCount;
 
 	
+	public String getPrice() {
+		return price;
+	}
 	
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
 	public int getMemeberId() {
 		return memeberId;
 	}
@@ -90,13 +97,6 @@ public class Shop {
 		this.content = content;
 	}
 
-	public String getPrice() {
-		return price;
-	}
-
-	public void setPrice(String price) {
-		this.price = price;
-	}
 
 	public String getReg_date() {
 		return reg_date;

@@ -95,6 +95,7 @@ public class QnaOk extends BaseController {
 		} catch (Exception e) {
 			web.redirect(null, e.getLocalizedMessage());
 			e.printStackTrace();
+			sqlSession.close();
 			return null;
 		}
 		String url = web.getRootPath()+"/qna/qna.do";
