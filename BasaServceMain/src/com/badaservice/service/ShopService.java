@@ -59,6 +59,5 @@ public interface ShopService {
 	 * @throws Exception
 	 */
 	public int selectCaItemCount(Shop shop) throws Exception;
-	
-	
+
 }

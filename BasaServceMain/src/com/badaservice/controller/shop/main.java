@@ -71,7 +71,7 @@ public class main extends BaseController {
 
 		/** 게시물 목록 조회 */
 		List<Shop> shopList = null;
-		List<Shop> itemsuch = null;
+		
 		int totalCount = 0;
 
 		try {
@@ -86,7 +86,7 @@ public class main extends BaseController {
 			shop.setListCount(pageHelper.getListCount());
 
 			shopList = shopService.selectItemList(shop);
-			itemsuch = shopService.selectItemCategoryList(shop);
+			
 
 		} catch (Exception e) {
 			web.redirect(null, e.getLocalizedMessage());
@@ -99,7 +99,7 @@ public class main extends BaseController {
 		request.setAttribute("dropDown", dropDown);
 		request.setAttribute("pageHelper", pageHelper);
 		request.setAttribute("totalCount", totalCount);
-		request.setAttribute("itemsuch", itemsuch);
+		
 		
 		return "/shop/main";
 

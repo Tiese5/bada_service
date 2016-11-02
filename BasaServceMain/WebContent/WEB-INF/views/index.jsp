@@ -89,10 +89,10 @@
          </c:choose>
             <div class="move">
             <a href="${pageContext.request.contextPath}/shop/main.do" class="image">
-            <img src="${pageContext.request.contextPath }/assets/img/logo.png" class="imgimg">
+            <img alt="" src="${pageContext.request.contextPath }/assets/img/logo.png" class="imgimg">
             	<h1>로고</h1></a>
             </div>
-            <form class="control form-horizontal" action="lmg_suchpage.html">
+            <form class="control form-horizontal" action="${pageContext.request.contextPath}/shop/suchpage.do">
                 <div class="form-group">
                     <div class="col-md-8">
                         <input type="text" class="form-control" id="text" placeholder="찾으시는 도서명 또는 작가를 입력해주세요.">

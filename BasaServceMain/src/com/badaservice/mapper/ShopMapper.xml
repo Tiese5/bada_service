@@ -44,18 +44,17 @@
 	<!-- 게시물 목록을 조회한다 -->
 	<select id="selectItemList" parameterType="com.badaservice.model.Shop"
 		resultMap="shop">
-		SELECT id, item_title,price,item_image,hit, member_id
+		SELECT id, item_title,price,item_image,hit,member_id
 		FROM item_add
 		<where> 
 	 		<if test="item_title != null or content != null">
-	 			
-		 			<if test="item_title != null">
-		 				item_title LIKE concat('%', #{item_title}, '%')
-		 			</if>
-	
-					<if test="content != null">
-		 				OR content LIKE concat('%',#{content}, '%')
-		 			</if>	 			
+	 			<if test="item_title != null">
+	 				item_title LIKE concat('%', #{item_title}, '%')
+	 			</if>
+
+				<if test="content != null">
+	 				OR content LIKE concat('%',#{content}, '%')
+	 			</if>	 			
 	 		</if>
 	 	</where>
 		<choose>
@@ -98,7 +97,7 @@
 
 <select id="selectItemCategoryList" parameterType="com.badaservice.model.Shop"
 		resultMap="shop">
-		SELECT id, item_title,price,item_image,hit
+		SELECT id, item_title,price,item_image,hit,member_id
 		FROM item_add
 		WHERE category=#{category}
 		<if test="item_title != null or content != null">
