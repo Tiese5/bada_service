@@ -280,7 +280,7 @@
 					</div>
 					<div class="form-group">
 						<label for="profile_img" class="col-md-2 col-md-2">프로필 사진</label>
-						<div class="col-md-8">
+						<div class="col-md-8">z
 							<c:choose>
 								<c:when test="${loginInfo.profile_img == null }">
 									<p>프로필 이미지가 없습니다.</p>
@@ -292,7 +292,8 @@
 										<c:param name="file" value="${loginInfo.profile_img}" />
 									</c:url>
 									<img class="thumbnail" src="${imgUrl}" alt="프로필 이미지"
-									width="100px" /> <input type="file" name="profile_img"
+									width="100px" />
+								    <input type="file" name="profile_img"
 									id="profile_img" class="form-control">	
 								</c:otherwise>
 							</c:choose>

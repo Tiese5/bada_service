@@ -14,8 +14,6 @@ public class Index extends BaseController {
 
 	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		
 		return "index";
 	}
 

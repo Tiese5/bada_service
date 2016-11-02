@@ -85,9 +85,9 @@ h3 {
 					</ul>
 
 					<a
-						href="${pageContext.request.contextPath}/buy.do?id=${readItem.id}"
+						href="${pageContext.request.contextPath}/shop/buy.do?shop_id=${readItem.id}"
 						class="btns btn btn-primary" id="buy">구매하기</a> <a
-						href="${pageContext.request.contextPath}/shop/cart_ok.do?id=${readItem.id}"
+						href="${pageContext.request.contextPath}/shop/?id=${readItem.id}"
 						class="btns btn btn-warning" id="cart">장바구니</a>
 
 				</div>

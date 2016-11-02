@@ -16,12 +16,18 @@
 		<result property="itemOrderId" column="item_order_id" />
 		<result property="myId" column="myid"/>
 		<result property="itemId" column="itemid"/>
+		<result property="memberName" column="member_name"/>
+		
 	</resultMap>
 	
 	<!-- 장바구니 제품 목록 조회 -->
 	<select id="selectItemList" parameterType="com.badaservice.model.Cart" resultMap="cart">
-		SELECT   id, price, item_title, item_image, member_id, item_order_id, edit_date, myid, itemid
-		FROM cart
+		SELECT   c.id, price, item_title, item_image, member_id, item_order_id, c.edit_date, myid, itemid, m.name AS member_name
+		FROM cart c
+			INNER JOIN
+				member m
+			ON 
+				member_id=m.id
 		WHERE myid=#{myId} 
 	</select>	
 	<!-- 장바구니에 제품 저장 -->
@@ -42,7 +48,12 @@
 		WHERE myid=#{myId} 
 	</select>
 	
-	
+	<!-- 장바구니 상품 삭제 -->
+	<delete id="deleteCartItem" parameterType="com.badaservice.model.Cart">
+		DELETE 
+		FROM cart
+		WHERE id=#{id}
+	</delete>
 	
 	
 	
