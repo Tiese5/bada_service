@@ -101,6 +101,7 @@ public class main extends BaseController {
 		request.setAttribute("totalCount", totalCount);
 		
 		
+		
 		return "/shop/main";
 
 		

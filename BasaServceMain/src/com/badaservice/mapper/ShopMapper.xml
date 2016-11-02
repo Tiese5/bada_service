@@ -67,11 +67,11 @@
 			<when test="dropDown==3">
 				ORDER BY price ASC
 			</when>
-			<otherwise>
+			<when test="dropDown==4">
 				ORDER BY item_title ASC
-			</otherwise>
+			</when>
 		</choose>
-		
+		ORDER BY reg_date DESC
 		LIMIT #{limitStart},#{listCount};
 	</select>
 
@@ -122,14 +122,12 @@
 			<when test="dropDown==3">
 				ORDER BY price ASC
 			</when>
-			<otherwise>
+			<when test="dropDown==4">
 				ORDER BY item_title ASC
-			</otherwise>
+			</when>
 		</choose>
-
 		LIMIT #{limitStart},#{listCount};
 	</select>
-	
-	
+
 
 </mapper>

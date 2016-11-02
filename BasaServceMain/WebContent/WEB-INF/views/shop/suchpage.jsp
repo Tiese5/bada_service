@@ -20,28 +20,13 @@
 </script>
 <%@ include file="/WEB-INF/inc/head.jsp"%>
 <style media="screen" type="text/css">
-/*상단 카테고리*/
-.main-content ul>li {
-	list-style: none;
-	display: inline;
-	padding-right: 7%;
-	text-align: center;
-}
-/*상단 카테고리 위치*/
-.category {
-	padding-top: 70px;
-	margin-left: 30px;
-}
-/*상단 카테고리*/
-.main-content ul>li a {
-	text-decoration: none;
-	font-weight: bold;
-	font-size: 20px;
-}
+
+
+
 /*상단 메인 태그*/
 .textps {
 	padding-left: 50px;
-	padding-top: 50px;
+	padding-top: 40px;
 }
 /*드롭다운 넓이*/
 .btwidth {
@@ -57,11 +42,8 @@
 	display: inline-block;
 	padding-left: 100px;
 }
-/*책마다 효과*/
-.mainps {
-	height: 250px;
-	padding-top: 30px;
-	box-shadow: 2px 2px 5px rgba(135, 139, 144, 0.7);
+.color {
+	color: #ff0000;
 }
 
 .main-body h4, p {
@@ -96,7 +78,7 @@
 				</div>
 				<div class="dropps pull-right">
 					<select name="drop_down" id="drop_down">
-						<option value="1" <c:if test="${dropDown eq '1'}">selected</c:if>>최신순</option>
+						<option value="1" selected<c:if test="${dropDown eq '1'}">selected</c:if>>최신순</option>
 						<option value="2" <c:if test="${dropDown eq '2'}">selected</c:if>>인기순</option>
 						<option value="3" <c:if test="${dropDown eq '3'}">selected</c:if>>낮은가격순</option>
 						<option value="4" <c:if test="${dropDown eq '4'}">selected</c:if>>가나다순</option>
@@ -159,7 +141,7 @@
 									<c:when test="${pageHelper.prevPage > 0 }">
 										<!-- 이전 그룹에 대한 페이지 번호가 존재한다면? -->
 										<!-- 이전 그룹으로 이동하기 위해 URL을 생성해서 prevUrl에 저장 -->
-										<c:url var="prevUrl" value="/shop/main.do">
+										<c:url var="prevUrl" value="/shop/suchpage.do">
 											<c:param name="category" value="${category}"></c:param>
 											<c:param name="keyword" value="${keyword}"></c:param>
 											<c:param name="page" value="${pageHelper.prevPage}"></c:param>
@@ -176,7 +158,7 @@
 								<c:forEach var="i" begin="${pageHelper.startPage}"
 									end="${pageHelper.endPage}" step="1">
 									<!-- 페이지 번호로 이동할수 있는 URL을 생성하겨 url에 저장 -->
-									<c:url var="pageUrl" value="/shop/main.do">
+									<c:url var="pageUrl" value="/shop/suchpage.do">
 										<c:param name="categort" value="${category}"></c:param>
 										<c:param name="keyword" value="${keyword}"></c:param>
 										<c:param name="page" value="${i}"></c:param>
@@ -200,7 +182,7 @@
 									<c:when test="${pageHelper.nextPage > 0}">
 										<!-- 이전 그룹에 대한 페이지 번호가 존재한다면? -->
 										<!-- 이전 그룹으로 이동하기 위해 URL을 생성해서 prevUrl에 저장 -->
-										<c:url var="nextUrl" value="/shop/main.do">
+										<c:url var="nextUrl" value="/shop/suchpage.do">
 											<c:param name="category" value="${category}"></c:param>
 											<c:param name="keyword" value="${keyword}"></c:param>
 											<c:param name="page" value="${pageHelper.nextPage}"></c:param>

@@ -59,5 +59,12 @@ public interface ShopService {
 	 * @throws Exception
 	 */
 	public int selectCaItemCount(Shop shop) throws Exception;
-
+	/**
+	 * 인덱스에서 검색
+	 * @param shop
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Shop> indexSelect(Shop shop) throws Exception;
+	
 }

@@ -64,8 +64,8 @@ public class suchpage extends BaseController {
 		shop.setContent(keyword);
 
 		/** 게시물 목록 조회 */
+		List<Shop> shopCaList = null;
 		List<Shop> shopList = null;
-		List<Shop> allList = null;
 		int totalCaCount = 0;
 		
 		
@@ -80,16 +80,8 @@ public class suchpage extends BaseController {
 			shop.setLimitStart(pageHelper.getLimitStart());
 			shop.setListCount(pageHelper.getListCount());
 			
-			if (category=="1"||category=="2"||category=="3"||category=="4") {
-				shopList = shopService.selectItemCategoryList(shop);	
-			}else{
-				shopList = shopService.selectItemList(shop);
-			}
-			
-					
-				
-				
-			
+			shopCaList = shopService.selectItemCategoryList(shop);														
+			shopList=shopService.selectItemList(shop);
 		} catch (Exception e) {
 			sqlSession.close();
 			web.redirect(null, e.getLocalizedMessage());
@@ -100,11 +92,12 @@ public class suchpage extends BaseController {
 			sqlSession.close();
 		}
 		
+		request.setAttribute("shopCaList", shopCaList);
 		request.setAttribute("shopList", shopList);
 		request.setAttribute("dropDown", dropdown);
 		request.setAttribute("pageHelper", pageHelper);
 		request.setAttribute("totalCount", totalCaCount);
-		request.setAttribute("allList", allList);
+		
 		
 		return "/shop/suchpage";
 	}

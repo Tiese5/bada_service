@@ -40,7 +40,7 @@
 						</div>
 						<!-- /btn-group -->
 						
-						<input type="text" class="form-control" name="keyword" value="${keyword }"
+						<input type="text" class="form-control" name="keyword" id="keyword" value="${keyword }"
 							placeholder="검색 할 도서명을 입력해주세요.">
 						</div>
 					<!-- /input-group -->

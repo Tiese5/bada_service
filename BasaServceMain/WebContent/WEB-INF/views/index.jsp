@@ -66,7 +66,9 @@
                 margin-top: 30px;
                 margin-right: 50px;
             }
-
+			#keyword{
+			margin-left: 30%;
+			}
         </style>
     </head>
     <body>
@@ -92,17 +94,24 @@
             <img alt="" src="${pageContext.request.contextPath }/assets/img/logo.png" class="imgimg">
             	<h1>로고</h1></a>
             </div>
-            <form class="control form-horizontal" action="${pageContext.request.contextPath}/shop/suchpage.do">
+            <form class="control form-horizontal" name="sub"
+            action="${pageContext.request.contextPath}/shop/suchpage.do?keyword=${keyword}" method="get">
                 <div class="form-group">
                     <div class="col-md-8">
-                        <input type="text" class="form-control" id="text" placeholder="찾으시는 도서명 또는 작가를 입력해주세요.">
-                    </div>
-                    <div class="col-md-4">
-                         <a class="btn btn-primary" type="submit" href="lmg_suchpage.html">검색</a>
+                        <input type="text" class="form-control" name="keyword" id="keyword" placeholder="찾으시는 도서명 또는 작가를 입력해주세요."
+                        value="${keyword}">
+        
                     </div>
                  </div>
             </form>
 
         </div>
     </body>
+    <script>
+function press(f){
+    if(f.keyCode == 13){ //javascript에서는 13이 enter키를 의미함
+    	sub.submit(); //submit에 사용자가 지정한 form의 name입력
+    }
+}
+</script>
 </html>
