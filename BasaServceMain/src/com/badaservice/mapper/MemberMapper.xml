@@ -180,14 +180,14 @@
 		user_id=#{user_id}
 	</select>
 	
-	<!-- 회원이름 조회 -->
-	<select id="selectMemberName" parameterType="com.badaservice.model.Member" resultType="String">
+
+	<select id="selectMemberMessageSendList" parameterType="com.badaservice.model.Member" resultMap="member">
 	select 
-		name
-	from
+		id, user_id
+	from  
 	    member
 	where 
-		user_id=#{user_id}
+		id=#{id}
+
 	</select>
-	
 </mapper>

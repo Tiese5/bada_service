@@ -64,21 +64,24 @@ public class suchpage extends BaseController {
 		shop.setContent(keyword);
 
 		/** 게시물 목록 조회 */
+		List<Shop> shopCaList = null;
 		List<Shop> shopList = null;
-		int totalCount = 0;
+		int totalCaCount = 0;
+		
 		
 		try {
 			// 전체 게시물 수
-			totalCount = shopService.selectItemCount(shop);
-
+			totalCaCount = shopService.selectCaItemCount(shop);
+				
 			// 현제페이지 번호 계산하기
 			// --->현제 페이지,전체 페이지 수, 한 페이지 목록 수, 그룹 갯수
-			pageHelper.pageProcess(page, totalCount, 8, 5);
+			pageHelper.pageProcess(page, totalCaCount, 8, 5);
 			// 페이지 현제 번호 계산 결과에서 Limit절에 필요한 값을 빈즈에 추가
 			shop.setLimitStart(pageHelper.getLimitStart());
 			shop.setListCount(pageHelper.getListCount());
-
-			shopList = shopService.selectItemCategoryList(shop);
+			
+			shopCaList = shopService.selectItemCategoryList(shop);														
+			shopList=shopService.selectItemList(shop);
 		} catch (Exception e) {
 			sqlSession.close();
 			web.redirect(null, e.getLocalizedMessage());
@@ -89,10 +92,12 @@ public class suchpage extends BaseController {
 			sqlSession.close();
 		}
 		
+		request.setAttribute("shopCaList", shopCaList);
 		request.setAttribute("shopList", shopList);
-		request.setAttribute("dropDown", dropDown);
+		request.setAttribute("dropDown", dropdown);
 		request.setAttribute("pageHelper", pageHelper);
-		request.setAttribute("totalCount", totalCount);
+		request.setAttribute("totalCount", totalCaCount);
+		
 		
 		return "/shop/suchpage";
 	}

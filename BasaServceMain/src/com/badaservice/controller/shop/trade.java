@@ -12,7 +12,7 @@ import com.badaservice.helper.BaseController;
 /**
  * Servlet implementation class trade
  */
-@WebServlet("/trade.do")
+@WebServlet("/shop/trade.do")
 public class trade extends BaseController {
 	private static final long serialVersionUID = -6940745766762395207L;
 

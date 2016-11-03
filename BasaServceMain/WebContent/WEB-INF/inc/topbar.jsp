@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!-- 로고, 상단 네비게이션 바 -->
 <nav class="navbar navbar-topbar navbar-fixed-top">
 	<div class="container">
@@ -18,7 +19,7 @@
 
 			<form class="navbar-form navbar-left"
 				action="${pageContext.request.contextPath }/shop/suchpage.do"
-				method="get">
+				method="get" name="sub">
 				<input type="hidden" name="category" value="${category }">
 				<div class="form-group">
 					<div class="input-group">
@@ -38,9 +39,10 @@
 							</ul>
 						</div>
 						<!-- /btn-group -->
-						<input type="text" class="form-control" value="${ketword }"
+						
+						<input type="text" class="form-control" name="keyword" id="keyword" value="${keyword }"
 							placeholder="검색 할 도서명을 입력해주세요.">
-					</div>
+						</div>
 					<!-- /input-group -->
 				</div>
 			</form>
@@ -89,3 +91,11 @@
 	</div>
 </nav>
 <!-- 로고, 상단 네비게이션 바 끝 -->
+<script>
+function press(f){
+    if(f.keyCode == 13){ //javascript에서는 13이 enter키를 의미함
+    	sub.submit(); //submit에 사용자가 지정한 form의 name입력
+    }
+}
+</script>
+

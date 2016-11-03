@@ -41,6 +41,14 @@ public class cartOk extends BaseController {
 		sqlSession = MyBatisConnectionFactory.getSqlSession();
 		shopService = new ShopServiceImpl(sqlSession, logger);
 		cartService = new CartServiceImpl(logger, sqlSession);
+		
+		
+		if(web.getSession("loginInfo") == null) {
+			sqlSession.close();
+			web.redirect(web.getRootPath() + "/member/login.do", "로그인 후에 사용하실수 있습니다.");
+			return null;
+		}
+		
 		int Id = web.getInt("id");
 		
 		Shop shop = new Shop();

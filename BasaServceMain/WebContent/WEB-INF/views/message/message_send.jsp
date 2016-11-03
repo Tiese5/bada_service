@@ -44,13 +44,29 @@
 				</div>
 				<br />
 				<form class="form-horizontal" id="myform" method="post" action="${pageContext.request.contextPath}/message_sendOK.do">
-					<div class="form-group">
-						<label for="user_id" class="from_people col-md-2">아이디:</label>
-						<div class="col-md-8">
-							<input type="text" name="user_id" id="user_id"
-								class="form-control">
-						</div>
-					</div>
+					<c:choose>
+						<c:when test="${userId == null}">
+							<div class="form-group">
+								<label for="user_id" class="from_people col-md-2">아이디:</label>
+								<div class="col-md-8">
+									<input type="text" name="user_id" id="user_id"
+										class="form-control">
+								</div>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="form-group">
+								<label for="user_id" class="from_people col-md-2">아이디:</label>
+								<div class="col-md-8">
+								<input type="hidden" name="user_id" id="user_id"
+										class="form-control" value="${userId }">
+									<input type="text" name="user_id" id="user_id"
+										class="form-control" disabled="disabled" value="${userId }">
+								</div>
+							</div>
+						</c:otherwise>
+					</c:choose> 
+					
 					<div class="form-group">
 						<label for="content" class="message_content col-md-2">쪽지
 							내용:</label>

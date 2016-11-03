@@ -14,7 +14,7 @@
         td:last-child, th:last-child {
             border: 0;
         }
-
+  
         .bor {
             margin-left: 230px;
             

@@ -27,10 +27,15 @@ import com.badaservice.service.impl.MessageServiceImpl;
 @WebServlet("/message_send.do")
 public class message_send extends BaseController {
 	private static final long serialVersionUID = -3022851980472374394L;
-
+	WebHelper web;
+	
 	@Override
 	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		web = WebHelper.getInstance(request, response);
+		String usdrId = web.getString("user_id");
+		
+		
+		request.setAttribute("userId", usdrId);
 		return "/message/message_send";
 	}
 

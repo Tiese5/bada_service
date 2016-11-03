@@ -60,15 +60,16 @@ h3 {
 					<h1>제품 상세</h1>
 				</div>
 				<div class="image col-md-9 clearfix">
-				
+
 					<c:if test="${readItem.item_image != null }">
 						<c:url var="downloadUrl" value="/download.do">
 							<c:param name="file" value="${readItem.item_image}">
 							</c:param>
 						</c:url>
-						<img src="${downloadUrl}" style="float: left" width="190px" height="200px" />
+						<img src="${downloadUrl}" style="float: left" width="190px"
+							height="200px" />
 					</c:if>
-					
+
 					<ul class="size">
 						<li><h2>
 								<strong>${readItem.item_title}</strong>
@@ -76,7 +77,7 @@ h3 {
 						<li><h3>등록일: ${readItem.reg_date}</h3></li>
 						<li><h3>
 								판매자: <a
-									href="${pageContext.request.contextPath}/message_send.do?id=${readItem.member_id}"
+									href="${pageContext.request.contextPath}/message_send.do?user_id=${readMember.user_id}"
 									id="nameid"> ${readItem.memberName}</a>
 							</h3></li>
 						<li><h3>
@@ -84,16 +85,18 @@ h3 {
 							</h3></li>
 					</ul>
 
-					<a
-						href="${pageContext.request.contextPath}/shop/buy.do?shop_id=${readItem.id}"
-						class="btns btn btn-primary" id="buy">구매하기</a> <a
-						href="${pageContext.request.contextPath}/shop/?id=${readItem.id}"
+					<a href="${pageContext.request.contextPath}/shop/buy2.do?shop_id=${readItem.id}"
+						class="btns btn btn-primary" id="buy">구매하기</a> 
+					<a href="${pageContext.request.contextPath}/shop/cart.do?id=${readItem.id}"
 						class="btns btn btn-warning" id="cart">장바구니</a>
 
 				</div>
 				<div class="marg col-md-12">
 					<h1>책 정보</h1>
 					<hr />
+					<div class="item-info">
+					
+					</div>
 				</div>
 			</div>
 			<!-- 메인 컨텐츠 영역 끝 -->
@@ -104,22 +107,47 @@ h3 {
 		<%@ include file="/WEB-INF/inc/footer.jsp"%>
 	</div>
 
+	<script type="text/x-handlebars-template" id="info-template">
+	{{#channel.item}}
+		<table>
+			<tr>
+				<td rowspan="5"><img src="{{cover_lurl}} art="{{title}}"</td>
+			</tr>
+			<tr>
+				<td style=padding-left:20px;>저자: {{author}}</td>
+			</tr>
+			<tr>
+				<td style=padding-left:20px;>출판일 : {{pub_date}}</td>
+			</tr>
+			<tr>
+				<td style=padding-left:20px;>판매가 : {{sale_price}} 원</td>
+			</tr>
+			<tr>
+				<td style=padding-left:20px;>설명 : {{description}}</td>
+			</tr>
+		</table>
+		{{/channel.item}}
+	</script>
 
 	<script type="text/javascript">
-		$(document.body).on(
-				'click',
-				'.dropdown-menu li',
-				function(event) {
-
-					var $target = $(event.currentTarget);
-
-					$target.closest('.input-group-btn').find(
-							'[data-bind="label"]').text($target.text()).end()
-							.children('.dropdown-toggle').dropdown('toggle');
-
-					return false;
-
-				});
+	/* $(function(){
+		$.get("${pageContext.request.contextPath }/shop/item_info.do",{
+			//접속하고자 하는 다른 사이트 JSON 주소
+			csurl:'http://apis.daum.net/search/book',
+			apikey:'541b6a841fff529d9865476dacbbf679',
+			q:"${shop.item_title}",
+			result:1,
+			output:'json'
+		},function(req){
+			
+			//미리 준비한 HTML틀을 읽어온다.
+			var tmplate = Handlebars.compile($("#info-template").html());
+			//ajax를 통해서 읽어온 내부의 배열데이터를 템플릿에 병합한다
+			var html = tmplate(req);
+			//#result에 읽어온 내용을 추가한다
+			$("#item-info").append(html);
+		});
+	}); */
 	</script>
 </body>
 

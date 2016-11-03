@@ -63,8 +63,7 @@ a>h5 {
 						<select name="drop_down" id="drop_down">
 							<option value="1" <c:if test="${dropDown eq '1'}">selected</c:if>>최신순</option>
 							<option value="2" <c:if test="${dropDown eq '2'}">selected</c:if>>인기순</option>
-							<option value="3" <c:if test="${dropDown eq '3'}">selected</c:if>>낮은
-								가격순</option>
+							<option value="3" <c:if test="${dropDown eq '3'}">selected</c:if>>낮은가격순</option>
 							<option value="4" <c:if test="${dropDown eq '4'}">selected</c:if>>가나다순</option>
 						</select>
 					</div>
@@ -81,6 +80,7 @@ a>h5 {
 												<c:url var="readUrl" value="/shop/shop_read.do">
 													<c:param name="category" value="${shop.category}"></c:param>
 													<c:param name="shop_id" value="${shop.id}"></c:param>
+													<c:param name="member_id" value="${shop.member_id}"></c:param>
 												</c:url>
 												<c:choose>
 
