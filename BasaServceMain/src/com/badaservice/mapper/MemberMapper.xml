@@ -100,6 +100,7 @@
 			member
 	</select>
 	
+	
 	<!-- INSERT -->
 	<!-- 회원가입 -->
 	<insert id="insertMember" parameterType="com.badaservice.model.Member" useGeneratedKeys="true" keyProperty="id">
