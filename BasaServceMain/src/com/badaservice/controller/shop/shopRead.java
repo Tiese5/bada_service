@@ -42,6 +42,10 @@ public class shopRead extends BaseController {
 		memberNameService = new MemberNameServiceImpl(sqlSession, logger);
 		memberService = new MemberServiceImpl(logger, sqlSession);
 		
+		/**게시판 카테고리 값을 받아서 View에 전달*/
+		String category = web.getString("category");
+		request.setAttribute("category", category);	
+		
 		/** 5)글번호 파라미터 받기 */
 		int shopId = web.getInt("shop_id");
 		logger.debug("shopId:" + shopId);
@@ -79,7 +83,8 @@ public class shopRead extends BaseController {
 		} finally {
 			sqlSession.close();
 		}
-
+		
+		
 		request.setAttribute("shopId", shopId);
 		request.setAttribute("readItem", readItem);
 		request.setAttribute("readMember", readMember);

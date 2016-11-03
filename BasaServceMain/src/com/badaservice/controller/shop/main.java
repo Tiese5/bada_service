@@ -84,6 +84,7 @@ public class main extends BaseController {
 			// 페이지 현제 번호 계산 결과에서 Limit절에 필요한 값을 빈즈에 추가
 			shop.setLimitStart(pageHelper.getLimitStart());
 			shop.setListCount(pageHelper.getListCount());
+			
 
 			shopList = shopService.selectItemList(shop);
 			

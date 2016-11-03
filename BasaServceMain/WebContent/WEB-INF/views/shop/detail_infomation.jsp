@@ -63,8 +63,8 @@ h3 {
 
 					<c:if test="${readItem.item_image != null }">
 						<c:url var="downloadUrl" value="/download.do">
-							<c:param name="file" value="${readItem.item_image}">
-							</c:param>
+							<c:param name="file" value="${readItem.item_image}"></c:param>
+							<c:param name="category" value="${shop.category}"></c:param>
 						</c:url>
 						<img src="${downloadUrl}" style="float: left" width="190px"
 							height="200px" />

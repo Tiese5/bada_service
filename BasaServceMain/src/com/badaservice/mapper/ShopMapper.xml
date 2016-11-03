@@ -44,7 +44,7 @@
 	<!-- 게시물 목록을 조회한다 -->
 	<select id="selectItemList" parameterType="com.badaservice.model.Shop"
 		resultMap="shop">
-		SELECT id, item_title,price,item_image,hit,member_id
+		SELECT id, item_title,price,item_image,hit,member_id,category
 		FROM item_add
 		<where> 
 	 		<if test="item_title != null or content != null">
@@ -58,9 +58,6 @@
 	 		</if>
 	 	</where>
 		<choose>
-			<when test="dropDown==1">
-				ORDER BY reg_date DESC
-			</when>
 			<when test="dropDown==2">
 				ORDER BY hit DESC
 			</when>
@@ -70,8 +67,11 @@
 			<when test="dropDown==4">
 				ORDER BY item_title ASC
 			</when>
+			<otherwise>
+				ORDER BY reg_date DESC
+			</otherwise>
 		</choose>
-		ORDER BY reg_date DESC
+		
 		LIMIT #{limitStart},#{listCount};
 	</select>
 
@@ -97,7 +97,7 @@
 
 <select id="selectItemCategoryList" parameterType="com.badaservice.model.Shop"
 		resultMap="shop">
-		SELECT id, item_title,price,item_image,hit,member_id
+		SELECT id, item_title,price,item_image,hit,member_id,category
 		FROM item_add
 		WHERE category=#{category}
 		<if test="item_title != null or content != null">
@@ -122,10 +122,11 @@
 			<when test="dropDown==3">
 				ORDER BY price ASC
 			</when>
-			<when test="dropDown==4">
-				ORDER BY item_title ASC
-			</when>
+			<otherwise>
+				ORDER BY reg_date DESC
+			</otherwise>
 		</choose>
+		
 		LIMIT #{limitStart},#{listCount};
 	</select>
 

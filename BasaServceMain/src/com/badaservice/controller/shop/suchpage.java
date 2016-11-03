@@ -46,6 +46,7 @@ public class suchpage extends BaseController {
 		itemCategory = ItemCategory.getInstance();
 		shopService = new ShopServiceImpl(sqlSession, logger);
 		dropDown = DropDown.getInstance();
+		
 		/**게시판 카테고리 값을 받아서 View에 전달*/
 		String category = web.getString("category");
 		String dropdown = web.getString("drop_down");
@@ -80,8 +81,9 @@ public class suchpage extends BaseController {
 			shop.setLimitStart(pageHelper.getLimitStart());
 			shop.setListCount(pageHelper.getListCount());
 			
+		
 			shopCaList = shopService.selectItemCategoryList(shop);														
-			shopList=shopService.selectItemList(shop);
+			/*shopList=shopService.selectItemList(shop);*/
 		} catch (Exception e) {
 			sqlSession.close();
 			web.redirect(null, e.getLocalizedMessage());

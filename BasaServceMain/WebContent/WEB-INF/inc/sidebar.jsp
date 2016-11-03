@@ -26,7 +26,8 @@
 <script type="text/javascript">
 	$(function() {
 		$(window).scroll(function() {
-			$(".side-menu").animate({"top": $(this).scrollTop()}, {queue: false, ducation: 50, easing: "swing"});
+			$(".side-menu").animate({"top": $(this).scrollTop()}, 
+					{queue: false, ducation: 50, easing: "swing"});
 			
 		});
 	});

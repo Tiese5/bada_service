@@ -14,7 +14,7 @@
 						function() {
 							var dropdown = $("#drop_down").val();
 							window.location = "http://localhost:8080/BadaServceMain/shop/suchpage.do?drop_down="
-									+ dropdown + "&category=${category}";
+									+ dropdown + "&category="+${category};
 						});
 	});
 </script>
@@ -78,7 +78,7 @@
 				</div>
 				<div class="dropps pull-right">
 					<select name="drop_down" id="drop_down">
-						<option value="1" selected<c:if test="${dropDown eq '1'}">selected</c:if>>최신순</option>
+						<option value="1" <c:if test="${dropDown eq '1'}">selected</c:if>>최신순</option>
 						<option value="2" <c:if test="${dropDown eq '2'}">selected</c:if>>인기순</option>
 						<option value="3" <c:if test="${dropDown eq '3'}">selected</c:if>>낮은가격순</option>
 						<option value="4" <c:if test="${dropDown eq '4'}">selected</c:if>>가나다순</option>
@@ -89,15 +89,17 @@
 				<!--메인컨텐츠 시작-->
 				<!--항목1-->
 				<form class="form-horizontal" id="myform">
+				<input type="hidden" name="category" value="${category}" />
 					<c:choose>
-						<c:when test="${fn:length(shopList)>0}">
-							<c:forEach var="shop" items="${shopList}">
+						<c:when test="${fn:length(shopCaList)>0}">
+							<c:forEach var="shop" items="${shopCaList}">
 								<div class="col-md-3">
 									<div class="col-md-4" style="width: 100%">
 										<div class="thumbnail">
 											<c:url var="readUrl" value="/shop/shop_read.do">
 												<c:param name="category" value="${shop.category}"></c:param>
 												<c:param name="shop_id" value="${shop.id}"></c:param>
+												<c:param name="member_id" value="${shop.member_id}"></c:param>
 											</c:url>
 											<c:choose>
 												<c:when test="${shop.item_image != null }">

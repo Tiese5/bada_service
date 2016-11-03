@@ -18,7 +18,7 @@
 		<div id="navbar" class="navbar-collapse collapse">
 
 			<form class="navbar-form navbar-left"
-				action="${pageContext.request.contextPath }/shop/suchpage.do"
+				action="${pageContext.request.contextPath }/shop/main.do"
 				method="get" name="sub">
 				<input type="hidden" name="category" value="${category }">
 				<div class="form-group">
