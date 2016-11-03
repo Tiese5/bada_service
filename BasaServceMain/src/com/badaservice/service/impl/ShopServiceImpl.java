@@ -194,4 +194,6 @@ public class ShopServiceImpl implements ShopService {
 		return result;
 	}
 
+	
+
 }
