@@ -28,6 +28,4 @@
 		select member_id,item_title,price,
 
 	</select>
-
-
 </mapper>	
