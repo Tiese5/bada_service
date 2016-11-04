@@ -12,4 +12,8 @@ public interface CartService {
 	public List<Cart> selectItemList(Cart cart) throws Exception;
 	
 	public int selectItemCount(Cart cart) throws Exception;
+	
+	public void deleteCartItem(Cart cart) throws Exception;
+	
+	
 }

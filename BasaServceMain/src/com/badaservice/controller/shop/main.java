@@ -46,7 +46,7 @@ public class main extends BaseController {
 		itemCategory = ItemCategory.getInstance();
 		shopService = new ShopServiceImpl(sqlSession, logger);
 		dropDown = DropDown.getInstance();
-		
+
 		
 		String category = web.getString("category");
 		String dropDown = web.getString("drop_down");
@@ -59,6 +59,7 @@ public class main extends BaseController {
 		 */
 		/* 조회할 정보에 대한 빈즈 생성 **/
 		String keyword = web.getString("keyword");
+
 		Shop shop = new Shop();
 		shop.setCategory(category);
 		shop.setDropDown(dropDown);
@@ -70,20 +71,24 @@ public class main extends BaseController {
 
 		/** 게시물 목록 조회 */
 		List<Shop> shopList = null;
+		
 		int totalCount = 0;
 
 		try {
 			// 전체 게시물 수
 			totalCount = shopService.selectItemCount(shop);
-
+			
 			// 현제페이지 번호 계산하기
 			// --->현제 페이지,전체 페이지 수, 한 페이지 목록 수, 그룹 갯수
 			pageHelper.pageProcess(page, totalCount, 8, 5);
 			// 페이지 현제 번호 계산 결과에서 Limit절에 필요한 값을 빈즈에 추가
 			shop.setLimitStart(pageHelper.getLimitStart());
 			shop.setListCount(pageHelper.getListCount());
+			
 
 			shopList = shopService.selectItemList(shop);
+			
+
 		} catch (Exception e) {
 			web.redirect(null, e.getLocalizedMessage());
 			e.printStackTrace();
@@ -96,7 +101,12 @@ public class main extends BaseController {
 		request.setAttribute("pageHelper", pageHelper);
 		request.setAttribute("totalCount", totalCount);
 		
-		return "shop/main";
+		
+		
+		return "/shop/main";
+
+		
+
 	}
 
 }

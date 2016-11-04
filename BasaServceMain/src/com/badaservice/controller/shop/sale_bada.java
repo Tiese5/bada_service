@@ -12,14 +12,14 @@ import com.badaservice.helper.BaseController;
 /**
  * Servlet implementation class sale_bada
  */
-@WebServlet("/sale_bada.do")
+@WebServlet("/shop/sale_bada.do")
 public class sale_bada extends BaseController {
 	private static final long serialVersionUID = -2577585275732650295L;
 
 	@Override
 	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		return "/shop/sale_bada";
+		return "shop/sale_bada";
 	}
 
 

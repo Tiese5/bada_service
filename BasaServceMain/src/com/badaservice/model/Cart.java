@@ -11,9 +11,16 @@ public class Cart {
 	private String itemOrderId;
 	private int myId;
 	private int itemId;
+	private String memberName;
 	
 	
 	
+	public String getMemberName() {
+		return memberName;
+	}
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
 	public int getMyId() {
 		return myId;
 	}
@@ -78,7 +85,7 @@ public class Cart {
 	public String toString() {
 		return "Cart [id=" + id + ", editDate=" + editDate + ", content=" + content + ", price=" + price
 				+ ", itemTitle=" + itemTitle + ", itemImage=" + itemImage + ", memberId=" + memberId + ", itemOrderId="
-				+ itemOrderId + ", myId=" + myId + ", itemId=" + itemId + "]";
+				+ itemOrderId + ", myId=" + myId + ", itemId=" + itemId + ", memberName=" + memberName + "]";
 	}
 	
 	

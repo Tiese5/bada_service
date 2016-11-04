@@ -173,8 +173,6 @@ public class EditOk extends BaseController {
 			return null;
 		}
 
-		
-
 
 		/** (7) 업로드 된 파일 정보 추출 */
 		// --> 이미지 수정을 원하지 않는 경우, 삭제만 원하는 경우
