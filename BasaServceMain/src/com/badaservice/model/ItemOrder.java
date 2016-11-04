@@ -15,6 +15,7 @@ public class ItemOrder {
 	private String price;
 	private String regData;
 	private String itemImg;
+	
 
 	public int getId() {
 		return id;

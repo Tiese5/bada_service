@@ -4,9 +4,9 @@
 
 <!-- 이 파일의 경로를 config.xml에 명시 해야한다 -->
 <!-- professor 테이블에 대한 CRUD 기능을 구현하기 위함 Mapper -->
-<mapper namespace="ItemOrderMapper">
+<mapper namespace="SellerNameMapper">
 	<!-- Beans 클래스의 객체 이름(id)과 클래스 이름 (type)을 명시한다 -->
-	<resultMap id="ItemOrder" type="com.badaservice.model.ItemOrder">
+	<resultMap id="SellerName" type="com.badaservice.model.SellerName">
 		<result property="id" column="id" />
 		<result property="memberId" column="member_id" />
 		<result property="userName" column="user_name" />
@@ -20,13 +20,20 @@
 		<result property="price" column="price" />
 		<result property="regData" column="reg_data" />
 		<result property="itemImg" column="item_img" />
+		<result property="sellerName" column="sellerName" />
 	</resultMap>
 
 	<!-- 게시물 하나에 대한 조회 -->
-	<select id="selectItem" parameterType="com.badaservice.model.MemberName"
-		resultMap="ItemOrder">
-		select member_id,item_title,price,
-
+	<select id="buyList" parameterType="com.badaservice.model.SellerName"
+		resultMap="SellerName">
+		select i.id as id, c.member_id as sellerName ,i.item_title as item_title ,i.price as price ,
+			   i.reg_data as reg_data, i.item_img as item_img ,m.name as sellerName
+				from item_order as i
+				inner join cart as c
+				on i.id = c.item_order_id
+    			inner join member as m
+    			on i.member_id = m.id
+				WHERE member_id={memberId}
+				ORDER BY id DESC
+				LIMIT #{limitStart}, #{listCount};
 	</select>
-
-</mapper>	
