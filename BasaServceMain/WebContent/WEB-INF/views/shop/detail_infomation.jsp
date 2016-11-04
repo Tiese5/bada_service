@@ -130,7 +130,7 @@ h3 {
 	</script>
 
 	<script type="text/javascript">
-	/* $(function(){
+	$(function(){
 		$.get("${pageContext.request.contextPath }/shop/item_info.do",{
 			//접속하고자 하는 다른 사이트 JSON 주소
 			csurl:'http://apis.daum.net/search/book',
@@ -147,7 +147,7 @@ h3 {
 			//#result에 읽어온 내용을 추가한다
 			$("#item-info").append(html);
 		});
-	}); */
+	}); 
 	</script>
 </body>
 
