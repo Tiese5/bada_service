@@ -35,6 +35,7 @@ public class main extends BaseController {
 	UploadHelper upload;
 	ShopService shopService;
 	DropDown dropDown;
+	// 테스트
 
 	@Override
 	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
