@@ -29,10 +29,6 @@
 
 	</select>
 	
-	<insert id="insertItem" parameterType="com.badaservice.model.MemberName"
-		resultType="int">
-		select user_name,memberId
 
-	</insert>
 
 </mapper>	
