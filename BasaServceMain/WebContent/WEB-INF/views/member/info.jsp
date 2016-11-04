@@ -201,7 +201,7 @@ body {
 			<!-- 메인 컨텐츠 영역 시작 -->
 			<div class="col-sm-9 col-md-10 main-content">
 				<div class="page-header">
-					<h2>내 정보</h2>
+					<h1>내 정보</h1>
 				</div>
 				<form class="form-horizontal" id="myform">
 					<input type="hidden" name="id" value="${loginInfo.id }"></input>

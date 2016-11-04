@@ -30,6 +30,8 @@
             margin-top: 30px;
         }
         /*상단바 끝*/
+        
+
     </style>
 </head>
 
@@ -38,7 +40,7 @@
     <div class="container">
         <!-- Grid Row 시작 -->
         <div class="row">
-<%@ include file="/WEB-INF/inc/sidebar.jsp" %>
+<%@ include file="/WEB-INF/inc/my_sidebar.jsp" %>
             <!-- 메인 컨텐츠 영역 시작 -->
             
             <div class="col-sm-9 col-md-10 main-content" >

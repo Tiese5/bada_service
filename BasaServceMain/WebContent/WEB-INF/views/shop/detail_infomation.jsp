@@ -44,6 +44,10 @@ h3 {
 	margin-top: 50px;
 	padding-bottom: 50px;
 }
+
+.btns{
+	margin-left: 30px;
+}
 </style>
 
 </head>
@@ -85,8 +89,7 @@ h3 {
 							</h3></li>
 					</ul>
 
-					<a href="${pageContext.request.contextPath}/shop/buy2.do?shop_id=${readItem.id}"
-						class="btns btn btn-primary" id="buy">구매하기</a> 
+					
 					<a href="${pageContext.request.contextPath}/shop/cart_ok.do?id=${readItem.id}"
 						class="btns btn btn-warning" id="cart">장바구니</a>
 
