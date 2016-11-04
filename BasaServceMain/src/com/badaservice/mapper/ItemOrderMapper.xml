@@ -28,5 +28,11 @@
 		select member_id,item_title,price,
 
 	</select>
+	
+	<insert id="insertItem" parameterType="com.badaservice.model.MemberName"
+		resultType="int">
+		select user_name,memberId
+
+	</insert>
 
 </mapper>	

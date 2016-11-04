@@ -34,27 +34,26 @@
                         </tr>
                     </thead>
                     <tbody>
+                  
+         
+                     <c:forEach var="cart" items="${cartList}">
                         <tr>
-                            <td class="text-center" style="line-height: 100px;"><a href="kjm_detail_infomation.html"><img src="${pageContext.request.contextPath}/assets/img/effective_java.jpg" alt="" height="100px"></a></td>
-                            <td class="text-center" style="line-height: 100px;"><a href="kjm_detail_infomation.html">자바의 정석</a></td>
-                            <td class="text-center" style="line-height: 100px;">바다</td>
-                            <td class="text-center" style="line-height: 100px;"><span class="text-danger">20,000</span> 원</td>
-                            <td class="text-center" style="line-height: 100px;">2016.09.10 12:00:00</td>
-                        </tr>
-                        <tr>
-                            <td class="text-center" style="line-height: 100px;"><a href="kjm_detail_infomation.html"><img src="${pageContext.request.contextPath}/assets/img/effective_java.jpg" alt="" height="100px"></a></td>
-                            <td class="text-center" style="line-height: 100px;"><a href="kjm_detail_infomation.html">자바의 정석</a></td>
-                            <td class="text-center" style="line-height: 100px;">바다</td>
-                            <td class="text-center" style="line-height: 100px;"><span class="text-danger">20,000</span> 원</td>
-                            <td class="text-center" style="line-height: 100px;">2016.09.10 12:00:00</td>
-                        </tr>
-                        <tr>
-                            <td class="text-center" style="line-height: 100px;"><a href="kjm_detail_infomation.html"><img src="${pageContext.request.contextPath}/assets/img/effective_java.jpg" alt="" height="100px"></a></td>
-                            <td class="text-center" style="line-height: 100px;"><a href="kjm_detail_infomation.html">자바의 정석</a></td>
-                            <td class="text-center" style="line-height: 100px;">바다</td>
-                            <td class="text-center" style="line-height: 100px;"><span class="text-danger">20,000</span> 원</td>
-                            <td class="text-center" style="line-height: 100px;">2016.09.10 12:00:00</td>
-                        </tr>
+                            <td><a href="${pageContext.request.contextPath}/shop/shop_read.do"><c:if test="${cart.itemImage != null }">
+						<c:url var="downloadUrl" value="/download.do">
+							<c:param name="file" value="${cart.itemImage}">
+							</c:param>
+						</c:url>
+						<img src="${downloadUrl}" style="float: left" width="190px" height="200px" />
+					</c:if></a></td>
+                            <td><a href="${pageContext.request.contextPath}/shop/shop_read.do">${cart.itemTitle}</a></td>
+                            <td>${cart.memberName}</td>
+                            <td><span class="text-danger">${cart.price}</span> 원</td>
+                            <td>${cart.editDate}</td>
+                       </tr>
+                     	</c:forEach>
+                     	
+                 
+                        
                     </tbody>
                 </table>
             </div>
@@ -62,7 +61,7 @@
         <div class="col-md-offset-1 row">
             <h4 class="col-md-2">총 구매 금액</h4>
             <div class="col-md-10">
-                <h4><span class="text-danger">60,000</span> 원</h4>
+                <h4><span class="text-danger">${sum}</span> 원</h4>
             </div>
         </div>
         <form class="form-horizontal" id="myform">
@@ -70,12 +69,12 @@
                 <h4 class="col-md-2">배송지 주소</h4>
                 <div class="col-md-10 form-group" style="margin-top:10px;">
                     <div class="col-md-12 clearfix" style="margin-bottom:15px;">
-                        <label for="basic_ship" class="pull-right"><input type="checkbox" id="basic_ship" checked> 기본 주소 가져오기</label>
-                        <input type="text" name="postcode" id="postcode" class="test form-control pull-left" style="width: 120px; margin-right: 5px;" disabled value="12345">
+   
+                        <input type="text" name="postcode" id="postcode" class="test form-control pull-left" style="width: 120px; margin-right: 5px;" value="${addr1}">
                         <input type="button" value="우편번호 찾기" class="btn btn-warning" onclick='execDaumPostcode("postcode", "addr1", "addr2");'>
                     </div>
-                    <div class="col-md-8" style="margin-bottom:15px;"><input type="text" name="addr1" id="addr1" class="form-control" disabled value="서울시 강남구 역삼동"></div>
-                    <div class="col-md-8"><input type="text" name="addr2" id="addr2" class="form-control" value="123-12"></div>
+                    <div class="col-md-8" style="margin-bottom:15px;"><input type="text" name="addr1" id="addr1" class="form-control"  value="${addr2}"></div>
+                    <div class="col-md-8"><input type="text" name="addr2" id="addr2" class="form-control" value="${postcode}"></div>
                 </div>
             </div>
             <div class="form-group">

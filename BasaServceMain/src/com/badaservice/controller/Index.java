@@ -26,6 +26,7 @@ public class Index extends BaseController {
 	WebHelper web;
 	ShopService shopService;
 	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 	sqlSession = MyBatisConnectionFactory.getSqlSession();
 	logger = LogManager.getFormatterLogger(request.getRequestURI());
 	web = WebHelper.getInstance(request, response);
@@ -51,6 +52,7 @@ public class Index extends BaseController {
 	
 	request.setAttribute("shopList", shopList);
 	
+
 		return "index";
 	}
 
