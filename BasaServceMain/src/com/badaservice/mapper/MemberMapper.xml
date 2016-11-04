@@ -180,24 +180,13 @@
 		user_id=#{user_id}
 	</select>
 	
-<<<<<<< HEAD
-		<select id="selectMemberMessageSendList" parameterType="com.badaservice.model.Member" resultMap="member">
+
+	<select id="selectMemberMessageSendList" parameterType="com.badaservice.model.Member" resultMap="member">
 	select 
 		id, user_id
 	from
 	    member
 	where 
 		id=#{id}
-=======
-	<!-- 회원이름 조회 -->
-	<select id="selectMemberName" parameterType="com.badaservice.model.Member" resultType="String">
-	select 
-		name
-	from
-	    member
-	where 
-		user_id=#{user_id}
->>>>>>> branch 'master' of https://github.com/Tiese5/bada_service.git
 	</select>
-	
 </mapper>
