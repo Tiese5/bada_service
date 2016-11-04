@@ -30,7 +30,7 @@ import com.badaservice.service.impl.MemberServiceImpl;
 /**
  * Servlet implementation class buy
  */
-@WebServlet("/shop/buy.do")
+@WebServlet("/shop/buy_ok.do")
 public class buyOk extends BaseController {
 	private static final long serialVersionUID = 8466002060641398016L;
 	WebHelper web;

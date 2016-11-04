@@ -69,7 +69,7 @@ public class buy extends BaseController {
 		cart.setMyId(myid);
 		
 		List<Cart> result= null;
-		MemberName result2= null;
+		
 		
 		try {
 			result=cartService.selectItemList(cart);
