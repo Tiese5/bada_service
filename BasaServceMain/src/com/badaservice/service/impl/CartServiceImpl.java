@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.badaservice.controller.shop.cart;
 import com.badaservice.model.Cart;
+import com.badaservice.model.messenger;
 import com.badaservice.service.CartService;
 
 public class CartServiceImpl implements CartService {
@@ -108,4 +109,5 @@ public class CartServiceImpl implements CartService {
 			// 데이터 베이스 접속 해제
 		}
 	}
+
 }

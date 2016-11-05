@@ -22,10 +22,10 @@
 		<result property="itemImg" column="item_img" />
 	</resultMap>
 
-	<!-- 게시물 하나에 대한 조회 -->
-	<select id="selectItem" parameterType="com.badaservice.model.MemberName"
-		resultMap="ItemOrder">
-		select member_id,item_title,price,
-
-	</select>
+	<!-- 구매하기  -->
+	<insert id="insertitemorder" parameterType="com.badaservice.model.ItemOrder" 
+		useGeneratedKeys="true" keyProperty="id">
+		insert into item_order (member_id, user_name, postcode, addr1, addr2, email, tel, state, item_title, price, reg_data, item_img)
+		 				values ( #{memberId}, #{userName}, #{postcode}, #{addr1}, #{addr2}, #{email}, #{tel}, #{state}, #{itemTitle}, #{price}, now(), #{itemImg} )
+	</insert>
 </mapper>	

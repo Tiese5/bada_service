@@ -12,7 +12,7 @@ public class ItemOrder {
 	private String tel;
 	private String state;
 	private String itemTitle;
-	private String price;
+	private int price;
 	private String regData;
 	private String itemImg;
 	
@@ -29,10 +29,10 @@ public class ItemOrder {
 	public void setItemTitle(String itemTitle) {
 		this.itemTitle = itemTitle;
 	}
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 	public String getRegData() {

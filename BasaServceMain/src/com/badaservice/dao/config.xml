@@ -27,6 +27,7 @@
 	   	<mapper resource="com/badaservice/mapper/MemberNameMapper.xml" />
 	   	<mapper resource="com/badaservice/mapper/DocumentMapper.xml" />
 	   	<mapper resource="com/badaservice/mapper/CartMapper.xml" />
+	   	<mapper resource="com/badaservice/mapper/ItemOrderMapper.xml" />
 	   	<!--<mapper resource="study/jsp/mysite/dao/mapper/BbsFileMapper.xml" />
 	   	<mapper resource="study/jsp/mysite/dao/mapper/BbsDocumentMapper.xml" />
 	   	<mapper resource="study/jsp/mysite/dao/mapper/BbsFileMapper.xml" /> -->
