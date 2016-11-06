@@ -22,17 +22,6 @@
 		<result property="itemImg" column="item_img" />
 	</resultMap>
 
-	<!-- 게시물 하나에 대한 조회 -->
-	<select id="selectItem" parameterType="com.badaservice.model.MemberName"
-		resultMap="ItemOrder">
-		select member_id,item_title,price,
-
-	</select>
 	
-	<insert id="insertItem" parameterType="com.badaservice.model.MemberName"
-		resultType="int">
-		select user_name,memberId
-
-	</insert>
 
 </mapper>	

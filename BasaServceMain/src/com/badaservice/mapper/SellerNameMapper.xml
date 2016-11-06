@@ -21,19 +21,32 @@
 		<result property="regData" column="reg_data" />
 		<result property="itemImg" column="item_img" />
 		<result property="sellerName" column="sellerName" />
+		<result property="myId" column="myId" />
 	</resultMap>
 
-	<!-- 게시물 하나에 대한 조회 -->
+	<!-- 구매 목록에 대한 조회 -->
 	<select id="buyList" parameterType="com.badaservice.model.SellerName"
 		resultMap="SellerName">
-		select i.id as id, c.member_id as sellerName ,i.item_title as item_title ,i.price as price ,
-			   i.reg_data as reg_data, i.item_img as item_img ,m.name as sellerName
-				from item_order as i
-				inner join cart as c
-				on i.id = c.item_order_id
-    			inner join member as m
-    			on i.member_id = m.id
-				WHERE member_id={memberId}
+		SELECT i.id as id,i.item_title as item_title,i.price as price,
+		i.reg_data as reg_data,i.item_img as item_img,c.myId as myId,
+		m.name as sellerName
+				FROM item_order as i
+				INNER JOIN cart as c
+				ON i.id = c.item_order_id
+    			INNER JOIN member as m
+    			ON i.member_id = m.id
+				WHERE myId =#{myId}
 				ORDER BY id DESC
 				LIMIT #{limitStart}, #{listCount};
 	</select>
+	
+	<!-- 전체 게시물 수를 조회한다. -->
+	<select id="selectBuyCount" parameterType="com.badaservice.model.SellerName"
+		resultType="int">
+		SELECT COUNT(i.id) as id, c.myId as myId 
+        FROM item_order as i 
+        inner join cart as c
+        on i.id = c.item_order_id
+        where myId =#{myId}
+	</select>
+</mapper>

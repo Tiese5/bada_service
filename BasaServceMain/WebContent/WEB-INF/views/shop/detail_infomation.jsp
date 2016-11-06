@@ -111,10 +111,14 @@ h3 {
 	{{#channel.item}}
 		<table>
 			<tr>
-				<td rowspan="5"><img src="{{cover_lurl}} art="{{title}}"</td>
+			<td rowspan="6">
+				<img src="{{cover_l_url}} art="{{title}}"></td>
 			</tr>
 			<tr>
-				<td style=padding-left:20px;>저자: {{author}}</td>
+				<td style=padding-left:20px;>저자: {{etc_author}}</td>
+			</tr>
+			<tr>
+				<td style=padding-left:20px;>출판사 : {{pub_nm}}</td>
 			</tr>
 			<tr>
 				<td style=padding-left:20px;>출판일 : {{pub_date}}</td>
@@ -135,7 +139,7 @@ h3 {
 			//접속하고자 하는 다른 사이트 JSON 주소
 			csurl:'http://apis.daum.net/search/book',
 			apikey:'541b6a841fff529d9865476dacbbf679',
-			q:"${shop.item_title}",
+			q:"${readItem.item_title}",
 			result:1,
 			output:'json'
 		},function(req){
@@ -145,7 +149,7 @@ h3 {
 			//ajax를 통해서 읽어온 내부의 배열데이터를 템플릿에 병합한다
 			var html = tmplate(req);
 			//#result에 읽어온 내용을 추가한다
-			$("#item-info").append(html);
+			$(".item-info").append(html);
 		});
 	}); 
 	</script>

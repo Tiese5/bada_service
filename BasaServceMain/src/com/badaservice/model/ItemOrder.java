@@ -16,7 +16,22 @@ public class ItemOrder {
 	private String regData;
 	private String itemImg;
 	
+	private int limitStart;
+	private int listCount;
 
+	
+	public int getLimitStart() {
+		return limitStart;
+	}
+	public void setLimitStart(int limitStart) {
+		this.limitStart = limitStart;
+	}
+	public int getListCount() {
+		return listCount;
+	}
+	public void setListCount(int listCount) {
+		this.listCount = listCount;
+	}
 	public int getId() {
 		return id;
 	}
@@ -100,7 +115,7 @@ public class ItemOrder {
 		return "ItemOrder [id=" + id + ", memberId=" + memberId + ", userName=" + userName + ", postcode=" + postcode
 				+ ", addr1=" + addr1 + ", addr2=" + addr2 + ", email=" + email + ", tel=" + tel + ", state=" + state
 				+ ", itemTitle=" + itemTitle + ", price=" + price + ", regData=" + regData + ", itemImg=" + itemImg
-				+ "]";
+				+ ", limitStart=" + limitStart + ", listCount=" + listCount + "]";
 	}
 	
 	

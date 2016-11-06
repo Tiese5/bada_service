@@ -3,32 +3,33 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-  <environments default="development">
-    <environment id="development">
-      <transactionManager type="JDBC"/>
-      <dataSource type="POOLED">
-        <property name="driver" value="com.mysql.jdbc.Driver"/>
-       <property name="url" value="jdbc:mysql://tiese5.cafe24.com/tiese5?characterEncoding=UTF8"/>
-        <property name="username" value="tiese5"/>
-        <property name="password" value="qkektjqltm!@"/>
-   		<!-- <property name="url" value="jdbc:mysql://localhost:3306/badaservice?characterEncoding=UTF8"/> 
-        <property name="username" value="root"/>
-        <property name="password" value="kkcc30311"/>
-         -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url"
+					value="jdbc:mysql://tiese5.cafe24.com/tiese5?characterEncoding=UTF8" />
+				<property name="username" value="tiese5" />
+				<property name="password" value="qkektjqltm!@" />
+				<!-- <property name="url" value="jdbc:mysql://localhost:3306/badaservice?characterEncoding=UTF8"/> 
+					<property name="username" value="root"/> <property name="password" value="kkcc30311"/> -->
 
-      </dataSource>
-    </environment>
-  </environments>
-  <mappers>
-   		<mapper resource="com/badaservice/mapper/QnaMapper.xml" />
-   		<mapper resource="com/badaservice/mapper/MemberMapper.xml" />
-   		<mapper resource="com/badaservice/mapper/MessageMapper.xml" />
-	   	<mapper resource="com/badaservice/mapper/ShopMapper.xml" />
-	   	<mapper resource="com/badaservice/mapper/MemberNameMapper.xml" />
-	   	<mapper resource="com/badaservice/mapper/DocumentMapper.xml" />
-	   	<mapper resource="com/badaservice/mapper/CartMapper.xml" />
-	   	<!--<mapper resource="study/jsp/mysite/dao/mapper/BbsFileMapper.xml" />
-	   	<mapper resource="study/jsp/mysite/dao/mapper/BbsDocumentMapper.xml" />
-	   	<mapper resource="study/jsp/mysite/dao/mapper/BbsFileMapper.xml" /> -->
-  </mappers>
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="com/badaservice/mapper/QnaMapper.xml" />
+		<mapper resource="com/badaservice/mapper/MemberMapper.xml" />
+		<mapper resource="com/badaservice/mapper/MessageMapper.xml" />
+		<mapper resource="com/badaservice/mapper/ShopMapper.xml" />
+		<mapper resource="com/badaservice/mapper/MemberNameMapper.xml" />
+		<mapper resource="com/badaservice/mapper/DocumentMapper.xml" />
+		<mapper resource="com/badaservice/mapper/CartMapper.xml" />
+		<mapper resource="com/badaservice/mapper/ItemOrderMapper.xml" />
+		<mapper resource="com/badaservice/mapper/SellerNameMapper.xml" />
+		<!--<mapper resource="study/jsp/mysite/dao/mapper/BbsFileMapper.xml" /> 
+			<mapper resource="study/jsp/mysite/dao/mapper/BbsDocumentMapper.xml" /> <mapper 
+			resource="study/jsp/mysite/dao/mapper/BbsFileMapper.xml" /> -->
+	</mappers>
 </configuration>

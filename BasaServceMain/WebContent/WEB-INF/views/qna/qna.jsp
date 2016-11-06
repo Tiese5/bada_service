@@ -154,7 +154,8 @@ table {
 														<c:when test="${qna.category== '3' }">환불</c:when>
 														<c:when test="${qna.category== '4' }">기타</c:when>
 													</c:choose></td>
-												<td><c:url var="readUrl" value="/qna/qna_read.do">
+												<td>
+													<c:url var="readUrl" value="/qna/qna_read.do">
 														<c:param name="qna_id" value="${qna.id }"></c:param>
 													</c:url> <a href="${readUrl}">${qna.title}</a></td>
 												<td class="text-center">${qna.regDate }</td>
