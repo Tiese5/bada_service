@@ -13,6 +13,14 @@
 <title>BaDa | 정보수정</title>
 
 <style media="screen" type="text/css">
+
+
+.size {
+        font-size: 1.4em;
+        margin-top: 30px;
+  	    padding-bottom: 30px;
+}
+        
 .side-menu {
 	position: fixed;
 	margin-top: 30px;
@@ -197,7 +205,7 @@
 			<!-- 메인 컨텐츠 영역 시작 -->
 			<div class="col-sm-9 col-md-10 main-content">
 				<div class="page-header clearfix">
-					<h2>정보수정</h2>
+					<h1>정보수정</h1>
 				</div>
 				<p class="col-md-offset-2 text-warning">*은 필수 입력입니다.(아이디는 변경할 수
 					없습니다.)</p>
@@ -280,7 +288,7 @@
 					</div>
 					<div class="form-group">
 						<label for="profile_img" class="col-md-2 col-md-2">프로필 사진</label>
-						<div class="col-md-8">z
+						<div class="col-md-8">
 							<c:choose>
 								<c:when test="${loginInfo.profile_img == null }">
 									<p>프로필 이미지가 없습니다.</p>

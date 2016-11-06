@@ -9,7 +9,7 @@
 	<resultMap id="ItemOrder" type="com.badaservice.model.ItemOrder">
 		<result property="id" column="id" />
 		<result property="memberId" column="member_id" />
-		<result property="userName" column="user_name" />
+		<result property="userId" column="user_id" />
 		<result property="postcode" column="postcode" />
 		<result property="addr1" column="addr1" />
 		<result property="addr2" column="addr2" />
@@ -22,6 +22,17 @@
 		<result property="itemImg" column="item_img" />
 	</resultMap>
 
-	
 
+	<!-- 구매하기  -->
+	<insert id="insertitemorder" parameterType="com.badaservice.model.ItemOrder" 
+		useGeneratedKeys="true" keyProperty="id">
+		insert into item_order (member_id, user_id, postcode, addr1, addr2, email, tel, state, item_title, price, reg_data, item_img)
+		 				values ( #{memberId}, #{userId}, #{postcode}, #{addr1}, #{addr2}, #{email}, #{tel}, #{state}, #{itemTitle}, #{price}, now(), #{itemImg} )
+	</insert>
+	
+	<!-- 판매내역 목록을 조회한다. -->
+	<select id="selectMessageList" parameterType="com.badaservice.model.ItemOrder" 
+		resultMap="ItemOrder">
+		select item_title, price, reg_data, state, user_name from item_order where member_id=#{memberId}
+	</select>
 </mapper>	

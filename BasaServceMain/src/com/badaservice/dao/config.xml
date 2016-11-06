@@ -15,21 +15,21 @@
 				<!-- <property name="url" value="jdbc:mysql://localhost:3306/badaservice?characterEncoding=UTF8"/> 
 					<property name="username" value="root"/> <property name="password" value="kkcc30311"/> -->
 
-			</dataSource>
-		</environment>
-	</environments>
-	<mappers>
-		<mapper resource="com/badaservice/mapper/QnaMapper.xml" />
-		<mapper resource="com/badaservice/mapper/MemberMapper.xml" />
-		<mapper resource="com/badaservice/mapper/MessageMapper.xml" />
-		<mapper resource="com/badaservice/mapper/ShopMapper.xml" />
-		<mapper resource="com/badaservice/mapper/MemberNameMapper.xml" />
-		<mapper resource="com/badaservice/mapper/DocumentMapper.xml" />
-		<mapper resource="com/badaservice/mapper/CartMapper.xml" />
-		<mapper resource="com/badaservice/mapper/ItemOrderMapper.xml" />
-		<mapper resource="com/badaservice/mapper/SellerNameMapper.xml" />
-		<!--<mapper resource="study/jsp/mysite/dao/mapper/BbsFileMapper.xml" /> 
-			<mapper resource="study/jsp/mysite/dao/mapper/BbsDocumentMapper.xml" /> <mapper 
-			resource="study/jsp/mysite/dao/mapper/BbsFileMapper.xml" /> -->
-	</mappers>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+   		<mapper resource="com/badaservice/mapper/QnaMapper.xml" />
+   		<mapper resource="com/badaservice/mapper/MemberMapper.xml" />
+   		<mapper resource="com/badaservice/mapper/MessageMapper.xml" />
+	   	<mapper resource="com/badaservice/mapper/ShopMapper.xml" />
+	   	<mapper resource="com/badaservice/mapper/MemberNameMapper.xml" />
+	   	<mapper resource="com/badaservice/mapper/DocumentMapper.xml" />
+	   	<mapper resource="com/badaservice/mapper/CartMapper.xml" />
+	   	<mapper resource="com/badaservice/mapper/ItemOrderMapper.xml" />
+	   	<!--<mapper resource="study/jsp/mysite/dao/mapper/BbsFileMapper.xml" />
+	   	<mapper resource="study/jsp/mysite/dao/mapper/BbsDocumentMapper.xml" />
+	   	<mapper resource="study/jsp/mysite/dao/mapper/BbsFileMapper.xml" /> -->
+  </mappers>
+
 </configuration>

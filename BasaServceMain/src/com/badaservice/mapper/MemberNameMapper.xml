@@ -20,7 +20,7 @@
 		<result property="dropDown" column="drop_down" />
 	</resultMap>
 	
-<!-- 게시물 하나에 대한 조회 -->
+	<!-- 게시물 하나에 대한 조회 -->
 	<select id="selectItem" parameterType="com.badaservice.model.MemberName"
 		resultMap="MemberName">
 		SELECT

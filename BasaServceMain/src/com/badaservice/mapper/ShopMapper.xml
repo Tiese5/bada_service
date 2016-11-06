@@ -17,6 +17,7 @@
 		<result property="category" column="category" />
 		<result property="hit" column="hit" />
 		<result property="dropDown" column="drop_down" />
+		<result property="userId" column="user_id" />
 	</resultMap>
 
 	<!-- 게시물 업데이트 -->
@@ -25,10 +26,10 @@
 		INSERT INTO item_add(
 		item_title,
 		category,price,item_image,content,
-		reg_date,member_id,hit
+		reg_date,member_id,hit, user_id
 		)VALUES(
 		#{item_title},#{category}, #{price}, #{item_image}, '이렇게',
-		now(),#{member_id},#{hit}
+		now(),#{member_id},#{hit}, '판매 중'
 		)
 	</insert>
 	
@@ -132,5 +133,17 @@
 		LIMIT #{limitStart},#{listCount};
 	</select>
 
+	<!-- userid 추가 -->
+	<update id="updateuserId" parameterType="com.badaservice.model.Shop">
+		update item_add set user_id=#{userId} where id=#{id}
+	</update>
+	
+	<select id="selectSellList" parameterType="com.badaservice.model.Shop"
+	resultMap="shop">
+		select item_title, price, reg_date, user_id
+		from item_add
+		where member_id=#{member_id}		
+	</select>
+	
 
 </mapper>

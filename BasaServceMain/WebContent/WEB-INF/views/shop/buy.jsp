@@ -64,22 +64,22 @@
                 <h4><span class="text-danger">${sum}</span> 원</h4>
             </div>
         </div>
-        <form class="form-horizontal" id="myform">
+        <form class="form-horizontal" id="myform" method="post" action="${pageContext.request.contextPath}/shop/buy_ok.do">
             <div class="row col-md-offset-1">
                 <h4 class="col-md-2">배송지 주소</h4>
                 <div class="col-md-10 form-group" style="margin-top:10px;">
                     <div class="col-md-12 clearfix" style="margin-bottom:15px;">
    
-                        <input type="text" name="postcode" id="postcode" class="test form-control pull-left" style="width: 120px; margin-right: 5px;" value="${addr1}">
+                        <input type="text" name="postcode" id="postcode" class="test form-control pull-left" style="width: 120px; margin-right: 5px;" value="${postcode}">
                         <input type="button" value="우편번호 찾기" class="btn btn-warning" onclick='execDaumPostcode("postcode", "addr1", "addr2");'>
                     </div>
-                    <div class="col-md-8" style="margin-bottom:15px;"><input type="text" name="addr1" id="addr1" class="form-control"  value="${addr2}"></div>
-                    <div class="col-md-8"><input type="text" name="addr2" id="addr2" class="form-control" value="${postcode}"></div>
+                    <div class="col-md-8" style="margin-bottom:15px;"><input type="text" name="addr1" id="addr1" class="form-control"  value="${addr1}"></div>
+                    <div class="col-md-8"><input type="text" name="addr2" id="addr2" class="form-control" value="${addr2}"></div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-offset-5">
-                    <button type="button" class="btn btn-primary btn-lg buy">구매하기</button>
+                    <button type="submit" class="btn btn-primary btn-lg buy">구매하기</button>
                 </div>
             </div>
         </form>

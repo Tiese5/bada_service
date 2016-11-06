@@ -28,6 +28,7 @@
 	<%@ include file="/WEB-INF/inc/topbar.jsp"%>
 	<div class="container">
 
+
 		<!-- Grid Row 시작 -->
 		<div class="row">
 			<%@ include file="/WEB-INF/inc/sidebar.jsp"%>
@@ -50,7 +51,6 @@
 						<c:when test="${fn:length(buyList)>0}">
 							<c:forEach var="buylist" items="${buyList}">
 								<tbody>
-
 									<tr>
 										<td><a
 											href="${pageContext.request.contextPath}/shop/shop_read.do">
