@@ -10,10 +10,20 @@ public class Shop {
 	private int hit;
 	private String category;
 	private int memeberId;
+	private String userId;
 	private int limitStart;
 	private int listCount;
 
 	
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+
 	public String getPrice() {
 		return price;
 	}
@@ -126,8 +136,8 @@ public class Shop {
 	public String toString() {
 		return "Shop [id=" + id + ", item_title=" + item_title + ", content=" + content + ", price=" + price
 				+ ", reg_date=" + reg_date + ", item_image=" + item_image + ", hit=" + hit + ", category=" + category
-				+ ", memeberId=" + memeberId + ", limitStart=" + limitStart + ", listCount=" + listCount + ", dropDown="
-				+ dropDown + ", member_id=" + member_id + "]";
+				+ ", memeberId=" + memeberId + ", userId=" + userId + ", limitStart=" + limitStart
+				+ ", listCount=" + listCount + ", dropDown=" + dropDown + ", member_id=" + member_id + "]";
 	}
 
 }

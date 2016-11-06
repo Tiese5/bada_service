@@ -4,7 +4,7 @@ public class ItemOrder {
 
 	private int id;
 	private int memberId;
-	private String userName;
+	private String userId;
 	private String postcode;
 	private String addr1;
 	private String addr2;
@@ -53,11 +53,11 @@ public class ItemOrder {
 	public void setMemberId(int memberId) {
 		this.memberId = memberId;
 	}
-	public String getUserName() {
-		return userName;
+	public String getUserId() {
+		return userId;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	public String getPostcode() {
 		return postcode;
@@ -97,7 +97,7 @@ public class ItemOrder {
 	}
 	@Override
 	public String toString() {
-		return "ItemOrder [id=" + id + ", memberId=" + memberId + ", userName=" + userName + ", postcode=" + postcode
+		return "ItemOrder [id=" + id + ", memberId=" + memberId + ", userId=" + userId + ", postcode=" + postcode
 				+ ", addr1=" + addr1 + ", addr2=" + addr2 + ", email=" + email + ", tel=" + tel + ", state=" + state
 				+ ", itemTitle=" + itemTitle + ", price=" + price + ", regData=" + regData + ", itemImg=" + itemImg
 				+ "]";

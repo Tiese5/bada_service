@@ -79,82 +79,34 @@
                         <table class="table-hover table">
                             <thead style="background-color : #ddd;">
                                 <tr>
-                                    <td class="textheade">제목</td>
-                                    <td class="textheade">가격</td>
-                                    <td class="textheade">판매일시</td>
-                                    <td class="textheade">판매승인</td>
-                                    <td class="textheade">구매자</td>
-                                </tr>
+                                	<th class="text-center" width="25%">제목</th>
+                                	<th class="text-center" width="25%">가격</th>
+                                	<th class="text-center" width="25%">판매일시</th>
+                                	<th class="text-center" width="25%">구매자</th>
+                            	</tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <ul>
-                                        <td><li class="top"><a href="#">자바의 정석</a></li></td>
-                                        <td><li class="top">20000원</li></td>
-                                        <td><li class="top">2016.08.20</li></td>
-                                        <td><li class="top">승인</li></td>
-                                        <td><li class="top">책돌이</li></td>
-                                    </ul>
-                                </tr>
-                                <tr>
-                                    <ul>
-                                        <td><li class="top"><a href="#">자바의 정석</a></li></td>
-                                        <td><li class="top">20000원</li></td>
-                                        <td><li class="top">2016.08.20</li></td>
-                                        <td><li class="top">승인</li></td>
-                                        <td><li class="top">책돌이</li></td>
-                                    </ul>
-                                </tr>
-                                <tr>
-                                    <ul>
-                                        <td><li class="top"><a href="#">자바의 정석</a></li></td>
-                                        <td><li class="top">20000원</li></td>
-                                        <td><li class="top">2016.08.20</li></td>
-                                        <td><li class="top">승인</li></td>
-                                        <td><li class="top">책돌이</li></td>
-                                    </ul>
-                                </tr>
+                             <c:choose>
+					    		<c:when test="${fn:length(shopList) > 0}">
+					    			<c:forEach var="shop" items="${shopList}">
+					    				<tr>
+					    					<td class="small text-center">${shop.item_title}</td>
+								            <td class="text-center">${shop.price}</td>
+								            <td class="text-center">${shop.reg_date}</td>
+								            <td class="text-center">${shop.userId}</td>
+							        	</tr>
+					    			</c:forEach>
+					    		</c:when>
+					    		<c:otherwise>
+					    			<tr>
+							            <td colspan="4" class="text-center" style="line-height: 100px;">
+							                조회된 글이 없습니다.</td>
+							        </tr>
+					    		</c:otherwise>
+		    				  </c:choose>
                             </tbody>
                         </table>
-                        <div>
-                            <h1>바다에 판매 신청한 내역</h1>
-                            <hr/>
-                        </div>
-                    </div>
-                    <!--책목록정의-->
-                    <div>
-                        <table class="table table2 table-hover">
-                            <thead style="background-color : #ddd;">
-                                <tr height="30px">
-                                    <th class="text-center" width="70%">제목</th>
-                                    <th class="text-center" width="30%">신청일시</th>
-                                </tr>
-                            </thead>    
-                                <tbody>
-                                    <tr>
-                                        <td>종류</td>
-                                        <td>10,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>종류</td>
-                                        <td>10,000.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>종류</td>
-                                        <td>10,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>종류</td>
-                                        <td>10,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>종류</td>
-                                        <td>10,000</td>
-                                    </tr>
-                             </tbody>
-                            
-                        </table>
-                        <!--문의내역 테이블 끝-->
+                        
                     </div>
                 </div>
                 <!-- 메인 컨텐츠 영역 끝 -->

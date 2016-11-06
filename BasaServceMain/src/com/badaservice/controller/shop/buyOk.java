@@ -21,14 +21,17 @@ import com.badaservice.model.Cart;
 import com.badaservice.model.ItemOrder;
 import com.badaservice.model.Member;
 import com.badaservice.model.MemberName;
+import com.badaservice.model.Shop;
 import com.badaservice.service.CartService;
 import com.badaservice.service.ItemorderService;
 import com.badaservice.service.MemberNameService;
 import com.badaservice.service.MemberService;
+import com.badaservice.service.ShopService;
 import com.badaservice.service.impl.CartServiceImpl;
 import com.badaservice.service.impl.ItemorderServiceImpl;
 import com.badaservice.service.impl.MemberNameServiceImpl;
 import com.badaservice.service.impl.MemberServiceImpl;
+import com.badaservice.service.impl.ShopServiceImpl;
 
 /**
  * Servlet implementation class buy
@@ -44,6 +47,7 @@ public class buyOk extends BaseController {
 	UploadHelper upload;
 	MemberNameService membernameService;
 	ItemorderService itemorderService;
+	ShopService shopService;
 	
 	@Override
 	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -56,9 +60,10 @@ public class buyOk extends BaseController {
 		upload = UploadHelper.getInstance();
 		membernameService =  new MemberNameServiceImpl(sqlsession, logger);
 		itemorderService = new ItemorderServiceImpl(logger, sqlsession);
+		shopService = new ShopServiceImpl(sqlsession, logger);
 		
 		int myid = 0;
-		String userName = null;
+		String userId = null;
 		int memberId = 0;
 		String state = null;
 		
@@ -78,11 +83,12 @@ public class buyOk extends BaseController {
 		String email = null;
 		String tel = null;
 		
+		
 		if (loginInfo != null) {
 			myid = loginInfo.getId();
 			email = loginInfo.getEmail();
 			tel = loginInfo.getTel();
-			userName = loginInfo.getName();
+			userId = loginInfo.getUser_id();
 			logger.debug("Myid="+myid);
 			logger.debug("email="+email);
 			logger.debug("tel="+tel);
@@ -91,6 +97,7 @@ public class buyOk extends BaseController {
 		Cart cart = new Cart();
 		cart.setMyId(myid);
 		Cart deletecart = new Cart();
+		Shop shop = new Shop();
 		ItemOrder itemorder = new ItemOrder();
 		
 		
@@ -99,7 +106,7 @@ public class buyOk extends BaseController {
 		try {
 			result= cartService.selectItemList(cart);
 			for(int i=0; i<result.size(); i++) {
-			itemorder.setUserName(userName);
+			itemorder.setUserId(userId);
 			itemorder.setMemberId(result.get(i).getMemberId());
 			itemorder.setItemTitle(result.get(i).getItemTitle());
 			itemorder.setPrice(result.get(i).getPrice());
@@ -112,8 +119,12 @@ public class buyOk extends BaseController {
 			itemorder.setState(state);
 			logger.debug(itemorder.toString());
 			itemorderService.insertItemOrder(itemorder);
+			shop.setId(result.get(i).getItemId());
+			shop.setUserId(userId);
+			shopService.updateUserId(shop);
 			deletecart.setId(result.get(i).getId());
 			cartService.deleteCartItem(deletecart);
+			
 			}
 		} catch (Exception e) {
 			sqlsession.close();
