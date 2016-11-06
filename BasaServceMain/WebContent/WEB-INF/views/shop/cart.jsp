@@ -63,7 +63,9 @@
                     <tbody>
                      <c:forEach var="cart" items="${cartList}">
                         <tr>
-                            <td><a href="${pageContext.request.contextPath}/shop/shop_read.do"><c:if test="${cart.itemImage != null }">
+                            <td>
+                        <a href="${pageContext.request.contextPath}/shop/shop_read.do">
+                        <c:if test="${cart.itemImage != null }">
 						<c:url var="downloadUrl" value="/download.do">
 							<c:param name="file" value="${cart.itemImage}">
 							</c:param>

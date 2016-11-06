@@ -93,6 +93,9 @@ public class suchpage extends BaseController {
 		} finally {
 			sqlSession.close();
 		}
+	
+		
+		
 		
 		request.setAttribute("shopCaList", shopCaList);
 		request.setAttribute("shopList", shopList);

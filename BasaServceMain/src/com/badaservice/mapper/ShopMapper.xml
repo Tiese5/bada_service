@@ -100,7 +100,9 @@
 		resultMap="shop">
 		SELECT id, item_title,price,item_image,hit,member_id,category
 		FROM item_add
-		WHERE category=#{category}
+		
+		<where>
+		category=#{category}
 		<if test="item_title != null or content != null">
 			AND(
 			<if test="item_title != null">
@@ -127,7 +129,7 @@
 				ORDER BY reg_date DESC
 			</otherwise>
 		</choose>
-		
+		</where>
 		LIMIT #{limitStart},#{listCount};
 	</select>
 
