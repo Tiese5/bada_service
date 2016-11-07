@@ -18,6 +18,7 @@
 		<result property="hit" column="hit" />
 		<result property="dropDown" column="drop_down" />
 		<result property="userId" column="user_id" />
+		<result property="state" column="state" />
 	</resultMap>
 
 	<!-- 게시물 업데이트 -->
@@ -26,10 +27,10 @@
 		INSERT INTO item_add(
 		item_title,
 		category,price,item_image,content,
-		reg_date,member_id,hit, user_id
+		reg_date,member_id,hit, user_id, state
 		)VALUES(
 		#{item_title},#{category}, #{price}, #{item_image}, '이렇게',
-		now(),#{member_id},#{hit}, '판매 중'
+		now(),#{member_id},#{hit}, '판매 중', '1'
 		)
 	</insert>
 	
@@ -38,7 +39,7 @@
 			resultMap="shop">
 			SELECT id, item_title, price, item_image, member_id
 			FROM item_add
-			WHERE id=#{id}		
+			WHERE id=#{id}
 			
 	</select>
 

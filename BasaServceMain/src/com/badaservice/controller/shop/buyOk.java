@@ -39,6 +39,7 @@ import com.badaservice.service.impl.ShopServiceImpl;
 @WebServlet("/shop/buy_ok.do")
 public class buyOk extends BaseController {
 	private static final long serialVersionUID = 8466002060641398016L;
+	
 	WebHelper web;
 	SqlSession sqlsession;
 	Logger logger;

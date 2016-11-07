@@ -11,6 +11,7 @@ public class Shop {
 	private String category;
 	private int memeberId;
 	private String userId;
+	private String state;
 	private int limitStart;
 	private int listCount;
 

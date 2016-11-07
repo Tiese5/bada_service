@@ -62,16 +62,11 @@
 													<img src="${downloadUrl}" alt="" height="100px">
 												</c:if>
 										</a></td>
-										<td><a
-											href="${pageContext.request.contextPath}/shop/shop_read.do">
-												${buylist.itemTitle}</a></td>
+										<td>${buylist.itemTitle}</td>
 										<td>${buylist.sellerName}</td>
 										<td><span class="text-danger">${buylist.price}</span> 원</td>
 										<td>${buylist.regData}</td>
 									</tr>
-
-
-								
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
