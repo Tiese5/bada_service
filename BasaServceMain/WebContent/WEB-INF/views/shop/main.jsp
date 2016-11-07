@@ -57,7 +57,7 @@ a>h5 {
 				<!-- 메인 컨텐츠 영역 시작 -->
 				<div class="col-sm-9 col-md-10 main-content clearfix">
 					<div>
-						<h3>총 도서: 10,000권</h3>
+						<h3>총 도서: ${ItemCount}권</h3>
 					</div>
 					<div class="drop pull-right">
 						<select name="drop_down" id="drop_down">

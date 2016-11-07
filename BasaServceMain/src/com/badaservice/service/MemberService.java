@@ -40,4 +40,7 @@ public interface MemberService {
 	
 	public Member selectMemberSendMessageList(Member member) throws Exception;
 	
+	public Member selectSellerName(Member member) throws Exception;
+	
+	
 }

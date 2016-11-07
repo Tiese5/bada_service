@@ -243,5 +243,39 @@ public class ShopServiceImpl implements ShopService {
 		}
 		
 		return result;
+	}
+
+	@Override
+	public int selectCategoryItemCount(Shop shop) throws Exception {
+		int result = 0;
+		try {
+			// ProfessorMapper.updateProfessorItem 기능을 호출한다.
+			// 두번째 파라미터는 저장할 데이터를 담고있는 Beans객체
+			result = sqlSession.selectOne("ShopMapper.selectCategoryItemCount", shop);
+			// 리턴값이 저장된 행의 수
+		} catch (Exception e) {
+			// 에러가 발생했으므로 SQL 수행 내역을 되돌림
+			logger.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패 했습니다 ");
+		}
+
+		return result;
+	}
+
+	@Override
+	public int selectSearchItemCount(Shop shop) throws Exception {
+		int result = 0;
+		try {
+			// ProfessorMapper.updateProfessorItem 기능을 호출한다.
+			// 두번째 파라미터는 저장할 데이터를 담고있는 Beans객체
+			result = sqlSession.selectOne("ShopMapper.selectSearchItemCount", shop);
+			// 리턴값이 저장된 행의 수
+		} catch (Exception e) {
+			// 에러가 발생했으므로 SQL 수행 내역을 되돌림
+			logger.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패 했습니다 ");
+		}
+
+		return result;
 	}	
 }

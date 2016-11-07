@@ -190,4 +190,13 @@
 	where 
 		id=#{id}
 	</select>
+	
+	<select id="selectSellerName" parameterType="com.badaservice.model.Member" resultMap="member">
+	select 
+		name
+	from  
+	    member
+	where 
+		id=#{id}
+	</select>
 </mapper>

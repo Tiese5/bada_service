@@ -60,19 +60,11 @@
         <div class="container">
             <!-- Grid Row 시작 -->
             <div class="row">
-<%@ include file="/WEB-INF/inc/sidebar.jsp" %>
+<%@ include file="/WEB-INF/inc/my_sidebar.jsp" %>
                 <!-- 메인 컨텐츠 영역 시작 -->
                 <div class="col-sm-9 col-md-10 main-content">
                     <div class="page-header">
                         <h1>회원에게 판매한 내역</h1>
-                    </div>
-                    <!--버튼-->
-                  <div class="dropps pull-right">
-                    <select name="telecom" id="telecom">
-                        <option value="new">최근 1개월</option>
-                        <option value="top">최근 3개월</option>
-                        <option value="row">최근 6개월</option>
-                    </select>
                     </div>
                     <!-- 버튼 끝-->
                     <div class="table">
@@ -82,7 +74,7 @@
                                 	<th class="text-center" width="25%">제목</th>
                                 	<th class="text-center" width="25%">가격</th>
                                 	<th class="text-center" width="25%">판매일시</th>
-                                	<th class="text-center" width="25%">구매자</th>
+                                	<th class="text-center" width="25%">구매자 아이디</th>
                             	</tr>
                             </thead>
                             <tbody>

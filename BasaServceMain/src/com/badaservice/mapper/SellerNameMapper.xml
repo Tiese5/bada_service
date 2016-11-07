@@ -9,7 +9,7 @@
 	<resultMap id="SellerName" type="com.badaservice.model.SellerName">
 		<result property="id" column="id" />
 		<result property="memberId" column="member_id" />
-		<result property="userName" column="user_name" />
+		<result property="userId" column="user_id" />
 		<result property="postcode" column="postcode" />
 		<result property="addr1" column="addr1" />
 		<result property="addr2" column="addr2" />

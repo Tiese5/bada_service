@@ -145,5 +145,34 @@
 		where member_id=#{member_id}		
 	</select>
 	
+	<!-- 카테고리별 게시물 수를 조회한다. -->
+	<select id="selectCategoryItemCount" parameterType="com.badaservice.model.Shop"
+		resultType="int">
+		SELECT COUNT(id) FROM item_add where category=#{category}
+	</select>
+	
+	<!-- 카테고리별 게시물 수를 조회한다. -->
+	<select id="selectSearchItemCount" parameterType="com.badaservice.model.Shop"
+		resultType="int">
+		SELECT COUNT(id) 
+		FROM item_add 
+		<where>
+			 
+	 		<if test="item_title != null or content != null">
+	 			<if test="item_title != null">
+	 				item_title LIKE concat('%', #{item_title}, '%')
+	 			</if>
+
+				<if test="content != null">
+	 				OR content LIKE concat('%', #{content}, '%')
+	 			</if>
+	 			
+	 			<if test="content == null || item_title == null">
+	 				category=#{category}
+	 			</if>	 			
+	 		</if>
+	 	</where>
+	</select>
+	
 
 </mapper>

@@ -65,6 +65,7 @@ public class buyOk extends BaseController {
 		int myid = 0;
 		String userId = null;
 		int memberId = 0;
+		int sellermemberId = 0;
 		String state = null;
 		
 		if(web.getSession("loginInfo") == null) {
@@ -99,13 +100,17 @@ public class buyOk extends BaseController {
 		Cart deletecart = new Cart();
 		Shop shop = new Shop();
 		ItemOrder itemorder = new ItemOrder();
-		
+		Member member = new Member();
+		Member seller = null;
 		
 		List<Cart> result= null;
-	
+		
 		try {
 			result= cartService.selectItemList(cart);
 			for(int i=0; i<result.size(); i++) {
+			member.setId(result.get(i).getMemberId());
+			seller = memberService.selectSellerName(member);
+			itemorder.setSellerName(seller.getName());
 			itemorder.setUserId(userId);
 			itemorder.setMemberId(result.get(i).getMemberId());
 			itemorder.setItemTitle(result.get(i).getItemTitle());

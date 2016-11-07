@@ -37,26 +37,44 @@ public class ItemorderServiceImpl implements ItemorderService{
 			sqlsession.commit();
 		}
 	}
-	
 	@Override
-	public List<Shop> selectSellList(Shop shop) throws Exception {
+	public List<ItemOrder> selectBuyList(ItemOrder itemorder) throws Exception {
 
-		List<Shop> result = null;
+		List<ItemOrder> result = null;
 
 		try {
-			result = sqlsession.selectList("ItemOrderMapper.selectSellList", shop);
+			result = sqlsession.selectList("ItemOrderMapper.selectBuyList", itemorder);
 			if (result == null) {
 				throw new NullPointerException();
 			}
 		} catch (NullPointerException e) {
-			throw new Exception("조회된 판매내역 목록이 없습니다.");
+			throw new Exception("조회된 구매내역 목록이 없습니다.");
 		} catch (Exception e) {
 			logger.error(e.getLocalizedMessage());
-			throw new Exception("판매내역 목록 조회에 실패했습니다.");
+			throw new Exception("구매내역 목록 조회에 실패했습니다.");
 		}
 
 		return result;
 	}
+	@Override
+	public int selectBuyCount(ItemOrder itemorder) throws Exception {
+		int result = 0;
+		try {
+			// ProfessorMapper.updateProfessorItem 기능을 호출한다.
+			// 두번째 파라미터는 저장할 데이터를 담고있는 Beans객체
+			result = sqlsession.selectOne("ItemOrderMapper.selectBuyCount", itemorder);
+			// 리턴값이 저장된 행의 수
+		} catch (Exception e) {
+			// 에러가 발생했으므로 SQL 수행 내역을 되돌림
+			logger.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패 했습니다 ");
+		}
 
+		return result;
+	}
+	
 
 }
+
+
+

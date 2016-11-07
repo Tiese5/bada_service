@@ -52,8 +52,6 @@ public class Index extends BaseController {
 	
 	request.setAttribute("shopList", shopList);
 	
-		// commit test
-		// commit test
 		return "index";
 	}
 

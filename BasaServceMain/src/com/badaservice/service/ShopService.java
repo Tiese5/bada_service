@@ -76,6 +76,21 @@ public interface ShopService {
 	 */
 	public List<Shop> selectSellList(Shop shop) throws Exception;
 	
+	/**
+	 * 카테고리별 전체 게시물 조회
+	 * @param shop
+	 * @return
+	 * @throws Exception
+	 */
+	public int selectCategoryItemCount(Shop shop) throws Exception;
+	
+	/**
+	 * 카테고리별 검색에 대한 게시물 조회
+	 * @param shop
+	 * @return
+	 * @throws Exception
+	 */
+	public int selectSearchItemCount(Shop shop) throws Exception;
 	
 
 }

@@ -60,6 +60,10 @@ public class suchpage extends BaseController {
 		shop.setDropDown(dropdown);
 		// 현재 페이지 수 ->> 기본값은 1페이지로 설정함
 		int page = web.getInt("page", 1);
+		
+		int categoryCount = 0;
+		
+		
 		// 제목과 내용에 대한 검색으로 활용하기 위해서 입력값을 설정한다
 		shop.setItem_title(keyword);
 		shop.setContent(keyword);
@@ -73,7 +77,7 @@ public class suchpage extends BaseController {
 		try {
 			// 전체 게시물 수
 			totalCaCount = shopService.selectCaItemCount(shop);
-				
+			categoryCount = shopService.selectCategoryItemCount(shop);
 			// 현제페이지 번호 계산하기
 			// --->현제 페이지,전체 페이지 수, 한 페이지 목록 수, 그룹 갯수
 			pageHelper.pageProcess(page, totalCaCount, 8, 5);
@@ -102,6 +106,7 @@ public class suchpage extends BaseController {
 		request.setAttribute("dropDown", dropdown);
 		request.setAttribute("pageHelper", pageHelper);
 		request.setAttribute("totalCount", totalCaCount);
+		request.setAttribute("categoryCount", categoryCount);
 		
 		
 		return "/shop/suchpage";

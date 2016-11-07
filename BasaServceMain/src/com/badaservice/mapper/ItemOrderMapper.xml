@@ -20,19 +20,29 @@
 		<result property="price" column="price" />
 		<result property="regData" column="reg_data" />
 		<result property="itemImg" column="item_img" />
+		<result property="sellerName" column="seller_name" />
 	</resultMap>
 
 
 	<!-- 구매하기  -->
 	<insert id="insertitemorder" parameterType="com.badaservice.model.ItemOrder" 
 		useGeneratedKeys="true" keyProperty="id">
-		insert into item_order (member_id, user_id, postcode, addr1, addr2, email, tel, state, item_title, price, reg_data, item_img)
-		 				values ( #{memberId}, #{userId}, #{postcode}, #{addr1}, #{addr2}, #{email}, #{tel}, #{state}, #{itemTitle}, #{price}, now(), #{itemImg} )
+		insert into item_order (member_id, user_id, postcode, addr1, addr2, email, tel, state, item_title, price, reg_data, item_img, seller_name)
+		 				values ( #{memberId}, #{userId}, #{postcode}, #{addr1}, #{addr2}, #{email}, #{tel}, #{state}, #{itemTitle}, #{price}, now(), #{itemImg}, #{sellerName} )
 	</insert>
 	
-	<!-- 판매내역 목록을 조회한다. -->
-	<select id="selectMessageList" parameterType="com.badaservice.model.ItemOrder" 
+	<!-- 구매내역 목록을 조회한다. -->
+	<select id="selectBuyList" parameterType="com.badaservice.model.ItemOrder" 
 		resultMap="ItemOrder">
-		select item_title, price, reg_data, state, user_name from item_order where member_id=#{memberId}
+		select item_img, item_title, seller_name, price, reg_data
+		from item_order
+		where user_id=#{userId}
 	</select>
+	
+	<!-- 전체 게시물 수를 조회한다. -->
+	<select id="selectBuyCount" parameterType="com.badaservice.model.SellerName"
+		resultType="int">
+		SELECT COUNT(id) FROM item_order where user_id=#{userId}	
+	</select>
+	
 </mapper>	

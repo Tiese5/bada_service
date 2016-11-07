@@ -74,7 +74,7 @@
 			<!-- 상단 컨텐츠 영역 시작 -->
 			<div class="col-md-10 col-sm-9 main-content">
 				<div>
-					<h4 class="textps">검색결과100건</h4>
+					<h4 class="textps">검색결과  ${categoryCount}건</h4>
 				</div>
 				<div class="dropps pull-right">
 					<select name="drop_down" id="drop_down">

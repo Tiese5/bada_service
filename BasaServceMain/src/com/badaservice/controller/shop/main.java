@@ -74,11 +74,12 @@ public class main extends BaseController {
 		List<Shop> shopList = null;
 		
 		int totalCount = 0;
-
+		int ItemCount = 0;
+		
 		try {
 			// 전체 게시물 수
 			totalCount = shopService.selectItemCount(shop);
-			
+			ItemCount = shopService.selectSearchItemCount(shop);
 			// 현제페이지 번호 계산하기
 			// --->현제 페이지,전체 페이지 수, 한 페이지 목록 수, 그룹 갯수
 			pageHelper.pageProcess(page, totalCount, 8, 5);
@@ -99,8 +100,11 @@ public class main extends BaseController {
 		}
 		request.setAttribute("shopList", shopList);
 		request.setAttribute("dropDown", dropDown);
+		request.setAttribute("ItemCount", ItemCount);
 		request.setAttribute("pageHelper", pageHelper);
 		request.setAttribute("totalCount", totalCount);
+		request.setAttribute("keyword", keyword);
+		
 		
 		
 		
