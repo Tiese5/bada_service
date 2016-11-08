@@ -80,4 +80,15 @@
 		edit_date=now()
 		WHERE id=#{id} 
 	</update>
+	
+	<!-- 관리자가 목록을 조회한다 -->
+	<select id="selelctQnaAllList" parameterType="com.badaservice.model.Qna"
+		resultMap="qna">
+		SELECT id,title,category,DATE_FORMAT(reg_date, '%Y-%m-%d')
+		as reg_date
+		FROM QNA 
+		ORDER BY id DESC
+		LIMIT #{limitStart}, #{listCount};
+	</select>
+	
 </mapper>

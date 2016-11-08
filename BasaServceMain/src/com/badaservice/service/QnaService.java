@@ -48,5 +48,12 @@ public interface QnaService {
 	 */
 	public void updateQna(Qna qna)throws Exception;
 	
+	/**
+	 * 관리자 게시물 목록 조회
+	 * @param document -카테고리 정보가 저장된 빈즈
+	 * @return  List - 게시물 목록
+	 * @throws Exception
+	 */
+	public List<Qna> selelctQnaAllList(Qna qna) throws Exception;
 	
 }
