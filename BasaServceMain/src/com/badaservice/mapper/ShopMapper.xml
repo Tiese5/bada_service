@@ -107,7 +107,7 @@
 		FROM item_add
 		
 		<where>
-		category=#{category}
+		category=#{category} and state='1'
 		<if test="item_title != null or content != null">
 			AND(
 			<if test="item_title != null">
@@ -153,7 +153,7 @@
 	<!-- 카테고리별 게시물 수를 조회한다. -->
 	<select id="selectCategoryItemCount" parameterType="com.badaservice.model.Shop"
 		resultType="int">
-		SELECT COUNT(id) FROM item_add where category=#{category}
+		SELECT COUNT(id) FROM item_add where category=#{category} and state='1'
 	</select>
 	
 	<!-- 카테고리별 게시물 수를 조회한다. -->
