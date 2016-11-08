@@ -152,10 +152,9 @@
 						</nav>						
 						<!-- // 페이지 번호 끝 -->
                 </div>
-            </div>
             <!-- 메인 컨텐츠 영역 끝 -->
-
-        </div>
+		</div>
+    </div>
         <!-- Grid Row 끝 -->
 <%@ include file="/WEB-INF/inc/footer.jsp" %>
     </div>
