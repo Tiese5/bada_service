@@ -51,6 +51,7 @@ public class main extends BaseController {
 		
 		String category = web.getString("category");
 		String dropDown = web.getString("drop_down");
+		String state = "1";
 		request.setAttribute("category", category);
 		/*
 		 * try { String drop = dropDown.getDropDown(dropDown);
@@ -64,6 +65,7 @@ public class main extends BaseController {
 		Shop shop = new Shop();
 		shop.setCategory(category);
 		shop.setDropDown(dropDown);
+		shop.setState(state);
 		// 현재 페이지 수 ->> 기본값은 1페이지로 설정함
 		int page = web.getInt("page", 1);
 		// 제목과 내용에 대한 검색으로 활용하기 위해서 입력값을 설정한다

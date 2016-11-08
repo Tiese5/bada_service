@@ -67,7 +67,7 @@ public class buyOk extends BaseController {
 		String userId = null;
 		int memberId = 0;
 		int sellermemberId = 0;
-		String state = null;
+		String state = "2";
 		
 		if(web.getSession("loginInfo") == null) {
 			sqlsession.close();
@@ -122,15 +122,14 @@ public class buyOk extends BaseController {
 			itemorder.setPostcode(postcode);
 			itemorder.setEmail(email);
 			itemorder.setTel(tel);
-			itemorder.setState(state);
 			logger.debug(itemorder.toString());
 			itemorderService.insertItemOrder(itemorder);
 			shop.setId(result.get(i).getItemId());
 			shop.setUserId(userId);
+			shop.setState(state);
 			shopService.updateUserId(shop);
 			deletecart.setId(result.get(i).getId());
 			cartService.deleteCartItem(deletecart);
-			
 			}
 		} catch (Exception e) {
 			sqlsession.close();

@@ -92,5 +92,8 @@ public interface ShopService {
 	 */
 	public int selectSearchItemCount(Shop shop) throws Exception;
 	
+	public List<Shop> selectShopList(Shop shop) throws Exception;
+	
 
+	
 }

@@ -10,7 +10,6 @@ public class ItemOrder {
 	private String addr2;
 	private String email;
 	private String tel;
-	private String state;
 	private String itemTitle;
 	private int price;
 	private String regData;
@@ -111,16 +110,11 @@ public class ItemOrder {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-		this.state = state;
-	}
+
 	@Override
 	public String toString() {
 		return "ItemOrder [id=" + id + ", memberId=" + memberId + ", userId=" + userId + ", postcode=" + postcode
-				+ ", addr1=" + addr1 + ", addr2=" + addr2 + ", email=" + email + ", tel=" + tel + ", state=" + state
+				+ ", addr1=" + addr1 + ", addr2=" + addr2 + ", email=" + email + ", tel=" + tel
 				+ ", itemTitle=" + itemTitle + ", price=" + price + ", regData=" + regData + ", itemImg=" + itemImg
 				+ ", sellerName=" + sellerName + ", limitStart=" + limitStart + ", listCount=" + listCount + "]";
 	}

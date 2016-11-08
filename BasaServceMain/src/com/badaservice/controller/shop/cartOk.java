@@ -74,7 +74,7 @@ public class cartOk extends BaseController {
 		cart.setId(sh.getId());
 		cart.setItemTitle(sh.getItem_title());
 		cart.setMemberId(sh.getMember_id());
-		cart.setPrice(Integer.parseInt(sh.getPrice()));
+		cart.setPrice(sh.getPrice());
 		cart.setItemImage(sh.getItem_image());
 		cart.setMyId(myid);
 		cart.setItemId(sh.getId());

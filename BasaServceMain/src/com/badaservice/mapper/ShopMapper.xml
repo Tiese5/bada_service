@@ -49,14 +49,18 @@
 		SELECT id, item_title,price,item_image,hit,member_id,category
 		FROM item_add
 		<where> 
+				<if test="state == 1">
+	 				state='1'
+	 			</if>
 	 		<if test="item_title != null or content != null">
+	 				 
 	 			<if test="item_title != null">
-	 				item_title LIKE concat('%', #{item_title}, '%')
+	 				AND item_title LIKE concat('%', #{item_title}, '%')
 	 			</if>
 
 				<if test="content != null">
 	 				OR content LIKE concat('%',#{content}, '%')
-	 			</if>	 			
+	 			</if>				
 	 		</if>
 	 	</where>
 		<choose>
@@ -136,7 +140,7 @@
 
 	<!-- userid 추가 -->
 	<update id="updateuserId" parameterType="com.badaservice.model.Shop">
-		update item_add set user_id=#{userId} where id=#{id}
+		update item_add set user_id=#{userId}, state=#{state} where id=#{id}
 	</update>
 	
 	<select id="selectSellList" parameterType="com.badaservice.model.Shop"
@@ -158,10 +162,10 @@
 		SELECT COUNT(id) 
 		FROM item_add 
 		<where>
-			 
+			 state='1'
 	 		<if test="item_title != null or content != null">
 	 			<if test="item_title != null">
-	 				item_title LIKE concat('%', #{item_title}, '%')
+	 				AND item_title LIKE concat('%', #{item_title}, '%')
 	 			</if>
 
 				<if test="content != null">
@@ -169,11 +173,17 @@
 	 			</if>
 	 			
 	 			<if test="content == null || item_title == null">
-	 				category=#{category}
+	 				AND category=#{category}
 	 			</if>	 			
 	 		</if>
 	 	</where>
 	</select>
 	
-
+	<!-- 전체 조회 -->
+	<select id="selectShopList" parameterType="com.badaservice.model.Shop"
+			resultMap="shop">
+			SELECT *
+			FROM item_add
+			member_id=#{member_id}
+	</select>
 </mapper>

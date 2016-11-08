@@ -50,7 +50,7 @@
                             <tr>
                                 
                                 <th class="text-center" width="20%">받는이</th>
-                                <th class="text-center" width="50%">제목</th>
+                                <th class="text-center" width="50%">내용</th>
                                 <th class="text-center" width="30%">받은날짜</th>
                             </tr>
                         </thead>

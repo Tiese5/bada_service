@@ -17,7 +17,7 @@ public class InsertItemTest {
 		shop.setDropDown("1");
 		shop.setHit(1);
 		shop.setItem_title("테스트!@!@");
-		shop.setPrice("10000");
+		shop.setPrice(10000);
 		shop.setMember_id(5);
 		shop.setHit(1);
 		
