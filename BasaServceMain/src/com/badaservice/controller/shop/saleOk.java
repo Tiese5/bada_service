@@ -107,7 +107,7 @@ public class saleOk extends BaseController {
 		Shop shop = new Shop();
 		shop.setItem_title(itemTitle);
 		shop.setCategory(category);
-		shop.setPrice(price);
+		shop.setPrice(Integer.parseInt(price));
 		shop.setItem_image(itemImage);
 		shop.setMember_id(memberId);
 

@@ -4,7 +4,7 @@ public class Shop {
 	private int id;
 	private String item_title;
 	private String content;
-	private String price;
+	private int price;
 	private String reg_date;
 	private String item_image;
 	private int hit;
@@ -16,6 +16,14 @@ public class Shop {
 	private int listCount;
 
 	
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
 	public String getUserId() {
 		return userId;
 	}
@@ -25,11 +33,11 @@ public class Shop {
 	}
 
 
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
 	
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 
@@ -137,7 +145,7 @@ public class Shop {
 	public String toString() {
 		return "Shop [id=" + id + ", item_title=" + item_title + ", content=" + content + ", price=" + price
 				+ ", reg_date=" + reg_date + ", item_image=" + item_image + ", hit=" + hit + ", category=" + category
-				+ ", memeberId=" + memeberId + ", userId=" + userId + ", limitStart=" + limitStart
+				+ ", memeberId=" + memeberId + ", userId=" + userId + ", state=" + state + ", limitStart=" + limitStart
 				+ ", listCount=" + listCount + ", dropDown=" + dropDown + ", member_id=" + member_id + "]";
 	}
 

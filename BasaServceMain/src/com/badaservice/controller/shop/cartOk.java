@@ -1,6 +1,7 @@
 package com.badaservice.controller.shop;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,10 +17,13 @@ import com.badaservice.helper.BaseController;
 import com.badaservice.helper.WebHelper;
 import com.badaservice.model.Cart;
 import com.badaservice.model.Member;
+import com.badaservice.model.MemberName;
 import com.badaservice.model.Shop;
 import com.badaservice.service.CartService;
+import com.badaservice.service.MemberNameService;
 import com.badaservice.service.ShopService;
 import com.badaservice.service.impl.CartServiceImpl;
+import com.badaservice.service.impl.MemberNameServiceImpl;
 import com.badaservice.service.impl.ShopServiceImpl;
 
 /**
@@ -32,6 +36,7 @@ public class cartOk extends BaseController {
 	WebHelper web;
 	ShopService shopService;
 	CartService cartService;
+	MemberNameService memberNameService;
 	Logger logger;
 	SqlSession sqlSession;
 	@Override
@@ -41,6 +46,7 @@ public class cartOk extends BaseController {
 		sqlSession = MyBatisConnectionFactory.getSqlSession();
 		shopService = new ShopServiceImpl(sqlSession, logger);
 		cartService = new CartServiceImpl(logger, sqlSession);
+		memberNameService = new MemberNameServiceImpl(sqlSession, logger);
 		
 		
 		if(web.getSession("loginInfo") == null) {
@@ -50,33 +56,50 @@ public class cartOk extends BaseController {
 		}
 		
 		int Id = web.getInt("id");
+		int myId = 0;
+		
+		Member loginInfo = (Member) web.getSession("loginInfo");
+		if (loginInfo != null) {
+			myId = loginInfo.getId();
+			}
+		
+		Cart cart = new Cart();
+		cart.setMyId(myId);
+		
+		MemberName memberName = new MemberName();
+		memberName.setId(Id);
 		
 		Shop shop = new Shop();
 		shop.setId(Id);
 		logger.debug("id = " + Id);
 		
+		MemberName readItem = null;
 		Shop sh = null;
+		List<Cart> cartList = null;
 		try {
 			sh=shopService.selectCartItemList(shop);
+			cartList = cartService.selectCartList(cart);
+			readItem = memberNameService.selectItem(memberName);
+			for(int i=0; i<cartList.size(); i++) {
+				if(cartList.get(i).getItemId() == readItem.getId()) {
+					sqlSession.close();
+					web.redirect(null, "이미 장바구니에 담겨있습니다.");
+					return null;
+				} 
+			}
 		} catch (Exception e) {
 			sqlSession.close();
 			web.redirect(null, e.getLocalizedMessage());
 			return null;
 		}
 		
-		Member loginInfo = (Member) web.getSession("loginInfo");
-		int myid = loginInfo.getId();
-		logger.debug("MemberId="+myid);
-		
-		Cart cart = new Cart();
-		
-		
+
 		cart.setId(sh.getId());
 		cart.setItemTitle(sh.getItem_title());
 		cart.setMemberId(sh.getMember_id());
-		cart.setPrice(Integer.parseInt(sh.getPrice()));
+		cart.setPrice(sh.getPrice());
 		cart.setItemImage(sh.getItem_image());
-		cart.setMyId(myid);
+		cart.setMyId(myId);
 		cart.setItemId(sh.getId());
 		
 		

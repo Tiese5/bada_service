@@ -57,11 +57,12 @@
 											href="${pageContext.request.contextPath}/shop/shop_read.do">
 												<c:if test="${buylist.itemImg != null }">
 													<c:url var="downloadUrl" value="/download.do">
-														<c:param name="file" value="${buyList.itemImg}"></c:param>
+														<c:param name="file" value="${buylist.itemImg}"></c:param>
 													</c:url>
 													<img src="${downloadUrl}" alt="" height="100px">
 												</c:if>
-										</a></td>
+											</a>
+										</td> 
 										<td>${buylist.itemTitle}</td>
 										<td>${buylist.sellerName}</td>
 										<td><span class="text-danger">${buylist.price}</span> 원</td>
@@ -79,7 +80,7 @@
 					<tfoot>
 						<tr>
 							<td colspan="5" class="text-center">
-								<nav class="text-center">
+						<nav class="text-center">
 							<ul class="pagination">
 								<!-- 이전 그룹으로 이동 -->
 								<c:choose>

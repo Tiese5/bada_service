@@ -109,5 +109,26 @@ public class CartServiceImpl implements CartService {
 			// 데이터 베이스 접속 해제
 		}
 	}
+	@Override
+	public List<Cart> selectCartList(Cart cart) throws Exception {
+		// TODO Auto-generated method stub
+		List<Cart> result = null;
+		
+		try{
+			result = sqlsession.selectList("CartMapper.selectCartList",cart);
+			if(result==null){
+				throw new NullPointerException();}
+			}catch (NullPointerException e) {
+				// TODO: handle exception
+				throw new Exception("선택된 상품 리스트가 없습니다.");
+			}catch (Exception e) {
+				e.printStackTrace();
+				// TODO: handle exception
+				throw new Exception("상품 리스트 조회에 실패했습니다.");
+			}
+		
+		
+		return result;
+	}
 
 }

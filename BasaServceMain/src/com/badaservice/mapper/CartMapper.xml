@@ -60,7 +60,7 @@
 		resultMap="cart">
 		select id, edit_date, member_id, item_order_id, price, item_image, myid, itemid
 		from cart
-		where myid=#{myid}
+		where myid=#{myId}
 	</select>
-
+	
 </mapper>
