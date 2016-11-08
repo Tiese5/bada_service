@@ -15,7 +15,7 @@
 		<result property="addr2" column="addr2" />
 		<result property="email" column="email" />
 		<result property="tel" column="tel" />
-		<result property="state" column="state" />
+		<!-- <result property="state" column="state" />-->
 		<result property="itemTitle" column="item_title" />
 		<result property="price" column="price" />
 		<result property="regData" column="reg_data" />

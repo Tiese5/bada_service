@@ -1,3 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -214,137 +220,97 @@
                     <table class="table table-hover">
                         <thead style="background-color : #eee;">
                             <tr>
-                                
-                                <th class="text-center" width="20%">아이디</th>
-                                <th class="text-center" width="20%">이름</th>
-                                <th class="text-center" width="20%">이메일</th>
-                                <th class="text-center" width="20%">연락처</th>
-                                <th class="text-center" width="20%">수정/삭제</th>
+                                <th class="text-center" width="25%">아이디</th>
+                                <th class="text-center" width="25%">이름</th>
+                                <th class="text-center" width="25%">이메일</th>
+                                <th class="text-center" width="25%">연락처</th>
+                              
                          </tr>
                         </thead>
                         <tbody>
+                        
+                        <c:choose>
+						<c:when test="${fn:length(memberList) > 0}">
+                        <c:forEach var="memberlist" items="${memberList}">
                             <tr align="center">
-                                <td class="text-center">유아인</td>
-                                <td><a href="#">회원이름</a></td>
-                                <td>이메일</td>
-                                <td>2016.01.01</td>
-                                <td><a href="#" class="btn btn-info">수정</a> <a href="#" class="btn btn-danger">삭제</a></td>
-                              
-                                
-                            </tr>
-                            <tr align="center">
-                            <td class="text-center">유아인</td>
-                                <td><a href="#">회원이름</a></td>
-                                <td>이메일</td>
-                                <td>2016.01.01</td>
-                               <td><a href="#" class="btn btn-info">수정</a> <a href="#" class="btn btn-danger">삭제</a></td>
-                               
-                            </tr>
-                            <tr align="center">
-                            <td class="text-center">유아인</td>
-                                <td><a href="#">회원이름</a></td>
-                                <td>이메일</td>
-                                <td>2016.01.01</td>
-                                <td><a href="#" class="btn btn-info">수정</a> <a href="#" class="btn btn-danger">삭제</a></td>
-                                
-                            </tr>
-                            <tr align="center">
-                            <td class="text-center">유아인</td>
-                                <td><a href="#">회원이름</a></td>
-                                <td>이메일</td>
-                                <td>2016.01.01</td>
-                                 <td><a href="#" class="btn btn-info">수정</a> <a href="#" class="btn btn-danger">삭제</a></td>
-                              
-                               
-                            </tr>
-                            <tr align="center">
-                            <td class="text-center">유아인</td>
-                                <td><a href="#">회원이름</a></td>
-                                <td>이메일</td>
-                                <td>2016.01.01</td>
-                                 <td><a href="#" class="btn btn-info">수정</a> <a href="#" class="btn btn-danger">삭제</a></td>
+                                <td class="text-center">${memberlist.name}</td>
+                                <td><a href="#">${memberlist.name}</a></td>
+                                <td>${memberlist.email}</td>
+                                <td>${memberlist.join_edit}</td>
                                 
                               
                             </tr>
-                            <tr align="center">
-                            <td class="text-center">유아인</td>
-                                <td><a href="#">회원이름</a></td>
-                                <td>이메일</td>
-                                <td>2016.01.01</td>
-                                 <td><a href="#" class="btn btn-info">수정</a> <a href="#" class="btn btn-danger">삭제</a></td>
-                                
-                           
-                            </tr>
-                            <tr align="center">
-                            <td class="text-center">유아인</td>
-                                <td><a href="#">회원이름</a></td>
-                                <td>이메일</td>
-                                <td>2016.01.01</td>
-                                 <td><a href="#" class="btn btn-info">수정</a> <a href="#" class="btn btn-danger">삭제</a></td>
-                              
-                               
-                            </tr>
-                             <tr align="center">
-                            <td class="text-center">유아인</td>
-                                <td><a href="#">회원이름</a></td>
-                                <td>이메일</td>
-                                <td>2016.01.01</td>
-                                 <td><a href="#" class="btn btn-info">수정</a> <a href="#" class="btn btn-danger">삭제</a></td>
-                               
-                              
-                            </tr>
-                             <tr align="center">
-                            <td class="text-center">유아인</td>
-                                <td><a href="#">회원이름</a></td>
-                                <td>이메일</td> 
-                                <td>2016.01.01</td>
-                                 <td><a href="#" class="btn btn-info">수정</a> <a href="#" class="btn btn-danger">삭제</a></td>
-                               
-                           
-                            </tr>
-                             <tr align="center">
-                            <td class="text-center">유아인</td>
-                                <td><a href="#">회원이름</a></td>
-                                <td>이메일</td>
-                                <td>2016.01.01</td>
-                                 <td><a href="#" class="btn btn-info">수정</a> <a href="#" class="btn btn-danger">삭제</a></td>
-                                
-                              
-                            </tr>
-                             <tr align="center">
-                            <td class="text-center">유아인</td>
-                                <td><a href="#">회원이름</a></td>
-                                <td>이메일</td>
-                                <td>2016.01.01</td>
-                                 <td><a href="#" class="btn btn-info">수정</a> <a href="#" class="btn btn-danger">삭제</a></td>
-                               
-                               
-                            </tr>
-                             <tr align="center">
-                            <td class="text-center">유아인</td>
-                                <td><a href="#">회원이름</a></td>
-                                <td>이메일</td>
-                                <td>2016.01.01</td>
-                                 <td><a href="#" class="btn btn-info">수정</a> <a href="#" class="btn btn-danger">삭제</a></td>
-                                                             
-                            </tr>
-
-                        </tbody>
+                            </c:forEach>
+                           </c:when>
+                          
+                          <c:otherwise>
+                          <tr>
+							<td colspan="5" class="text-center"
+								style="line-height: 100px;">조회된 글이 없습니다</td>
+							</tr>
+                          </c:otherwise>
+                          </c:choose>
+                                        
+                       </tbody>
                         <tfoot>
                             <tr>
                                 <td colspan="5" class="bor text-center">
-                                    <nav aria-label="Page navigation">
-                                      <ul class="pagination">
-                                        <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> 이전</a></li>
-                                        <li class="active"><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li class="next"><a href="#">다음 <span aria-hidden="true">&rarr;</span></a></li>
-                                          
-                                      </ul>
-                                    </nav>
+                                    <nav class="text-center">
+											<ul class="pagination">
+												<!-- 이전 그룹으로이동 -->
+												<c:choose>
+													<c:when test="${pageHelper.prevPage > 0 }">
+														<!-- 이전 그룹에 대한 페이지 번호가 존재한다면? -->
+														<!-- 이전 그룹으로 이동하기 위해 URL을 생성해서 prevUrl에 저장 -->
+														<c:url var="prevUrl" value="/admin/member/user_manage.do">
+															<c:param name="page" value="${pageHelper.prevPage}"></c:param>
+														</c:url>
+														<li><a href="${prevUrl}">&laquo;</a></li>
+													</c:when>
+													<c:otherwise>
+														<li class="disabled"><a href="#">&laquo;</a></li>
+													</c:otherwise>
+												</c:choose>
+
+												<!-- 페이지 번호 -->
+												<!-- 현재 그룹의 시작페이지~ 끝페이지 사이의 1씩 증가하면서 반복 -->
+												<c:forEach var="i" begin="${pageHelper.startPage}"
+													end="${pageHelper.endPage}" step="1">
+													<!-- 페이지 번호로 이동할수 있는 URL을 생성하겨 url에 저장 -->
+													<c:url var="pageUrl" value="/admin/member/user_manage.do">
+														<c:param name="page" value="${i}"></c:param>
+													</c:url>
+													<!-- 반족중의 페이지 번호와 현재 페이지 번호가 갗은 경우에 대한 분기 -->
+													<c:choose>
+														<c:when test="${pageHelper.page==i})">
+															<li class="active"><a href="#">${i}</a></li>
+														</c:when>
+														<c:otherwise>
+															<li><a href="${pageUrl}">${i}</a></li>
+														</c:otherwise>
+													</c:choose>
+
+
+												</c:forEach>
+
+
+												<!-- 다음 그룹으로 이동-->
+												<c:choose>
+													<c:when test="${pageHelper.nextPage > 0}">
+														<!-- 이전 그룹에 대한 페이지 번호가 존재한다면? -->
+														<!-- 이전 그룹으로 이동하기 위해 URL을 생성해서 prevUrl에 저장 -->
+														<c:url var="nextUrl" value="/admin/member/user_manage.do">
+															<c:param name="page" value="${pageHelper.nextPage}"></c:param>
+														</c:url>
+														<li><a href="${nextUrl}">&raquo;</a></li>
+													</c:when>
+													<c:otherwise>
+														<li class="disabled"><a href="#">&raquo;</a></li>
+													</c:otherwise>
+												</c:choose>
+											</ul>
+
+										</nav>
                                 </td>
                               </tr>
                            

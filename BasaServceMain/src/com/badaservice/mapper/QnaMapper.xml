@@ -16,7 +16,7 @@
 		<result property="writerId" column="writer_id" />
 		<result property="answererId" column="answerer_id" />
 		<result property="aContent" column="a_content" />
-		<result property="aName" column="qname" />
+		<result property="aName" column="aname" />
 		<result property="qName" column="qname" />
 
 
