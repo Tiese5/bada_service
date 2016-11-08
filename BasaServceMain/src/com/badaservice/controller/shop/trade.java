@@ -69,7 +69,7 @@ public class trade extends BaseController {
 			shop.setListCount(pageHelper.getListCount());
 			logger.debug(pageHelper.toString());
 			
-		shopList = shopService.selectSellList(shop);
+			shopList = shopService.selectSellList(shop);
 		} catch (Exception e) {
 			web.redirect(null, e.getLocalizedMessage());
 			return null;

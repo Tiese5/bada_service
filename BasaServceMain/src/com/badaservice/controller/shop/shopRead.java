@@ -56,7 +56,6 @@ public class shopRead extends BaseController {
 		String category = web.getString("category");
 		request.setAttribute("category", category);	
 		
-		int myId = 0;
 	
 		/** 5)글번호 파라미터 받기 */
 		int shopId = web.getInt("shop_id");
@@ -70,13 +69,7 @@ public class shopRead extends BaseController {
 			return null;
 		}
 		
-		Member loginInfo = (Member) web.getSession("loginInfo");
-		if (loginInfo != null) {
-			myId = loginInfo.getId();
-			}
 		
-		Cart cart = new Cart();
-		cart.setMyId(myId);
 		Member member = new Member();
 		member.setId(memberId);
 		MemberName memberName = new MemberName();
@@ -86,10 +79,12 @@ public class shopRead extends BaseController {
 		String cookiekey = "shop" + "_" + shopId;
 		// 준비한 문자열에 대응되는 쿠키값 조회
 		String cookieVar = web.getCookie(cookiekey);
+
+		
 		Shop readItem = null;
 		Member readMember = null;
 		
-		List<Cart> cartList = null;
+		
 		
 		try {
 			// 쿠키값이 없다면 조회수 갱신
@@ -97,15 +92,8 @@ public class shopRead extends BaseController {
 				// 준비한 문자열에 대한 쿠키24시간 동안 저장
 				web.setCookie(cookiekey, "Y", 60 * 60 * 24);
 			}
-			cartList = cartService.selectCartList(cart);
+		
 			readItem = memberNameService.selectItem(memberName);
-			for(int i=0; i<cartList.size(); i++) {
-				if(cartList.get(i).getItemId() == readItem.getId()) {
-					sqlSession.close();
-					web.redirect(null, "이미 장바구니에 담겨있습니다.");
-					return null;
-				} 
-			}
 			readMember = memberService.selectMemberSendMessageList(member);
 		} catch (Exception e) {
 			web.redirect(null, e.getLocalizedMessage());
