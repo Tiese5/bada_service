@@ -7,6 +7,11 @@
 
 <head>
 <%@ include file="/WEB-INF/inc/head.jsp" %>
+<script type="text/javascript"> 
+		$(function () {
+	   	 $('[data-toggle="popover"]').popover()
+	    });
+	</script>
     <style media="screen" type="text/css">
         td, th {
             border-right: 1px solid #ccc;
@@ -66,7 +71,9 @@
 					            	<c:url var="readUrl" value="/message_view.do">
 					            		<c:param name="message_id" value="${messenger.id}" />				     
 					            	</c:url>
-					            	<a href="${readUrl}">${messenger.content}</a>
+					            	<a data-toggle="popover"
+					            	  data-placement="bottom"
+					            	    data-content="<a href='${readUrl}'>쪽지보내기</a>">${messenger.content}</a>
 					            </td>
 					            <td class="text-center">${messenger.regDate}</td>
 				        	</tr>
