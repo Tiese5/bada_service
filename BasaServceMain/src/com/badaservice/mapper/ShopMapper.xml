@@ -179,11 +179,4 @@
 	 	</where>
 	</select>
 	
-	<!-- 전체 조회 -->
-	<select id="selectShopList" parameterType="com.badaservice.model.Shop"
-			resultMap="shop">
-			SELECT *
-			FROM item_add
-			member_id=#{member_id}
-	</select>
 </mapper>

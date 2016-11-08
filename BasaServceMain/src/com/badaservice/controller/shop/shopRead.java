@@ -57,9 +57,7 @@ public class shopRead extends BaseController {
 		request.setAttribute("category", category);	
 		
 		int myId = 0;
-		int shopmemberId = 0;
-		
-		
+	
 		/** 5)글번호 파라미터 받기 */
 		int shopId = web.getInt("shop_id");
 		logger.debug("shopId:" + shopId);

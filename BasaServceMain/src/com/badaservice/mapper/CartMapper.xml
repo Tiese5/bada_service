@@ -63,9 +63,4 @@
 		where myid=#{myid}
 	</select>
 	
-	<!-- 장바구니 제품 목록 조회 -->
-	<select id="selectCartList" parameterType="com.badaservice.model.Cart" resultMap="cart">
-		SELECT * FROM cart WHERE myid=#{myId}
-	</select>
-
 </mapper>
