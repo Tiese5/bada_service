@@ -26,9 +26,6 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 <!-- 다음 주소 api -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script

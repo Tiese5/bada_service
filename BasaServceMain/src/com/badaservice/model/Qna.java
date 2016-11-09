@@ -15,12 +15,16 @@ public class Qna {
 	private int qnaId;
 	private int limitStart;
 	private int listCount;
+	private String ox;
 	
+	public String getOx() {
+		return ox;
+	}
+	public void setOx(String ox) {
+		this.ox = ox;
+	}
 	private String qName;
 	private String aName;
-	
-	
-	
 	public String getqName() {
 		return qName;
 	}
@@ -110,7 +114,7 @@ public class Qna {
 		return "Qna [id=" + id + ", title=" + title + ", qContent=" + qContent + ", regDate=" + regDate + ", editDate="
 				+ editDate + ", category=" + category + ", writerId=" + writerId + ", answererId=" + answererId
 				+ ", aContent=" + aContent + ", qnaId=" + qnaId + ", limitStart=" + limitStart + ", listCount="
-				+ listCount + ", qName=" + qName + ", aName=" + aName + "]";
+				+ listCount + ", ox=" + ox + ", qName=" + qName + ", aName=" + aName + "]";
 	}
 	
 	

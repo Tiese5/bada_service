@@ -1,4 +1,4 @@
-package com.badaservice.controller.adminqna;
+package com.badaadmin.controller.qna;
 
 import java.io.IOException;
 
@@ -13,59 +13,43 @@ import org.apache.logging.log4j.Logger;
 
 import com.badaservice.dao.MyBatisConnectionFactory;
 import com.badaservice.helper.BaseController;
-import com.badaservice.helper.PageHelper;
 import com.badaservice.helper.RegexHelper;
-import com.badaservice.helper.UploadHelper;
 import com.badaservice.helper.WebHelper;
-import com.badaservice.model.Member;
 import com.badaservice.model.Qna;
 import com.badaservice.service.QnaService;
 import com.badaservice.service.impl.QnaServiceImpl;
-
-@WebServlet("/admin/qna_ok.do")
-public class QnaOk extends BaseController {
-	private static final long serialVersionUID = -7255918033093832468L;
+@WebServlet("/admin/qna_edit_ok.do")
+public class AdminQnaEditOk extends BaseController {
+	private static final long serialVersionUID = -2827140414693067177L;
 	WebHelper web;
 	Logger logger;
 	SqlSession sqlSession;
 	QnaService qnaService;
-	PageHelper pageHelper;
-	UploadHelper upload;
-	QNACommon qna;
+	AdminQNACommon qnacommon;
 	RegexHelper regex;
 	@Override
 	public String doRun(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		web = WebHelper.getInstance(request, response);
-		logger = LogManager.getFormatterLogger(request.getRequestURI());
+		logger = LogManager.getFormatterLogger(request.getRemoteUser());
 		sqlSession = MyBatisConnectionFactory.getSqlSession();
-		upload = UploadHelper.getInstance();
-		qnaService = new QnaServiceImpl(sqlSession, logger);
-		pageHelper = PageHelper.getInstance();
-		qna = QNACommon.getInstance();
+		qnacommon = AdminQNACommon.getInstance();
 		regex = RegexHelper.getInstance();
-		
-		Member loginInfo = (Member) web.getSession("loginInfo");
-		/*로그인후 이용해주세요*/
-		/*if (web.getSession("loginInfo") == null) {
-			sqlSession.close();
-			web.redirect(web.getRootPath() +"/index.do","로그인 후에 이용 가능합니다");
-			return null;
-		}*/
-		
+		qnaService = new QnaServiceImpl(sqlSession,logger);
+		/**게시판 카테고리 값을 받아서 View에 전달*/
 		/*파라미터 받기*/
 		String title = web.getString("title");
 		String category = web.getString("category");
 		String qContent = web.getString("qContent");
-		int writerId = loginInfo.getId();
-		
-		
+		int qnaId = web.getInt("qna_id");
 		/*로그로 검사*/
 		logger.debug("title="+title);
 		logger.debug("category="+category);
 		logger.debug("qContent="+qContent);
+		logger.debug("qnaId="+qnaId);
 		/*카테고리값 전달*/
 		request.setAttribute("category", category);
+		
 		/*유효성검사*/
 		//제목 선택검사
 		if(!regex.isValue(title)){
@@ -87,21 +71,34 @@ public class QnaOk extends BaseController {
 		qna.setqContent(qContent);
 		qna.setTitle(title);
 		qna.setCategory(category);
-		qna.setWriterId(writerId);
+		qna.setId(qnaId);
 		logger.debug("QNA="+qna.toString());
 		
 		try {
-			qnaService.insertQna(qna);
+			qnaService.updateQna(qna);
 		} catch (Exception e) {
 			web.redirect(null, e.getLocalizedMessage());
 			e.printStackTrace();
-			sqlSession.close();
 			return null;
 		}
+		
+		
 		String url = web.getRootPath()+"/qna/qna.do";
-		web.redirect(url, "작성완료");
+		web.redirect(url, "수정완료");
 		
 		return null;
 	}
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

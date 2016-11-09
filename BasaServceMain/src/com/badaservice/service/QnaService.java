@@ -56,4 +56,10 @@ public interface QnaService {
 	 */
 	public List<Qna> selelctQnaAllList(Qna qna) throws Exception;
 	
+	/**
+	 * 1대1 답변 등록
+	 * @param qna
+	 * @throws Exception
+	 */
+	public void insertAdminQna(Qna qna)throws Exception;
 }

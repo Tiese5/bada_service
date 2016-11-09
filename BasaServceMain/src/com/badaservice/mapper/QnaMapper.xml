@@ -18,6 +18,7 @@
 		<result property="aContent" column="a_content" />
 		<result property="aName" column="qname" />
 		<result property="qName" column="qname" />
+		<result property="ox" column="ox" />
 
 
 	</resultMap>
@@ -27,9 +28,9 @@
 		INSERT INTO QNA(
 		title, q_content,
 		reg_date, edit_date,
-		category,writer_id
+		category,writer_id,ox
 		)VALUES(
-		#{title},#{qContent},now(),now(),#{category},#{writerId}
+		#{title},#{qContent},now(),now(),#{category},#{writerId},'x'
 		)
 	</insert>
 
@@ -49,8 +50,7 @@
 		resultMap="qna">
 		SELECT
 		QNA.id,member.name as qname, category,title,a_content,q_content,
-		DATE_FORMAT(edit_date,
-		'%Y-%m-%d %H-%i:%s') as edit_date,
+		DATE_FORMAT(edit_date,'%Y-%m-%d %H-%i:%s') as edit_date,
 		answerer_id,writer_id
 		FROM QNA
 		INNER
@@ -84,11 +84,24 @@
 	<!-- 관리자가 목록을 조회한다 -->
 	<select id="selelctQnaAllList" parameterType="com.badaservice.model.Qna"
 		resultMap="qna">
-		SELECT id,title,category,DATE_FORMAT(reg_date, '%Y-%m-%d')
-		as reg_date
+		SELECT QNA.id,member.name as qname,
+		title,category,DATE_FORMAT(reg_date, '%Y-%m-%d')
+		as reg_date,q_content,ox,writer_id
 		FROM QNA 
+		INNER
+		JOIN member ON QNA.writer_id=member.id
 		ORDER BY id DESC
 		LIMIT #{limitStart}, #{listCount};
 	</select>
-	
+	<!-- 관리자 답변 달기 -->
+	<insert id="insertAdminQna" parameterType="com.badaservice.model.Qna"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO QNA(
+		a_content,title,q_content,category,writer_id,
+		reg_date, edit_date,ox
+		)VALUES(
+		#{aContent},#{title},#{qContent},#{category},#{writerId},
+		now(),now(),'o'
+		)
+	</insert>
 </mapper>

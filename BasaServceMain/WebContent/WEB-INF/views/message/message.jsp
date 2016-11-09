@@ -87,14 +87,13 @@ td:last-child, th:last-child {
 																				<c:forEach var="messenger" items="${messengerList}">
 																					<tr>
 																						<td class="text-center">${messenger.receiverName}</td>
-																						<%-- <td>
-
-					            	<c:url var="readUrl" value="/bbs/document_read.do">
-					            		<c:param name="category" value="${document.category}" />
-					            		<c:param name="document_id" value="${document.id}" />
-					            	</c:url>
-					            	<a href="${readUrl}">${document.subject}</a>
-					            </td> --%>
+																						<td><c:url var="readUrl"
+																								value="/bbs/document_read.do">
+																								<c:param name="category"
+																									value="${document.category}" />
+																								<c:param name="document_id"
+																									value="${document.id}" />
+																							</c:url> <a href="${readUrl}">${document.subject}</a></td>
 																						<td class="text-center"><c:url var="readUrl"
 																								value="/message_send_view.do">
 																								<c:param name="message_id"

@@ -41,6 +41,44 @@
 							</tr>
 						</thead>
 						<tbody>
+							<c:choose>
+									<c:when test="${fn:length(qnaList) > 0}">
+										<c:forEach var="qna" items="${qnaList}">
+											<tr>
+												<td class="text-center">${qna.qName }</td>
+												<td class="text-center">
+												<c:choose>
+														<c:when test="${qna.category== '1' }">판매관련</c:when>
+														<c:when test="${qna.category== '2' }">배송</c:when>
+														<c:when test="${qna.category== '3' }">환불</c:when>
+														<c:when test="${qna.category== '4' }">기타</c:when>
+													</c:choose></td>
+												<td class="text-center">
+													<c:url var="readUrl" value="/admin/qna_read.do">
+														<c:param name="qna_id" value="${qna.id }"></c:param>
+														<c:param name="writer_id" value="${qna.writerId }"></c:param>
+													</c:url> 
+													<a href="${readUrl}">${qna.title}</a></td>
+												<td class="text-center">${qna.regDate }</td>
+												<td class="text-center">${qna.ox }</td>
+											</tr>
+										</c:forEach>
+									</c:when>
+									<c:otherwise>
+										<tr>
+											<td colspan="5" class="text-center"
+												style="line-height: 100px;">조회된 글이 없습니다</td>
+										</tr>
+									</c:otherwise>
+								</c:choose>
+						
+						
+						
+						
+						
+						
+						
+						
 							<tr align="center">
 								<td>naver</td>
 								<td>기타</td>

@@ -1,4 +1,4 @@
-package com.badaservice.controller.adminqna;
+package com.badaadmin.controller.qna;
 
 import java.io.IOException;
 import java.util.List;
@@ -29,7 +29,7 @@ public class AdminQnaList extends BaseController {
 	SqlSession sqlSession;
 	QnaService qnaService;
 	PageHelper pageHelper;
-	QNACommon qnaComm;
+	AdminQNACommon qnaComm;
 
 	@Override
 	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -38,9 +38,9 @@ public class AdminQnaList extends BaseController {
 		sqlSession = MyBatisConnectionFactory.getSqlSession();
 		qnaService = new QnaServiceImpl(sqlSession, logger);
 		pageHelper = PageHelper.getInstance();
-		qnaComm = QNACommon.getInstance();
+		qnaComm = AdminQNACommon.getInstance();
 		
-	/*	Member loginInfo = (Member) web.getSession("loginInfo");
+		/*Member loginInfo = (Member) web.getSession("loginInfo");
 		if (loginInfo == null) {
 			sqlSession.close();
 			web.redirect(web.getRootPath() +"/index.do","로그인 후에 이용 가능합니다");
@@ -49,11 +49,10 @@ public class AdminQnaList extends BaseController {
 		
 		/* 카테고리값 받기 */
 		String category = web.getString("category");
+		int writerId	= web.getInt("writer_id");
 		request.setAttribute("category", category);
+		request.setAttribute("writer_id", writerId);
 		
-		/* 조회할 정보에 대한 빈즈 생성 
-		int writerId = loginInfo.getId();
-		*/
 		Qna qna = new Qna();
 		int page = web.getInt("page", 1);
 
@@ -70,7 +69,7 @@ public class AdminQnaList extends BaseController {
 			qna.setLimitStart(pageHelper.getLimitStart());
 			qna.setListCount(pageHelper.getListCount());
 
-			qnaList = qnaService.selelctQnaList(qna);
+			qnaList = qnaService.selelctQnaAllList(qna);
 		} catch (Exception e) {
 			web.redirect(null, e.getLocalizedMessage());
 			e.printStackTrace();
@@ -80,6 +79,7 @@ public class AdminQnaList extends BaseController {
 		/**조회 결과를 뷰에 전달*/
 		request.setAttribute("qnaList", qnaList);
 		request.setAttribute("totalCount", totalCount);
+		
 		//페이지 번호 계산 결과를 뷰에 전달
 		request.setAttribute("pageHelper", pageHelper);
 		
