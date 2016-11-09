@@ -17,7 +17,37 @@ public class Member {
 	private String position;
 	private String jo;
 	private String new_user_pw;
+	private int limitStart;
+	private int listCount;
+	
+	private String qName;
+	private String aName;
+	
 
+	public int getLimitStart() {
+		return limitStart;
+	}
+	public void setLimitStart(int limitStart) {
+		this.limitStart = limitStart;
+	}
+	public int getListCount() {
+		return listCount;
+	}
+	public void setListCount(int listCount) {
+		this.listCount = listCount;
+	}
+	public String getqName() {
+		return qName;
+	}
+	public void setqName(String qName) {
+		this.qName = qName;
+	}
+	public String getaName() {
+		return aName;
+	}
+	public void setaName(String aName) {
+		this.aName = aName;
+	}
 	public int getId() {
 		return id;
 	}
@@ -120,8 +150,8 @@ public class Member {
 		return "Member [id=" + id + ", user_id=" + user_id + ", user_pw=" + user_pw + ", name=" + name + ", email="
 				+ email + ", birthdate=" + birthdate + ", tel=" + tel + ", postcode=" + postcode + ", addr1=" + addr1
 				+ ", addr2=" + addr2 + ", profile_img=" + profile_img + ", join_date=" + join_date + ", join_edit="
-				+ join_edit + ", position=" + position + ", jo=" + jo + ", new_user_pw=" + new_user_pw
-				+ "]";
+				+ join_edit + ", position=" + position + ", jo=" + jo + ", new_user_pw=" + new_user_pw + ", limitStart="
+				+ limitStart + ", listCount=" + listCount + ", qName=" + qName + ", aName=" + aName + "]";
 	}
 	
 	
