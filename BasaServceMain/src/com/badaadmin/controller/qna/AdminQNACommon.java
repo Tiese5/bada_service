@@ -1,12 +1,12 @@
-package com.badaservice.controller.adminqna;
+package com.badaadmin.controller.qna;
 
-public class QNACommon {
+public class AdminQNACommon {
 	// 싱글톤 시작
-	private static QNACommon current = null;
+	private static AdminQNACommon current = null;
 
-	public static QNACommon getInstance() {
+	public static AdminQNACommon getInstance() {
 		if (current == null) {
-			current = new QNACommon();
+			current = new AdminQNACommon();
 		}
 		return current;
 	}
@@ -18,7 +18,7 @@ public class QNACommon {
 	}
 
 	// 기본 생성자를 private 으로 은닉하면 new를 통한 생성 불가
-	private QNACommon() {
+	private AdminQNACommon() {
 		super();
 		// 싱글톤 끝
 	}

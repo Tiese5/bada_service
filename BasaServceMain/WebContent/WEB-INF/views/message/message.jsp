@@ -93,27 +93,6 @@ td:last-child, th:last-child {
 								</tr>
 							</tfoot>
 						</table>
-						<!-- 페이지 번호 시작 -->
-						<nav class="text-center">
-							<ul class="pagination">
-								<!-- 이전 그룹으로 이동 -->
-								<c:choose>
-									<c:when test="${pageHelper.prevPage > 0}">
-										<!-- 이전 그룹에 대한 페이지 번호가 존재한다면? -->
-										<!-- 이전 그룹으로 이동하기 위한 URL을 생성해서 "prevUrl"에 저장 -->
-										<c:url var="prevUrl" value="/message.do">
-											<c:param name="page" value="${pageHeler.prevPage}"></c:param>
-										</c:url>
-
-										<li><a href="${prevUrl}">&laquo;</a></li>
-									</c:when>
-
-									<c:otherwise>
-										<!-- 이전 그룹에 대한 페이지 번호가 존재하지 않는다면? -->
-										<li class="disabled"><a href="#">&laquo;</a></li>
-									</c:otherwise>
-								</c:choose>
-
 								<!-- 페이지 번호 -->
 								<!-- 현재 그룹의 시작페이지~끝페이지 사이를 1씩 증가하면서 반복 -->
 								<c:forEach var="i" begin="${pageHelper.startPage}"

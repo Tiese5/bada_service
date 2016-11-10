@@ -1,4 +1,4 @@
-package com.badaservice.controller.adminqna;
+package com.badaadmin.controller.qna;
 
 import java.io.IOException;
 
@@ -18,20 +18,20 @@ import com.badaservice.model.Qna;
 import com.badaservice.service.QnaService;
 import com.badaservice.service.impl.QnaServiceImpl;
 @WebServlet("/admin/qna_edit.do")
-public class QnaEdit extends BaseController {
+public class AdminQnaEdit extends BaseController {
 	private static final long serialVersionUID = -7255918033093832468L;
 	WebHelper web;
 	Logger logger;
 	SqlSession sqlSession;
 	QnaService qnaService;
-	QNACommon qnacommon;
+	AdminQNACommon qnacommon;
 	@Override
 	public String doRun(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		web = WebHelper.getInstance(request, response);
 		logger = LogManager.getFormatterLogger(request.getRemoteUser());
 		sqlSession = MyBatisConnectionFactory.getSqlSession();
-		qnacommon = QNACommon.getInstance();
+		qnacommon = AdminQNACommon.getInstance();
 		qnaService = new QnaServiceImpl(sqlSession, logger);
 		/**게시판 카테고리 값을 받아서 View에 전달*/
 		String category = web.getString("category");
