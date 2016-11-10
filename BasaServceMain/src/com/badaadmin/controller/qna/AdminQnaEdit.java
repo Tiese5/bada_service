@@ -62,8 +62,9 @@ public class AdminQnaEdit extends BaseController {
 			return null;
 		}
 		request.setAttribute("readQna",readQna);
+		request.setAttribute("qnaId",qnaId);
 		
-		return "qna/qna_edit";
+		return "admin/qna/qna_Edit";
 	}
 }
 

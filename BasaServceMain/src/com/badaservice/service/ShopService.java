@@ -94,6 +94,7 @@ public interface ShopService {
 	
 	public List<Shop> selectShopList(Shop shop) throws Exception;
 	
+	
 
 	
 }

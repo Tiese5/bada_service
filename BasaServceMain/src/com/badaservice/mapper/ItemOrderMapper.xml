@@ -44,4 +44,19 @@
 		SELECT COUNT(id) FROM item_order where user_id=#{userId}	
 	</select>
 	
+	
+	
+	<!-- 거래목록 목록을 조회한다 -->
+	<select id="selectAdminItemList" parameterType="com.badaservice.model.ItemOrder"
+		resultMap="ItemOrder">
+		select item_title, seller_name, price, reg_data
+		from item_order
+	</select>
+	<!-- 카테고리별 게시물 수를 조회한다. -->
+	<select id="selectAdminItemCount" parameterType="com.badaservice.model.ItemOrder"
+		resultType="int">
+		SELECT COUNT(id) FROM item_order
+	</select>
+	
+	
 </mapper>	

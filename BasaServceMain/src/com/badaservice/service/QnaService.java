@@ -62,4 +62,11 @@ public interface QnaService {
 	 * @throws Exception
 	 */
 	public void insertAdminQna(Qna qna)throws Exception;
+	/**
+	 *관리자 답변 수정하기 
+	 * @param qna
+	 * @throws Exception
+	 */
+	public void updateAdminQna(Qna qna)throws Exception;
+	
 }

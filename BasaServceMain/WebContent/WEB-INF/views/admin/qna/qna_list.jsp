@@ -72,39 +72,67 @@
 									</c:otherwise>
 								</c:choose>
 						
-						
-						
-						
-						
-						
-						
-						
-							<tr align="center">
-								<td>naver</td>
-								<td>기타</td>
-								<td><a href="#">거래는 어떤식으로 이루어 지나요</a></td>
-								<td>2016.09.05</td>
-								<td>O</td>
-
-							</tr>
 						</tbody>
 						<tfoot>
 							<tr>
-								<td colspan="5" class="text-center">
-									<nav aria-label="Page navigation">
-										<ul class="pagination">
-											<li class="previous disabled"><a href="#"><span
-													aria-hidden="true">&larr;</span> 이전</a></li>
-											<li class="active"><a href="#">1</a></li>
-											<li><a href="#">2</a></li>
-											<li><a href="#">3</a></li>
-											<li><a href="#">4</a></li>
-											<li><a href="#">5</a></li>
-											<li class="next"><a href="#">다음 <span
-													aria-hidden="true">&rarr;</span></a></li>
-										</ul>
-									</nav>
-								</td>
+										<td colspan="5" class="text-center">
+										<nav class="text-center">
+											<ul class="pagination">
+												<!-- 이전 그룹으로이동 -->
+												<c:choose>
+													<c:when test="${pageHelper.prevPage > 0 }">
+														<!-- 이전 그룹에 대한 페이지 번호가 존재한다면? -->
+														<!-- 이전 그룹으로 이동하기 위해 URL을 생성해서 prevUrl에 저장 -->
+														<c:url var="prevUrl" value="/admin/qna.do">
+															<c:param name="page" value="${pageHelper.prevPage}"></c:param>
+														</c:url>
+														<li><a href="${prevUrl}">&laquo;</a></li>
+													</c:when>
+													<c:otherwise>
+														<li class="disabled"><a href="#">&laquo;</a></li>
+													</c:otherwise>
+												</c:choose>
+
+												<!-- 페이지 번호 -->
+												<!-- 현재 그룹의 시작페이지~ 끝페이지 사이의 1씩 증가하면서 반복 -->
+												<c:forEach var="i" begin="${pageHelper.startPage}"
+													end="${pageHelper.endPage}" step="1">
+													<!-- 페이지 번호로 이동할수 있는 URL을 생성하겨 url에 저장 -->
+													<c:url var="pageUrl" value="/admin/qna.do">
+														<c:param name="page" value="${i}"></c:param>
+													</c:url>
+													<!-- 반족중의 페이지 번호와 현재 페이지 번호가 갗은 경우에 대한 분기 -->
+													<c:choose>
+														<c:when test="${pageHelper.page==i})">
+															<li class="active"><a href="#">${i}</a></li>
+														</c:when>
+														<c:otherwise>
+															<li><a href="${pageUrl}">${i}</a></li>
+														</c:otherwise>
+													</c:choose>
+
+
+												</c:forEach>
+
+
+												<!-- 다음 그룹으로 이동-->
+												<c:choose>
+													<c:when test="${pageHelper.nextPage > 0}">
+														<!-- 이전 그룹에 대한 페이지 번호가 존재한다면? -->
+														<!-- 이전 그룹으로 이동하기 위해 URL을 생성해서 prevUrl에 저장 -->
+														<c:url var="nextUrl" value="/admin/qna.do">
+															<c:param name="page" value="${pageHelper.nextPage}"></c:param>
+														</c:url>
+														<li><a href="${nextUrl}">&raquo;</a></li>
+													</c:when>
+													<c:otherwise>
+														<li class="disabled"><a href="#">&raquo;</a></li>
+													</c:otherwise>
+												</c:choose>
+											</ul>
+
+										</nav>
+									</td>
 							</tr>
 						</tfoot>
 					</table>

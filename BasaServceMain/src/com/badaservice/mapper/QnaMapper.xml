@@ -104,4 +104,15 @@
 		now(),now(),'o'
 		)
 	</insert>
+	<!-- 게시글 답글 수정하기 -->
+	<update id="updateAdminQna" parameterType="com.badaservice.model.Qna">
+		UPDATE QNA SET
+		id=#{id},
+		category=#{category},
+		title=#{title},
+		q_content=#{qContent},
+		a_content=#{aContent},
+		edit_date=now()
+		WHERE id=#{id} 
+	</update>
 </mapper>

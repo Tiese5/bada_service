@@ -1,6 +1,7 @@
 package com.badaadmin.controller.qna;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,7 +42,8 @@ public class AdminQnaEditOk extends BaseController {
 		String title = web.getString("title");
 		String category = web.getString("category");
 		String qContent = web.getString("qContent");
-		int qnaId = web.getInt("qna_id");
+		String aContent = web.getString("aContent");
+		int qnaId = web.getInt("id");
 		/*로그로 검사*/
 		logger.debug("title="+title);
 		logger.debug("category="+category);
@@ -51,16 +53,7 @@ public class AdminQnaEditOk extends BaseController {
 		request.setAttribute("category", category);
 		
 		/*유효성검사*/
-		//제목 선택검사
-		if(!regex.isValue(title)){
-			web.redirect(null, "제목을 입력해주세요");
-			return null;
-		}
-		//카테고리 선택검사
-		if(!regex.isValue(category)){
-			web.redirect(null, "카테고리를 선택해주세요");
-			return null;
-		}
+		
 		//내용입력여부검사
 		if(!regex.isValue(qContent)){
 			web.redirect(null, "내용을 입력하세요");
@@ -72,18 +65,28 @@ public class AdminQnaEditOk extends BaseController {
 		qna.setTitle(title);
 		qna.setCategory(category);
 		qna.setId(qnaId);
+		qna.setaContent(aContent);
 		logger.debug("QNA="+qna.toString());
 		
+		
+		
 		try {
-			qnaService.updateQna(qna);
+			qnaService.updateAdminQna(qna);
 		} catch (Exception e) {
 			web.redirect(null, e.getLocalizedMessage());
 			e.printStackTrace();
+			sqlSession.close();
 			return null;
 		}
 		
+		request.setAttribute("qnaId", qnaId);
+		request.setAttribute("title", title);
+		request.setAttribute("category", category);
+		request.setAttribute("qContent", qContent);
+		request.setAttribute("aContent", aContent);
 		
-		String url = web.getRootPath()+"/qna/qna.do";
+		
+		String url = web.getRootPath()+"/admin/qna_read.do?qna_id="+qnaId;
 		web.redirect(url, "수정완료");
 		
 		return null;

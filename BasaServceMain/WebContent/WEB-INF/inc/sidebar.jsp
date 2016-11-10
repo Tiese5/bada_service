@@ -16,7 +16,7 @@
 		<ul class="nav nav-side-menu">
 			<li><a href="${pageContext.request.contextPath}/document_list.do?category=n">공지사항</a></li>
 			<li><a href="${pageContext.request.contextPath}/document_list.do?category=f">자주묻는질문</a></li>
-			<li><a href="#">1:1 문의</a></li>
+			<li><a href="${pageContext.request.contextPath}/qna/qna.do?">1:1 문의</a></li>
 		</ul>
 	</div>
 </div>

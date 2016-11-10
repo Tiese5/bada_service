@@ -10,8 +10,10 @@
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
 				aria-controls="navbar">
-				<span class="sr-only">메뉴 열기</span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span>
+				<span class="sr-only">메뉴 열기</span>
+				<span class="icon-bar"></span> 
+				<span class="icon-bar"></span> 
+				<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="#">BaDa <span class="small">ADMIN</span></a>
 		</div>

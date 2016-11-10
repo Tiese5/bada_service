@@ -43,7 +43,8 @@ margin-left: 150px;
 				<br />
 				<form class="form-horizontal" id="myform">
 					<div class="form-group">
-						<label for="send_people" class="col-md-6">제목:${readQna.title}</label>
+						<label for="send_people" class="col-md-6">제목:
+						${readQna.title}</label>
 					</div>
 
 					<div class="form-group">
@@ -78,8 +79,12 @@ margin-left: 150px;
 							href="${pageContext.request.contextPath}/admin/qna.do"
 							class="btn btn-info">목록</a> <a
 							href="${pageContext.request.contextPath}/admin/qna_add.do?qna_id=${readQna.id}&writer_id=${readQna.writerId}"
-							class="btn btn-primary">답변</a> <a
-							href="${pageContext.request.contextPath}/qna/qna_delete.do?qna_id=${readQna.id}"
+							class="btn btn-primary">답변</a>
+							<a
+							href="${pageContext.request.contextPath}/admin/qna_edit.do?qna_id=${readQna.id}&writer_id=${readQna.writerId}"
+							class="btn btn-success">수정</a>
+							<a
+							href="${pageContext.request.contextPath}/admin/qna_delete.do?qna_id=${readQna.id}"
 							class="btn btn-danger">삭제</a>
 					</div>
 				</form>

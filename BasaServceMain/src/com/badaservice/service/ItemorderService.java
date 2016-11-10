@@ -31,4 +31,24 @@ public interface ItemorderService {
 	 * @throws Exception
 	 */
 	public int selectBuyCount(ItemOrder ItemOrder) throws Exception;
+	
+	
+	
+
+	/**
+	 * 관리자 거래내역 조회
+	 * @param shop
+	 * @return
+	 * @throws Exception
+	 */
+	public List<ItemOrder> selectAdminItemList(ItemOrder ItemOrder) throws Exception;
+	
+	/**
+	 * 카테고리별 전체 게시물 조회
+	 * @param shop
+	 * @return
+	 * @throws Exception
+	 */
+	public int selectAdminItemCount(ItemOrder ItemOrder) throws Exception;
+	
 }

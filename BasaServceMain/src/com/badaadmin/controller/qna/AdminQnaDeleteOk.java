@@ -52,10 +52,11 @@ public class AdminQnaDeleteOk extends BaseController{
 			sqlSession.close();
 		}
 		
-		String url = web.getRootPath()+"/qna/qna.do";
+		String url = web.getRootPath()+"/admin/qna.do";
 		web.redirect(url, "삭제 되었습니다");
 		
 		return null;
 	}
-
 }
+
+
