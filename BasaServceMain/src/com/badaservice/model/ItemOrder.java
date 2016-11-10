@@ -16,11 +16,18 @@ public class ItemOrder {
 	private String itemImg;
 	private String sellerName;
 	private String state;
+	private String sellerId;
 	
 	private int limitStart;
 	private int listCount;
 
 	
+	public String getSellerId() {
+		return sellerId;
+	}
+	public void setSellerId(String sellerId) {
+		this.sellerId = sellerId;
+	}
 	public String getState() {
 		return state;
 	}
@@ -123,7 +130,8 @@ public class ItemOrder {
 		return "ItemOrder [id=" + id + ", memberId=" + memberId + ", userId=" + userId + ", postcode=" + postcode
 				+ ", addr1=" + addr1 + ", addr2=" + addr2 + ", email=" + email + ", tel=" + tel + ", itemTitle="
 				+ itemTitle + ", price=" + price + ", regData=" + regData + ", itemImg=" + itemImg + ", sellerName="
-				+ sellerName + ", state=" + state + ", limitStart=" + limitStart + ", listCount=" + listCount + "]";
+				+ sellerName + ", state=" + state + ", sellerId=" + sellerId + ", limitStart=" + limitStart
+				+ ", listCount=" + listCount + "]";
 	}
 	
 	
