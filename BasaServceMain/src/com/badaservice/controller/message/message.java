@@ -80,6 +80,10 @@ public class message extends BaseController {
 			sqlSession.close();
 		}
 		
+		for (int i=0; i<messengerList.size(); i++) {
+			logger.debug("[" + i + "]=" + messengerList.get(i).toString());
+		}
+		
 		request.setAttribute("messengerList", messengerList);
 		request.setAttribute("totalCount", totalCount);
 		request.setAttribute("pageHelper", pageHelper);

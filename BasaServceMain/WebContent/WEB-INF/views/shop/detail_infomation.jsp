@@ -83,7 +83,7 @@ h3 {
 								판매자: <a
 									href="${pageContext.request.contextPath}/message_send.do?user_id=${readMember.user_id}"
 									id="nameid"> ${readItem.memberName}</a>
-							</h3></li>
+							</h3></li>               
 						<li><h3>
 								<strong class="color">${readItem.price}</strong>원
 							</h3></li>

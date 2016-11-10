@@ -7,11 +7,11 @@
 
 <head>
 <%@ include file="/WEB-INF/inc/head.jsp" %>
-<script type="text/javascript"> 
-		$(function () {
-	   	 $('[data-toggle="popover"]').popover()
-	    });
-	</script>
+<script>
+       $(document).ready(function() {
+            $('[data-toggle="popover"]').popover({container: "body"});
+       });
+</script>
     <style media="screen" type="text/css">
         td, th {
             border-right: 1px solid #ccc;
@@ -62,21 +62,27 @@
                             </tr>
                         </thead>
                         <tbody>
-                           <c:choose>
+                        
+                       
+					                
+					                
+                 <c:choose>
 		    		<c:when test="${fn:length(messengerList) > 0}">
 		    			<c:forEach var="messenger" items="${messengerList}">
 		    				<tr>
-		    					<td class="small text-center">${messenger.senderName}</td>
+		    					<td class="small text-center"> <a href="#"
+					             data-toggle="popover"
+					             data-html="true"
+					             data-placement="bottom"
+					             data-content="<a href='${pageContext.request.contextPath}/message_send.do?sender_id=${messenger.senderId}'>쪽지보내기</a>">${messenger.senderName}</a></td>
 					            <td class="text-center">
 					            	<c:url var="readUrl" value="/message_view.do">
 					            		<c:param name="message_id" value="${messenger.id}" />				     
 					            	</c:url>
-					            	<a data-toggle="popover"
-					            	  data-placement="bottom"
-					            	    data-content="<a href='${readUrl}'>쪽지보내기</a>">${messenger.content}</a>
+					            	<a href="${readUrl}">${messenger.content}</a>
 					            </td>
 					            <td class="text-center">${messenger.regDate}</td>
-				        	</tr>
+				        	</tr>                      
 		    			</c:forEach>
 		    		</c:when>
 		    		<c:otherwise>

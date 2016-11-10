@@ -6,7 +6,7 @@
 		<result property="content" column="content" />
 		<result property="regDate" column="reg_date" />
 		<result property="senderId" column="sender_id" />
-		<result property="receiverId" column="reciver_id" />
+		<result property="receiverId" column="receiver_id" />
 		<result property="senderName" column="sender_name" />
 		<result property="receiverName" column="receiver_name" />
 		<result property="messageDelete" column="message_delete" />
