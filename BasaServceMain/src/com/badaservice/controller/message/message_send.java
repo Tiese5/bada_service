@@ -28,14 +28,49 @@ import com.badaservice.service.impl.MessageServiceImpl;
 public class message_send extends BaseController {
 	private static final long serialVersionUID = -3022851980472374394L;
 	WebHelper web;
-	
+	SqlSession sqlSession;
+	MemberService memberService;
 	@Override
 	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		web = WebHelper.getInstance(request, response);
-		String usdrId = web.getString("user_id");
+		sqlSession = MyBatisConnectionFactory.getSqlSession();
+		memberService = new MemberServiceImpl(logger, sqlSession);
+		
+		String userId = web.getString("user_id");
+		int senderId = web.getInt("sender_id");
+		int receiverId = web.getInt("receiver_id");
 		
 		
-		request.setAttribute("userId", usdrId);
+		
+		Member member = new Member();
+		if(senderId != 0) {
+			member.setId(senderId);
+		} else if(receiverId != 0) {
+			member.setId(receiverId);
+		}
+		Member readMember = null;
+		
+		try {
+			if(senderId != 0) {
+				readMember = memberService.selectMemberSendMessageList(member);
+					if(readMember.getUser_id() != null) {
+							userId = readMember.getUser_id();
+					}
+			} else if(receiverId != 0) {
+				readMember = memberService.selectMemberSendMessageList(member);
+				if(readMember.getUser_id() != null) {
+					userId = readMember.getUser_id();
+				}
+			}
+		} catch (Exception e) {
+			web.redirect(null, e.getLocalizedMessage());
+			return null;
+		} finally {
+			sqlSession.close();
+		}
+		
+		request.setAttribute("userId", userId);
+		
 		return "/message/message_send";
 	}
 

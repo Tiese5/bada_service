@@ -60,6 +60,7 @@ public class message_get extends BaseController {
 			receiverId = loginInfo.getId();
 		}
 		
+		Member member = new Member();
 		
 		messenger messenger = new messenger();
 		messenger.setReceiverId(receiverId);
@@ -84,6 +85,8 @@ public class message_get extends BaseController {
 			logger.debug(pageHelper.toString());
 			
 		messengerList = messageService.selectMessageList(messenger);
+	
+		
 		} catch (Exception e) {
 			web.redirect(null, e.getLocalizedMessage());
 			return null;

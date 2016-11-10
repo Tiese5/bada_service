@@ -50,41 +50,100 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><a href=""><img src="${pageContext.request.contextPath}/assets/img/effective_java.jpg" alt="" height="100px"></a></td>
-                            <td><a href="">자바의 정석</a></td>
-                            <td>홍길동</td>
-                            <td><span class="text-danger">20,000</span> 원</td>
-                            <td>2016.09.10 12:00:00</td>
-                           	<td>배송 중</td>
-                        </tr>
-                        
-                        <tr>
-                            <td><a href=""><img src="${pageContext.request.contextPath}/assets/img/effective_java.jpg" alt="" height="100px"></a></td>
-                            <td><a href="">자바의 정석</a></td>
-                            <td>홍길동</td>
-                            <td><span class="text-danger">20,000</span> 원</td>
-                            <td>2016.09.10 12:00:00</td>
-                           	<td>입금완료</td>
-                        </tr>
-                        
+                  	<c:choose>
+						<c:when test="${fn:length(buyList)>0}">
+							<c:forEach var="buylist" items="${buyList}">
+							
+									<tr>
+										<td><a
+											href="${pageContext.request.contextPath}/shop/shop_read.do">
+												<c:if test="${buylist.itemImg != null }">
+													<c:url var="downloadUrl" value="/download.do">
+														<c:param name="file" value="${buylist.itemImg}"></c:param>
+													</c:url>
+													<img src="${downloadUrl}" alt="" height="100px">
+												</c:if>
+											</a>
+										</td> 
+										<td>${buylist.itemTitle}</td>
+										<td>${buylist.sellerName}</td>
+										<td><span class="text-danger">${buylist.price}</span> 원</td>
+										<td>${buylist.regData}</td>
+										<td>${buylist.state}</td>
+									</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr>
+								<td class="text-center">구매하신 책 이없습니다</td>
+							</tr>
+						</c:otherwise>
+					</c:choose>
                     </tbody>
                     <tfoot>
                             <tr>
                        
                                 <td colspan="6" class="text-center">
-                                    <nav aria-label="Page navigation">
-                                      <ul class="pagination">
-                                        <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> 이전</a></li>
-                                        <li class="active"><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li class="next"><a href="#">다음 <span aria-hidden="true">&rarr;</span></a></li>
-                                      </ul>
-                                    </nav>
-                                </td>
+                                <!-- 페이지 번호 시작 -->
+						<nav class="text-center">
+							<ul class="pagination">
+								<!-- 이전 그룹으로 이동 -->
+								<c:choose>
+									<c:when test="${pageHelper.prevPage > 0}">
+										<!-- 이전 그룹에 대한 페이지 번호가 존재한다면? -->
+										<!-- 이전 그룹으로 이동하기 위한 URL을 생성해서 "prevUrl"에 저장 -->
+										<c:url var="prevUrl" value="/order_check.do">											
+											<c:param name="page" value="${pageHeler.prevPage}"></c:param>
+										</c:url>
+										
+										<li><a href="${prevUrl}">&laquo;</a></li>
+									</c:when>
+									
+									<c:otherwise>
+										<!-- 이전 그룹에 대한 페이지 번호가 존재하지 않는다면? -->
+										<li class="disabled"><a href="#">&laquo;</a></li>
+									</c:otherwise>
+								</c:choose>
+								
+								<!-- 페이지 번호 -->
+								<!-- 현재 그룹의 시작페이지~끝페이지 사이를 1씩 증가하면서 반복 -->
+								<c:forEach var="i" begin="${pageHelper.startPage}" end="${pageHelper.endPage}" step="1">
+									<!-- 각 페이지 번호로 이동할 수 있는 URL을 생성하여 page_url 에 저장 -->
+									<c:url var="pageUrl" value="/order_check.do">										
+										<c:param name="page" value="${i}"></c:param>
+									</c:url>
+									
+								<!-- 반복중의 페이지 번호와 현재 위치한 페이지 번호가 같은 경우에 대한 분기 -->
+									<c:choose>
+										<c:when test="${pageHelper.page == i}">
+											<li class="active"><a href="#">${i}</a></li>
+										</c:when>
+										<c:otherwise>
+											<li><a href="${pageUrl}">${i}</a></li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								
+								<!-- 다음 그룹으로 이동 -->
+								<c:choose>
+									<c:when test="${pageHelper.nextPage > 0}">
+										<!-- 다음 그룹에 대한 페이지 번호가 존재한다면? -->
+										<!-- 다음 그룹으로 이동하기 위한 URL을 생성해서 "nextUrl"에 저장 -->
+										<c:url var="nextUrl" value="/order_check.do">											
+											<c:param name="page" value="${pageHelper.nextPage}"></c:param>
+										</c:url>
+										
+										<li><a href="${nextUrl}">&raquo;</a></li>		
+									</c:when>
+									
+									<c:otherwise>
+										<!-- 이전 그룹에 대한 페이지 번호가 존재하지 않는다면? -->
+										<li class="disabled"><a href="#">&raquo;</a></li>
+									</c:otherwise>
+								</c:choose>
+							</ul>
+						</nav>						
+						<!-- // 페이지 번호 끝 -->
                          
                             </tr>
                         </tfoot>

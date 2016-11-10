@@ -19,15 +19,17 @@
 		<result property="price" column="price" />
 		<result property="regData" column="reg_data" />
 		<result property="itemImg" column="item_img" />
+		<result property="state" column="state" />
 		<result property="sellerName" column="seller_name" />
+		<result property="sellerId" column="seller_id" />
 	</resultMap>
 
 
 	<!-- 구매하기  -->
 	<insert id="insertitemorder" parameterType="com.badaservice.model.ItemOrder" 
 		useGeneratedKeys="true" keyProperty="id">
-		insert into item_order (member_id, user_id, postcode, addr1, addr2, email, tel, item_title, price, reg_data, item_img, seller_name)
-		 				values ( #{memberId}, #{userId}, #{postcode}, #{addr1}, #{addr2}, #{email}, #{tel}, #{itemTitle}, #{price}, now(), #{itemImg}, #{sellerName} )
+		insert into item_order (member_id, user_id, postcode, addr1, addr2, email, tel, item_title, price, reg_data, item_img, seller_name, state, seller_id)
+		 				values ( #{memberId}, #{userId}, #{postcode}, #{addr1}, #{addr2}, #{email}, #{tel}, #{itemTitle}, #{price}, now(), #{itemImg}, #{sellerName}, null, #{sellerId} )
 	</insert>
 	
 	<!-- 구매내역 목록을 조회한다. -->

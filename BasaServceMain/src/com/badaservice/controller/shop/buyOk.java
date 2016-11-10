@@ -65,8 +65,6 @@ public class buyOk extends BaseController {
 		
 		int myid = 0;
 		String userId = null;
-		int memberId = 0;
-		int sellermemberId = 0;
 		String state = "2";
 		
 		if(web.getSession("loginInfo") == null) {
@@ -103,6 +101,7 @@ public class buyOk extends BaseController {
 		ItemOrder itemorder = new ItemOrder();
 		Member member = new Member();
 		Member seller = null;
+		Member sellerId = null;
 		
 		List<Cart> result= null;
 		
@@ -111,8 +110,11 @@ public class buyOk extends BaseController {
 			for(int i=0; i<result.size(); i++) {
 			member.setId(result.get(i).getMemberId());
 			seller = memberService.selectSellerName(member);
+			sellerId = memberService.selectMemberSendMessageList(member);
+			
 			itemorder.setSellerName(seller.getName());
 			itemorder.setUserId(userId);
+			itemorder.setSellerId(sellerId.getUser_id());
 			itemorder.setMemberId(result.get(i).getMemberId());
 			itemorder.setItemTitle(result.get(i).getItemTitle());
 			itemorder.setPrice(result.get(i).getPrice());
@@ -123,6 +125,8 @@ public class buyOk extends BaseController {
 			itemorder.setEmail(email);
 			itemorder.setTel(tel);
 			logger.debug(itemorder.toString());
+			
+			
 			itemorderService.insertItemOrder(itemorder);
 			shop.setId(result.get(i).getItemId());
 			shop.setUserId(userId);
