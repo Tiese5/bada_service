@@ -51,8 +51,10 @@
 	<!-- 거래목록 목록을 조회한다 -->
 	<select id="selectAdminItemList" parameterType="com.badaservice.model.ItemOrder"
 		resultMap="ItemOrder">
-		select item_title, seller_name, price, reg_data
+		select item_title, user_id, price, reg_data,seller_id
 		from item_order
+		ORDER BY reg_data DESC
+		LIMIT #{limitStart},#{listCount};
 	</select>
 	<!-- 카테고리별 게시물 수를 조회한다. -->
 	<select id="selectAdminItemCount" parameterType="com.badaservice.model.ItemOrder"

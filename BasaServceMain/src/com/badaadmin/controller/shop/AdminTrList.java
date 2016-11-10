@@ -38,6 +38,7 @@ public class AdminTrList extends BaseController{
 		pageHelper = PageHelper.getInstance();
 		itemorderService = new ItemorderServiceImpl(logger, sqlSession);
 		
+
 		ItemOrder itemOrder = new ItemOrder();
 		
 		int page = web.getInt("page", 1);
