@@ -39,8 +39,9 @@
 
 			<!-- 메인 컨텐츠 영역 시작 -->
 			<div class="col-sm-9 col-md-10 main-content">
-				<div class="page-header">
+				<div class="page-header clearfix">
 					<h1>쪽지 보내기</h1>
+					<a class="pull-right">관리자에게 물어보세요!</a>
 				</div>
 				<br />
 				<form class="form-horizontal" id="myform" method="post" action="${pageContext.request.contextPath}/message_sendOK.do">

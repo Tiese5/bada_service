@@ -61,11 +61,7 @@
                                 <th class="text-center" width="30%">받은날짜</th>
                             </tr>
                         </thead>
-                        <tbody>
-                        
-                       
-					                
-					                
+                        <tbody>          
                  <c:choose>
 		    		<c:when test="${fn:length(messengerList) > 0}">
 		    			<c:forEach var="messenger" items="${messengerList}">
