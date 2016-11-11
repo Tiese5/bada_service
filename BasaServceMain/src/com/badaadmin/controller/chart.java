@@ -52,7 +52,7 @@ public class chart extends BaseController {
 		itemOrder.setRegData("dayJoin");
 		
 		
-		int Tr = memberService.
+		/*int Tr = memberService.*/
 		return "admin/chart";
 	}
 
