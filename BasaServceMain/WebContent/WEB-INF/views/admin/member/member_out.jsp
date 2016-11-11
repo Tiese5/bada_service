@@ -105,14 +105,17 @@
           color: #fff;
           background-color: #428bca;
         }
+        
+        .pos{
+        margin-left: 170px;
+        margin-top: 80px;
+        }
         td, th {
             border-right: 1px solid #ccc;
         }
         td:last-child, th:last-child {
             border: 0;
         }
-
-   
         .table > tbody > tr > td {
             text-align: center;
             vertical-align: middle !important;
@@ -124,6 +127,9 @@
         
         .mar {
             margin-top: 20px;
+        }
+        #asd{
+        	margin-left: 180px;
         }
    
 
@@ -208,129 +214,33 @@
             </ul>
         </div>
         <!-- 사이트 네비게이션 바 끝 -->
-        <div class="row">
-            <!-- 메인 컨텐츠 영역 -->
-            <div class="col-sm-offset-2 col-md-offset-2 main-content">
 
-                <!-- 작성 영역 -->
-                <div class="page-header">
-                  <h1>회원관리</h1>
+  <div class="container">
+            <!-- Grid Row 시작 -->
+            <div class="row">
+         
+                <!-- 메인 컨텐츠 영역 시작 -->
+                <div id= "asd" class="col-sm-9 col-md-10 main-content">
+                    <div class="page-header">
+                        <h1>삭제하기</h1>
+                    </div>
+                      
+                      <p>정말 삭제하시겠습니까?</p>
+                      
+                      	<div class="form-group" >
+                      		<a href="${pageContext.request.contextPath}/admin/member/member_out_ok.do?id=${id}" class='btn btn-danger btn-block'>삭제하기</a>
+                  			<button type='button' class='btn btn-primary btn-block' 
+                      		onclick="history.back()">삭제취소</button>
+                      	</div>
+                      	
+                         
+                   
                 </div>
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead style="background-color : #eee;">
-                            <tr>
-                           	    <th class="text-center" width="4%">No.</th>
-                                <th class="text-center" width="24%">아이디</th>
-                                <th class="text-center" width="24%">이름</th>
-                                <th class="text-center" width="24%">이메일</th>
-                                <th class="text-center" width="24%">연락처</th>
-                              
-                         </tr>
-                        </thead>
-                        <tbody>
-                        
-                        <c:choose>
-						<c:when test="${fn:length(memberList) > 0}">
-                        <c:forEach var="memberlist" items="${memberList}">
-                            <tr align="center">
-                    	        <td class="text-center">${memberlist.id}</td>
-                                <td class="text-center">${memberlist.user_id}</td>
-                                <td><a href="${pageContext.request.contextPath}/admin/member/member_view.do?id=${memberlist.id}">${memberlist.name}</a></td>
-                                <td>${memberlist.email}</td>
-                                <td>${memberlist.join_edit}</td>
-                                
-                              
-                            </tr>
-                            </c:forEach>
-                           </c:when>
-                          
-                          <c:otherwise>
-                          <tr>
-							<td colspan="5" class="text-center"
-								style="line-height: 100px;">조회된 글이 없습니다</td>
-							</tr>
-                          </c:otherwise>
-                          </c:choose>
-                                        
-                       </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="5" class="bor text-center">
-                                    <nav class="text-center">
-											<ul class="pagination">
-												<!-- 이전 그룹으로이동 -->
-												<c:choose>
-													<c:when test="${pageHelper.prevPage > 0 }">
-														<!-- 이전 그룹에 대한 페이지 번호가 존재한다면? -->
-														<!-- 이전 그룹으로 이동하기 위해 URL을 생성해서 prevUrl에 저장 -->
-														<c:url var="prevUrl" value="/admin/member/user_manage.do">
-															<c:param name="page" value="${pageHelper.prevPage}"></c:param>
-														</c:url>
-														<li><a href="${prevUrl}">&laquo;</a></li>
-													</c:when>
-													<c:otherwise>
-														<li class="disabled"><a href="#">&laquo;</a></li>
-													</c:otherwise>
-												</c:choose>
-
-												<!-- 페이지 번호 -->
-												<!-- 현재 그룹의 시작페이지~ 끝페이지 사이의 1씩 증가하면서 반복 -->
-												<c:forEach var="i" begin="${pageHelper.startPage}"
-													end="${pageHelper.endPage}" step="1">
-													<!-- 페이지 번호로 이동할수 있는 URL을 생성하겨 url에 저장 -->
-													<c:url var="pageUrl" value="/admin/member/user_manage.do">
-														<c:param name="page" value="${i}"></c:param>
-													</c:url>
-													<!-- 반족중의 페이지 번호와 현재 페이지 번호가 갗은 경우에 대한 분기 -->
-													<c:choose>
-														<c:when test="${pageHelper.page==i})">
-															<li class="active"><a href="#">${i}</a></li>
-														</c:when>
-														<c:otherwise>
-															<li><a href="${pageUrl}">${i}</a></li>
-														</c:otherwise>
-													</c:choose>
-
-
-												</c:forEach>
-
-
-												<!-- 다음 그룹으로 이동-->
-												<c:choose>
-													<c:when test="${pageHelper.nextPage > 0}">
-														<!-- 이전 그룹에 대한 페이지 번호가 존재한다면? -->
-														<!-- 이전 그룹으로 이동하기 위해 URL을 생성해서 prevUrl에 저장 -->
-														<c:url var="nextUrl" value="/admin/member/user_manage.do">
-															<c:param name="page" value="${pageHelper.nextPage}"></c:param>
-														</c:url>
-														<li><a href="${nextUrl}">&raquo;</a></li>
-													</c:when>
-													<c:otherwise>
-														<li class="disabled"><a href="#">&raquo;</a></li>
-													</c:otherwise>
-												</c:choose>
-											</ul>
-
-										</nav>
-                                </td>
-                              </tr>
-                           
-                        </tfoot>
-                    </table>
-                    
-                </div>
-                <!-- 작성 영역 끝 -->
-
-            </div>
-            <!-- 메인 컨텐츠 영역 끝 -->
-        </div>
-    </div>
-    <!-- 컨테이너 끝 -->
-
-
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</body>
-
-</html>
+                <!-- 메인 컨텐츠 영역 끝 -->
+         
+	</div>
+	</div>
+	</div>
+	</body>
+	</html>
+	

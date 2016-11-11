@@ -85,11 +85,19 @@
 	<select id="selectMemberList" parameterType="com.badaservice.model.Member"
 		resultMap="member">
 		SELECT
+<<<<<<< HEAD
 		id, user_id, name, email, join_date, join_edit, jo
+=======
+			id, user_id, name, email, DATE_FORMAT(join_date,'%Y-%m-%d') as join_date,  DATE_FORMAT(join_edit,'%Y-%m-%d') as join_edit, jo
+>>>>>>> branch 'master' of https://github.com/Tiese5/bada_service.git
 		FROM
 		member
 		ORDER BY
+<<<<<<< HEAD
 		id DESC
+=======
+			id ASC
+>>>>>>> branch 'master' of https://github.com/Tiese5/bada_service.git
 		LIMIT
 		#{limitStart}, #{listCount}
 	</select>
@@ -97,13 +105,18 @@
 	<select id="selectMember" parameterType="com.badaservice.model.Member"
 		resultMap="member">
 		SELECT
+<<<<<<< HEAD
 		id, user_id, user_pw, name, email, birthdate, tel, postcode, addr1,
 		addr2, profil_image, join_date, join_edit, position, jo
+=======
+			id, user_id, user_pw, name, email, DATE_FORMAT(birthdate,'%Y-%m-%d') as birthdate, tel, postcode, addr1, addr2, profil_image, DATE_FORMAT(join_date, '%Y-%m-%d') AS join_date, DATE_FORMAT(join_edit, '%Y-%m-%d') AS join_edit, position, jo
+>>>>>>> branch 'master' of https://github.com/Tiese5/bada_service.git
 		FROM
 		member
 		WHERE
 		id=#{id}
 	</select>
+	
 	<!-- 총 회원 수 조회 -->
 	<select id="selectMemberCount" parameterType="com.badaservice.model.Member"
 		resultType="int">
@@ -136,9 +149,22 @@
 		UPDATE
 		member
 		SET
+<<<<<<< HEAD
 		name=#{name}, email=#{email}, tel=#{tel}, birthdate=#{birthdate},
 		postcode=#{postcode}, addr1=#{addr1}, addr2=#{addr2},
 		profil_image=#{profile_img}, join_edit=now()
+=======
+			name=#{name}, email=#{email}, tel=#{tel}, birthdate=#{birthdate}, postcode=#{postcode}, addr1=#{addr1}, addr2=#{addr2}, profil_image=#{profile_img}, join_edit=now()
+		WHERE
+			id=#{id}
+	</update>
+		<!-- 회원 정보 수정 -->
+	<update id="updateMember2" parameterType="com.badaservice.model.Member">
+		UPDATE
+			member
+		SET
+			id=#{id}, name=#{name}, email=#{email}, tel=#{tel}, birthdate=#{birthdate}, postcode=#{postcode}, addr1=#{addr1}, addr2=#{addr2}, join_date=#{join_date}, join_edit=now()
+>>>>>>> branch 'master' of https://github.com/Tiese5/bada_service.git
 		WHERE
 		id=#{id}
 	</update>
@@ -224,6 +250,7 @@
 		id=#{id}
 	</select>
 
+
 	<!-- 1일 회원가입수 조회 -->
 	<select id="selectJoinIdCount" parameterType="com.badaservice.model.Member"
 		resultType="int">
@@ -232,4 +259,16 @@
 		FROM member
 		GROUP BY DATE_FORMAT(join_date , '%Y%m%d');
 	</select>
+
+	
+	<delete id="deleteMember" parameterType="com.badaservice.model.Member" >
+	delete
+	from
+		member
+	where
+		id=#{id}
+	</delete>
+	
+
+
 </mapper>

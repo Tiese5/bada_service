@@ -389,5 +389,46 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return result;
 	}
+	public void updateMember2(Member member) throws Exception {
+		// TODO Auto-generated method stub
+		try{
+			int result=sqlsession.update("MemberMapper.updateMember2",member);
+			if(result==0){
+				throw new NullPointerException();
+			}
+		}catch (NullPointerException e) {
+			// TODO: handle exception
+			throw new Exception("수정할 회원 정보가 없습니다.");
+		}catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+			throw new Exception("회원 수정에 실패했습니다.");
+		}
+		
+		
+	}
+
+	@Override
+	public void deleteMember(Member member) throws Exception {
+		// TODO Auto-generated method stub
+		try{
+			int result = sqlsession.delete("MemberMapper.deleteMember",member);
+			if(result == 0){
+				throw new NullPointerException();
+			}
+		}catch (NullPointerException e) {
+			// TODO: handle exception
+			sqlsession.rollback();
+			throw new Exception("이미 탈퇴된 회원 입니다.");
+		}catch (Exception e){
+			sqlsession.rollback();
+			logger.error(e.getLocalizedMessage());
+			e.printStackTrace();
+			throw new Exception("회원탈퇴에 실패했습니다.");
+		}finally{
+			sqlsession.commit();
+		}
+
+	}
 
 }
