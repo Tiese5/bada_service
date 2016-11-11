@@ -375,4 +375,19 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	@Override
+	public int selectJoinIdCount(Member member) throws Exception {
+		
+		int result = 0;
+		try{
+			result=sqlsession.selectOne("MemberMapper.selectJoinIdCount",member);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+			throw new Exception("가입량 조회에 실패했습니다.");
+		}
+		return result;
+	}
+
 }

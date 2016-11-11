@@ -41,6 +41,13 @@ public interface MemberService {
 	public Member selectMemberSendMessageList(Member member) throws Exception;
 	
 	public Member selectSellerName(Member member) throws Exception;
+	/**
+	 * 일일 회원가입 자를 조회한다
+	 * @param member
+	 * @return
+	 * @throws Exception
+	 */
+	public int selectJoinIdCount(Member member)throws Exception;
 	
 	
 }
