@@ -1,4 +1,4 @@
-package com.badaadmin.controller.index;
+package com.badaadmin.controller;
 
 import java.io.IOException;
 
@@ -22,13 +22,8 @@ import com.badaservice.service.impl.MemberServiceImpl;
 
 
 
-@WebServlet("/member/login_ok.do")
+@WebServlet("/admin/admin_index_ok.do")
 public class LoginOk extends BaseController {
-
-
-
-
-
 	private static final long serialVersionUID = 8323751373939763475L;
 		// TODO Auto-generated method stub
 		/** (1) 사용하고자 하는 Helper + Service 객체 선언 */
@@ -45,7 +40,7 @@ public class LoginOk extends BaseController {
 		public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
 			/** (2) 사용하고자 하는 Helper+Service 객체 생성 */
-			// --> import org.apache.logging.log4j.LogManager;
+			// --> import ㄴorg.apache.logging.log4j.LogManager;
 			logger = LogManager.getFormatterLogger(request.getRequestURI());
 			// --> import study.jsp.mysite.service.impl.MemberServiceImpl;
 			sqlSession = MyBatisConnectionFactory.getSqlSession();
@@ -59,7 +54,7 @@ public class LoginOk extends BaseController {
 			// 로그인 중이라면 이 페이지를 동작시켜서는 안된다.
 			if (web.getSession("loginInfo") != null) {
 				sqlSession.close();
-				web.redirect(web.getRootPath() + "/index.do", "이미 로그인 하셨습니다.");
+				web.redirect(web.getRootPath() + "/admin_chart.do", "이미 로그인 하셨습니다.");
 				return null;
 			}
 
@@ -87,7 +82,7 @@ public class LoginOk extends BaseController {
 			
 			try {
 				// 아이디와 비밀번호가 일치하는 회원 정보를 조회하여 리턴한다.
-				loginInfo = memberService.selectLoginInfo(member);
+				loginInfo = memberService.selectAdminLoginInfo(member);
 			} catch (Exception e) {
 				sqlSession.close();
 				web.redirect(null, e.getLocalizedMessage());
@@ -113,11 +108,11 @@ public class LoginOk extends BaseController {
 			// 이전 페이지 구하기 (javascript로 이동된 경우 조회 안됨)
 			String movePage = request.getHeader("referer");
 			if (movePage != null) {
-				movePage = web.getRootPath() + "/index.do";
+				movePage = web.getRootPath() + "/admin_chart.do";
 			}
 			
 			sqlSession.close();
-			web.redirect(movePage, null);
+			web.redirect(movePage, "환영합니다"+loginInfo.getName()+ "님");
 			return null;
 		}
 

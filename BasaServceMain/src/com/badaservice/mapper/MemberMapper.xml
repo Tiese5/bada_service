@@ -35,7 +35,7 @@
 	<!-- 관리자 로그인 정보 -->
 	<select id="selectAdminLoginInfo" parameterType="com.badaservice.model.Member" resultMap="member">
 		SELECT
-			id, user_id, user_pw, name, email, birthdate, tel, postcode, addr1, addr2, profile_img, DATE_FORMAT(join_date, '%Y-%m-%d') AS join_date, DATE_FORMAT(join_edit, '%Y-%m-%d') AS join_edit, position, jo
+			id, user_id, user_pw, name, email, birthdate, tel, postcode, addr1, addr2, profil_image, DATE_FORMAT(join_date, '%Y-%m-%d') AS join_date, DATE_FORMAT(join_edit, '%Y-%m-%d') AS join_edit, position, jo
 		FROM
 			member
 		WHERE
