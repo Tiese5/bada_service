@@ -105,14 +105,17 @@
           color: #fff;
           background-color: #428bca;
         }
+        
+        .pos{
+        margin-left: 170px;
+        margin-top: 80px;
+        }
         td, th {
             border-right: 1px solid #ccc;
         }
         td:last-child, th:last-child {
             border: 0;
         }
-
-   
         .table > tbody > tr > td {
             text-align: center;
             vertical-align: middle !important;
@@ -208,129 +211,91 @@
             </ul>
         </div>
         <!-- 사이트 네비게이션 바 끝 -->
-        <div class="row">
-            <!-- 메인 컨텐츠 영역 -->
-            <div class="col-sm-offset-2 col-md-offset-2 main-content">
 
-                <!-- 작성 영역 -->
-                <div class="page-header">
-                  <h1>회원관리</h1>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead style="background-color : #eee;">
-                            <tr>
-                           	    <th class="text-center" width="4%">No.</th>
-                                <th class="text-center" width="24%">아이디</th>
-                                <th class="text-center" width="24%">이름</th>
-                                <th class="text-center" width="24%">이메일</th>
-                                <th class="text-center" width="24%">연락처</th>
-                              
-                         </tr>
-                        </thead>
-                        <tbody>
-                        
-                        <c:choose>
-						<c:when test="${fn:length(memberList) > 0}">
-                        <c:forEach var="memberlist" items="${memberList}">
-                            <tr align="center">
-                    	        <td class="text-center">${memberlist.id}</td>
-                                <td class="text-center">${memberlist.user_id}</td>
-                                <td><a href="${pageContext.request.contextPath}/admin/member/member_view.do?id=${memberlist.id}">${memberlist.name}</a></td>
-                                <td>${memberlist.email}</td>
-                                <td>${memberlist.join_edit}</td>
-                                
-                              
-                            </tr>
-                            </c:forEach>
-                           </c:when>
-                          
-                          <c:otherwise>
-                          <tr>
-							<td colspan="5" class="text-center"
-								style="line-height: 100px;">조회된 글이 없습니다</td>
-							</tr>
-                          </c:otherwise>
-                          </c:choose>
-                                        
-                       </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="5" class="bor text-center">
-                                    <nav class="text-center">
-											<ul class="pagination">
-												<!-- 이전 그룹으로이동 -->
-												<c:choose>
-													<c:when test="${pageHelper.prevPage > 0 }">
-														<!-- 이전 그룹에 대한 페이지 번호가 존재한다면? -->
-														<!-- 이전 그룹으로 이동하기 위해 URL을 생성해서 prevUrl에 저장 -->
-														<c:url var="prevUrl" value="/admin/member/user_manage.do">
-															<c:param name="page" value="${pageHelper.prevPage}"></c:param>
-														</c:url>
-														<li><a href="${prevUrl}">&laquo;</a></li>
-													</c:when>
-													<c:otherwise>
-														<li class="disabled"><a href="#">&laquo;</a></li>
-													</c:otherwise>
-												</c:choose>
-
-												<!-- 페이지 번호 -->
-												<!-- 현재 그룹의 시작페이지~ 끝페이지 사이의 1씩 증가하면서 반복 -->
-												<c:forEach var="i" begin="${pageHelper.startPage}"
-													end="${pageHelper.endPage}" step="1">
-													<!-- 페이지 번호로 이동할수 있는 URL을 생성하겨 url에 저장 -->
-													<c:url var="pageUrl" value="/admin/member/user_manage.do">
-														<c:param name="page" value="${i}"></c:param>
-													</c:url>
-													<!-- 반족중의 페이지 번호와 현재 페이지 번호가 갗은 경우에 대한 분기 -->
-													<c:choose>
-														<c:when test="${pageHelper.page==i})">
-															<li class="active"><a href="#">${i}</a></li>
-														</c:when>
-														<c:otherwise>
-															<li><a href="${pageUrl}">${i}</a></li>
-														</c:otherwise>
-													</c:choose>
-
-
-												</c:forEach>
-
-
-												<!-- 다음 그룹으로 이동-->
-												<c:choose>
-													<c:when test="${pageHelper.nextPage > 0}">
-														<!-- 이전 그룹에 대한 페이지 번호가 존재한다면? -->
-														<!-- 이전 그룹으로 이동하기 위해 URL을 생성해서 prevUrl에 저장 -->
-														<c:url var="nextUrl" value="/admin/member/user_manage.do">
-															<c:param name="page" value="${pageHelper.nextPage}"></c:param>
-														</c:url>
-														<li><a href="${nextUrl}">&raquo;</a></li>
-													</c:when>
-													<c:otherwise>
-														<li class="disabled"><a href="#">&raquo;</a></li>
-													</c:otherwise>
-												</c:choose>
-											</ul>
-
-										</nav>
-                                </td>
-                              </tr>
-                           
-                        </tfoot>
-                    </table>
-                    
-                </div>
-                <!-- 작성 영역 끝 -->
-
-            </div>
-            <!-- 메인 컨텐츠 영역 끝 -->
-        </div>
-    </div>
-    <!-- 컨테이너 끝 -->
-
-
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</body>
-
-</html>
+<div class="row pos">
+	<h1 class="page-header">수정하기</h1>
+	
+	
+	
+	<form class="form-horizontal" id="myform" method="post" name="myform" 
+					action="${pageContext.request.contextPath}/admin/member/member_edit_ok.do">
+			
+					<input type="hidden" name="id" id="id" value="${view.id}" />
+					<input type="hidden" name="join_date" id="join_date" value="${view.join_date}" />
+				
+					
+					<div class="form-group">
+						<label for="user_id" class="col-md-2 col-md-2">아이디</label>
+						<div class="col-md-8">
+							<input type="text" name="user_id" id="user_id"
+								class="form-control" readonly value="${view.user_id}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="postcode" class="col-md-2 col-md-2">우편번호*</label>
+						<div class="col-md-8 clearfix">
+							<input type="text" name="postcode" id="postcode"
+								class="form-control pull-left" readonly
+								style="width: 120px; margin-right: 5px;"
+								value="${view.postcode}"> <input type="button"
+								value="우편번호 찾기" class="btn btn-warning"
+								onclick='execDaumPostcode("postcode", "addr1", "addr2");'>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="addr1" class="col-md-2 col-md-2">주소*</label>
+						<div class="col-md-8">
+							<input type="text" name="addr1" id="addr1" class="form-control"
+								value="${view.addr1}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="addr2" class="col-md-2 col-md-2">상세주소*</label>
+						<div class="col-md-8">
+							<input type="text" name="addr2" id="addr2" class="form-control"
+								value="${view.addr2}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="name" class="col-md-2 col-md-2">이름*</label>
+						<div class="col-md-8">
+							<input type="text" name="name" id="name" class="form-control"
+								value="${view.name}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="email" class="col-md-2 col-md-2">이메일*</label>
+						<div class="col-md-8">
+							<input type="email" name="email" id="email" class="form-control"
+								value="${view.email}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="tel" class="col-md-2 col-md-2">연락처*</label>
+						<div class="col-md-8">
+							<input type="tel" name="tel" id="tel" class="form-control"
+								value="${view.tel}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="email" class="col-md-2">생년월일*</label>
+						<div class="col-md-8">
+							<input type="text" name="birthdate" id="birthdate"
+								class="form-control" readonly value="${view.birthdate}">
+						</div>
+					</div>
+				
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-8">
+							<button type="submit" class="btn btn-primary">작성완료</button>
+							<a href="${pageContext.request.contextPath}/admin/member/user_manage.do" class="btn btn-success">목록</a>
+							
+		
+						</div>
+					</div>
+				</form>
+	
+		
+		
+	</div>
+	</div>

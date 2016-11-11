@@ -18,6 +18,8 @@ public interface MemberService {
 	
 	public void updateMember(Member member) throws Exception;
 	
+	public void updateMember2 (Member member) throws Exception;
+	
 	public void insertMember(Member member) throws Exception;
 	
 	public void selectUserIdCount(Member member) throws Exception;
@@ -41,6 +43,8 @@ public interface MemberService {
 	public Member selectMemberSendMessageList(Member member) throws Exception;
 	
 	public Member selectSellerName(Member member) throws Exception;
+	
+	public void deleteMember(Member member) throws Exception;
 	
 	
 }
