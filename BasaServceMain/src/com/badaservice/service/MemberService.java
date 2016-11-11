@@ -7,7 +7,7 @@ import com.badaservice.model.Member;
 
 public interface MemberService {
 	public Member selectLoginInfo(Member member) throws Exception;
-	
+	/**관리자 로그인 */
 	public Member selectAdminLoginInfo(Member member) throws Exception;
 	
 	public List<Member> selectMemberList(Member member) throws Exception;

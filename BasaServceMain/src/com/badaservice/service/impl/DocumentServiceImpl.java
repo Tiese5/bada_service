@@ -106,4 +106,10 @@ public class DocumentServiceImpl implements DocumentService {
 		return result;
 	}
 
+	@Override
+	public void deleteDocument(Document document) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

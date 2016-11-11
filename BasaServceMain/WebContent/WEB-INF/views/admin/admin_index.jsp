@@ -57,7 +57,12 @@
        .login {
         background-color: black;
        }
-        
+        .btn-coller{
+        color: black;
+        }
+        .textcoller{
+        color: #fff;
+        }
 
         </style>
     </head>
@@ -65,18 +70,18 @@
         <div class="container">
         <!--로고 태그 시작-->
             <div class="logo">
-            <a href="#"><img src="logo.png"><h1>로고</h1></a>
+            <a href="#"><img src="${pageContext.request.contextPath }/assets/img/logo.png"><h1>로고</h1></a>
             </div>
             <!--로고 태그 끝-->
             <!--로그인폼 시작-->
-            <form class="control form-horizontal">
+            <form class="control form-horizontal" action="${pageContext.request.contextPath }/admin/admin_index_ok.do" method="post">
             <!--아이디 입력-->
                 <div class="form-group">
                     <label for="inputEmail3" class=" col-sm-2 control-label ">
                    </label>
                     <div class="col-sm-10">
-                    <p class="hading">Email</p>
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                    <p class="hading">아이디</p>
+                        <input type="text" class="form-control" id="user_id" name="user_id" placeholder="아이디">
                     </div>
                     
                 </div>
@@ -86,14 +91,14 @@
                     <label for="inputPassword3" class="col-sm-2 control-label ">
                     </label>
                     <div class="col-sm-10"> 
-                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password"> <p class="hading">Password</p>
+                    <input type="password" class="form-control" id="user_pw" name="user_pw" placeholder="비밀번호">
                     </div>
                 </div>
                 <!--비밀번호 END-->
                <!--로그인 버튼-->
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="login btn btn-primary btn-block">로그인</button>
+                        <button type="submit" class="login btn btn-coller btn-block"><span class="textcoller">로그인</span></button>
                     </div>
                 </div>
                 <!--로그인 버튼END-->

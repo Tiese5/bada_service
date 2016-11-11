@@ -38,6 +38,15 @@ public class AdminTrList extends BaseController{
 		pageHelper = PageHelper.getInstance();
 		itemorderService = new ItemorderServiceImpl(logger, sqlSession);
 		
+		
+		/** (3) 로그인 여부 검사 */
+		// 로그인 중이 아니라면 탈퇴할 수 없다.
+		if (web.getSession("loginInfo") == null) {
+			web.redirect(web.getRootPath() + "/index.do", "로그인 후에 이용 가능합니다.");
+			return null;
+		}
+		
+
 		ItemOrder itemOrder = new ItemOrder();
 		
 		int page = web.getInt("page", 1);
