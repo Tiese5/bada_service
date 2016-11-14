@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -115,12 +119,12 @@
 
 <body>
 
-    <!-- 로고, 상단 네비게이션 바 -->
+    <!-- ë¡ê³ , ìë¨ ë¤ë¹ê²ì´ì ë° -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">메뉴 열기</span>
+              <span class="sr-only">ë©ë´ ì´ê¸°</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
@@ -129,86 +133,86 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="#">대시보드</a></li>
-                    <li><a href="#collapse-nav-item-shop" data-toggle="collapse">쇼핑몰 관리</a>
+                    <li class="active"><a href="#">ëìë³´ë</a></li>
+                    <li><a href="#collapse-nav-item-shop" data-toggle="collapse">ì¼íëª° ê´ë¦¬</a>
                         <ul class="nav navbar-nav-inner collapse" id="collapse-nav-item-shop">
-                            <li><a href="#">회원주문내역</a></li>
-                            <li><a href="#">거래내역</a></li>
-                            <li><a href="#">상품등록(바다)</a></li>
-                            <li><a href="#">승인요청관리</a></li>
-                            <li><a href="#">주문/입금/베송관리</a></li>
+                            <li><a href="#">íìì£¼ë¬¸ë´ì­</a></li>
+                            <li><a href="#">ê±°ëë´ì­</a></li>
+                            <li><a href="#">ìíë±ë¡(ë°ë¤)</a></li>
+                            <li><a href="#">ì¹ì¸ìì²­ê´ë¦¬</a></li>
+                            <li><a href="#">ì£¼ë¬¸/ìê¸/ë² ì¡ê´ë¦¬</a></li>
                         </ul>
                     </li>
-                    <li><a href="#collapse-nav-item-board" data-toggle="collapse">게시판 관리</a>
+                    <li><a href="#collapse-nav-item-board" data-toggle="collapse">ê²ìí ê´ë¦¬</a>
                         <ul class="nav navbar-nav-inner collapse" id="collapse-nav-item-board">
-                            <li><a href="#">1:1문의 관리</a></li>
-                            <li><a href="#">공지사항 관리</a></li>
-                            <li><a href="#">자주묻는 질문 관리</a></li>
+                            <li><a href="#">1:1ë¬¸ì ê´ë¦¬</a></li>
+                            <li><a href="#">ê³µì§ì¬í­ ê´ë¦¬</a></li>
+                            <li><a href="#">ìì£¼ë¬»ë ì§ë¬¸ ê´ë¦¬</a></li>
                         </ul>
                     </li>
-                    <li><a href="#collapse-nav-item-user" data-toggle="collapse">회원 관리</a>
+                    <li><a href="#collapse-nav-item-user" data-toggle="collapse">íì ê´ë¦¬</a>
                         <ul class="nav navbar-nav-inner collapse" id="collapse-nav-item-user">
-                            <li><a href="#">회원 정보</a></li>
-                            <li><a href="#">판매자 평</a></li>
+                            <li><a href="#">íì ì ë³´</a></li>
+                            <li><a href="#">íë§¤ì í</a></li>
                         </ul>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <!-- 로고, 상단 네비게이션 바 끝 -->
+    <!-- ë¡ê³ , ìë¨ ë¤ë¹ê²ì´ì ë° ë -->
 
-    <!-- 컨테이너 영역 -->
+    <!-- ì»¨íì´ë ìì­ -->
     <div class="container">
-        <!-- 사이드 네비게이션 바 -->
+        <!-- ì¬ì´ë ë¤ë¹ê²ì´ì ë° -->
         <div class="col-sm-2 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="#">대시보드</a></li>
-                <li><a href="#collapse-item-shop" data-toggle="collapse">쇼핑몰 관리</a>
+                <li class="active"><a href="#">ëìë³´ë</a></li>
+                <li><a href="#collapse-item-shop" data-toggle="collapse">ì¼íëª° ê´ë¦¬</a>
                     <ul class="nav nav-sidebar-inner collapse" id="collapse-item-shop">
-                        <li><a href="#">회원주문내역</a></li>
-                        <li><a href="#">거래내역</a></li>
-                        <li><a href="#">상품등록(바다)</a></li>
-                        <li><a href="#">승인요청관리</a></li>
-                        <li><a href="#">주문/입금/베송관리</a></li>
+                        <li><a href="#">íìì£¼ë¬¸ë´ì­</a></li>
+                        <li><a href="#">ê±°ëë´ì­</a></li>
+                        <li><a href="#">ìíë±ë¡(ë°ë¤)</a></li>
+                        <li><a href="#">ì¹ì¸ìì²­ê´ë¦¬</a></li>
+                        <li><a href="#">ì£¼ë¬¸/ìê¸/ë² ì¡ê´ë¦¬</a></li>
                     </ul>
                 </li>
-                <li><a href="#collapse-item-board" data-toggle="collapse">게시판 관리</a>
+                <li><a href="#collapse-item-board" data-toggle="collapse">ê²ìí ê´ë¦¬</a>
                     <ul class="nav nav-sidebar-inner collapse" id="collapse-item-board">
-                        <li><a href="#">1:1문의 관리</a></li>
-                        <li><a href="#">공지사항 관리</a></li>
-                        <li><a href="#">자주묻는 질문 관리</a></li>
+                        <li><a href="#">1:1ë¬¸ì ê´ë¦¬</a></li>
+                        <li><a href="#">ê³µì§ì¬í­ ê´ë¦¬</a></li>
+                        <li><a href="#">ìì£¼ë¬»ë ì§ë¬¸ ê´ë¦¬</a></li>
                     </ul>
                 </li>
-                <li><a href="#collapse-item-user" data-toggle="collapse">회원 관리</a>
+                <li><a href="#collapse-item-user" data-toggle="collapse">íì ê´ë¦¬</a>
                     <ul class="nav nav-sidebar-inner collapse" id="collapse-item-user">
-                        <li><a href="#">회원 정보</a></li>
-                        <li><a href="#">판매자 평</a></li>
+                        <li><a href="#">íì ì ë³´</a></li>
+                        <li><a href="#">íë§¤ì í</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
-        <!-- 사이트 네비게이션 바 끝 -->
+        <!-- ì¬ì´í¸ ë¤ë¹ê²ì´ì ë° ë -->
         <div class="row">
-            <!-- 메인 컨텐츠 영역 -->
+            <!-- ë©ì¸ ì»¨íì¸  ìì­ -->
             <div class="col-sm-offset-2 col-md-offset-2 main-content">
 
-                <!-- 작성 영역 -->
-                <!-- 메인 컨텐츠 영역 시작 -->
+                <!-- ìì± ìì­ -->
+                <!-- ë©ì¸ ì»¨íì¸  ìì­ ìì -->
             <div class="col-sm-9 col-md-10 main-content">
                 <div class="page-header">
-                    <h1>${bbsName}(상세보기)</h1>
+                    <h1>${bbsName}(ìì¸ë³´ê¸°)</h1>
                 </div>
                 <br />
                 <form class="form-horizontal" id="myform">
                     <div class="form-group">
-                        <label for="writer_name" class="col-md-2">작성자:</label>
+                        <label for="writer_name" class="col-md-2">ìì±ì:</label>
                         <div class="col-md-10">
                             <span>${readDocument.writerName} </span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="title" class="col-md-2">제목:</label>
+                        <label for="title" class="col-md-2">ì ëª©:</label>
                         <div class="col-md-10">
                             <span> ${readDocument.title} </span>
                         </div>
@@ -216,7 +220,7 @@
                     
                     
                     <div class="form-group">
-                        <label for="content" class="col-md-2">내용:</label>
+                        <label for="content" class="col-md-2">ë´ì©:</label>
                         <div class="col-md-10">
                             <span> ${readDocument.content} </span>
                         </div>
@@ -225,18 +229,18 @@
                         <div class="form-group">
                         <div class="mar col-md-7">
                             <a href="${pageContext.request.contextPath}/document_list.do?category=${category}" 
-                            class="btn btn-primary">목록</a>
+                            class="btn btn-primary">ëª©ë¡</a>
                         </div>
                     </div>
                 </form>
             </div>
-            <!-- 메인 컨텐츠 영역 끝 -->
-                <!-- 작성 영역 끝 -->
+            <!-- ë©ì¸ ì»¨íì¸  ìì­ ë -->
+                <!-- ìì± ìì­ ë -->
             </div>
-            <!-- 메인 컨텐츠 영역 끝 -->
+            <!-- ë©ì¸ ì»¨íì¸  ìì­ ë -->
         </div>
     </div>
-    <!-- 컨테이너 끝 -->
+    <!-- ì»¨íì´ë ë -->
 
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

@@ -18,7 +18,7 @@
                 <li><a href="#collapse-item-board" data-toggle="collapse">게시판 관리</a>
                     <ul class="nav nav-sidebar-inner collapse" id="collapse-item-board">
                         <li><a href="#">1:1문의 관리</a></li>
-                        <li><a href="#">공지사항 관리</a></li>
+                        <li><a href="${pageContext.request.contextPath}/document_list.do?category=n">공지사항 관리</a></li>
                         <li><a href="#">자주묻는 질문 관리</a></li>
                     </ul>
                 </li>
