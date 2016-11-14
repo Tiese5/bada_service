@@ -50,5 +50,12 @@ public interface ItemorderService {
 	 * @throws Exception
 	 */
 	public int selectAdminItemCount(ItemOrder ItemOrder) throws Exception;
+	/**
+	 * 일일 거래량 조회
+	 * @param ItemOrder
+	 * @return
+	 * @throws Exception
+	 */
+	public int selectDayTrCount(ItemOrder ItemOrder) throws Exception;
 	
 }

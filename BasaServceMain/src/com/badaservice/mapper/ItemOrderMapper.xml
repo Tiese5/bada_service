@@ -25,40 +25,56 @@
 	</resultMap>
 
 
-	<!-- 구매하기  -->
-	<insert id="insertitemorder" parameterType="com.badaservice.model.ItemOrder" 
+	<!-- 구매하기 -->
+	<insert id="insertitemorder" parameterType="com.badaservice.model.ItemOrder"
 		useGeneratedKeys="true" keyProperty="id">
-		insert into item_order (member_id, user_id, postcode, addr1, addr2, email, tel, item_title, price, reg_data, item_img, seller_name, state, seller_id)
-		 				values ( #{memberId}, #{userId}, #{postcode}, #{addr1}, #{addr2}, #{email}, #{tel}, #{itemTitle}, #{price}, now(), #{itemImg}, #{sellerName}, null, #{sellerId} )
+		insert into item_order (member_id,
+		user_id, postcode, addr1, addr2, email, tel, item_title, price,
+		reg_data, item_img, seller_name, state, seller_id)
+		values ( #{memberId}, #{userId}, #{postcode}, #{addr1}, #{addr2}, #{email},
+		#{tel}, #{itemTitle}, #{price}, now(), #{itemImg}, #{sellerName},
+		null, #{sellerId} )
 	</insert>
-	
+
 	<!-- 구매내역 목록을 조회한다. -->
-	<select id="selectBuyList" parameterType="com.badaservice.model.ItemOrder" 
+	<select id="selectBuyList" parameterType="com.badaservice.model.ItemOrder"
 		resultMap="ItemOrder">
 		select item_img, item_title, seller_name, price, reg_data
 		from item_order
 		where user_id=#{userId}
 	</select>
-	
+
 	<!-- 전체 게시물 수를 조회한다. -->
 	<select id="selectBuyCount" parameterType="com.badaservice.model.SellerName"
 		resultType="int">
-		SELECT COUNT(id) FROM item_order where user_id=#{userId}	
+		SELECT COUNT(id) FROM item_order where user_id=#{userId}
 	</select>
-	
-	
-	
+
+
+
 	<!-- 거래목록 목록을 조회한다 -->
 	<select id="selectAdminItemList" parameterType="com.badaservice.model.ItemOrder"
 		resultMap="ItemOrder">
-		select item_title, seller_name, price, reg_data
-		from item_order
+		select item_title, user_id, price, reg_data,seller_id
+		from
+		item_order
+		ORDER BY reg_data DESC
+		LIMIT #{limitStart},#{listCount};
 	</select>
 	<!-- 카테고리별 게시물 수를 조회한다. -->
 	<select id="selectAdminItemCount" parameterType="com.badaservice.model.ItemOrder"
 		resultType="int">
 		SELECT COUNT(id) FROM item_order
 	</select>
-	
-	
+
+	<!-- 일일 거래량 조회 -->
+	<select id="selectDayTr" parameterType="com.badaservice.model.ItemOrder"
+		resultType="int">
+		SELECT DATE_FORMAT(reg_data , '%Y%m%d') as reg_data
+		, COUNT(*) cnt
+		FROM item_order
+		GROUP BY DATE_FORMAT(reg_data, '%Y%m%d');
+	</select>
+
+
 </mapper>	

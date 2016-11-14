@@ -19,12 +19,11 @@ import com.badaservice.helper.WebHelper;
 import com.badaservice.model.Member;
 import com.badaservice.service.MemberService;
 import com.badaservice.service.impl.MemberServiceImpl;
-@WebServlet("/admin/member/user_manage.do")
-public class MemberList extends BaseController {
+@WebServlet("/admin/member/member_view.do")
+public class MemberView extends BaseController {
 
 	private static final long serialVersionUID = 2401616501496854128L;
 	WebHelper web;
-	PageHelper pageHelper;
 	SqlSession sqlSession;
 	Logger logger;
 	MemberService memberService;
@@ -35,7 +34,6 @@ public class MemberList extends BaseController {
 		sqlSession=MyBatisConnectionFactory.getSqlSession();
 		logger=LogManager.getFormatterLogger(request.getRequestURI());
 		memberService=new MemberServiceImpl(logger, sqlSession);
-		pageHelper = PageHelper.getInstance();
 		
 		
 		/**if(web.getSession("loginInfo") == null) {
@@ -45,45 +43,28 @@ public class MemberList extends BaseController {
 		}*/
 		
 		
+
 		Member member = new Member();
-		member.setLimitStart(0);
-		member.setListCount(10);
 		
-		List<Member> memberList = null;
+		member.setId(web.getInt("id"));
+
 		
-		int page = web.getInt("page", 1);
-		
-		
-		
-		int totalCount = 0;
-		
-		
+		Member view = null;
 		
 		try {
-			totalCount = memberService.selectMemberCount(member);
-			System.out.println(totalCount);
-			
-			
-			pageHelper.pageProcess(page, totalCount, 20,5);
-			member.setLimitStart(pageHelper.getLimitStart());
-			member.setListCount(pageHelper.getListCount());
-			
-			memberList = memberService.selectMemberList(member);
-
+			view = memberService.selectMember(member);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			web.redirect(null, e.getLocalizedMessage());
 			e.printStackTrace();
 			sqlSession.close();
 			return null;
-			
 		}
 		
-		request.setAttribute("memberList", memberList);
-		request.setAttribute("totalCount", totalCount);
-		request.setAttribute("pageHelper", pageHelper);
+
+		request.setAttribute("view", view);
 		
-		return "admin/member/user_manage";
+		return "admin/member/member_view";
 	}
 
 }

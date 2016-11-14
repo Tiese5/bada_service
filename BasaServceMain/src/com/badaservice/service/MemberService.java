@@ -7,7 +7,7 @@ import com.badaservice.model.Member;
 
 public interface MemberService {
 	public Member selectLoginInfo(Member member) throws Exception;
-	
+	/**관리자 로그인 */
 	public Member selectAdminLoginInfo(Member member) throws Exception;
 	
 	public List<Member> selectMemberList(Member member) throws Exception;
@@ -17,6 +17,8 @@ public interface MemberService {
 	public int selectMemberCount(Member member) throws Exception;
 	
 	public void updateMember(Member member) throws Exception;
+	
+	public void updateMember2 (Member member) throws Exception;
 	
 	public void insertMember(Member member) throws Exception;
 	
@@ -41,6 +43,15 @@ public interface MemberService {
 	public Member selectMemberSendMessageList(Member member) throws Exception;
 	
 	public Member selectSellerName(Member member) throws Exception;
+	/**
+	 * 일일 회원가입 자를 조회한다
+	 * @param member
+	 * @return
+	 * @throws Exception
+	 */
+	public int selectJoinIdCount(Member member)throws Exception;
+	
+	public void deleteMember(Member member) throws Exception;
 	
 	
 }
