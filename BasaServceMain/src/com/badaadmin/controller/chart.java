@@ -2,6 +2,7 @@ package com.badaadmin.controller;
 
 import java.io.IOException;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,11 +12,12 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.badaadmin.controller.document.Member;
+
 import com.badaservice.dao.MyBatisConnectionFactory;
 import com.badaservice.helper.BaseController;
 import com.badaservice.helper.WebHelper;
 import com.badaservice.model.ItemOrder;
+import com.badaservice.model.Member;
 import com.badaservice.service.ItemorderService;
 import com.badaservice.service.MemberService;
 import com.badaservice.service.ShopService;

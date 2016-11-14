@@ -23,6 +23,7 @@ import com.badaservice.service.impl.DocumentServiceImpl;
 @WebServlet("/document_list.do")
 public class DocumentNotice extends BaseController {
 	private static final long serialVersionUID = -7255918033093832468L;
+	
 	WebHelper web;
 	BBSCommon bbs;
 	Logger logger;
