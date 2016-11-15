@@ -108,8 +108,24 @@ public class DocumentServiceImpl implements DocumentService {
 
 	@Override
 	public void deleteDocument(Document document) throws Exception {
-		// TODO Auto-generated method stub
-		
+		try{
+			int result = sqlSession.delete("DocumentMapper.deleteDocument", document);
+			if(result == 0){
+				throw new NullPointerException();
+			}
+		}catch (NullPointerException e) {
+			// TODO: handle exception
+			sqlSession.rollback();
+			throw new Exception("존재하지 않는 게시물에 대한 요청입니다..");
+		}catch (Exception e){
+			sqlSession.rollback();
+			logger.error(e.getLocalizedMessage());
+			e.printStackTrace();
+			throw new Exception("게시물 삭제에 실패했습니다.");
+		}finally{
+			sqlSession.commit();
+		}
+
 	}
 
 }

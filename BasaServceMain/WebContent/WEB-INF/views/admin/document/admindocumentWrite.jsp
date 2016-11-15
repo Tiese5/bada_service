@@ -33,12 +33,12 @@
                     <div class="form-group">
                         <label for="content" class="col-md-2">공지사항 내용</label>
                         <div class="col-md-8">
-                            <textarea name="n_content" id="n_content" rows="10" class="form-control"></textarea>
+                            <textarea name="content" id="content" rows="10" class="form-control"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-8">
-                            <button type="button" class="btn btn-info btn-lg" id="n_register">작성완료</button>
+                            <button type="submit" class="btn btn-info btn-lg" id="n_register">작성완료</button>
                         </div>
                     </div>
                 </form>
