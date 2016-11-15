@@ -67,14 +67,6 @@
 		SELECT COUNT(id) FROM item_order
 	</select>
 
-	<!-- 일일 거래량 조회 -->
-	<select id="selectDayTr" parameterType="com.badaservice.model.ItemOrder"
-		resultType="int">
-		SELECT DATE_FORMAT(reg_data , '%Y%m%d') as reg_data
-		, COUNT(*) cnt
-		FROM item_order
-		GROUP BY DATE_FORMAT(reg_data, '%Y%m%d');
-	</select>
-
+	
 
 </mapper>	

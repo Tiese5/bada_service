@@ -237,17 +237,6 @@
 		where
 		id=#{id}
 	</select>
-
-
-	<!-- 1일 회원가입수 조회 -->
-	<select id="selectJoinIdCount" parameterType="com.badaservice.model.Member"
-		resultType="int">
-		SELECT DATE_FORMAT(join_date , '%Y%m%d') as join_date
-		, COUNT(*) cnt
-		FROM member
-		GROUP BY DATE_FORMAT(join_date , '%Y%m%d');
-	</select>
-
 	
 	<delete id="deleteMember" parameterType="com.badaservice.model.Member" >
 	delete
