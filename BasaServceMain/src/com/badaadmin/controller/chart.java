@@ -33,8 +33,7 @@ public class chart extends BaseController {
 
 	chartService = new ChartServiceImpl(sqlSession, logger);
 
-	memberService = new MemberServiceImpl(logger, sqlSession);
-	itemorderService = new ItemorderServiceImpl(logger, sqlSession);
+	
 
 	
 		/** (3) 로그인 여부 검사 */
@@ -46,8 +45,7 @@ public class chart extends BaseController {
 
 
 		
-		int dayTr = web.getInt("reg_data");
-		int dayJoin = web.getInt("join_date");
+		
 
 		
 		String regDate = web.getString("reg_data");
