@@ -90,7 +90,7 @@ public class AdminDocument extends BaseController{
 		request.setAttribute("totalCount", totalCount);
 		request.setAttribute("pageHelper", pageHelper);
 		
-		return "/admin/document/adminnotice_view";
+		return "/admin/document/admindocument_list";
 	}
 
 

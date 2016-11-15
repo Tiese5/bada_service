@@ -31,6 +31,7 @@ public class MessageServiceImpl implements MessageService {
 
 		try {
 			result = sqlsession.selectList("MessageMapper.selectMessageList", messenger);
+			logger.debug("result :" + result);
 			if (result == null) {
 				throw new NullPointerException();
 			}

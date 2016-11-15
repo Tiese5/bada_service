@@ -30,7 +30,12 @@ public class chart extends BaseController {
 	web = WebHelper.getInstance(request, response);
 	sqlSession = MyBatisConnectionFactory.getSqlSession();
 	logger = LogManager.getFormatterLogger();
+
 	chartService = new ChartServiceImpl(sqlSession, logger);
+
+	memberService = new MemberServiceImpl(logger, sqlSession);
+	itemorderService = new ItemorderServiceImpl(logger, sqlSession);
+
 	
 		/** (3) 로그인 여부 검사 */
 		// 로그인 중이 아니라면 이 페이지를 동작시켜서는 안된다.
@@ -38,6 +43,12 @@ public class chart extends BaseController {
 			web.redirect(web.getRootPath() + "/admin_index.do", "로그인 후에 이용 가능합니다.");
 			return null;
 		}
+
+
+		
+		int dayTr = web.getInt("reg_data");
+		int dayJoin = web.getInt("join_date");
+
 		
 		String regDate = web.getString("reg_data");
 		String joinData = web.getString("join_date");

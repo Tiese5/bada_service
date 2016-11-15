@@ -224,7 +224,7 @@
                                 <th class="text-center" width="24%">아이디</th>
                                 <th class="text-center" width="24%">이름</th>
                                 <th class="text-center" width="24%">이메일</th>
-                                <th class="text-center" width="24%">연락처</th>
+                                <th class="text-center" width="24%">수정일</th>
                               
                          </tr>
                         </thead>
@@ -270,7 +270,7 @@
 														<li><a href="${prevUrl}">&laquo;</a></li>
 													</c:when>
 													<c:otherwise>
-														<li class="disabled"><a href="#">&laquo;</a></li>
+														<li class=""><a href="#">&laquo;</a></li>
 													</c:otherwise>
 												</c:choose>
 
@@ -307,7 +307,7 @@
 														<li><a href="${nextUrl}">&raquo;</a></li>
 													</c:when>
 													<c:otherwise>
-														<li class="disabled"><a href="#">&raquo;</a></li>
+														<li class=""><a href="#">&raquo;</a></li>
 													</c:otherwise>
 												</c:choose>
 											</ul>

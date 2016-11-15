@@ -58,7 +58,7 @@ public class ChartData extends BaseController {
 
 			ChartItem item1 = new ChartItem();
 			item1.setDate("num");
-			item1.setViews(num.get(0).getReg());
+			item1.setViews(num);
 			item1.setVisits(num.get(0).getJon());
 			
 			ChartItem item2 = new ChartItem();
