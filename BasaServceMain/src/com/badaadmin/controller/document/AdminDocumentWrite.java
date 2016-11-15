@@ -27,6 +27,10 @@ public class AdminDocumentWrite extends BaseController {
 		web = WebHelper.getInstance(request, response);
 		bbs = BBSCommon.getInstance();
 		
+		if (web.getSession("loginInfo") == null) {
+			web.redirect(web.getRootPath() + "/admin_index.do", "로그인 후에 이용 가능합니다.");
+			return null;
+		}
 		/** (3) 게시판 카테고리 값을 받아서 View에 전달 */
 		String category = web.getString("category");
 		request.setAttribute("category", category);

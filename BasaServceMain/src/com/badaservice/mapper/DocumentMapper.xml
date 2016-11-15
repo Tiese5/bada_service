@@ -49,7 +49,7 @@
 	<insert id="insertDocument" parameterType="com.badaservice.model.messenger" 
 		useGeneratedKeys="true" keyProperty="id">
 		insert into document (title, content, category, reg_date, edit_date, writer_name) values 
-		(#{title}, #{content}, #{category}, #{regDate}, #{editDate}, #{writerName})		
+		(#{title}, #{content}, #{category}, now(), now(), #{writerName})		
 	</insert>
 	
 </mapper>
