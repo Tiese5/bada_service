@@ -43,7 +43,7 @@
 	<delete id="deleteDocument" parameterType="com.badaservice.model.Document">
 		DELETE
 		FROM document
-		WHERE writer_name=#{writerName}
+		WHERE id=#{id}
 	</delete>
 	
 	<insert id="insertDocument" parameterType="com.badaservice.model.messenger" 

@@ -8,9 +8,8 @@
 <head>
 <%@include file="/WEB-INF/inc/admin_head.jsp"%>
     <style media="screen" type="text/css">
-        .btn {
-            margin-left: 900px;
-        }
+     
+        
     </style>
 </head>
 
@@ -59,9 +58,12 @@
 					</div>
 					<div class="page-header"></div>
 						<div class="form-group">
-						<div class="mar col-md-7">
+						<div class="col-md-7">
 							<a href="${pageContext.request.contextPath}/admin_document_list.do?category=${category}" 
-							class="btn btn-primary">목록</a>
+							class="btn btn-primary pull-left">목록</a>
+							<a href="${pageContext.request.contextPath}/admin_document_delete_ok.do?category=${category}&document_id=${readDocument.id}" 
+							class="btn btn-danger" style='margin-left: 10px;'>삭제</a>
+						
 						</div>
 					</div>
 				</form>
