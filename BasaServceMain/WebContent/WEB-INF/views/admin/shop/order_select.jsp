@@ -25,13 +25,13 @@
 		$("select[name='state']").change(function() {
 							var state = $(this).val();
 							var id = $(this).data("id");
-							window.location = "http://localhost:8080/BadaServceMain/admin_order_select.do?state="
+							window.location = "http://tiese5.cafe24.com/BadaServceMain/admin_order_select.do?state="
 									+ state + '&id=' + id;
 		});
 		$("select[name='juState']").change(function() {
 								var juState = $(this).val();
 								var id = $(this).data("id");
-								window.location = "http://localhost:8080/BadaServceMain/admin_order_select.do?juState="
+								window.location = "http://tiese5.cafe24.com/BadaServceMain/admin_order_select.do?juState="
 										+ juState + '&id=' + id;
 						
 				});

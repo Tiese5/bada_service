@@ -57,8 +57,6 @@ public class AdminOrderSelect extends BaseController {
 		int totalCount = 0;
 		
 		try {
-			
-			
 			if(state != null) {
 					itemorderService.updateItemOrder(itemorder);
 			} else if(juState != null) {
