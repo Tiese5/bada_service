@@ -92,8 +92,10 @@ h3 {
 									
 							<a href="${pageContext.request.contextPath}/shop/cart_ok.do?id=${readItem.id}"
 								class="btns btn btn-warning" id="cart">장바구니</a>
-							<a href></a>
-					
+								
+							<a href="${pageContext.request.contextPath}/shop/item_delete.do?id=
+							${readItem.id}" class="btn btn-danger">삭제</a>
+							
 				</div>
 				<div class="marg col-md-12">
 					<h1>책 정보</h1>

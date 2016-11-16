@@ -3,7 +3,7 @@ package com.badaservice.service;
 import java.util.List;
 
 import com.badaservice.model.Shop;
-import com.badaservice.model.messenger;
+
 
 public interface ShopService {
 
@@ -93,6 +93,21 @@ public interface ShopService {
 	public int selectSearchItemCount(Shop shop) throws Exception;
 	
 	public List<Shop> selectShopList(Shop shop) throws Exception;
+	
+	/**
+	 * 자신의 게시물인지 검사한다
+	 * @param document
+	 * @return int
+	 * @throws Exception
+	 */
+	public int selectItemCountMemberId(Shop shop)throws Exception;
+
+	
+	/*
+	 * 게시무 삭제
+	 */
+	public void deleteItem(Shop shop) throws Exception;
+	
 	
 	
 

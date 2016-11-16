@@ -12,9 +12,18 @@ public class Shop {
 	private int memeberId;
 	private String userId;
 	private String state;
+	private String userPw;
+	
+	public String getUserPw() {
+		return userPw;
+	}
+
+	public void setUserPw(String userPw) {
+		this.userPw = userPw;
+	}
+
 	private int limitStart;
 	private int listCount;
-
 	
 	public String getState() {
 		return state;
@@ -145,8 +154,9 @@ public class Shop {
 	public String toString() {
 		return "Shop [id=" + id + ", item_title=" + item_title + ", content=" + content + ", price=" + price
 				+ ", reg_date=" + reg_date + ", item_image=" + item_image + ", hit=" + hit + ", category=" + category
-				+ ", memeberId=" + memeberId + ", userId=" + userId + ", state=" + state + ", limitStart=" + limitStart
-				+ ", listCount=" + listCount + ", dropDown=" + dropDown + ", member_id=" + member_id + "]";
+				+ ", memeberId=" + memeberId + ", userId=" + userId + ", state=" + state + ", userPw=" + userPw
+				+ ", limitStart=" + limitStart + ", listCount=" + listCount + ", dropDown=" + dropDown + ", member_id="
+				+ member_id + "]";
 	}
 
 }
