@@ -153,7 +153,7 @@
                     </li>
                     <li><a href="#collapse-nav-item-user" data-toggle="collapse">회원 관리</a>
                         <ul class="nav navbar-nav-inner collapse" id="collapse-nav-item-user">
-                            <li><a href="#">회원 정보</a></li>
+                            <li><a href="${pageContext.request.contextPath}/admin/member/user_manage.do">회원 정보</a></li>
                             <li><a href="#">판매자 평</a></li>
                         </ul>
                     </li>
@@ -186,7 +186,7 @@
                 </li>
                 <li><a href="#collapse-item-user" data-toggle="collapse">회원 관리</a>
                     <ul class="nav nav-sidebar-inner collapse" id="collapse-item-user">
-                        <li><a href="#">회원 정보</a></li>
+                        <li><a href="${pageContext.request.contextPath}/admin/member/user_manage.do">회원 정보</a></li>
                         <li><a href="#">판매자 평</a></li>
                     </ul>
                 </li>
@@ -257,7 +257,7 @@
         <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
         <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
 
-        
+       
         <script type="text/javascript">
             
 

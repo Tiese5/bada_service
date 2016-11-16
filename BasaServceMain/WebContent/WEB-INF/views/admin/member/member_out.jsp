@@ -189,7 +189,7 @@
         <!-- 사이드 네비게이션 바 -->
         <div class="col-sm-2 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li><a href="#">대시보드</a></li>
+                <li><a href="${pageContext.request.contextPath}/admin/member/chart.do">대시보드</a></li>
                 <li><a href="#collapse-item-shop" data-toggle="collapse">쇼핑몰 관리</a>
                     <ul class="nav nav-sidebar-inner collapse" id="collapse-item-shop">
                         <li><a href="#">회원주문내역</a></li>
@@ -207,7 +207,7 @@
                 </li>
                 <li class="active"><a href="#collapse-item-user" data-toggle="collapse">회원 관리</a>
                     <ul class="nav nav-sidebar-inner collapse" id="collapse-item-user">
-                        <li><a href="#">회원 정보</a></li>
+                        <li><a href="${pageContext.request.contextPath}/admin/member/user_manage.do">회원 정보</a></li>
                         <li><a href="#">판매자 평</a></li>
                     </ul>
                 </li>
