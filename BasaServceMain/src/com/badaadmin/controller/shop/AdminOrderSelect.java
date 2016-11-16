@@ -76,6 +76,7 @@ public class AdminOrderSelect extends BaseController {
 			itemorder.setListCount(pageHelper.getListCount());
 			logger.debug(pageHelper.toString());
 			itemOrderList = itemorderService.selectOrderSelectList(itemorder);
+			
 		} catch (Exception e) {
 			web.redirect(null, e.getLocalizedMessage());
 			return null;
@@ -85,6 +86,8 @@ public class AdminOrderSelect extends BaseController {
 		
 		
 		request.setAttribute("itemOrderList", itemOrderList);
+		request.setAttribute("totalCount", totalCount);
+		request.setAttribute("pageHelper", pageHelper);
 		
 		return "admin/shop/order_select";
 	}

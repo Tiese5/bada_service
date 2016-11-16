@@ -87,7 +87,7 @@
 		select id, user_id, item_title, state, juState
 		from
 		item_order
-		LIMIT #{limitStart}, #{listCount};
+		LIMIT #{limitStart}, #{listCount};  
 	</select>
 
 	

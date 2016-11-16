@@ -19,7 +19,7 @@ public class ItemOrder {
 	private String sellerId;
 	private String juState;
 	
-	private int limitStart;
+	private int limitStart; 
 	private int listCount;
 
 	
