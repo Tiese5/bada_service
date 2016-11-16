@@ -9,8 +9,6 @@
 <%@ include file="/WEB-INF/inc/head.jsp" %>
     <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
     <script src="${pageContext.request.contextPath}/plugins/postcode/postcode.js"></script>
-    <script src="${pageContext.request.contextPath}/plugins/sweetalert/sweetalert.min.js"></script>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/sweetalert/sweetalert.css">
 </head>
 
 <body>
@@ -87,20 +85,6 @@
 <%@ include file="/WEB-INF/inc/footer.jsp" %>
     </div>
 
-    <script type="text/javascript">
-        $(function(){
-            $(".buy").click(function(){
-                swal({
-                    title: "구매성공",
-                    confirmButtonClass: "btn-info",
-                    confirmButtonText: "확인"
-                },function(isConfirm){
-               window.location="kjm_buylist.html";
-
-                });
-            });
-        })
-    </script>
 </body>
 
 </html>

@@ -152,7 +152,7 @@ public class buyOk extends BaseController {
 		
 		String url = "%s/shop/cart.do";
 		url = String.format(url, web.getRootPath());
-		web.redirect(url, null);
+		web.redirect(url, "구매가 완료되었습니다");
 		
 		return null;
 	}

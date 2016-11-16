@@ -58,4 +58,12 @@ public interface ItemorderService {
 	 */
 	public int selectDayTrCount(ItemOrder ItemOrder) throws Exception;
 	
+	public void updateItemOrder(ItemOrder ItemOrder) throws Exception;
+	
+	public void updateJuItemOrder(ItemOrder ItemOrder) throws Exception;
+	
+	public List<ItemOrder> selectOrderSelectList(ItemOrder ItemOrder) throws Exception;
+	
+	public int selectAdminBuyCount(ItemOrder ItemOrder) throws Exception;
+	
 }
