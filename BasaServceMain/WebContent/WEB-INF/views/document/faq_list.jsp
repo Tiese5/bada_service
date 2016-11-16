@@ -19,6 +19,7 @@ td:last-child, th:last-child {
 	<div class="container">
 		<!-- Grid Row 시작 -->
 		<div class="row">
+		<!-- test -->
 			<!-- 좌측 사이드 네비게이션 바 -->
 			<%@include file="/WEB-INF/inc/sidebar.jsp"%>
 			<!-- 좌측 사이드 네비게이션 바 끝 -->
