@@ -45,8 +45,9 @@
                             <th class="text-center" width="16%">책 제목</th>
                             <th class="text-center" width="16%">판매자</th>
                             <th class="text-center" width="16%">가격</th>
-                            <th class="text-center" width="16%">구입일시</th>
-                            <th class="text-center" width="20%">배송현황</th>
+                            <th class="text-center" width="22%">구입일시</th>
+                            <th class="text-center" width="7%">입금현황</th>
+                            <th class="text-center" width="7%">배송현황</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -69,13 +70,26 @@
 										<td>${buylist.sellerName}</td>
 										<td><span class="text-danger">${buylist.price}</span> 원</td>
 										<td>${buylist.regData}</td>
-										<td>${buylist.state}</td>
+										<td class="text-center">
+				                            		<c:choose>
+				                            			<c:when test="${buylist.state == '1'}">입금대기</c:when>
+				                            			<c:when test="${buylist.state == '2'}">입금준비</c:when>
+				                            			<c:when test="${buylist.state == '3'}">입금완료</c:when>
+				                            		</c:choose>
+				                            	</td>
+				                            	<td class="text-center">
+				                            		<c:choose>
+				                            			<c:when test="${buylist.juState == '1'}">배송준비</c:when>
+				                            			<c:when test="${buylist.juState == '2'}">배송 중</c:when>
+				                            			<c:when test="${buylist.juState == '3'}">배송완료</c:when>
+				                            		</c:choose>
+				                         </td>
 									</tr>
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
 							<tr>
-								<td class="text-center">구매하신 책 이없습니다</td>
+								<td class="text-center">구매하신 책이 없습니다</td>
 							</tr>
 						</c:otherwise>
 					</c:choose>

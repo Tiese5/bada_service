@@ -306,5 +306,46 @@ public class ShopServiceImpl implements ShopService {
 		return result;
 	}
 
+	@Override
+	public void deleteItem(Shop shop) throws Exception {
+		try{
+			int result = sqlSession.delete("ShopMapper.deleteItem", shop);
+			if(result == 0){
+				throw new NullPointerException();
+			}
+		}catch (NullPointerException e) {
+			// TODO: handle exception
+			sqlSession.rollback();
+			throw new Exception("존재하지 않는 게시물에 대한 요청입니다..");
+		}catch (Exception e){
+			sqlSession.rollback();
+			logger.error(e.getLocalizedMessage());
+			e.printStackTrace();
+			throw new Exception("게시물 삭제에 실패했습니다.");
+		}finally{
+			sqlSession.commit();
+		}
+		
+	}
+
+	@Override
+	public int selectItemCountMemberId(Shop shop) throws Exception {
+		int result = 0;
+		try {
+			// ProfessorMapper.updateProfessorItem 기능을 호출한다.
+			// 두번째 파라미터는 저장할 데이터를 담고있는 Beans객체
+			result = sqlSession.selectOne("ShopMapper.selectItemCountMemberId", shop);
+			// 리턴값이 저장된 행의 수
+		} catch (Exception e) {
+			// 에러가 발생했으므로 SQL 수행 내역을 되돌림
+			logger.error(e.getLocalizedMessage());
+			throw new Exception("게시물 수  조회에 실패 했습니다 ");
+		}
+
+		return result;
+	}
+
+	
+
 	
 }

@@ -19,6 +19,7 @@
 		<result property="dropDown" column="drop_down" />
 		<result property="userId" column="user_id" />
 		<result property="state" column="state" />
+		<result property="userPw" column="user_pw" />
 	</resultMap>
 
 	<!-- 게시물 업데이트 -->
@@ -178,7 +179,21 @@
 	 		</if>
 	 	</where>
 	</select>
+	<!-- 자신의 게시물인지 검사한다 -->
+	<select id="selectItemCountMemberId"
+		parameterType="com.badaservice.model.Shop"
+		resultType="int">
+		SELECT COUNT(id) FROM item_add
+		WHERE id=#{id} AND member_id=#{member_id}
+	</select>
 	
+	
+	<!-- 게시물 삭제 -->
+	<delete id="deleteItem" parameterType="com.badaservice.model.Shop">
+		DELETE
+		FROM item_add
+		WHERE id=#{id}
+	</delete>
 	<!-- 관리자 SQL 구문 -->
 	
 

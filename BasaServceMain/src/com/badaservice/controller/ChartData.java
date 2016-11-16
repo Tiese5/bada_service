@@ -9,41 +9,54 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.badaservice.dao.MyBatisConnectionFactory;
 import com.badaservice.helper.BaseController;
+import com.badaservice.helper.WebHelper;
+import com.badaservice.model.Chart;
+import com.badaservice.service.ChartService;
+import com.badaservice.service.impl.ChartServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @WebServlet("/ChartData.do")
 public class ChartData extends BaseController {
 
 	private static final long serialVersionUID = 388867595644153011L;
+	SqlSession sqlSession;
+	Logger logger;
+	WebHelper web;
+	ChartService chartService;
 
 	@Override
 	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
+		web = WebHelper.getInstance(request, response);
+		sqlSession = MyBatisConnectionFactory.getSqlSession();
+		logger = LogManager.getFormatterLogger();
+		chartService = new ChartServiceImpl(sqlSession, logger);
 
-		ChartItem item1 = new ChartItem();
-		item1.setDate("2016-08-01");
-		item1.setVisits(2345);
-		item1.setVisits(1231);
+	
 
-		ChartItem item2 = new ChartItem();
-		item2.setDate("2016-08-02");
-		item2.setViews(6745);
-		item2.setVisits(4231);
+		Chart chart = new Chart();
+		
+		List<Chart> num = null;
 
-		ChartItem item3 = new ChartItem();
-		item3.setDate("2016-08-03");
-		item3.setViews(5500);
-		item3.setVisits(1000);
+		try {
+			num = chartService.chartNum(chart);
+		} catch (Exception e) {
+			e.printStackTrace();
+			web.redirect(null, e.getLocalizedMessage());
+		} finally {
+			sqlSession.close();
+		}
 
-		List<ChartItem> list = new ArrayList<ChartItem>();
-		list.add(item1);
-		list.add(item2);
-		list.add(item3);
 
 		// --> import com.fasterxml.jackson.databind.ObjectMapper;
 		ObjectMapper mapper = new ObjectMapper();
-		mapper.writeValue(response.getWriter(), list);
+		mapper.writeValue(response.getWriter(), num);
 
 		return null;
 	}

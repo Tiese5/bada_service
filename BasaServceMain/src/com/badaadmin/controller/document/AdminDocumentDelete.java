@@ -16,38 +16,40 @@ import org.apache.logging.log4j.Logger;
 import com.badaservice.dao.MyBatisConnectionFactory;
 import com.badaservice.document.controller.BBSCommon;
 import com.badaservice.helper.BaseController;
-import com.badaservice.helper.PageHelper;
 import com.badaservice.helper.WebHelper;
 import com.badaservice.model.Document;
+import com.badaservice.model.Member;
 import com.badaservice.service.DocumentService;
 import com.badaservice.service.impl.DocumentServiceImpl;
 
 /**
- * Servlet implementation class Document
+ * Servlet implementation class AdminDocumentDelete
  */
-@WebServlet("/admin_document_list.do")
-public class AdminDocument extends BaseController{
-	private static final long serialVersionUID = 5289592583095039548L;
-	WebHelper web;
-	BBSCommon bbs;
+@WebServlet("/admin_document_delete_ok.do")
+public class AdminDocumentDelete extends BaseController {
+	private static final long serialVersionUID = 4016702166316197244L;
+	/** (1) 사용하고자 하는 Helper 객체 선언 */
 	Logger logger;
 	SqlSession sqlSession;
+	WebHelper web;
+	BBSCommon bbs;
 	DocumentService documentService;
-	PageHelper pageHelper;
 	
 	@Override
 	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		/** (2) 사용하고자 하는 Helper+Service 객체 생성 */
+		logger = LogManager.getFormatterLogger(request.getRequestURL());
+		sqlSession = MyBatisConnectionFactory.getSqlSession();
 		web = WebHelper.getInstance(request, response);
 		bbs = BBSCommon.getInstance();
-		logger = LogManager.getFormatterLogger(request.getRequestURI());
-		sqlSession = MyBatisConnectionFactory.getSqlSession();
 		documentService = new DocumentServiceImpl(sqlSession, logger);
-		pageHelper = PageHelper.getInstance();
 		
+		/** (3) 게시판 카테고리 값을 받아서 View에 전달 */
 		String category = web.getString("category");
 		request.setAttribute("category", category);
 		
+		
+		/** (4) 존재하는 게시판인지 판별하기 */
 		try {
 			String bbsName = bbs.getBbsName(category);
 			request.setAttribute("bbsName", bbsName);
@@ -57,28 +59,24 @@ public class AdminDocument extends BaseController{
 			return null;
 		}
 		
-		Document adminDocument = new Document();
-		adminDocument.setCategory(category);
+		/** (5) 게시글 번호와 비밀번호 받기 */
+		int documentId = web.getInt("document_id");
+		logger.debug("documentId" + documentId);
 		
-		int page = web.getInt("page", 1);
+		if(documentId == 0) {
+			sqlSession.close();
+			web.redirect(null, "글 번호가 없습니다.");
+			return null;
+		}
 		
-		int totalCount = 0;
-		List<Document> documentList = null;
+		/** (6) 파라미터를 Beans로 묶기 */
+		Document document = new Document();
+		document.setId(documentId);
+		document.setCategory(category);
+	
 		
 		try {
-			// 전체 게시물 수
-			 totalCount = documentService.selectDocumentCount(adminDocument);
-			
-			// 나머지 페이지 번호 계산하기
-			// --> 현재 페이지, 전체 게시물 수, 한 페이지의 목록 수, 그룹갯수
-			pageHelper.pageProcess(page, totalCount, 10, 5);
-			
-			// 페이지 번호 계산 결과에서 Limit절에 필요한 값을 Beans에 추가
-			adminDocument.setLimitStart(pageHelper.getLimitStart());
-			adminDocument.setListCount(pageHelper.getListCount());
-			logger.debug(pageHelper.toString());
-			
-			documentList = documentService.selectDocumentList(adminDocument);
+			documentService.deleteDocument(document);
 		} catch (Exception e) {
 			web.redirect(null, e.getLocalizedMessage());
 			return null;
@@ -86,12 +84,14 @@ public class AdminDocument extends BaseController{
 			sqlSession.close();
 		}
 		
-		request.setAttribute("documentList", documentList);
-		request.setAttribute("totalCount", totalCount);
-		request.setAttribute("pageHelper", pageHelper);
+		/** (9) 페이지 이동 */
+		String url = "%s/admin_document_list.do?category=%s";
+		url = String.format(url, web.getRootPath(), category);
 		
-		return "/admin/document/admindocument_list";
+		web.redirect(url, "삭제되었습니다.");
+		return null;
 	}
+	
 
 
 }

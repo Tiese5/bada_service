@@ -121,6 +121,7 @@
 
 <body>
 
+
     <!-- 로고, 상단 네비게이션 바 -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
@@ -163,8 +164,12 @@
     </nav>
     <!-- 로고, 상단 네비게이션 바 끝 -->
 
+
+   <%@include file="/WEB-INF/inc/admin_topbar.jsp"%>
+
     <!-- 컨테이너 영역 -->
     <div class="container">
+
         <!-- 사이드 네비게이션 바 -->
         <div class="col-sm-2 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
@@ -193,6 +198,9 @@
             </ul>
         </div>
         <!-- 사이트 네비게이션 바 끝 -->
+
+        <%@include file="/WEB-INF/inc/admin_siderbar.jsp"%>
+
         <div class="row">
             <!-- 메인 컨텐츠 영역 -->
             <div class="col-sm-offset-2 col-md-offset-2 main-content">
@@ -293,7 +301,7 @@ $.get("${pageContext.request.contextPath }/ChartData.do", function(chartData) {
 	        "bullet": "round",
 	        "bulletBorderThickness": 1,
 	        "hideBulletsCount": 30,
-	        "title": "일일 거래량",
+	        "title": "오늘 신규 회원",
 	        "valueField": "visits",
 	        "fillAlphas": 0
 	    }, {
@@ -302,7 +310,7 @@ $.get("${pageContext.request.contextPath }/ChartData.do", function(chartData) {
 	        "bullet": "triangleUp",
 	        "bulletBorderThickness": 1,
 	        "hideBulletsCount": 30,
-	        "title": "오늘 신규 회원",
+	        "title": "일일 거래량",
 	        "valueField": "views",
 	        "fillAlphas": 0
 	    }],

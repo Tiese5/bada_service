@@ -34,11 +34,7 @@ public class BBSCommon {
 				bbsName ="공지사항";
 			} else if(category.equals("f")) {
 				bbsName = "자주묻는질문";
-			} else if(category.equals("a")) {
-				bbsName = "공지사항";
-			} else if(category.equals("b")) {
-				bbsName = "자주묻는질문";
-			}
+			} 
 		}
 		
 		// 생성된 게시판 이름이 없다면 예외를 발생시킨다.
