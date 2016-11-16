@@ -21,37 +21,9 @@ import com.badaservice.service.impl.ShopServiceImpl;
 @WebServlet("/index.do")
 public class Index extends BaseController {
 	private static final long serialVersionUID = 7065452114790381913L;
-	SqlSession sqlSession;
-	Logger logger;
-	WebHelper web;
-	ShopService shopService;
+	
 	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	sqlSession = MyBatisConnectionFactory.getSqlSession();
-	logger = LogManager.getFormatterLogger(request.getRequestURI());
-	web = WebHelper.getInstance(request, response);
-	shopService = new ShopServiceImpl(sqlSession, logger);
-	
-	String keyword = web.getString("keyword");
-	Shop shop = new Shop();
-	shop.setItem_title(keyword);
-	shop.setContent(keyword);
-	logger.debug("keyword=",keyword);
-	List<Shop> shopList = null;
-	
-	try {
-		shopList = shopService.selectItemList(shop);
-	} catch (Exception e) {
-		sqlSession.close();
-		web.redirect(null, e.getLocalizedMessage());
-		e.printStackTrace();
-		return null;
-	} finally {
-		sqlSession.close();
-	}
-	
-	request.setAttribute("shopList", shopList);
-	
 		return "index";
 	}
 

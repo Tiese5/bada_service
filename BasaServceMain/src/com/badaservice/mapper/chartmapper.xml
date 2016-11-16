@@ -6,46 +6,20 @@
 <!-- professor 테이블에 대한 CRUD 기능을 구현하기 위함 Mapper -->
 <mapper namespace="chartmapper">
 	<!-- Beans 클래스의 객체 이름(id)과 클래스 이름 (type)을 명시한다 -->
-	<resultMap id="chart" type="com.badaservice.model.Chart">
-		<result property="id" column="id" />
-		<result property="memberId" column="member_id" />
-		<result property="userId" column="user_id" />
-		<result property="postcode" column="postcode" />
-		<result property="addr1" column="addr1" />
-		<result property="addr2" column="addr2" />
-		<result property="email" column="email" />
-		<result property="tel" column="tel" />
-		<result property="itemTitle" column="item_title" />
-		<result property="price" column="price" />
-		<result property="regData" column="reg_data" />
-		<result property="itemImg" column="item_img" />
-		<result property="state" column="state" />
-		<result property="sellerName" column="seller_name" />
-		<result property="sellerId" column="seller_id" />
-		<result property="joinData" column="join_date" />
-		<result property="jon" column="jon" />
-		<result property="reg" column="reg" />
+	<resultMap id="chart" type="com.badaservice.controller.ChartItem">
+
+		<result property="visits" column="visits" />
+		<result property="views" column="views" />
+		<result property="date" column="date" />
 	</resultMap>
-	<select id="chartNum" parameterType="com.badaservice.model.Chart" resultMap="chart">
-	SELECT DATE_FORMAT(i.reg_data , '%Y-%m-%d')  as reg_data
-     , COUNT(i.reg_data) as reg,
-		DATE_FORMAT(m.join_date , '%Y-%m-%d') as join_date
-     , COUNT(m.join_date) as jon
-	FROM item_order i 
-  left outer JOIN  member m
-  ON i.reg_data = m.join_date
-  GROUP BY DATE_FORMAT(i.reg_data, '%Y-%m-%d'),DATE_FORMAT(m.join_date,'%Y-%m-%d')
-  
-  union
-  
-  SELECT DATE_FORMAT(i.reg_data , '%Y-%m-%d')  as reg_data
-     , COUNT(i.reg_data) as reg,
-		DATE_FORMAT(m.join_date , '%Y-%m-%d') as join_date
-     , COUNT(m.join_date) as jon
-	FROM item_order i 
-  right outer JOIN  member m
-  ON i.reg_data = m.join_date
-  GROUP BY DATE_FORMAT(i.reg_data, '%Y-%m-%d'),DATE_FORMAT(m.join_date,'%Y-%m-%d');
-  </select>
-	
-	</mapper>
+	<select id="chartNum" parameterType="com.badaservice.controller.ChartItem"
+		resultMap="chart">
+		SELECT DATE_FORMAT(reg_data , '%Y-%m-%d') as date
+		, COUNT(reg_data) as views
+		FROM item_order
+		GROUP BY DATE_FORMAT(reg_data, '%Y-%m-%d')
+
+
+	</select>
+
+</mapper>

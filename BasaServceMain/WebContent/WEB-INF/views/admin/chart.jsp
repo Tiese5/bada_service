@@ -225,7 +225,7 @@ $.get("${pageContext.request.contextPath }/ChartData.do", function(chartData) {
 	        "bullet": "round",
 	        "bulletBorderThickness": 1,
 	        "hideBulletsCount": 30,
-	        "title": "일일 거래량",
+	        "title": "오늘 신규 회원",
 	        "valueField": "visits",
 	        "fillAlphas": 0
 	    }, {
@@ -234,7 +234,7 @@ $.get("${pageContext.request.contextPath }/ChartData.do", function(chartData) {
 	        "bullet": "triangleUp",
 	        "bulletBorderThickness": 1,
 	        "hideBulletsCount": 30,
-	        "title": "오늘 신규 회원",
+	        "title": "일일 거래량",
 	        "valueField": "views",
 	        "fillAlphas": 0
 	    }],

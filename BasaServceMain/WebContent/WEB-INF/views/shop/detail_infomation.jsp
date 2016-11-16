@@ -55,6 +55,7 @@ h3 {
 <body>
 	<%@ include file="/WEB-INF/inc/topbar.jsp"%>
 	<div class="container">
+		
 		<!-- Grid Row 시작 -->
 		<div class="row">
 			<%@ include file="/WEB-INF/inc/sidebar.jsp"%>
@@ -91,6 +92,7 @@ h3 {
 									
 							<a href="${pageContext.request.contextPath}/shop/cart_ok.do?id=${readItem.id}"
 								class="btns btn btn-warning" id="cart">장바구니</a>
+							<a href></a>
 					
 				</div>
 				<div class="marg col-md-12">
@@ -107,6 +109,7 @@ h3 {
 		<!-- Grid Row 끝 -->
 
 		<%@ include file="/WEB-INF/inc/footer.jsp"%>
+	
 	</div>
 
 	<script type="text/x-handlebars-template" id="info-template">
