@@ -38,13 +38,10 @@ public class ChartData extends BaseController {
 		logger = LogManager.getFormatterLogger();
 		chartService = new ChartServiceImpl(sqlSession, logger);
 
-		String regDate = web.getString("reg_data");
-		String joinData = web.getString("join_date");
+	
 
 		Chart chart = new Chart();
-		chart.setRegData(regDate);
-		chart.setJoinData(joinData);
-
+		
 		List<Chart> num = null;
 
 		try {
@@ -56,30 +53,10 @@ public class ChartData extends BaseController {
 			sqlSession.close();
 		}
 
-			ChartItem item1 = new ChartItem();
-			item1.setDate("num");
-			item1.setViews(num);
-			item1.setVisits(num.get(0).getJon());
-			
-			ChartItem item2 = new ChartItem();
-			item2.setDate("num");
-			item2.setViews(Integer.parseInt("num"));
-			item2.setVisits(Integer.parseInt("num"));
-			
-			ChartItem item3 = new ChartItem();
-			item3.setDate(("num"));
-			item3.setViews(Integer.parseInt("num"));
-			item3.setVisits(Integer.parseInt("num"));
-
-		
-		List<ChartItem> list = new ArrayList<ChartItem>();
-		list.add(item1);
-		list.add(item2);
-		list.add(item3);
 
 		// --> import com.fasterxml.jackson.databind.ObjectMapper;
 		ObjectMapper mapper = new ObjectMapper();
-		mapper.writeValue(response.getWriter(), list);
+		mapper.writeValue(response.getWriter(), num);
 
 		return null;
 	}
