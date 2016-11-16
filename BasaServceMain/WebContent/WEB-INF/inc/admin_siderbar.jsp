@@ -10,9 +10,7 @@
                     <ul class="nav nav-sidebar-inner collapse" id="collapse-item-shop">
                         <li><a href="#">회원주문내역</a></li>
                         <li><a href="#">거래내역</a></li>
-                        <li><a href="#">상품등록(바다)</a></li>
-                        <li><a href="#">승인요청관리</a></li>
-                        <li><a href="#">주문/입금/베송관리</a></li>
+                        <li><a href="${pageContext.request.contextPath}/admin_order_select.do">주문/입금/베송관리</a></li>
                     </ul>
                 </li>
                 <li><a href="#collapse-item-board" data-toggle="collapse">게시판 관리</a>

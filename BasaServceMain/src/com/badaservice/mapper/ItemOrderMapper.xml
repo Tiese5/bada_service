@@ -22,6 +22,7 @@
 		<result property="state" column="state" />
 		<result property="sellerName" column="seller_name" />
 		<result property="sellerId" column="seller_id" />
+		<result property="juState" column="juState" />
 	</resultMap>
 
 
@@ -39,7 +40,7 @@
 	<!-- 구매내역 목록을 조회한다. -->
 	<select id="selectBuyList" parameterType="com.badaservice.model.ItemOrder"
 		resultMap="ItemOrder">
-		select item_img, item_title, seller_name, price, reg_data
+		select item_img, item_title, seller_name, price, reg_data, state, juState
 		from item_order
 		where user_id=#{userId}
 	</select>
@@ -48,6 +49,12 @@
 	<select id="selectBuyCount" parameterType="com.badaservice.model.SellerName"
 		resultType="int">
 		SELECT COUNT(id) FROM item_order where user_id=#{userId}
+	</select>
+	
+	<!-- 전체 게시물 수를 조회한다. -->
+	<select id="selectAdminBuyCount" parameterType="com.badaservice.model.SellerName"
+		resultType="int">
+		SELECT COUNT(id) FROM item_order
 	</select>
 
 
@@ -65,6 +72,22 @@
 	<select id="selectAdminItemCount" parameterType="com.badaservice.model.ItemOrder"
 		resultType="int">
 		SELECT COUNT(id) FROM item_order
+	</select>
+
+	<update id="updateItemOrder" parameterType="com.badaservice.model.messenger">
+				update item_order set state=#{state} where id=#{id}
+	</update>
+	
+	<update id="updateJuItemOrder" parameterType="com.badaservice.model.messenger">
+				update item_order set juState=#{juState} where id=#{id}
+	</update>
+	
+	<select id="selectOrderSelectList" parameterType="com.badaservice.model.ItemOrder"
+		resultMap="ItemOrder">
+		select id, user_id, item_title, state, juState
+		from
+		item_order
+		LIMIT #{limitStart}, #{listCount};
 	</select>
 
 	
