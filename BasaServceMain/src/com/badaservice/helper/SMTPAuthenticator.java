@@ -12,6 +12,8 @@ public class SMTPAuthenticator extends Authenticator {
 	 */
 	@Override
     public PasswordAuthentication getPasswordAuthentication() {
+		System.out.println("duswjd017427@gmail.com");
+		System.out.println("wjddus017427");
 		// 자신의 Gmail 메일 주소와 비밀번호 입력.
         return new PasswordAuthentication("duswjd017427@gmail.com", "wjddus017427");
     }
