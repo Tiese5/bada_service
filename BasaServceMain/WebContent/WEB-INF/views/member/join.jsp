@@ -150,11 +150,13 @@
             }
         }
         /*상단바 끝*/
+     
     </style>
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="plugins/sweetalert/sweetalert.css">
+    <link rel="stylesheet" href="../plugins/ajax/ajax_helper.css" />
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -169,7 +171,7 @@
    
 
     <div class="container">
-
+		<div class="row">
         <div class="page-header col-md-offset-2 clearfix">
             <h1>회원가입</h1>
         </div>
@@ -178,8 +180,11 @@
        action="${pageContext.request.contextPath}/member/join_ok.do">
             <div class="form-group">
                 <label for="user_id" class="col-md-offset-2 col-md-2">아이디*</label>
-                <div class="col-md-8"><input type="text" name="user_id" id="user_id" class="form-control"></div>
+                <div class="col-md-8 clearfix"><input type="text" name="user_id" id="user_id" class="form-control  pull-left"   style=" width:10%; margin-right: 5px; display:inline-block;">
+           		<input type="button" value="중복확인" class="btn btn-warning pull-left" style="width: 100px;" id="idcheck" >
+           		</div>
             </div>
+            
             <div class="form-group">
                 <label for="user_pw" class="col-md-offset-2 col-md-2">비밀번호*</label>
                 <div class="col-md-8"><input type="password" name="user_pw" id="user_pw" class="form-control"></div>
@@ -192,7 +197,7 @@
                 <label for="postcode" class="col-md-offset-2 col-md-2">우편번호*</label>
                 <div class="col-md-8 clearfix">
                     <input type="text" name="postcode" id="postcode" class="form-control pull-left" style="width: 120px; margin-right: 5px;">
-                    <input type="button" value="우편번호 찾기" class="btn btn-warning" onclick='execDaumPostcode("postcode", "addr1", "addr2");'>
+                    <input type="button" value="우편번호 찾기" class="btn btn-warning" style="width: 120px;" onclick='execDaumPostcode("postcode", "addr1", "addr2");'>
                 </div>
             </div>
             <div class="form-group">
@@ -213,7 +218,7 @@
             </div>
             <div class="form-group">
                 <label for="email" class="col-md-offset-2 col-md-2">생년월일*</label>
-                <div class="col-md-8"><input type="birthdate" name="birthdate" id="birthdate" class="form-control"></div>
+                <div class="col-md-8"><input type="date" name="birthdate" id="birthdate" class="form-control"></div>
             </div>
             <div class="form-group">
                 <label for="tel" class="col-md-offset-2 col-md-2">연락처*</label>
@@ -235,8 +240,18 @@
         </form>
 
        <%@ include file="/WEB-INF/inc/footer.jsp"%>
+       </div>
     </div>
+<!--  -->
 
+<!-- Modal -->
+<div class="modal fade" id="myModal">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+		
+		</div>
+	</div>
+</div>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -246,7 +261,31 @@
     <script src="plugins/validate/additional-methods.min.js"></script>
     <script src="plugins/validate/localization/messages_ko.min.js"></script>
     <script src="plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="../plugins/ajax/ajax_helper.js"></script>
     <script type="text/javascript">
+    $(function(){
+    	$('#idcheck').click(function(){
+    		var user_id = $("#user_id").val();
+    		
+    		if(!user_id){
+    			alert("아이디를 입력하세요.");
+    			$("#user_id").focus();
+    			return false;
+    		}
+    		
+    		$.post("../checkId_ok.do",{
+    			user_id : user_id},function(json){
+    				if(json.result=="OK"){
+    					alert("사용 가능한 아이디 입니다.")
+    				}else if(json.result == "NO"){
+    					alert("이미 사용중인 아이디 입니다.")
+    					$("#user_id").val("");
+    					$("#user_id").focus();
+    				}
+    			
+    		});
+    		});
+    	});
         $(function() {
             // 플러그인의 기본 설정 옵션 추가
             jQuery.validator.setDefaults({
