@@ -87,5 +87,36 @@
 		update messenger set message_delete=#{messageDelete} where id=#{id}
 	</update>
 	
+	<!-- 관리자 받은 쪽지함을 조회한다. -->
+	<select id="selectAdminMessageList" parameterType="com.badaservice.model.messenger" 
+		resultMap="messenger">
+		select id, content, reg_date, sender_name, receiver_name, sender_id, receiver_id 
+		from messenger
+		where message_delete_send='N'
+		LIMIT #{limitStart}, #{listCount};
+	</select>
+	
+	<!-- 관리자 받은 쪽지함 전체 게시물 수를 조회한다. -->
+	<select id="selectAdminMessageCount" parameterType="com.badaservice.model.messenger"
+		resultType="int">
+		SELECT COUNT(id) 
+		FROM messenger
+		WHERE message_delete_send=#{messageDeleteSend}
+	</select>
+	
+	<!-- 관리자 쪽지함 게시물 하나에 대한 정보를 조회한다. -->
+	<select id="selectAdminMessage" 
+		parameterType="com.badaservice.model.messenger" 
+		resultMap="messenger">
+		SELECT id, content, reg_date, sender_id, receiver_id, sender_name, receiver_name, message_delete
+		FROM messenger
+		WHERE id=#{id}
+	</select>
+	
+	<!-- 게시글 삭제하기 -->
+	<delete id="deleteAdminMessage" parameterType="com.badaservice.model.messenger">
+		delete from messenger where id between #{id} and #{id}+1
+	</delete>
+	
 	
 </mapper>

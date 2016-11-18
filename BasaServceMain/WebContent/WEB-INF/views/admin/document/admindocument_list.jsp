@@ -30,6 +30,13 @@
         .mar {
         	margin-top: 18px;
         }
+        
+        .smaller {
+        	white-space: nowrap;
+        	overflow: hidden;
+        	text-overflow: ellipsis;
+        }
+        
     </style>
 
 </head>
@@ -44,11 +51,6 @@
 		<%@include file="/WEB-INF/inc/admin_siderbar.jsp"%>
 		<!-- Grid Row 시작 -->
 		<div class="row">
-
-			<!-- 좌측 사이드 네비게이션 바 -->
-			
-			<!-- 좌측 사이드 네비게이션 바 끝 -->
-
 			<!-- 메인 컨텐츠 영역 시작 -->
 			<div class="col-sm-9 col-md-10 main-content">
 				<div class="page-header">
@@ -60,9 +62,8 @@
 						<thead style="background-color: #eee;">
 							<tr>
 								<th class="text-center" width="10%">No</th>
-								<th class="text-center" width="20%">제목</th>
-								<th class="text-center" width="50%">내용</th>
-								<th class="text-center" width="20%">작성일</th>
+								<th class="text-center" width="30%">제목</th>
+								<th class="text-center" width="15%">작성일</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -71,21 +72,20 @@
 					    			<c:forEach var="document" items="${documentList}">
 					    				<tr>
 								            <td class="text-center">${document.id}</td>
-								            <td class="text-center">${document.title}</td>
-								            <td class="text-center">
+								             <td class="text-center" style='max-width: 100px;'><p class="smaller">
 								            	<c:url var="readUrl" value="/admin_document_view.do">
 								            		<c:param name="category" value="${document.category}" />
 								            		<c:param name="document_id" value="${document.id}" />
 								            	</c:url>
-								            	<a href="${readUrl}">${document.content}</a>
-								            </td>
+								            	<a class="smaller" href="${readUrl}">${document.title}</a></p>
+								            </td> 
 								            <td class="text-center">${document.regDate}</td>
 							        	</tr>
 					    			</c:forEach>
 					    		</c:when>
 					    		<c:otherwise>
 					    			<tr>
-							            <td colspan="4" class="text-center" style="line-height: 100px;">
+							            <td colspan="3" class="text-center" style="line-height: 100px;">
 							                조회된 글이 없습니다.</td>
 							        </tr>
 					    		</c:otherwise>

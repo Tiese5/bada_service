@@ -37,10 +37,9 @@ td, th {
 					<table class="table table-hover">
 						<thead style="background-color: #eee;">
 							<tr>
-								<th class="text-center" width="10%">No</th>
-								<th class="text-center" width="20%">제목</th>
-								<th class="text-center" width="50%">내용</th>
-								<th class="text-center" width="20%">작성일</th>
+									<th class="text-center" width="10%">No</th>
+								<th class="text-center" width="30%">제목</th>
+								<th class="text-center" width="15%">작성일</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -49,13 +48,12 @@ td, th {
 					    			<c:forEach var="document" items="${documentList}">
 					    				<tr>
 								            <td class="text-center">${document.id}</td>
-								            <td class="text-center">${document.title}</td>
 								            <td class="text-center">
 								            	<c:url var="readUrl" value="/document_view.do">
 								            		<c:param name="category" value="${document.category}" />
 								            		<c:param name="document_id" value="${document.id}" />
 								            	</c:url>
-								            	<a href="${readUrl}">${document.content}</a>
+								            	<a href="${readUrl}">${document.title}</a>
 								            </td>
 								            <td class="text-center">${document.regDate}</td>
 							        	</tr>
@@ -63,7 +61,7 @@ td, th {
 					    		</c:when>
 					    		<c:otherwise>
 					    			<tr>
-							            <td colspan="4" class="text-center" style="line-height: 100px;">
+							            <td colspan="3" class="text-center" style="line-height: 100px;">
 							                조회된 글이 없습니다.</td>
 							        </tr>
 					    		</c:otherwise>

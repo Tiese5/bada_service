@@ -13,7 +13,7 @@
 <body>
 
 	<!-- 로고, 상단 네비게이션 바 -->
-	<%@include file="/WEB-INF/inc/admin_siderbar.jsp"%>
+	<%@include file="/WEB-INF/inc/admin_topbar.jsp"%>
 	<!-- 로고, 상단 네비게이션 바 끝 -->
 
 	<!-- 컨테이너 영역 -->

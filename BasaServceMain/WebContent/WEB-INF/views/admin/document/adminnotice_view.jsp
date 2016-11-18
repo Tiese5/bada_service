@@ -53,7 +53,7 @@
 					<div class="form-group">
 						<label for="content" class="col-md-1">내용:</label>
 						<div class="col-md-11">
-							<span> ${readDocument.content} </span>
+							<pre> ${readDocument.content} </pre>
 						</div>
 					</div>
 					<div class="page-header"></div>
@@ -61,6 +61,8 @@
 						<div class="col-md-7">
 							<a href="${pageContext.request.contextPath}/admin_document_list.do?category=${category}" 
 							class="btn btn-primary pull-left">목록</a>
+							<a href="${pageContext.request.contextPath}/admin_document_edit.do?category=${category}&document_id=${readDocument.id}"
+							class="btn btn-info pull-left" style='margin-left: 10px;'>수정</a>
 							<a href="${pageContext.request.contextPath}/admin_document_delete_ok.do?category=${category}&document_id=${readDocument.id}" 
 							class="btn btn-danger" style='margin-left: 10px;'>삭제</a>
 						

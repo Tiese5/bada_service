@@ -19,7 +19,7 @@
 	    DATE_FORMAT(edit_date, '%Y-%m-%d') as edit_date   
 		FROM   document
 		WHERE category=#{category}
-		ORDER  BY id DESC
+		ORDER  BY reg_date DESC
 		LIMIT #{limitStart}, #{listCount};
 	</select>
 	
@@ -51,5 +51,10 @@
 		insert into document (title, content, category, reg_date, edit_date, writer_name) values 
 		(#{title}, #{content}, #{category}, now(), now(), #{writerName})		
 	</insert>
+	
+	<update id="updateDocument" parameterType="com.badaservice.model.messenger">
+		update document set title=#{title}, content=#{content} where id=#{id}
+	</update>
+
 	
 </mapper>

@@ -68,8 +68,7 @@ main-content /*상단바 끝*/
 
 					<div class="form-group">
 					<input type="hidden" name="qContent" value="${readQna.qContent}"/>
-						<label for="qContent" class="col-md-6">문의
-							내용:${readQna.qContent }</label>
+						<label for="qContent" class="col-md-6">문의 내용:${readQna.qContent }</label>
 					</div>
 					<hr />
 				</div>
@@ -77,8 +76,7 @@ main-content /*상단바 끝*/
 
 				<div class="none">
 					<textarea class="form-control" rows="5" placeholder="내용을 입력해 주세요"
-						id="aContent" name="aContent">
-                        </textarea>
+						id="aContent" name="aContent"></textarea>
                 </div>
 					<div class="btn-group">
 						<a href="${pageContext.request.contextPath}/admin/qna.do"
