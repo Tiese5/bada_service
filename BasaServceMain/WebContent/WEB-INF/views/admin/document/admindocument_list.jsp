@@ -85,7 +85,7 @@
 					    		</c:when>
 					    		<c:otherwise>
 					    			<tr>
-							            <td colspan="4" class="text-center" style="line-height: 100px;">
+							            <td colspan="3" class="text-center" style="line-height: 100px;">
 							                조회된 글이 없습니다.</td>
 							        </tr>
 					    		</c:otherwise>
