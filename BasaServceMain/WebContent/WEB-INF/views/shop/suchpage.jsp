@@ -118,8 +118,7 @@
 											</c:choose>
 											<div>
 												<p>
-													<img src="${shop.item_image}" style="height: 80%"> <a
-														href="${readUrl}"> ${shop.item_title}<br /></a> <strong
+													 <a	href="${readUrl}"> ${shop.item_title}<br /></a> <strong
 														class="color">${shop.price}</strong>
 												</p>
 											</div>
