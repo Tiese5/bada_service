@@ -104,7 +104,12 @@ a>h5 {
 
 												</c:choose>
 
-												
+												<div>
+													<p>
+														<a href="${readUrl}"> ${shop.item_title}<br /></a> <strong
+															class="color">${shop.price}</strong>
+													</p>
+												</div>
 											</div>
 										</div>
 									</div>
