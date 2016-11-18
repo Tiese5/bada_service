@@ -36,6 +36,12 @@ public class message_send extends BaseController {
 		sqlSession = MyBatisConnectionFactory.getSqlSession();
 		memberService = new MemberServiceImpl(logger, sqlSession);
 		
+		if(web.getSession("loginInfo") == null) {
+			sqlSession.close();
+			web.redirect(web.getRootPath() + "/index.do", "로그인 후에 사용하실수 있습니다.");
+			return null;
+		}
+		
 		String userId = web.getString("user_id");
 		int senderId = web.getInt("sender_id");
 		int receiverId = web.getInt("receiver_id");

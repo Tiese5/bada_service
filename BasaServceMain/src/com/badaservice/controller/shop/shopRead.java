@@ -53,7 +53,7 @@ public class shopRead extends BaseController {
 		
 		if(web.getSession("loginInfo") == null) {
 			sqlSession.close();
-			web.redirect(web.getRootPath() + "/shop/shop_read.do", "로그인 후에 사용하실수 있습니다.");
+			web.redirect(web.getRootPath() + "/shop/main.do", "로그인 후에 사용하실수 있습니다.");
 			return null;
 		}
 		/**게시판 카테고리 값을 받아서 View에 전달*/

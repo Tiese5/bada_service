@@ -40,6 +40,11 @@ public class trade extends BaseController {
 		shopService = new ShopServiceImpl(sqlSession, logger);
 		pageHelper = PageHelper.getInstance();
 		
+		if(web.getSession("loginInfo") == null) {
+			sqlSession.close();
+			web.redirect(web.getRootPath() + "/index.do", "로그인 후에 사용하실수 있습니다.");
+			return null;
+		}
 		// item_title, price, reg_date, item_order --> username
 		int memberId = 0;
 		

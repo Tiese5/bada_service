@@ -36,6 +36,12 @@ public class MessageView extends BaseController {
 		web=WebHelper.getInstance(request, response);
 		messageService = new MessageServiceImpl(logger, sqlSession);
 		
+		if(web.getSession("loginInfo") == null) {
+			sqlSession.close();
+			web.redirect(web.getRootPath() + "/index.do", "로그인 후에 사용하실수 있습니다.");
+			return null;
+		}
+		
 		/** (5) 글 번호 파라미터 받기 */
 		int MessageId = web.getInt("message_id");
 		if (MessageId == 0) {

@@ -42,6 +42,12 @@ public class message extends BaseController {
 		messageService = new MessageServiceImpl(logger, sqlSession);
 		pageHelper = PageHelper.getInstance();
 		
+		if(web.getSession("loginInfo") == null) {
+			sqlSession.close();
+			web.redirect(web.getRootPath() + "/index.do", "로그인 후에 사용하실수 있습니다.");
+			return null;
+		}
+		
 		int senderId = 0;
 		String messageDeleteSend = web.getString("message_delete_send");
 		messageDeleteSend = "N";

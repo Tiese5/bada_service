@@ -33,6 +33,13 @@ public class QnaEdit extends BaseController {
 		sqlSession = MyBatisConnectionFactory.getSqlSession();
 		qnacommon = QNACommon.getInstance();
 		qnaService = new QnaServiceImpl(sqlSession, logger);
+		
+		if(web.getSession("loginInfo") == null) {
+			sqlSession.close();
+			web.redirect(web.getRootPath() + "/index.do", "로그인 후에 사용하실수 있습니다.");
+			return null;
+		}
+		
 		/**게시판 카테고리 값을 받아서 View에 전달*/
 		String category = web.getString("category");
 		request.setAttribute("category", category);
