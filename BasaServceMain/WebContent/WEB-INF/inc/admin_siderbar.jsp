@@ -22,6 +22,8 @@
                 <li><a href="#collapse-item-user" data-toggle="collapse">회원 관리</a>
                     <ul class="nav nav-sidebar-inner collapse" id="collapse-item-user">
                         <li><a href="${pageContext.request.contextPath}/admin/member/user_manage.do">회원 정보</a></li>
+                        <li><a href="${pageContext.request.contextPath}/admin_message_send.do">쪽지 쓰기</a></li>
+                        <li><a href="${pageContext.request.contextPath}/admin_message_get.do">회원 쪽지 관리</a></li>
                     </ul>
                 </li>
             </ul>

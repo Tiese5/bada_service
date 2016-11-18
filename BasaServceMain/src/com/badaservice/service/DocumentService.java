@@ -42,4 +42,6 @@ public interface DocumentService {
 	public int selectDocumentCount(Document document) throws Exception;
 	
 	public void deleteDocument(Document document) throws Exception;
+	
+	public void updateDocument(Document document) throws Exception;
 }

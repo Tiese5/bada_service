@@ -54,7 +54,7 @@ public class AdminQnaAddOk extends BaseController {
 		}*/
 		
 		/*파라미터 받기*/
-		
+		int qnaId = web.getInt("qna_id");
 		String category = web.getString("category");
 		String aContent = web.getString("aContent");
 		String title = web.getString("title");
@@ -80,6 +80,7 @@ public class AdminQnaAddOk extends BaseController {
 		}
 		/*입력받은값 빈즈에 넣기*/
 		Qna qna = new Qna();
+		qna.setId(qnaId);
 		qna.setaContent(aContent);
 		qna.setTitle(title);
 		qna.setCategory(category);

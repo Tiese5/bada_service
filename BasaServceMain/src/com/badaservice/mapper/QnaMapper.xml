@@ -96,13 +96,7 @@
 	<!-- 관리자 답변 달기 -->
 	<insert id="insertAdminQna" parameterType="com.badaservice.model.Qna"
 		useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO QNA(
-		a_content,title,q_content,category,writer_id,
-		reg_date, edit_date,ox
-		)VALUES(
-		#{aContent},#{title},#{qContent},#{category},#{writerId},
-		now(),now(),'o'
-		)
+		update QNA set a_content=#{aContent}, OX='o' where id=#{id}
 	</insert>
 	<!-- 게시글 답글 수정하기 -->
 	<update id="updateAdminQna" parameterType="com.badaservice.model.Qna">

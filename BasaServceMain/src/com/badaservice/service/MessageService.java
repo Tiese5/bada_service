@@ -2,6 +2,7 @@ package com.badaservice.service;
 
 import java.util.List;
 
+import com.badaservice.model.Qna;
 import com.badaservice.model.messenger;
 
 
@@ -89,4 +90,36 @@ public interface MessageService {
 	 * @throws Exception
 	 */
 	public void updateReceiverMessage(messenger messenger) throws Exception;
+	
+	/**
+	 * 관리자 받은 쪽지함 목록을 조회한다
+	 * @param messenger - 받은 쪽지함 목록
+	 * @return messenger - 읽어들인 쪽지 데이터
+	 * @throws Exception
+	 */
+	public List<messenger> selectAdminMessageList(messenger messenger) throws Exception;
+	
+	/**
+	 * 관리자 받은 쪽지함 전체 게시물 수 조회
+	 * @param messenger
+	 * @return int
+	 * @throws Exception
+	 */
+	public int selectAdminMessageCount(messenger messenger) throws Exception;
+	
+	/**
+	 * 하나의 게시물을 읽어들인다
+	 * @param messenger - 읽어들일 게시물 일련번호가 저장된 Beans
+	 * @return messenger - 읽어들인 게시물 내용
+	 * @throws Exception
+	 */
+	public messenger selectAdminMessage(messenger messenger) throws Exception;
+	
+	/**
+	 * 관리자 쪽지 삭제
+	 * @param qna
+	 * @throws Exception
+	 */
+	public void deleteAdminMessage(messenger messenger)throws Exception;
+	
 }

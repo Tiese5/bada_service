@@ -128,4 +128,23 @@ public class DocumentServiceImpl implements DocumentService {
 
 	}
 
+	@Override
+	public void updateDocument(Document document) throws Exception {
+		try {
+			int result = sqlSession.update("DocumentMapper.updateDocument", document);
+			if( result == 0) {
+				throw new NullPointerException();
+			}
+		} catch (NullPointerException e) {
+			sqlSession.rollback();
+			throw new Exception("글 수정 실패에 대한 요청입니다.");
+		} catch (Exception e) {
+			sqlSession.rollback();
+			logger.error(e.getLocalizedMessage());
+			throw new Exception("글 수정에 실패했습니다.");
+		} finally {
+			sqlSession.commit();
+		}
+	}
+
 }
