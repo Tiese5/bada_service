@@ -62,9 +62,8 @@
 						<thead style="background-color: #eee;">
 							<tr>
 								<th class="text-center" width="10%">No</th>
-								<th class="text-center" width="20%">제목</th>
-								<th class="text-center" width="50%">내용</th>
-								<th class="text-center" width="20%">작성일</th>
+								<th class="text-center" width="30%">제목</th>
+								<th class="text-center" width="15%">작성일</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -73,14 +72,13 @@
 					    			<c:forEach var="document" items="${documentList}">
 					    				<tr>
 								            <td class="text-center">${document.id}</td>
-								            <td class="text-center" style='max-width: 80px;'><p class="smaller">${document.title}</p></td>
-								            <td class="text-center" style='max-width: 100px;'><p class="smaller">
+								             <td class="text-center" style='max-width: 100px;'><p class="smaller">
 								            	<c:url var="readUrl" value="/admin_document_view.do">
 								            		<c:param name="category" value="${document.category}" />
 								            		<c:param name="document_id" value="${document.id}" />
 								            	</c:url>
-								            	<a class="small" href="${readUrl}">${document.content}</a></p>
-								            </td>
+								            	<a class="smaller" href="${readUrl}">${document.title}</a></p>
+								            </td> 
 								            <td class="text-center">${document.regDate}</td>
 							        	</tr>
 					    			</c:forEach>

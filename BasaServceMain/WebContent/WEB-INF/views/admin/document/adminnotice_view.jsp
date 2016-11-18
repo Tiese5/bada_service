@@ -53,7 +53,7 @@
 					<div class="form-group">
 						<label for="content" class="col-md-1">내용:</label>
 						<div class="col-md-11">
-							<span> ${readDocument.content} </span>
+							<pre> ${readDocument.content} </pre>
 						</div>
 					</div>
 					<div class="page-header"></div>

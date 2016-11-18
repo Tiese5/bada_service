@@ -19,7 +19,7 @@
 	    DATE_FORMAT(edit_date, '%Y-%m-%d') as edit_date   
 		FROM   document
 		WHERE category=#{category}
-		ORDER  BY id DESC
+		ORDER  BY reg_date DESC
 		LIMIT #{limitStart}, #{listCount};
 	</select>
 	
