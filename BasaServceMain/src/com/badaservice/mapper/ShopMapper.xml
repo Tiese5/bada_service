@@ -108,7 +108,7 @@
 		FROM item_add
 		
 		<where>
-		category=#{category} and state='1'
+		category=#{category} and state='1' 
 		<if test="item_title != null or content != null">
 			AND(
 			<if test="item_title != null">

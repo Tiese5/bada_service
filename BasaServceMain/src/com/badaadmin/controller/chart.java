@@ -18,6 +18,7 @@ import com.badaservice.helper.WebHelper;
 import com.badaservice.model.Chart;
 import com.badaservice.service.ChartService;
 import com.badaservice.service.impl.ChartServiceImpl;
+
 @WebServlet("/admin_chart.do")
 public class chart extends BaseController {
 	private static final long serialVersionUID = 7065452114790381913L;
@@ -25,17 +26,15 @@ public class chart extends BaseController {
 	Logger logger;
 	WebHelper web;
 	ChartService chartService;
+
 	public String doRun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-	web = WebHelper.getInstance(request, response);
-	sqlSession = MyBatisConnectionFactory.getSqlSession();
-	logger = LogManager.getFormatterLogger();
 
-	chartService = new ChartServiceImpl(sqlSession, logger);
+		web = WebHelper.getInstance(request, response);
+		sqlSession = MyBatisConnectionFactory.getSqlSession();
+		logger = LogManager.getFormatterLogger();
 
-	
+		chartService = new ChartServiceImpl(sqlSession, logger);
 
-	
 		/** (3) 로그인 여부 검사 */
 		// 로그인 중이 아니라면 이 페이지를 동작시켜서는 안된다.
 		if (web.getSession("loginInfo") == null) {
@@ -43,35 +42,27 @@ public class chart extends BaseController {
 			return null;
 		}
 
-
-		
-		
-
-		
 		String regDate = web.getString("reg_data");
 		String joinData = web.getString("join_date");
-		
+
 		Chart chart = new Chart();
 		chart.setRegData(regDate);
 		chart.setJoinData(joinData);
-		
+
 		List<Chart> num = null;
-		
+
 		try {
 			num = chartService.chartNum(chart);
 		} catch (Exception e) {
 			e.printStackTrace();
 			web.redirect(null, e.getLocalizedMessage());
-		}finally{
+		} finally {
 			sqlSession.close();
 		}
 		request.setAttribute("num", num);
-		
-		/*int Tr = memberService.*/
+
+		/* int Tr = memberService. */
 		return "admin/chart";
 	}
 
 }
-
-
-
