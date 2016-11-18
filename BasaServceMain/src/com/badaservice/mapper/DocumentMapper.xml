@@ -52,4 +52,9 @@
 		(#{title}, #{content}, #{category}, now(), now(), #{writerName})		
 	</insert>
 	
+	<update id="updateDocument" parameterType="com.badaservice.model.messenger">
+		update document set title=#{title}, content=#{content} where id=#{id}
+	</update>
+
+	
 </mapper>

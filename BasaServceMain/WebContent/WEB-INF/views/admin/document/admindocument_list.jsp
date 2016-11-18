@@ -30,6 +30,13 @@
         .mar {
         	margin-top: 18px;
         }
+        
+        .smaller {
+        	white-space: nowrap;
+        	overflow: hidden;
+        	text-overflow: ellipsis;
+        }
+        
     </style>
 
 </head>
@@ -44,11 +51,6 @@
 		<%@include file="/WEB-INF/inc/admin_siderbar.jsp"%>
 		<!-- Grid Row 시작 -->
 		<div class="row">
-
-			<!-- 좌측 사이드 네비게이션 바 -->
-			
-			<!-- 좌측 사이드 네비게이션 바 끝 -->
-
 			<!-- 메인 컨텐츠 영역 시작 -->
 			<div class="col-sm-9 col-md-10 main-content">
 				<div class="page-header">
@@ -71,13 +73,13 @@
 					    			<c:forEach var="document" items="${documentList}">
 					    				<tr>
 								            <td class="text-center">${document.id}</td>
-								            <td class="text-center">${document.title}</td>
-								            <td class="text-center">
+								            <td class="text-center" style='max-width: 80px;'><p class="smaller">${document.title}</p></td>
+								            <td class="text-center" style='max-width: 100px;'><p class="smaller">
 								            	<c:url var="readUrl" value="/admin_document_view.do">
 								            		<c:param name="category" value="${document.category}" />
 								            		<c:param name="document_id" value="${document.id}" />
 								            	</c:url>
-								            	<a href="${readUrl}">${document.content}</a>
+								            	<a class="small" href="${readUrl}">${document.content}</a></p>
 								            </td>
 								            <td class="text-center">${document.regDate}</td>
 							        	</tr>
