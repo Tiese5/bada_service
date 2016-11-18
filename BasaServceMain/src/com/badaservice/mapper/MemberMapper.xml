@@ -183,7 +183,7 @@
 		SET
 		user_pw=password(#{user_pw}), join_edit = now()
 		WHERE
-		email=#{email} and user_id=#{user_id}
+		email=#{email} and user_id=#{user_id} and jo='0'
 	</update>
 
 	<!-- 아이디 찾기 -->
@@ -194,7 +194,7 @@
 		FROM
 		member
 		WHERE
-		email=#{email}
+		email=#{email} and jo = '0';
 	</select>
 	<!-- 아이디 변환 -->
 	<select id="selectMemberIdChange" parameterType="com.badaservice.model.Member"
