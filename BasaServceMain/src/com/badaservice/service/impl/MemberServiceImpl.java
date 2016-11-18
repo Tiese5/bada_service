@@ -162,11 +162,12 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void selectUserIdCount(Member member) throws Exception {
+	public int selectUserIdCount(Member member) throws Exception {
 		// TODO Auto-generated method stub
+		int result = 0; 
 		try{
-			int result=sqlsession.selectOne("MemberMapper.selectUserIdCount",member);
-			if(result>0){
+		result=sqlsession.selectOne("MemberMapper.selectUserIdCount",member);
+			if(result>=1){
 				throw new NullPointerException();
 			}
 		}catch (NullPointerException e) {
@@ -174,9 +175,12 @@ public class MemberServiceImpl implements MemberService {
 			throw new Exception("이미 사용중인 아이디 입니다.");
 		}catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 			logger.error(e.getLocalizedMessage());
 			throw new Exception("아이디 중복검사에 실패했습니다.");
 		}
+		return result;
+		
 	}
 
 	@Override
@@ -429,6 +433,22 @@ public class MemberServiceImpl implements MemberService {
 			sqlsession.commit();
 		}
 
+	}
+
+	@Override
+	public int selectUserIdCount2(Member member) throws Exception {
+		// TODO Auto-generated method stub
+		int result = 0; 
+		try{
+		result=sqlsession.selectOne("MemberMapper.selectUserIdCount",member);
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			logger.error(e.getLocalizedMessage());
+			throw new Exception("아이디 중복검사에 실패했습니다.");
+		}
+		return result;
 	}
 
 }

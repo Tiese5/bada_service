@@ -121,10 +121,86 @@
 
 <body>
 
+
+    <!-- 로고, 상단 네비게이션 바 -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">메뉴 열기</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+                <a class="navbar-brand" href="#">BaDa <span class="small">ADMIN</span></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="#">대시보드</a></li>
+                    <li><a href="#collapse-nav-item-shop" data-toggle="collapse">쇼핑몰 관리</a>
+                        <ul class="nav navbar-nav-inner collapse" id="collapse-nav-item-shop">
+                            <li><a href="#">회원주문내역</a></li>
+                            <li><a href="#">거래내역</a></li>
+                            <li><a href="#">상품등록(바다)</a></li>
+                            <li><a href="#">승인요청관리</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#collapse-nav-item-board" data-toggle="collapse">게시판 관리</a>
+                        <ul class="nav navbar-nav-inner collapse" id="collapse-nav-item-board">
+                            <li><a href="#">1:1문의 관리</a></li>
+                            <li><a href="#">공지사항 관리</a></li>
+                            <li><a href="#">자주묻는 질문 관리</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#collapse-nav-item-user" data-toggle="collapse">회원 관리</a>
+                        <ul class="nav navbar-nav-inner collapse" id="collapse-nav-item-user">
+                            <li><a href="${pageContext.request.contextPath}/admin/member/user_manage.do">회원 정보</a></li>
+                            <li><a href="#">판매자 평</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- 로고, 상단 네비게이션 바 끝 -->
+
+
    <%@include file="/WEB-INF/inc/admin_topbar.jsp"%>
+
     <!-- 컨테이너 영역 -->
     <div class="container">
+
+        <!-- 사이드 네비게이션 바 -->
+        <div class="col-sm-2 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="#">대시보드</a></li>
+                <li><a href="#collapse-item-shop" data-toggle="collapse">쇼핑몰 관리</a>
+                    <ul class="nav nav-sidebar-inner collapse" id="collapse-item-shop">
+                        <li><a href="#">회원주문내역</a></li>
+                        <li><a href="#">거래내역</a></li>
+                        <li><a href="#">상품등록(바다)</a></li>
+                        <li><a href="#">승인요청관리</a></li>
+                    </ul>
+                </li>
+                <li><a href="#collapse-item-board" data-toggle="collapse">게시판 관리</a>
+                    <ul class="nav nav-sidebar-inner collapse" id="collapse-item-board">
+                        <li><a href="#">1:1문의 관리</a></li>
+                        <li><a href="#">공지사항 관리</a></li>
+                        <li><a href="#">자주묻는 질문 관리</a></li>
+                    </ul>
+                </li>
+                <li><a href="#collapse-item-user" data-toggle="collapse">회원 관리</a>
+                    <ul class="nav nav-sidebar-inner collapse" id="collapse-item-user">
+                        <li><a href="${pageContext.request.contextPath}/admin/member/user_manage.do">회원 정보</a></li>
+                        <li><a href="#">판매자 평</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- 사이트 네비게이션 바 끝 -->
+
         <%@include file="/WEB-INF/inc/admin_siderbar.jsp"%>
+
         <div class="row">
             <!-- 메인 컨텐츠 영역 -->
             <div class="col-sm-offset-2 col-md-offset-2 main-content">
@@ -189,7 +265,7 @@
         <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
         <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
 
-        
+       
         <script type="text/javascript">
             
 

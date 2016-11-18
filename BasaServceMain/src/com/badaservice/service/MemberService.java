@@ -22,7 +22,9 @@ public interface MemberService {
 	
 	public void insertMember(Member member) throws Exception;
 	
-	public void selectUserIdCount(Member member) throws Exception;
+	public int selectUserIdCount(Member member) throws Exception;
+	
+	public int selectUserIdCount2(Member member) throws Exception;
 		
 	public void selectEmailCount(Member member) throws Exception; 
 	

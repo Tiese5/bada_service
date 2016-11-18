@@ -71,7 +71,7 @@
                    </label>
                     <div class="col-sm-10">
                     <p class="hading">Id</p>
-                        <input type="text" name="user_id" class="form-control" id="email" placeholder="Email">
+                        <input type="text" name="user_id" class="form-control" id="email" placeholder="Id">
                     </div>
                     
                 </div>
@@ -94,7 +94,7 @@
                 <!--로그인 버튼END-->
             </form>
             <div style="margin-left: 400px;">
-            <a href="${pageContext.request.contextPath}/member/id.do">ID</a><span></span><a href="${pageContext.request.contextPath}/member/pw.do">PW찾기</a>
+            <a href="${pageContext.request.contextPath}/member/id.do">ID/</a><span></span><a href="${pageContext.request.contextPath}/member/pw.do">PW찾기</a>
             </div>
 
             <!--로그인폼 끝-->
