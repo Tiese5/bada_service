@@ -62,6 +62,11 @@
 .main-body>h4 a {
 	text-decoration: none;
 }
+
+.thumbnail {
+	width: 80%;
+	height: 200px;
+}
 /*상단바 끝*/
 </style>
 </head>
