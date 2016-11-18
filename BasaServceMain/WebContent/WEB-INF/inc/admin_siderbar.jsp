@@ -5,7 +5,7 @@
  <!-- 사이드 네비게이션 바 -->
         <div class="col-sm-2 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="${pageContext.request.contextPath}/admin/member/chart.do">대시보드</a></li>
+                <li class="active"><a href="${pageContext.request.contextPath}/admin_chart.do">대시보드</a></li>
                 <li><a href="#collapse-item-shop" data-toggle="collapse">쇼핑몰 관리</a>
                     <ul class="nav nav-sidebar-inner collapse" id="collapse-item-shop">
                         <li><a href="${pageContext.request.contextPath}/admin/shop/TrList">거래내역</a></li>
