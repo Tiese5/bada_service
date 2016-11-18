@@ -19,6 +19,7 @@
 		select id, content, reg_date, sender_id, receiver_id, sender_name, receiver_name, message_delete, message_delete_send
 		from messenger
 		where receiver_id=#{receiverId} AND message_delete=#{messageDelete}
+		order by reg_date DESC
 		LIMIT #{limitStart}, #{listCount};
 	</select>
 	
@@ -28,6 +29,7 @@
 		select id, content, reg_date, sender_id, receiver_id, receiver_name, sender_name, message_delete, message_delete_send
 		from messenger
 		where sender_id=#{senderId} AND message_delete_send=#{messageDeleteSend}
+		order by reg_date DESC
 		LIMIT #{limitStart}, #{listCount};
 	</select>
 	
@@ -93,6 +95,7 @@
 		select id, content, reg_date, sender_name, receiver_name, sender_id, receiver_id 
 		from messenger
 		where message_delete_send='N'
+		order by reg_date DESC
 		LIMIT #{limitStart}, #{listCount};
 	</select>
 	
@@ -102,6 +105,7 @@
 		SELECT COUNT(id) 
 		FROM messenger
 		WHERE message_delete_send=#{messageDeleteSend}
+		
 	</select>
 	
 	<!-- 관리자 쪽지함 게시물 하나에 대한 정보를 조회한다. -->

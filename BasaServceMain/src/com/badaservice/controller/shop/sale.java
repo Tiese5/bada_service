@@ -26,6 +26,11 @@ public class sale extends BaseController {
 		web = WebHelper.getInstance(request, response);
 		itemcategory = ItemCategory.getInstance();
 		
+		if(web.getSession("loginInfo") == null) {
+			sqlSession.close();
+			web.redirect(web.getRootPath() + "/member/login.do", "로그인 후에 사용하실수 있습니다.");
+			return null;
+		}
 		/**게시판 카테고리 값을 받아서 View에 전달*/
 		String category = web.getString("category");
 		request.setAttribute("category", category);
