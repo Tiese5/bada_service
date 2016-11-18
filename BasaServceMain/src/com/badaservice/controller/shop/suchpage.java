@@ -103,7 +103,7 @@ public class suchpage extends BaseController {
 		request.setAttribute("shopCaList", shopCaList);
 		request.setAttribute("shopList", shopList);
 		request.setAttribute("dropDown", dropdown);
-		request.setAttribute("pageHelper", pageHelper);
+		request.setAttribute("pageHelper", pageHelper);  
 		request.setAttribute("categoryCount", categoryCount);
 		
 		
