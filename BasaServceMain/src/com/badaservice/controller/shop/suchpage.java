@@ -71,16 +71,15 @@ public class suchpage extends BaseController {
 		/** 게시물 목록 조회 */
 		List<Shop> shopCaList = null;
 		List<Shop> shopList = null;
-		int totalCaCount = 0;
+
 		
 		
 		try {
 			// 전체 게시물 수
-			totalCaCount = shopService.selectCaItemCount(shop);
 			categoryCount = shopService.selectCategoryItemCount(shop);
 			// 현제페이지 번호 계산하기
 			// --->현제 페이지,전체 페이지 수, 한 페이지 목록 수, 그룹 갯수
-			pageHelper.pageProcess(page, totalCaCount, 8, 5);
+			pageHelper.pageProcess(page, categoryCount, 8, 5);
 			// 페이지 현제 번호 계산 결과에서 Limit절에 필요한 값을 빈즈에 추가
 			shop.setLimitStart(pageHelper.getLimitStart());
 			shop.setListCount(pageHelper.getListCount());
@@ -105,7 +104,6 @@ public class suchpage extends BaseController {
 		request.setAttribute("shopList", shopList);
 		request.setAttribute("dropDown", dropdown);
 		request.setAttribute("pageHelper", pageHelper);
-		request.setAttribute("totalCount", totalCaCount);
 		request.setAttribute("categoryCount", categoryCount);
 		
 		
