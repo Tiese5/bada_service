@@ -66,16 +66,16 @@
 		    		<c:when test="${fn:length(messengerList) > 0}">
 		    			<c:forEach var="messenger" items="${messengerList}">
 		    				<tr>
-		    					<td class="small text-center"> <a href="#"
+		    					<td class="text-center"> <a href="#"
 					             data-toggle="popover"
 					             data-html="true"
 					             data-placement="bottom"
 					             data-content="<a href='${pageContext.request.contextPath}/message_send.do?sender_id=${messenger.senderId}'>쪽지보내기</a>">${messenger.senderName}</a></td>
-					            <td class="text-center">
+					            <td class="text-center" style='max-width: 100px'><p class="smaller">
 					            	<c:url var="readUrl" value="/message_view.do">
 					            		<c:param name="message_id" value="${messenger.id}" />				     
 					            	</c:url>
-					            	<a class="smaller" href="${readUrl}">${messenger.content}</a>
+					            	<a href="${readUrl}">${messenger.content}</a></p>
 					            </td>
 					            <td class="text-center">${messenger.regDate}</td>
 				        	</tr>                      

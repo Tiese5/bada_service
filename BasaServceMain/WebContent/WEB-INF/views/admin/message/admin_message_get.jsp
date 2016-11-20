@@ -67,22 +67,24 @@
 		    		<c:when test="${fn:length(messengerList) > 0}">
 		    			<c:forEach var="messenger" items="${messengerList}">
 		    				<tr>
-		    					<td class="smaller text-center"> <a href="#"
+		    					<td class="text-center"><p class="smaller"><a href="#"
 					             data-toggle="popover"
 					             data-html="true"
 					             data-placement="bottom"
-					             data-content="<a href='${pageContext.request.contextPath}/admin_message_send.do?sender_id=${messenger.senderId}'>쪽지보내기</a>">${messenger.senderName}</a></td>
+					             data-content="<a href='${pageContext.request.contextPath}/admin_message_send.do?sender_id=${messenger.senderId}'>쪽지보내기</a>">${messenger.senderName}</a></p>
+					             </td>
 					             
-					             <td class="smaller text-center"> <a href="#"
+					             <td class="text-center"><p class="smaller"><a href="#"
 					             data-toggle="popover"
 					             data-html="true"
 					             data-placement="bottom"
-					             data-content="<a href='${pageContext.request.contextPath}/admin_message_send.do?receiver_id=${messenger.receiverId}'>쪽지보내기</a>">${messenger.receiverName}</a></td>
-					            <td class="text-center">
+					             data-content="<a href='${pageContext.request.contextPath}/admin_message_send.do?receiver_id=${messenger.receiverId}'>쪽지보내기</a>">${messenger.receiverName}</a></p>
+					             </td>
+					            <td class="text-center" style='max-width: 100px'><p class="smaller">
 					            	<c:url var="readUrl" value="/admin_message_view.do">
 					            		<c:param name="message_id" value="${messenger.id}" />				     
 					            	</c:url>
-					            	<a class="smaller" href="${readUrl}">${messenger.content}</a>
+					            	<a href="${readUrl}">${messenger.content}</a></p>
 					            </td>
 					            <td class="text-center">${messenger.regDate}</td>
 				        	</tr>                      

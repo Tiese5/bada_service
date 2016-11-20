@@ -70,11 +70,11 @@ td:last-child, th:last-child {
 					             data-html="true"
 					             data-placement="bottom"
 					             data-content="<a href='${pageContext.request.contextPath}/message_send.do?receiver_id=${messenger.receiverId}'>쪽지보내기</a>">${messenger.receiverName}</a></td>
-												<td class="text-center"><c:url var="readUrl"
+												<td class="text-center" style='max-width: 100px'><p class="smaller"><c:url var="readUrl"
 														value="/message_send_view.do">
 														<c:param name="message_id"
 															value="${messenger.id}" />
-													</c:url> <a class="smaller" href="${readUrl}">${messenger.content}</a></td>
+													</c:url> <a href="${readUrl}">${messenger.content}</a></p></td>
 												<td class="text-center">${messenger.regDate}</td>
 											</tr>
 										</c:forEach>
