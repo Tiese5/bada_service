@@ -103,6 +103,7 @@ public class message_get extends BaseController {
 		request.setAttribute("messengerList", messengerList);
 		request.setAttribute("totalCount", totalCount);
 		request.setAttribute("pageHelper", pageHelper);
+
 		
 		return "/message/message_get";
 	}

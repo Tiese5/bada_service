@@ -76,6 +76,7 @@ public class admin_message_get extends BaseController {
 			
 			messengerList = messageService.selectAdminMessageList(messenger);
 	
+	
 		
 		} catch (Exception e) {
 			web.redirect(null, e.getLocalizedMessage());
