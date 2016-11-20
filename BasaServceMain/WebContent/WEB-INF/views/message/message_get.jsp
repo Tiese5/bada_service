@@ -31,7 +31,7 @@
 
         }
         
-        .small {
+        .smaller {
         	white-space: nowrap;
         	overflow: hidden;
         	text-overflow: ellipsis;
@@ -75,7 +75,7 @@
 					            	<c:url var="readUrl" value="/message_view.do">
 					            		<c:param name="message_id" value="${messenger.id}" />				     
 					            	</c:url>
-					            	<a href="${readUrl}">${messenger.content}</a>
+					            	<a class="smaller" href="${readUrl}">${messenger.content}</a>
 					            </td>
 					            <td class="text-center">${messenger.regDate}</td>
 				        	</tr>                      

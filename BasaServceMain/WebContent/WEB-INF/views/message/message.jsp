@@ -31,7 +31,7 @@ td:last-child, th:last-child {
 	margin-left: 230px;
 }
 
-.small {
+.smaller {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -56,7 +56,7 @@ td:last-child, th:last-child {
 							<tr>
 
 								<th class="text-center" width="20%">받는이</th>
-								<th class="text-center" width="50%">제목</th>
+								<th class="text-center" width="50%">내용</th>
 								<th class="text-center" width="30%">받은날짜</th>
 							</tr>
 						</thead>
@@ -74,7 +74,7 @@ td:last-child, th:last-child {
 														value="/message_send_view.do">
 														<c:param name="message_id"
 															value="${messenger.id}" />
-													</c:url> <a href="${readUrl}">${messenger.content}</a></td>
+													</c:url> <a class="smaller" href="${readUrl}">${messenger.content}</a></td>
 												<td class="text-center">${messenger.regDate}</td>
 											</tr>
 										</c:forEach>

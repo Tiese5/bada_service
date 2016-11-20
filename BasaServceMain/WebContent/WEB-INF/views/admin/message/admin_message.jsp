@@ -31,7 +31,7 @@ td:last-child, th:last-child {
 	margin-left: 230px;
 }
 
-.small {
+.smaller {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -66,10 +66,10 @@ td:last-child, th:last-child {
 										<c:forEach var="messenger" items="${messengerList}">
 											<tr>
 												<td class="text-center"><a href="#"
-					             data-toggle="popover"
-					             data-html="true"
-					             data-placement="bottom"
-					             data-content="<a href='${pageContext.request.contextPath}/admin_message_send.do?receiver_id=${messenger.receiverId}'>쪽지보내기</a>">${messenger.receiverName}</a></td>
+									             data-toggle="popover"
+									             data-html="true"
+									             data-placement="bottom"
+									             data-content="<a href='${pageContext.request.contextPath}/admin_message_send.do?receiver_id=${messenger.receiverId}'>쪽지보내기</a>">${messenger.receiverName}</a></td>
 												<td class="text-center"><c:url var="readUrl"
 														value="/message_send_view.do">
 														<c:param name="message_id"

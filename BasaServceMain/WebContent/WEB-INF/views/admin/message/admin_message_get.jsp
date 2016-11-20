@@ -31,7 +31,7 @@
 
         }
         
-        .small {
+        .smaller {
         	white-space: nowrap;
         	overflow: hidden;
         	text-overflow: ellipsis;
@@ -67,13 +67,13 @@
 		    		<c:when test="${fn:length(messengerList) > 0}">
 		    			<c:forEach var="messenger" items="${messengerList}">
 		    				<tr>
-		    					<td class="small text-center"> <a href="#"
+		    					<td class="smaller text-center"> <a href="#"
 					             data-toggle="popover"
 					             data-html="true"
 					             data-placement="bottom"
 					             data-content="<a href='${pageContext.request.contextPath}/admin_message_send.do?sender_id=${messenger.senderId}'>쪽지보내기</a>">${messenger.senderName}</a></td>
 					             
-					             <td class="small text-center"> <a href="#"
+					             <td class="smaller text-center"> <a href="#"
 					             data-toggle="popover"
 					             data-html="true"
 					             data-placement="bottom"
@@ -82,7 +82,7 @@
 					            	<c:url var="readUrl" value="/admin_message_view.do">
 					            		<c:param name="message_id" value="${messenger.id}" />				     
 					            	</c:url>
-					            	<a href="${readUrl}">${messenger.content}</a>
+					            	<a class="smaller" href="${readUrl}">${messenger.content}</a>
 					            </td>
 					            <td class="text-center">${messenger.regDate}</td>
 				        	</tr>                      

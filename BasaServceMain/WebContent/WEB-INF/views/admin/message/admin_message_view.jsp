@@ -73,7 +73,7 @@
 					<div class="form-group">
 						<label for="subject" class="col-md-1">내용:</label>
 						<div class="col-md-11">
-							<span> ${readMessage.content} </span>
+							<pre> ${readMessage.content} </pre>
 						</div>
 					</div>
 					<div class="page-header"></div>
