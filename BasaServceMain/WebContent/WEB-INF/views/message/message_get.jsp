@@ -56,9 +56,9 @@
                     <table class="table table-hover">
                         <thead style="background-color : #eee;">
                             <tr>
-                                <th class="text-center" width="20%">보낸이</th>
-                                <th class="text-center" width="50%">내용</th>
-                                <th class="text-center" width="30%">받은날짜</th>
+                                <th class="text-center" width="10%">보낸이</th>
+                                <th class="text-center" width="30%">내용</th>
+                                <th class="text-center" width="15%">받은날짜</th>
                             </tr>
                         </thead>
                         <tbody>          
@@ -71,12 +71,12 @@
 					             data-html="true"
 					             data-placement="bottom"
 					             data-content="<a href='${pageContext.request.contextPath}/message_send.do?sender_id=${messenger.senderId}'>쪽지보내기</a>">${messenger.senderName}</a></td>
-					            <td class="text-center" style='max-width: 100px'><p class="smaller">
-					            	<c:url var="readUrl" value="/message_view.do">
-					            		<c:param name="message_id" value="${messenger.id}" />				     
-					            	</c:url>
-					            	<a href="${readUrl}">${messenger.content}</a></p>
-					            </td>
+					            <td class="text-center">
+								            	<c:url var="readUrl" value="/message_view.do">
+								            		<c:param name="message_id" value="${messenger.id}" />
+								            	</c:url>
+								            	<a href="${readUrl}">${messenger.content}</a>
+								         </td>
 					            <td class="text-center">${messenger.regDate}</td>
 				        	</tr>                      
 		    			</c:forEach>

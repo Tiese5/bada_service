@@ -13,7 +13,7 @@
 				.change(
 						function() {
 							var dropdown = $("#drop_down").val();
-							window.location = "http://localhost:8080/BadaServceMain/shop/suchpage.do?drop_down="
+							window.location = "http://tiese5.cafe24.com/BadaServceMain/shop/suchpage.do?drop_down="
 									+ dropdown + "&category="+${category};
 						});
 	});
