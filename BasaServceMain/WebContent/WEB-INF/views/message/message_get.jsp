@@ -37,11 +37,6 @@
         	text-overflow: ellipsis;
         }
         
-        .line {
-			display: table-cell;
-			vertical-align: middle;
-		}
-
     </style>
 
 </head>
@@ -71,7 +66,7 @@
                  <c:choose>
 		    		<c:when test="${fn:length(messengerList) > 0}">
 		    			<c:forEach var="messenger" items="${messengerList}">
-		    				<tr class="line">
+		    				<tr>
 		    					<td class="text-center"> <a href="#"
 					             data-toggle="popover"
 					             data-html="true"
