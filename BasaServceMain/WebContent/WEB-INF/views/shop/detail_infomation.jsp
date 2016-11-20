@@ -94,7 +94,7 @@ h3 {
 								class="btns btn btn-warning" id="cart">장바구니</a>
 								
 							<a href="${pageContext.request.contextPath}/shop/item_delete.do?id=
-							${readItem.id}" class="btn btn-danger">삭제</a>
+							${readItem.id}" class="btn btn-danger" style='margin-top: 20px'>삭제</a>
 							
 				</div>
 				<div class="marg col-md-12">
